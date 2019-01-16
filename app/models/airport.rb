@@ -1,6 +1,10 @@
 class Airport < ApplicationRecord
   has_many :deal_airports
   has_many :deals, through: :deal_airports
+
+  def self.iata(code)
+    self.find_by(iata:code)
+  end
   
   def self.import_from_gem(gem_airport)
     a = gem_airport # shorter code
