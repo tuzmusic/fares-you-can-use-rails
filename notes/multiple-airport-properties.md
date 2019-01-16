@@ -17,3 +17,6 @@ def change
   end
 end
 ```
+
+- If that doesn't work, I think a model and a join table should work.
+  - Origins model/table and Destinations model/table, identical to DealAirports model/tablle
