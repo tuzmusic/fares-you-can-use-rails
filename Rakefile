@@ -4,3 +4,8 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+task :import_all do
+  require 'airport'
+  Airport.import_all_from_gem
+end

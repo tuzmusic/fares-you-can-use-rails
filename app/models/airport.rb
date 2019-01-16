@@ -4,16 +4,17 @@ class Airport < ApplicationRecord
   
   def self.import_from_gem(gem_airport)
     a = gem_airport # shorter code
-    self.create(name: a.name,
-                city: a.city,
-                country: a.country,
-                iata: a.iata,
-                icao: a.icao,
-                latitude: a.latitude,
-                longitude: a.longitude,
-                altitude: a.altitude,
-                timezone: a.timezone,
-                dst: a.dst)
+    new_a = self.find_or_create_by(iata: a.iata)
+    new_a.name        = a.name
+    new_a.city        = a.city
+    new_a.country     = a.country
+    new_a.icao        = a.icao
+    new_a.latitude    = a.latitude
+    new_a.longitude   = a.longitude
+    new_a.altitude    = a.altitude
+    new_a.timezone    = a.timezone
+    new_a.dst         = a.dst
+    new_a.save
   end
 
   def self.import_all_from_gem
