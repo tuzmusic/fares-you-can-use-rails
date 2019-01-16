@@ -15,6 +15,7 @@
 ## Regions
 - has_many :airports
 - has_many :cities
+- get a Countries gem to manage continents/regions
 
 ## Airports
 - managed by Airports gem? Probably. check out its database entries and properties.
