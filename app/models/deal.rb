@@ -1,7 +1,4 @@
 class Deal < ApplicationRecord
-  # has_many :deal_airports
-  # has_many :airports, through: :deal_airports
-
   has_many :origin_airports
   has_many :origins, through: :origin_airports, source: :airport
 
