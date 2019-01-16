@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Deals', type: :model do
-  it "has multiple origin airports" do
+  it "can have multiple origin airports" do
     deal = Deal.create(headline:"Deal from DC")
     deal.origins << Airport.iata("DCA")
     deal.origins << Airport.iata("IAD")
