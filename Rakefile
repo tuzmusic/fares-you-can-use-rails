@@ -5,7 +5,10 @@ require_relative 'config/application'
 
 Rails.application.load_tasks
 
-task :import_all do
-  require 'airport'
+task :import_all do 
+  # doesn't work for some reason
+  # NameError: uninitialized constant ApplicationRecord
+  require_relative 'config/application'
+  require_relative 'app/models/airport'
   Airport.import_all_from_gem
 end
