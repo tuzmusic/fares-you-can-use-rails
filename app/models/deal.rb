@@ -1,3 +1,4 @@
 class Deal < ApplicationRecord
-  has_many :airports # needs its own airports model
+  has_many :deal_airports
+  has_many :airports, through: :deal_airports  
 end
