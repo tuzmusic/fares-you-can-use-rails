@@ -24,7 +24,10 @@ RSpec.describe "Deals Views", type: :feature do
     it "marks a deal as possibly expired if it's more than a week old" do
       
     end
-    it "shows the airports included in the deal" do
+    it "shows deal's origin airports" do
+      
+    end    
+    it "shows deal's destination airports" do
       
     end    
     it "has some 'back' navigation" do
