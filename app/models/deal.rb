@@ -7,4 +7,16 @@ class Deal < ApplicationRecord
       self.airports = [airport]
     end
   end
+  
+  def airport_codes=(iata_codes)
+    airports = []
+    iata_codes.each do |code|
+      if airport = Airport.find_by(iata: code)
+        airports << airport
+      end
+    end
+    self.airports = airports
+  end
+  
 end
+
