@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_01_16_095049) do
   create_table "deal_airports", force: :cascade do |t|
     t.integer "deal_id"
     t.integer "airport_id"
+    t.string "airport_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
