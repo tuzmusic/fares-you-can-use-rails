@@ -1,0 +1,2 @@
+class DealAirport < ApplicationRecord
+end
