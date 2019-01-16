@@ -27,6 +27,10 @@ class Airport < ApplicationRecord
   def self.import_all_from_gem
     Airports.all.each { |a| self.import_from_gem(a) }
   end
+
+  def self.update_gem_data_and_import
+    # TO DO
+  end
   
 end
 
