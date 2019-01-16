@@ -5,6 +5,10 @@ class Airport < ApplicationRecord
   has_many :destination_airports
   has_many :destination_deals, through: :destination_airports, source: :deal
 
+  def all_deals
+    self.origin_deals + self.destination_deals
+  end
+
   def self.iata(code)
     self.find_by(iata:code)
   end
