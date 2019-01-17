@@ -6,9 +6,9 @@ class DealsController < ApplicationController
   end
 
   def update
-    
+    binding.pry
   end
-  
+
   private
 
   def deal_params
