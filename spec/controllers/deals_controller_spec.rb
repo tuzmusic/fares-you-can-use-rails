@@ -15,7 +15,17 @@ RSpec.describe DealsController, type: :controller do
           destination_ids: [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id]  
         }   
       }
-      binding.pry
+      expect{ get :create, params: params }.to change{ Deal.count }.by(1)
+      
+      d = Deal.last
+      expect(d).to be_an_instance_of(Deal)
+      expect(d.headline).to eq "Great deals to NYC!"
+      expect(d.description).to eq "Direct round-trips from DC to New York for under $100! Good for the first week of February."
+      expect(d.start_date).to eq Date.new(2019,2,1)
+      expect(d.end_date).to eq Date.new(2019,2,8)
+      expect(d.instructions).to eq "Google it! It's everywhere!"
+      expect(d.origins.pluck(:iata)).to match(["DCA","IAD","BWI"])
+      expect(d.destinations.pluck(:iata)).to match(["EWR","LGA","JFK"])
     end
   end
 end
