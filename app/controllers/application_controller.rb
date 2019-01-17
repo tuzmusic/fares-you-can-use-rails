@@ -1,16 +1,20 @@
 class ApplicationController < ActionController::Base
-  
-  def current_user
+
+  def require_login
+    redirect_to signin_path unless current_user
+  end
+
+  def require_admin
     begin
-      User.find(session[:user_id])
+      head 403 unless current_user&.admin?
     rescue => exception
       true
     end
   end
 
-  def admin_user
+  def current_user
     begin
-      current_user&.admin?
+      User.find(session[:user_id])
     rescue => exception
       true
     end
