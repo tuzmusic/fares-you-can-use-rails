@@ -1,4 +1,4 @@
 example_id                                         | status | run_time        |
 -------------------------------------------------- | ------ | --------------- |
-./spec/controllers/deals_controller_spec.rb[1:1:1] | passed | 0.18639 seconds |
-./spec/controllers/deals_controller_spec.rb[1:2:1] | failed | 0.04555 seconds |
+./spec/controllers/deals_controller_spec.rb[1:1:1] | passed | 0.19316 seconds |
+./spec/controllers/deals_controller_spec.rb[1:2:1] | passed | 0.07776 seconds |

@@ -1,12 +1,12 @@
 class DealsController < ApplicationController
   def create
     Deal.create(deal_params)
-    # binding.pry
     redirect_to deals_path
   end
 
   def update
-    binding.pry
+    Deal.update(params[:id], deal_params)
+    redirect_to deal_path(params[:id])
   end
 
   private
