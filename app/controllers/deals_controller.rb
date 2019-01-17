@@ -1,5 +1,13 @@
 class DealsController < ApplicationController
   def create
-    binding.pry
+    Deal.create(deal_params)
+    # binding.pry
+    redirect_to deals_path
+  end
+
+  private
+
+  def deal_params
+    params.require(:deal).permit :headline, :description, :start_date, :end_date, :instructions, origin_ids:[], destination_ids:[]
   end
 end
