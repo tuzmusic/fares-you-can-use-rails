@@ -5,6 +5,10 @@ class DealsController < ApplicationController
     redirect_to deals_path
   end
 
+  def update
+    
+  end
+  
   private
 
   def deal_params

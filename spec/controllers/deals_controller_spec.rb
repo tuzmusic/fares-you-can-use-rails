@@ -52,7 +52,7 @@ RSpec.describe DealsController, type: :controller do
       create_deal
       original_id = Deal.last.id
 
-      patch "/deals/#{Deal.last.id}", params: editing_params
+      patch edit_deal_path(Deal.last.id), params: editing_params
 
       d = Deal.last
       expect(d.id).to eq original_id
