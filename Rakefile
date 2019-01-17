@@ -12,3 +12,7 @@ task :import_all do
   require_relative 'app/models/airport'
   Airport.import_all_from_gem
 end
+
+task :console do
+  Pry.start
+end

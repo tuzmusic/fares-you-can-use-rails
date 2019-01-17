@@ -11,10 +11,10 @@ class DealsController < ApplicationController
     # TO DO: error handling (if Deal.update(deal_params)...)
   end
 
-    def destroy
-      deal = Deal.find(params[:id])
-      deal.destroy
-    end
+  def destroy
+    deal = Deal.find(params[:id])
+    deal.destroy
+  end
 
   private
 
