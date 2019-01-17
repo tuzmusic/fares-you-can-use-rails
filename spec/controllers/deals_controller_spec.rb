@@ -3,9 +3,9 @@ require 'rails_helper'
 
 RSpec.describe DealsController, type: :controller do
   describe "create" do
-    it "creates a deal with given params" do
-      params = { 
-        deal: {
+
+    let(:params) {
+       { deal: {
           headline: "Great deals to NYC!",
           description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
           start_date: Date.new(2019,2,1),
@@ -15,7 +15,15 @@ RSpec.describe DealsController, type: :controller do
           destination_ids: [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id]  
         }   
       }
-      expect{ get :create, params: params }.to change{ Deal.count }.by(1)
+    }
+
+
+    before(:each) do
+      get :create, params: params
+    end
+
+    it "creates a deal with given params" do
+      expect(Deal.count).to change.by(1)
       
       d = Deal.last
       expect(d).to be_an_instance_of(Deal)
@@ -26,6 +34,9 @@ RSpec.describe DealsController, type: :controller do
       expect(d.instructions).to eq "Google it! It's everywhere!"
       expect(d.origins.pluck(:iata)).to match(["DCA","IAD","BWI"])
       expect(d.destinations.pluck(:iata)).to match(["EWR","LGA","JFK"])
+    end
+    it "redirects somewhere" do
+      
     end
   end
 end
