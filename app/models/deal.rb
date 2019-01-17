@@ -1,8 +1,8 @@
 class Deal < ApplicationRecord
-  has_many :origin_airports
+  has_many :origin_airports#, dependent: :destroy
   has_many :origins, through: :origin_airports, source: :airport
 
-  has_many :destination_airports
+  has_many :destination_airports, dependent: :destroy
   has_many :destinations, through: :destination_airports, source: :airport
 
   def airport=(iata_code)
