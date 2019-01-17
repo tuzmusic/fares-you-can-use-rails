@@ -10,12 +10,11 @@ RSpec.describe DealsController, type: :controller do
           description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
           start_date: Date.new(2019,2,1),
           end_date: Date.new(2019,2,8),
-          instructions: "Google it! It's everywhere!"
+          instructions: "Google it! It's everywhere!",
+          origin_ids: [Airport.iata("DCA").id, Airport.iata("IAD").id, Airport.iata("BWI").id],  
+          destination_ids: [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id]  
         }   
       }
-      binding.pry
-      params[:origin_ids] = [Airport.iata("DCA").id, Airport.iata("IAD").id, Airport.iata("BWI").id],  
-      params[:destination_ids] [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id]  
       binding.pry
     end
   end
