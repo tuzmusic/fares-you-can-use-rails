@@ -10,7 +10,9 @@
     - Deals are by airport, but users search/prefer by region (and also by airport? by city? is it a big difference?)
   - #region, #city, #country, etc, get info about the location. 
     - Do these methods care that a deal may have many airports but those airports will all be in the same region (and possibly city)?
-- 
+
+
+
 
 ## Regions
 - has_many :airports

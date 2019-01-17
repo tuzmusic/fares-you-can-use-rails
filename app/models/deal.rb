@@ -1,6 +1,9 @@
 class Deal < ApplicationRecord
-  has_many :deal_airports
-  has_many :airports, through: :deal_airports  
+  has_many :origin_airports
+  has_many :origins, through: :origin_airports, source: :airport
+
+  has_many :destination_airports
+  has_many :destinations, through: :destination_airports, source: :airport
 
   def airport=(iata_code)
     if airport = Airport.find_by(iata: iata_code)
