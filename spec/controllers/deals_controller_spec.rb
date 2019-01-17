@@ -17,13 +17,10 @@ RSpec.describe DealsController, type: :controller do
       }
     }
 
-
-    before(:each) do
-      get :create, params: params
-    end
-
     it "creates a deal with given params" do
       # expect(Deal.count).to change.by(1)
+      
+      create_deal
       
       d = Deal.last
       expect(d).to be_an_instance_of(Deal)
@@ -36,4 +33,9 @@ RSpec.describe DealsController, type: :controller do
       expect(d.destinations.pluck(:iata)).to match(["EWR","LGA","JFK"])
     end
   end
+
+  def create_deal
+    get :create, params: params
+  end
+  
 end
