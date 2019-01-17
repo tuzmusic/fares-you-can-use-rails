@@ -14,8 +14,9 @@ RSpec.describe DealsController, type: :controller do
         }   
       }
       binding.pry
-      params[origin_ids] = [Airport.iata("DCA").id, Airport.iata("IAD").id, Airport.iata("BWI").id],  
-      params[destination_ids] [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id]  
+      params[:origin_ids] = [Airport.iata("DCA").id, Airport.iata("IAD").id, Airport.iata("BWI").id],  
+      params[:destination_ids] [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id]  
+      binding.pry
     end
   end
 end
