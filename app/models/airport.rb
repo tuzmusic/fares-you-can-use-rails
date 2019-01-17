@@ -10,7 +10,7 @@ class Airport < ApplicationRecord
   end
 
   def self.iata(code)
-    self.find_by(iata:code)
+    self.find_by(iata:code.upcase)
   end
   
   def self.import_from_gem(gem_airport)
