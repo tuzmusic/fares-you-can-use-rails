@@ -66,6 +66,17 @@ RSpec.describe DealsController, type: :controller do
     end
   end
 
+  describe "destroy" do
+    it "destroys a deal with a given id" do
+      create_deal
+      original_id = Deal.last.id
+
+      delete :destroy, params: {id: original_id}
+
+      expect(Deal.where(id: original_id)).to be_empty
+    end
+  end
+
   def create_deal
     post :create, params: creation_params
   end

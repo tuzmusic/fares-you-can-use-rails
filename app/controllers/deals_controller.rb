@@ -2,11 +2,13 @@ class DealsController < ApplicationController
   def create
     Deal.create(deal_params)
     redirect_to deals_path
+    # TO DO: error handling (if Deal.create(deal_params)...)
   end
-
+  
   def update
     Deal.update(params[:id], deal_params)
     redirect_to deal_path(params[:id])
+    # TO DO: error handling (if Deal.update(deal_params)...)
   end
 
   private
