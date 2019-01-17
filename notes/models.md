@@ -11,9 +11,6 @@
   - #region, #city, #country, etc, get info about the location. 
     - Do these methods care that a deal may have many airports but those airports will all be in the same region (and possibly city)?
 
-
-
-
 ## Regions
 - has_many :airports
 - has_many :cities
@@ -36,6 +33,7 @@
   - should be called :dates or something? :vacation_dates? (no, that sounds like a join table)
 - has_many :locations (or :destinations or something -- or :favorite_locations or :dream_destinations or some BS like that)
   - Can be a region, country, city, airport? Or is Location (or Destination) an *object* that can be any of those things?
+    - Polymorphism!?!?!
 - has_many :deals (bookmarks)
 
 ## Vacations
