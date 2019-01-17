@@ -31,9 +31,7 @@ RSpec.describe DealsController, type: :controller do
   describe "create" do
 
     it "creates a deal with given params" do
-      # expect(Deal.count).to change.by(1)
-      
-      create_deal
+      expect{ create_deal }.to change{ Deal.count }.by(1)
       
       d = Deal.last
       expect(d).to be_an_instance_of(Deal)
@@ -73,7 +71,7 @@ RSpec.describe DealsController, type: :controller do
 
       delete :destroy, params: {id: original_id}
 
-      expect(Deal.where(id: original_id)).to be_empty
+      expect(Deal.where(id: original_id)).not_to exist
     end
   end
 

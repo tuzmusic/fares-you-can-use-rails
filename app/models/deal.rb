@@ -1,5 +1,5 @@
 class Deal < ApplicationRecord
-  has_many :origin_airports#, dependent: :destroy
+  has_many :origin_airports, dependent: :destroy
   has_many :origins, through: :origin_airports, source: :airport
 
   has_many :destination_airports, dependent: :destroy

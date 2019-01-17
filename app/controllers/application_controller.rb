@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
       head 403 unless current_user&.admin?
     rescue => exception
       true
+      # head 403
     end
   end
 

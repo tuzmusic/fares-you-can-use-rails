@@ -1,4 +1,7 @@
 class DealsController < ApplicationController
+
+  before_action :require_admin, only: [:create, :update, :destroy]
+
   def create
     Deal.create(deal_params)
     redirect_to deals_path
