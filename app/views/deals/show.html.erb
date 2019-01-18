@@ -1,7 +1,17 @@
 <p>Deal Detail:</p>
 
-<h3><%= @deal.headline %></h3>
-<p><%= @deal.description %></p>
+<div class="deal-info">
+  <h3><%= @deal.headline %></h3>
+  <p><%= @deal.description %></p>
 
-<h3>How To Get It:</h3>
-<p><%= @deal.instructions %></p>
+  <h3>How To Get It:</h3>
+  <p><%= @deal.instructions %></p>
+</div>
+
+<div class="deal-stats">
+  <p>
+    <b>Fly From:</b><br>
+    <%= @deal.start_date.strftime("%b. %e, %Y") %> - <%= @deal.end_date.strftime("%b. %e, %Y") %>
+
+  </p>
+</div>
