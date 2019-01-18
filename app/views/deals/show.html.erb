@@ -11,7 +11,7 @@
 <div class="deal-stats">
   <p>
     <b>Fly From:</b><br>
-    <%= @deal.start_date.strftime("%b. %e, %Y") %> - <%= @deal.end_date.strftime("%b. %e, %Y") %>
+    <%= brief_time(@deal.start_date) %> - <%= brief_time(@deal.end_date) %>
 
   </p>
 </div>
