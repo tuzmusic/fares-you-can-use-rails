@@ -12,16 +12,16 @@
     </tr>
 
     <tr>
-      <td><%= label_tag :'deal[origins]', 'Origin airports: (ex. "DCA, BWI, IAD")' %> <br>
+      <td><%= label_tag :'deal[origins]', 'Origin airports: (ex. "DCA, BWI, IAD")', id: 'deal-origins' %> <br>
       <%= text_field_tag :'deal[origins]' %></td>
-      <td><%= label_tag :'deal[destinations]', 'Destination airports: (ex. "DCA, BWI, IAD")' %> <br>
+      <td><%= label_tag :'deal[destinations]', 'Destination airports: (ex. "DCA, BWI, IAD")', id: 'deal-destinations' %> <br>
       <%= text_field_tag :'deal[destinations]' %></td>
     </tr>
 
     <tr>
-      <td><p><%= f.label :start_date %>
+      <td><p><%= f.label :start_date, id: 'deal-start-date' %>
       <%= deal_date_select :start_date %></p></td>
-      <td><p><%= f.label :end_date %>
+      <td><p><%= f.label :end_date, id: 'deal-end-date' %>
       <%= deal_date_select :end_date %></p></td>
     </tr>
     
