@@ -42,10 +42,6 @@ RSpec.describe "Deals Views", type: :feature do
     xit "has some 'back' navigation" do
       
     end
-
-    it "does some other stuff, probably" do
-      expect(true).to eq(false)
-    end
   end
   
   describe "index" do
