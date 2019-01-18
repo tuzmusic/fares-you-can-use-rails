@@ -6,4 +6,8 @@ module DealsHelper
   def airport_codes(airports)
     airports.map(&:iata).join(', ')
   end
+
+  def deal_date_select(symbol)
+    date_select :deal, symbol, order: [:month, :day, :year], start_year: Date.today.year, use_short_month: true 
+  end
 end
