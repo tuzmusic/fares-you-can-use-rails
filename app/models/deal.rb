@@ -21,6 +21,17 @@ class Deal < ApplicationRecord
     end
     self.origins = airports
   end
+
+  def destination_codes=(comma_separated_string)
+    airports = []
+    iata_codes = comma_separated_string.split(', ') 
+    iata_codes.each do |code|
+      if airport = Airport.find_by(iata: code)
+        airports << airport
+      end
+    end
+    self.destinations = airports
+  end
   
 end
 
