@@ -9,10 +9,10 @@ example_id                                         | status  | run_time        |
 ./spec/views/deals_views_spec.rb[1:1:4]            | passed  | 0.07294 seconds |
 ./spec/views/deals_views_spec.rb[1:1:5]            | passed  | 0.06691 seconds |
 ./spec/views/deals_views_spec.rb[1:1:6]            | pending | 0.00001 seconds |
-./spec/views/deals_views_spec.rb[1:2:1]            | passed  | 0.43902 seconds |
+./spec/views/deals_views_spec.rb[1:2:1]            | passed  | 0.75319 seconds |
 ./spec/views/deals_views_spec.rb[1:2:2]            | pending | 0.00002 seconds |
-./spec/views/deals_views_spec.rb[1:2:3]            | failed  | 0.35873 seconds |
-./spec/views/deals_views_spec.rb[1:2:4]            | unknown |                 |
+./spec/views/deals_views_spec.rb[1:2:3]            | failed  | 8.6 seconds     |
+./spec/views/deals_views_spec.rb[1:2:4]            | failed  | 0.02964 seconds |
 ./spec/views/deals_views_spec.rb[1:3:1]            | unknown |                 |
 ./spec/views/deals_views_spec.rb[1:3:2]            | unknown |                 |
 ./spec/views/deals_views_spec.rb[1:3:3]            | unknown |                 |

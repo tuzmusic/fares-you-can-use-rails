@@ -11,8 +11,8 @@ class DealsController < ApplicationController
   end
 
   def create
-    Deal.create(deal_params)
-    redirect_to deals_path
+    deal = Deal.create(deal_params)
+    redirect_to deal_path(deal)
     # TO DO: error handling (if Deal.create(deal_params)...)
   end
   

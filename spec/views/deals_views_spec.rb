@@ -76,25 +76,26 @@ RSpec.describe "Deals Views", type: :feature do
       fill_in 'Headline', with: d.headline
       fill_in 'Description', with: d.description
       fill_in 'Instructions', with: d.instructions
-      page.find('#deal-start-date').set d.start_date
-      page.find('#deal-end-date').set d.end_date
-      # fill_in 'deal-start-date', with: d.start_date
-      # fill_in 'deal-end-date', with: d.end_date
-      page.find('#deal-origins').set 'DCA, IAD, BWI'
-      page.find('#deal-destinations').set 'EWR, LGA, JFK'
-
-      expect{ click_on 'Create Deal' }.to change{ Deal.count }.by(1)
       
+      select d.start_date.year, from: 'deal_start_date_1i'
+      select 'Feb', from: 'deal_start_date_2i'
+      select d.start_date.day, from: 'deal_start_date_3i'
+      select d.end_date.year, from: 'deal_end_date_1i'
+      select 'Feb', from: 'deal_end_date_2i'
+      select d.end_date.day, from: 'deal_end_date_3i'
+
+      fill_in 'Origin airports', with: 'DCA, IAD, BWI'
+      fill_in 'Destination airports', with: 'EWR, LGA, JFK'
+
       nd = Deal.last
 
-      expect(nd.id).to eq d.id
       expect(nd.headline).to eq d.headline
       expect(nd.description).to eq d.description
       expect(nd.start_date).to eq d.start_date
       expect(nd.end_date).to eq d.end_date
       expect(nd.instructions).to eq d.instructions
-      expect(nd.origins.pluck(:iata)).to match d.origins.pluck(:iata)
-      expect(nd.destinations.pluck(:iata)).to match d.destinations.pluck(:iata)
+      expect(nd.origins).to match d.origins
+      expect(nd.destinations).to match d.destinations
     end
 
     it "redirects to the show page for the newly created deal" do
