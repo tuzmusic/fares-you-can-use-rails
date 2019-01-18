@@ -12,6 +12,7 @@ class DealsController < ApplicationController
 
   def create
     deal = Deal.create(deal_params)
+    binding.pry
     redirect_to deal_path(deal)
     # TO DO: error handling (if Deal.create(deal_params)...)
   end

@@ -87,6 +87,8 @@ RSpec.describe "Deals Views", type: :feature do
       fill_in 'Origin airports', with: 'DCA, IAD, BWI'
       fill_in 'Destination airports', with: 'EWR, LGA, JFK'
 
+      expect{ click_on 'Create Deal' }.to change{ Deal.count }.by(1)
+      
       nd = Deal.last
 
       expect(nd.headline).to eq d.headline

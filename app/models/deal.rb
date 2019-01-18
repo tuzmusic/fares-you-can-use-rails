@@ -11,14 +11,15 @@ class Deal < ApplicationRecord
     end
   end
   
-  def airport_codes=(iata_codes)
+  def origin_codes=(comma_separated_string)
     airports = []
+    iata_codes = comma_separated_string.split(', ') 
     iata_codes.each do |code|
       if airport = Airport.find_by(iata: code)
         airports << airport
       end
     end
-    self.airports = airports
+    self.origins = airports
   end
   
 end
