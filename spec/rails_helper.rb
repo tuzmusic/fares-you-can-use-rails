@@ -79,5 +79,9 @@ RSpec.configure do |config|
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
-  config.filter_gems_from_backtrace("rack", "railties", "capybara")
+  config.filter_gems_from_backtrace(*Gem.loaded_specs.values.map(&:name)) 
+  
+  # Gem.loaded_specs.values.map do |g| 
+  #   config.filter_gems_from_backtrace(g.name) 
+  # end
 end
