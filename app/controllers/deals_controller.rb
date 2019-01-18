@@ -1,9 +1,13 @@
 class DealsController < ApplicationController
 
-  before_action :require_admin, only: [:create, :update, :destroy]
+  before_action :require_admin, only: [:new, :create, :update, :destroy]
 
   def show
     @deal = Deal.find(params[:id])
+  end
+
+  def new
+    @deal = Deal.new
   end
 
   def create
