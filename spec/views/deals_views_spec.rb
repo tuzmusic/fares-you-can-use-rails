@@ -44,10 +44,39 @@ RSpec.describe "Deals Views", type: :feature do
     end
   end
   
+  describe "new" do
+    before :each { visit new_deal_path }
+
+    it "has fields for the text-based properties of a deal" do
+      expect(page).to have_field "headline"
+      expect(page).to have_field "description"
+      expect(page).to have_field "instructions"
+      expect(page).to have_field "origin_airports"
+      expect(page).to have_field "destination_airports"
+    end
+
+    it "has pickers for the date selectors" do
+      
+    end
+
+    it "allows the user to enter comma-separated airport codes" do
+      
+    end
+
+    it "creates a deal" do
+      
+    end
+
+    it "redirects to the show page for the newly created deal" do
+      
+    end
+  end
+
   describe "index" do
     before :each do
       visit deals_path
     end
+
     it "lists all the deals, with their descriptions" do
       
     end
