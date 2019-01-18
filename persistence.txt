@@ -3,13 +3,17 @@ example_id                                         | status  | run_time        |
 ./spec/controllers/deals_controller_spec.rb[1:1:1] | passed  | 0.24325 seconds |
 ./spec/controllers/deals_controller_spec.rb[1:2:1] | passed  | 0.07346 seconds |
 ./spec/controllers/deals_controller_spec.rb[1:3:1] | passed  | 0.21806 seconds |
-./spec/views/deals_views_spec.rb[1:1:1]            | passed  | 0.58769 seconds |
-./spec/views/deals_views_spec.rb[1:1:2]            | passed  | 0.08872 seconds |
-./spec/views/deals_views_spec.rb[1:1:3]            | pending | 0.00004 seconds |
-./spec/views/deals_views_spec.rb[1:1:4]            | passed  | 0.05779 seconds |
-./spec/views/deals_views_spec.rb[1:1:5]            | passed  | 0.05149 seconds |
+./spec/views/deals_views_spec.rb[1:1:1]            | passed  | 0.60071 seconds |
+./spec/views/deals_views_spec.rb[1:1:2]            | passed  | 0.07579 seconds |
+./spec/views/deals_views_spec.rb[1:1:3]            | pending | 0.00002 seconds |
+./spec/views/deals_views_spec.rb[1:1:4]            | passed  | 0.07294 seconds |
+./spec/views/deals_views_spec.rb[1:1:5]            | passed  | 0.06691 seconds |
 ./spec/views/deals_views_spec.rb[1:1:6]            | pending | 0.00001 seconds |
-./spec/views/deals_views_spec.rb[1:1:7]            | failed  | 0.09479 seconds |
-./spec/views/deals_views_spec.rb[1:2:1]            | failed  | 0.09812 seconds |
-./spec/views/deals_views_spec.rb[1:2:2]            | failed  | 0.00357 seconds |
+./spec/views/deals_views_spec.rb[1:2:1]            | passed  | 0.34034 seconds |
+./spec/views/deals_views_spec.rb[1:2:2]            | failed  | 0.06182 seconds |
 ./spec/views/deals_views_spec.rb[1:2:3]            | failed  | 0.00485 seconds |
+./spec/views/deals_views_spec.rb[1:2:4]            | unknown |                 |
+./spec/views/deals_views_spec.rb[1:2:5]            | unknown |                 |
+./spec/views/deals_views_spec.rb[1:3:1]            | unknown |                 |
+./spec/views/deals_views_spec.rb[1:3:2]            | unknown |                 |
+./spec/views/deals_views_spec.rb[1:3:3]            | unknown |                 |
