@@ -1,7 +1,7 @@
 ## Deals
 X DealsController - admin CUD actions
 X Deals Show page (so there's something to redirect to after creation)
-- Deals New/Edit views
+X Deals New/Edit views
 - Seed actual deals 
 - Deals Index Page for admin 
   - Not navigable or filtered, yet
