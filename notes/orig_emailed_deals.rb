@@ -1,6 +1,16 @@
 1/15
 Hi,
 
+Deal.create(posted_date:Date.new(2019,1,15)).tap do |d|
+	d.headline = ""
+	d.description = ""
+	d.instructions = ""
+	d.start_date = Date.new(y,m,d)
+	d.end_date = Date.new(y,m,d)
+	d.origin_codes = "" 
+	d.destination_codes = "" 
+end
+
 I'm back on the grid - and bringing you a special 2020 Presidential Campaign Edition of Fares You Can Use.
 
 I've been seeing some good deals for these particular locales for a while, and if you're planning some campaign travel (or to run for president), you may want to book these deals before the demand spike happens. 
@@ -24,6 +34,28 @@ I ran through these a bit quickly as I'm about to catch a flight from Cairo, but
 Holly
 
 P.S. Tell your friends to join this list at www.TinyLetter.com/FaresYouCanUse.
+
+1/20
+Today is a special edition – based on the New York Times' 52 Places to Go in 2019 List – and is the first in a series. 
+
+I've been poring over the list, and some places are very difficult and/or very expensive to get to (Iran, Falkland Islands!). I'll be highlighting a few places from the NYT's list where there are currently great deals from Washington.
+
+Today's deals are only the domestic destinations. I'll follow up with Europe, Asia, and Africa/Middle East deals – based on the New York Times' list – in separate emails later this week.
+
+San Juan, Puerto Rico - non-stop round trip on Spirit from BWI for $160
+This is a great price for a non-stop round trip. Check out the calendar here to find your dates.There are a few departure dates in February, March, April, and May at this price. If you want to avoid Spirit, there are some other non-stop options in United or Jet Blue starting at $260 round trip, but with very limited dates. You can check them out here.
+
+Columbus, Ohio - non-stop round trip on American Airlines from DCA for $159
+This a great deal. You can depart almost any day between now and May. After that, the price ticks up to $173 for June through September. Find your dates here.
+
+Huntsville, Alabama - non-stop round trip on United from IAD for $277
+This is a great deal for people who like to plan in advance and are looking for a weekend trip. You can leave any Thursday, Friday, or Saturday between February 8 and December 14. Find your dates here. I've never seen a good price like this that's available for an entire year, including holiday weekends. (I'll be booking this one!)
+
+Los Angeles, California (and Santa Barbara) - non-stop round trip on Spirit from BWI for $140
+Again, it's Spirit but a super deal. You can check out the calendar here to find your dates - with lots of departures in January and February and a few in March. If you want to avoid Spirit, Alaska Airlines has non-stops from IAD for $197 with lots of date options as well. Find your dates here.
+
+Houston, Texas - non-stop round trip on Spirit from BWI for $120
+This isn't the only well-priced flight to Houston from DC but it's the cheapest. Find dates here (departures in February only). Avoiding Spirit, the next best flights are non-stops on United for $165 round trip for select February dates. Check out that deal here.
 
 1/7
 There are still a bunch of great deals on flights to African destinations for February and March.
