@@ -2,6 +2,10 @@ class DealsController < ApplicationController
 
   before_action :require_admin, only: [:new, :create, :update, :destroy]
 
+  def index
+    @deals = Deal.all
+  end  
+
   def show
     @deal = Deal.find(params[:id])
   end

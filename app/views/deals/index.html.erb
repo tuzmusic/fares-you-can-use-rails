@@ -1,0 +1,5 @@
+<h1>All Deals</h1>
+
+<ul><% @deals.each do |deal| %>
+  <li><%= link_to deal.headline, deal %></li>
+<% end %></ul>
