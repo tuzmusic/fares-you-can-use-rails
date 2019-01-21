@@ -34,6 +34,6 @@ class Deal < ApplicationRecord
     self.blog_foot = deal_with_blog_wrapper.blog_foot
     self.save
   end
-  
+
 end
 

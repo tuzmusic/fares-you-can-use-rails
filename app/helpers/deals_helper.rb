@@ -15,4 +15,21 @@ module DealsHelper
     binding.pry
     "<p><b>How To Get It:</b><br>#{deal.instructions}</p>" unless deal&.instructions&.empty? || !deal.instructions
   end
+
+  def print_grouped_deals(grouped_deals_by_date)
+    grouped_deals_by_date.map do |(date, deals)|
+      # binding.pry
+      %(<li>#{brief_time date}</li>
+        <ul>
+          #{deal_lis_for_group(deals)}
+        </ul>
+        )
+    end.join
+  end
+
+  def deal_lis_for_group(deals)
+    deals.map do |deal|
+      "<li>#{link_to deal.headline, deal}</li>"
+    end.join
+  end
 end

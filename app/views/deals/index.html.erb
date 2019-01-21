@@ -1,5 +1,4 @@
 <h1>All Deals</h1>
-
-<ul><% @deals.each do |deal| %>
-  <li><%= link_to deal.headline, deal %> - <%= deal.posted_date %></li>
-<% end %></ul>
+<ul>
+  <%= sanitize print_grouped_deals(@deals) %>
+</ul>
