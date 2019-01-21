@@ -12,6 +12,7 @@ module DealsHelper
   end
 
   def instructions_for(deal)
-    "<p><b>How To Get It:</b><br>#{deal.instructions}</p>" unless deal&.instructions&.empty?
+    binding.pry
+    "<p><b>How To Get It:</b><br>#{deal.instructions}</p>" unless deal&.instructions&.empty? || !deal.instructions
   end
 end

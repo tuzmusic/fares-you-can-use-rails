@@ -3,7 +3,8 @@ class DealsController < ApplicationController
   before_action :require_admin, only: [:new, :create, :update, :destroy]
 
   def index
-    @deals = Deal.all
+    real_deals = Deal.select{|d| d.posted_date}
+    @deals = real_deals.sort_by(&:posted_date)
   end  
 
   def show

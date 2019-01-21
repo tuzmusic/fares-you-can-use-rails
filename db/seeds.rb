@@ -1,6 +1,4 @@
-# puts "Delete all existing deals first? (Y/N)"
-# input = gets.strip.downcase
-# Deal.destroy_all if input == "y"
+# Deal.destroy_all
 
 Deal.create(posted_date:Date.new(2019,1,15)).tap do |d|
   d.headline = "DCA to Des Moines, IA for $193 non-stop round trip - American Airlines"
@@ -17,8 +15,6 @@ Deal.create(posted_date:Date.new(2019,1,15)).tap do |d|
   d.destination_codes = "DSM" 
   d.save
 end
-
-binding.pry
 
 Deal.create(posted_date:Date.new(2019,1,15)).tap do |d|
   d.headline = "DCA/BWI to Manchester, NH/Boston from $163/$81 round trip - American Airlines/Spirit"
