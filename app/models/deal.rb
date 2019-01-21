@@ -4,12 +4,6 @@ class Deal < ApplicationRecord
 
   has_many :destination_airports, dependent: :destroy
   has_many :destinations, through: :destination_airports, source: :airport
-
-  def airport=(iata_code)
-    if airport = Airport.find_by(iata: iata_code)
-      self.airports = [airport]
-    end
-  end
   
   def self.airports_from_string(comma_separated_string)
     airports = []
