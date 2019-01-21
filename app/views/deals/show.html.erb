@@ -2,10 +2,10 @@
 
 <div class="deal-info">
   <h3><%= @deal.headline %></h3>
-  <p><%= @deal.description %></p>
+  <p><%= @deal.description.html_safe %></p>
 
   <h3>How To Get It:</h3>
-  <p><%= @deal.instructions %></p>
+  <p><%= @deal.instructions.html_safe %></p>
 </div>
 
 <div class="deal-stats">

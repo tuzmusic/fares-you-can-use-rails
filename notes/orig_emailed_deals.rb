@@ -2,7 +2,25 @@
 Hi,
 
 Deal.create(posted_date:Date.new(2019,1,15)).tap do |d|
+	d.headline = "DCA to Des Moines, IA for $193 non-stop round trip - American Airlines"
+	d.blog_head = "I'm back on the grid - and bringing you a special 2020 Presidential Campaign Edition of Fares You Can Use.
+
+I've been seeing some good deals for these particular locales for a while, and if you're planning some campaign travel (or to run for president), you may want to book these deals before the demand spike happens. 
+
+(I hope to provide an update on these for you every once in a while.)"
+	d.blog_foot = ""
+	d.description = "This is a pretty great deal for a non-stop to DSM from DCA, but the departure dates are pretty limited from January 25 to February 25 (and not exactly daily but close). You can check out the calendar here. After that, this route runs for more than $360 and sometimes more than $600! Though, prices are of course subject to change at any time, and I'm sure we'll see this fare fluctuate."
+	d.instructions = ""
+	d.start_date = Date.new(2019,1,25)
+	d.end_date = Date.new(2019,2,25)
+	d.origin_codes = "DCA" 
+	d.destination_codes = "DSM" 
+end
+binding.pry
+Deal.create(posted_date:Date.new(2019,1,15)).tap do |d|
 	d.headline = ""
+	d.blog_head = ""
+	d.blog_foot = ""
 	d.description = ""
 	d.instructions = ""
 	d.start_date = Date.new(y,m,d)
@@ -11,14 +29,9 @@ Deal.create(posted_date:Date.new(2019,1,15)).tap do |d|
 	d.destination_codes = "" 
 end
 
-I'm back on the grid - and bringing you a special 2020 Presidential Campaign Edition of Fares You Can Use.
 
-I've been seeing some good deals for these particular locales for a while, and if you're planning some campaign travel (or to run for president), you may want to book these deals before the demand spike happens. 
 
-(I hope to provide an update on these for you every once in a while.)
 
-DCA to Des Moines, IA for $193 non-stop round trip - American Airlines
-This is a pretty great deal for a non-stop to DSM from DCA, but the departure dates are pretty limited from January 25 to February 25 (and not exactly daily but close). You can check out the calendar here. After that, this route runs for more than $360 and sometimes more than $600! Though, prices are of course subject to change at any time, and I'm sure we'll see this fare fluctuate.
 
 DCA/BWI to Manchester, NH/Boston from $163/$81 round trip - American Airlines/Spirit
 Okay, so if you're looking for cheap, there's a non-stop round trip from BWI to Boston on Spirit running from $81 right now for most of February. But if you're looking for convenient, I would check out early May (1, 4, 6, 7, 8, 11, 13, 14) when you can get a non-stop from DCA to Manchester on American Airlines for $163 round trip. This route regularly runs at around $188 to $285 so this is a solid deal, but you might see it at $120 if you're willing to wait and pounce (rare but it happens).

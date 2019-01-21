@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_150051) do
+ActiveRecord::Schema.define(version: 2019_01_21_151704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2019_01_21_150051) do
     t.index ["deal_id"], name: "index_origin_airports_on_deal_id"
   end
 
+  add_foreign_key "destination_airports", "deals", on_delete: :cascade
   add_foreign_key "origin_airports", "airports"
   add_foreign_key "origin_airports", "deals"
+  add_foreign_key "origin_airports", "deals", on_delete: :cascade
 end
