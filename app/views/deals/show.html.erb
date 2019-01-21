@@ -2,10 +2,10 @@
 
 <div class="deal-info">
   <h3><%= @deal.headline %></h3>
-  <p><%= @deal.description.html_safe %></p>
+  <p><%= sanitize @deal.description %></p>
 
   <h3>How To Get It:</h3>
-  <p><%= @deal.instructions.html_safe %></p>
+  <p><%= sanitize @deal.instructions %></p>
 </div>
 
 <div class="deal-stats">
