@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Deal, type: :model do
-  describe "existing_blog_wrapper_for_date" do
+  describe "set_existing_blog_wrapper_for_date" do
     # let(:deal_with_info) { 
     #   Deal.create(posted_date: Date.today, blog_head: "Header", blog_foot: "Footer") 
     # }
