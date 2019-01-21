@@ -4,8 +4,7 @@
   <h3><%= @deal.headline %></h3>
   <p><%= sanitize @deal.description %></p>
 
-  <h3>How To Get It:</h3>
-  <p><%= sanitize @deal.instructions %></p>
+  <%= sanitize instructions_for(@deal) %>
 </div>
 
 <div class="deal-stats">
