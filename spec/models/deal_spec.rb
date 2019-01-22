@@ -15,11 +15,15 @@ RSpec.describe Deal, type: :model do
     end
   end
 
-  describe "Deal.grouped_by_date" do
-    3.times { Deal.create(posted_date: Date.today) }
-    3.times { Deal.create(posted_date: Date.yesterday) }
-    3.times { Deal.create(posted_date: Date.tomorrow) }
-
-    
+  describe "#probably_expired?" do
+    it "returns true if deal was posted more than a week ago" do
+      d = Deal.create(posted_date:(Date.today-8))
+      expect(d.probably_expired?).to eq(true)
+    end
+    it "returns false if deal is less than a week old" do
+      d = Deal.create(posted_date:Date.yesterday)
+      expect(d.probably_expired?).to eq(false)
+    end
   end
+
 end

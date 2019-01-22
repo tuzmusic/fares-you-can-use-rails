@@ -32,6 +32,10 @@ class Deal < ApplicationRecord
     self.destinations.map(&:iata).join(', ')
   end
 
+  def probably_expired?
+    posted_date < Date.today - 7 if posted_date
+  end
+
   def set_existing_blog_wrapper_for_date
     deal_with_blog_wrapper = Deal.find do |deal|
       deal.id != self.id && 
