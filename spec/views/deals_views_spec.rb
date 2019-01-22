@@ -10,8 +10,8 @@ RSpec.describe "Deals Views", type: :feature do
         start_date: Date.new(2019,2,1),
         end_date: Date.new(2019,2,8),
         instructions: "Google it! It's everywhere!",
-        origin_ids: [Airport.iata("DCA").id, Airport.iata("IAD").id, Airport.iata("BWI").id],  
-        destination_ids: [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id]) }
+        origin_ids: [Airport.iata("DCA").id, Airport.iata("BWI").id, Airport.iata("IAD").id],  
+        destination_ids: [Airport.iata("EWR").id, Airport.iata("JFK").id, Airport.iata("LGA").id]) }
 
     before :each do
       AirportSpecHelper.create_ny_and_dc_airports
@@ -137,6 +137,7 @@ RSpec.describe "Deals Views", type: :feature do
       expect(page.all("div#deals-2018-12-25 p").count).to eq(2)      
     end
   end
+
   describe "edit" do
     let(:d) {
       Deal.create(headline: "Great deals to NYC!",
@@ -175,7 +176,7 @@ RSpec.describe "Deals Views", type: :feature do
       # expect(page).to have_content(d.destination_codes)
     end
 
-    it "causes the deal to be edited" do
+    it "edits the deal" do
       fill_in "Headline", with: "New Headline"
       fill_in "Description", with: "New Description"
       fill_in "Origin airports", with: "LGA"
@@ -190,12 +191,14 @@ RSpec.describe "Deals Views", type: :feature do
       
       click_on "Update Deal"
       d.reload
+      
+      # binding.pry
       expect(d.headline).to eq "New Headline"
       expect(d.description).to eq "New Description"
       expect(d.origin_codes).to eq "LGA"
       expect(d.destination_codes).to eq "JFK"
-      expect(deal.start_date).to eq(Date.new(2020,7,1))
-      expect(deal.end_date).to eq(Date.new(2021,8,3))
+      expect(d.start_date).to eq(Date.new(2020,7,1))
+      expect(d.end_date).to eq(Date.new(2021,8,3))
     end
   end
 

@@ -30,9 +30,11 @@ class DealsController < ApplicationController
   end
   
   def update
-    # binding.pry
-    Deal.update(params[:id], deal_params).save
-    
+    deal = Deal.find(params[:id])
+    deal.update(deal_params)
+    deal.origin_codes = params[:deal][:origins] if params[:deal][:origins]
+    deal.destination_codes = params[:deal][:destinations] if params[:deal][:destinations]
+
     redirect_to deal_path(params[:id])
     # TO DO: error handling (if Deal.update(deal_params)...)
   end
