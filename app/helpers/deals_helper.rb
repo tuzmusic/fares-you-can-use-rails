@@ -26,7 +26,8 @@ module DealsHelper
 
   def deal_lis_for_group(deals)
     deals.map do |deal|
-      "<li>#{link_to deal.headline, deal}</li>"
+      %(<li>#{"<span class='warning'>POSSIBLY EXPIRED! -</span>" if deal.probably_expired?}
+      #{link_to deal.headline, deal}</li>)
     end.join
   end
 end
