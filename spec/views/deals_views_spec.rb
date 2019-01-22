@@ -34,11 +34,15 @@ RSpec.describe "Deals Views", type: :feature do
     end
 
     it "shows deal's origin airports" do
-      expect(page).to have_content "From: DCA, BWI, IAD"
+      expect(page).to have_content "DCA (Ronald Reagan Washington National)"
+      expect(page).to have_content "BWI (Baltimore/Washington International Thurgood Marshall)"
+      expect(page).to have_content "IAD (Washington Dulles International)"
     end   
     
     it "shows deal's destination airports" do
-      expect(page).to have_content "To: EWR, JFK, LGA"
+      expect(page).to have_content "EWR (Newark Liberty International)"
+      expect(page).to have_content "JFK (John F Kennedy International)"
+      expect(page).to have_content "LGA (La Guardia)"
     end  
 
     xit "has some 'back' navigation" do
