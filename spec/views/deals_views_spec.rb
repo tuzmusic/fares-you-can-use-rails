@@ -131,11 +131,16 @@ RSpec.describe "Deals Views", type: :feature do
     end
     
     it "marks a deal as possibly expired if it's more than a week old" do
-      expect(page).to have_content("POSSIBLY EXPIRED! - Another deal for last Christmas")      
+      expect(page).to have_content("POSSIBLY EXPIRED! - Another deal for last Christmas")
     end
     
     it "sorts deals by date" do
-      expect(true).to eq(false)      
+      expect(page).to have_content('Jan. 2, 2019')
+      expect(page.all("div#deals-2019-01-02 p").count).to eq(2)      
+      expect(page).to have_content('Feb. 4, 2019')      
+      expect(page.all("div#deals-2019-02-04 p").count).to eq(2)      
+      expect(page).to have_content('Dec. 25, 2018')      
+      expect(page.all("div#deals-2018-12-25 p").count).to eq(2)      
     end
   end
 
