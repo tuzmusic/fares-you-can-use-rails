@@ -36,6 +36,7 @@ class Airport < ApplicationRecord
   end
 
   def self.import_all_from_gem
+    # Airports class comes from the Gem!
     Airports.all.each { |a| self.import_from_gem(a) }
   end
 

@@ -1,7 +1,12 @@
 require 'rails_helper'
-
+require_relative '../spec_helpers/create_ny_and_dc_airports.rb'
 
 RSpec.describe DealsController, type: :controller do
+
+  def create_deal
+    post :create, params: creation_params
+  end
+
   let(:creation_params) {
      { deal: {
         headline: "Great deals to NYC!",
@@ -31,6 +36,8 @@ RSpec.describe DealsController, type: :controller do
   describe "create" do
 
     it "creates a deal with given params" do
+      # AirportSpecHelper.create_ny_and_dc_airports
+
       expect{ create_deal }.to change{ Deal.count }.by(1)
       
       d = Deal.last
@@ -73,10 +80,5 @@ RSpec.describe DealsController, type: :controller do
 
       expect(Deal.where(id: original_id)).not_to exist
     end
-  end
-
-  def create_deal
-    post :create, params: creation_params
-  end
-  
+  end  
 end
