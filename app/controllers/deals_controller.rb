@@ -3,10 +3,9 @@ class DealsController < ApplicationController
   before_action :require_admin, only: [:new, :create, :update, :destroy]
 
   def index
-    real_deals = Deal.where.not(posted_date: nil)
+    real_deals = Deal.where.not(posted_date: nil) # TODO - destroy some deals!
     grouped = real_deals.group_by(&:posted_date) 
     @deals = grouped
-    # @deals = real_deals.order(:posted_date)
   end  
 
   def show
@@ -23,6 +22,10 @@ class DealsController < ApplicationController
     deal.destination_codes = params[:deal][:destinations]
     redirect_to deal_path(deal)
     # TO DO: error handling (if Deal.create(deal_params)...)
+  end
+
+  def edit
+    @deal = Deal.find(params[:id])
   end
   
   def update
