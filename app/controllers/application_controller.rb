@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
 
+  def pry
+    binding.pry
+  end
+
   def require_login
     redirect_to signin_path unless current_user
   end

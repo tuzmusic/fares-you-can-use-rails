@@ -19,7 +19,7 @@ class Airport < ApplicationRecord
     if self.find_by(iata: a.iata)
       puts %("#{a.iata} already exists.")
     else 
-      puts %(Importing "#{a.iata}"...)
+      puts %(Importing "##{a.iata}"...)
       new_a = self.create(
         name:      a.name,
         city:      a.city,
@@ -32,6 +32,7 @@ class Airport < ApplicationRecord
         timezone:  a.timezone,
         dst:       a.dst)
       puts "Failed." if not new_a.save
+      puts "Airport.count = #{Airport.count}"
     end
   end
 
