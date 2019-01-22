@@ -19,7 +19,7 @@ module DealsHelper
 
   def print_grouped_deals(grouped_deals_by_date)
     grouped_deals_by_date.map do |(date, deals)|
-      %(<div class='deals-#{date.to_s}'>
+      %(<div id='deals-#{date.to_s}'>
         <h3>#{brief_time date}</h3>
           #{deal_paragraphs_for_group(deals)}</div>
           )
