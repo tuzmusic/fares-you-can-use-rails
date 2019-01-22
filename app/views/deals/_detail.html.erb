@@ -1,21 +1,21 @@
 <div class="deal-info">
-  <h3><%= @deal.headline %></h3>
-  <p><%= sanitize @deal.description %></p>
+  <h3><%= deal.headline %></h3>
+  <p><%= sanitize deal.description %></p>
 
-  <%= sanitize instructions_for(@deal) %>
+  <%= sanitize instructions_for(deal) %>
 </div>
 
 <div class="deal-stats">
   <p>
     <b>Fly From:</b><br>
-    <%= airport_codes(@deal.origins) %>
+    <%= airport_codes(deal.origins) %>
   </p>
   <p>
     <b>Fly To:</b><br>
-    <%= airport_codes(@deal.destinations) %>
+    <%= airport_codes(deal.destinations) %>
   </p>
   <p>
     <b>Fly Dates:</b><br>
-    <%= brief_time(@deal.start_date) %> - <%= brief_time(@deal.end_date) %>
+    <%= brief_time(deal.start_date) %> - <%= brief_time(deal.end_date) %>
   </p>
 </div>
