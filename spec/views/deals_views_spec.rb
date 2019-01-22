@@ -169,15 +169,13 @@ RSpec.describe "Deals Views", type: :feature do
     end
 
     it "populates the headline and description fields" do
-      # NOTE - it sees the content for the description but not the headline?!
-      # expect(page).to have_content(d.headline)
+      expect(page).to have_field("Headline", with: d.headline)
       expect(page).to have_content(d.description)
     end
     
     it "lists the correct origin & destination airports" do
-      # NOTE - for some reason it sees text field values for description & instructions but not the origin/destination fields. Even though they're correctly populated. 
-      # expect(page).to have_content(d.origin_codes)
-      # expect(page).to have_content(d.destination_codes)
+      expect(page).to have_field("Origin", with: d.origin_codes)
+      expect(page).to have_field("Destination", with: d.destination_codes)
     end
 
     it "edits the deal" do
