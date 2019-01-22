@@ -1,6 +1,6 @@
 module DealsHelper
   def brief_time(date)
-    date.strftime("%b. %e, %Y")
+    date&.strftime("%b. %e, %Y")
   end
 
   def airport_codes(airports)

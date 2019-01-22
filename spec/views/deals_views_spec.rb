@@ -107,24 +107,35 @@ RSpec.describe "Deals Views", type: :feature do
 
   describe "index" do
     before :each do
-      # create some deals (or just 1?)
+      Deal.create(posted_date: Date.new(2019,1,2), headline:"Deal for January")
+      Deal.create(posted_date: Date.new(2019,1,2), headline:"Another deal for January")
+      Deal.create(posted_date: Date.new(2019,2,4), headline:"Deal for February")
+      Deal.create(posted_date: Date.new(2019,2,4), headline:"Another deal for February")
+      Deal.create(posted_date: Date.new(2018,12,25), headline:"Deal for last Christmas")
+      Deal.create(posted_date: Date.new(2018,12,25), headline:"Another deal for last Christmas")
       visit deals_path
     end
-
+    
     it "lists all the deals, with their descriptions" do
-      
+      expect(page).to have_content("Deal for January")
+      expect(page).to have_content("Another deal for January")
+      expect(page).to have_content("Deal for February")
+      expect(page).to have_content("Another deal for February")
+      expect(page).to have_content("Deal for last Christmas")
+      expect(page).to have_content("Another deal for last Christmas")
     end
 
     it "links to each deal's show page" do
-      
+      click_link "Another deal for last Christmas"
+      expect(current_path).to eq("/deals/#{Deal.last.id}")
     end
-
+    
     xit "marks a deal as possibly expired if it's more than a week old" do
-      
+      expect(true).to eq(false)      
     end
     
     it "sorts deals by date" do
-      
+      expect(true).to eq(false)      
     end
   end
 
