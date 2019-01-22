@@ -5,7 +5,7 @@ X Deals New/Edit views
 X Seed actual deals 
 X Deals Index Page for admin 
   X Not navigable or filtered, yet
-- Edit deals page/action
+X Edit deals page/action
 - Delete deal option on index/edit/show pages
 
 ## Regions

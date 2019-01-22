@@ -21,4 +21,4 @@ example_id                                         | status  | run_time        |
 ./spec/views/deals_views_spec.rb[1:4:1]            | passed  | 0.34987 seconds |
 ./spec/views/deals_views_spec.rb[1:4:2]            | passed  | 0.34908 seconds |
 ./spec/views/deals_views_spec.rb[1:4:3]            | passed  | 0.34985 seconds |
-./spec/views/deals_views_spec.rb[1:4:4]            | passed  | 0.65155 seconds |
+./spec/views/deals_views_spec.rb[1:4:4]            | passed  | 1.49 seconds    |

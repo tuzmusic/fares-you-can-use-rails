@@ -190,9 +190,9 @@ RSpec.describe "Deals Views", type: :feature do
       select '3', from: 'deal_end_date_3i'
       
       click_on "Update Deal"
+      
       d.reload
       
-      # binding.pry
       expect(d.headline).to eq "New Headline"
       expect(d.description).to eq "New Description"
       expect(d.origin_codes).to eq "LGA"

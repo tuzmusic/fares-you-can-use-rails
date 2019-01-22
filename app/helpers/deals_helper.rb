@@ -29,4 +29,12 @@ module DealsHelper
       %(<p>#{"<span class='warning'>POSSIBLY EXPIRED! -</span>" if deal.probably_expired?} #{link_to deal.headline, deal}</p>)
     end.join
   end
+
+  def delete_deal_button
+    button_to "Delete Deal", { action: "destroy", id: @deal.id }, method: :delete, data: { confirm: "Are you sure you want to delete this deal?" }
+  end
+
+  def edit_deal_button
+    button_to "Edit Deal", { action: "edit", id: @deal.id }, method: :get
+  end
 end

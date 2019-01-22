@@ -1,5 +1,3 @@
-<p>Deal Detail:</p>
-
 <div class="deal-info">
   <h3><%= @deal.headline %></h3>
   <p><%= sanitize @deal.description %></p>
@@ -21,6 +19,3 @@
     <%= brief_time(@deal.start_date) %> - <%= brief_time(@deal.end_date) %>
   </p>
 </div>
-
-<%= edit_deal_button %>
-<%= delete_deal_button %>

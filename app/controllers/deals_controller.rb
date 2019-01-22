@@ -42,6 +42,7 @@ class DealsController < ApplicationController
   def destroy
     deal = Deal.find(params[:id])
     deal.destroy
+    redirect_to deals_path
   end
 
   private
