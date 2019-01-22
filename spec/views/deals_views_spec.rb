@@ -107,19 +107,50 @@ RSpec.describe "Deals Views", type: :feature do
 
   describe "index" do
     before :each do
+      # create some deals (or just 1?)
       visit deals_path
     end
 
     it "lists all the deals, with their descriptions" do
       
     end
+
     it "links to each deal's show page" do
       
     end
-    it "marks a deal as possibly expired if it's more than a week old" do
+
+    xit "marks a deal as possibly expired if it's more than a week old" do
+      
+    end
+    
+    it "sorts deals by date" do
       
     end
   end
 
+  describe "edit" do
+    before :each do
+      # create a deal
+      # visit that deal's edit page
+    end
+
+    it "has the edit form" do
+      # check for fields
+    end
+
+    it "populates the headline and description fields" do
+      # check for field content
+    end
+
+    it "lists the correct origin & destination airports" do
+      # check for field content
+    end
+
+    it "causes the deal to be edited" do
+      # make some changes
+      # hit "update deal"
+      # expect deal's properties to change
+    end
+  end
 
 end
