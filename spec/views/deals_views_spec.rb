@@ -1,9 +1,10 @@
 require 'rails_helper'
+require_relative '../spec_helpers/create_ny_and_dc_airports.rb'
 
 RSpec.describe "Deals Views", type: :feature do
 
   describe "show" do
-      let(:deal) { Deal.create(
+    let(:deal) { Deal.create(
         headline: "Great deals to NYC!",
         description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
         start_date: Date.new(2019,2,1),
@@ -13,6 +14,7 @@ RSpec.describe "Deals Views", type: :feature do
         destination_ids: [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id]) }
 
     before :each do
+      AirportSpecHelper.create_ny_and_dc_airports
       visit deal_path(deal)
     end
 
@@ -32,11 +34,11 @@ RSpec.describe "Deals Views", type: :feature do
     end
 
     it "shows deal's origin airports" do
-      expect(page).to have_content "From: DCA, IAD, BWI"
+      expect(page).to have_content "From: DCA, BWI, IAD"
     end   
     
     it "shows deal's destination airports" do
-      expect(page).to have_content "To: EWR, LGA, JFK"
+      expect(page).to have_content "To: EWR, JFK, LGA"
     end  
 
     xit "has some 'back' navigation" do

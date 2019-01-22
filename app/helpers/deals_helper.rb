@@ -21,7 +21,7 @@ module DealsHelper
         <h3>#{brief_time date}</h3>
           #{deal_paragraphs_for_group(deals)}</div>
           )
-    end.join + "<div class='thing'/>"
+    end.join + "<div id='thing'/>"
   end
 
   def deal_paragraphs_for_group(deals)
