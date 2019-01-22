@@ -4,7 +4,9 @@ module DealsHelper
   end
 
   def airport_codes(airports)
-    airports.map(&:iata).join(', ')
+    airports.map do |a|
+      "#{a.iata} (#{a.name.chomp(" Airport")})" 
+    end.join("<br>")
   end
 
   def deal_date_select(symbol)

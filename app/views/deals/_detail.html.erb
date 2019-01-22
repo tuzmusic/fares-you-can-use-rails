@@ -8,11 +8,11 @@
 <div class="deal-stats">
   <p>
     <b>Fly From:</b><br>
-    <%= airport_codes(deal.origins) %>
+    <%= sanitize airport_codes(deal.origins) %>
   </p>
   <p>
     <b>Fly To:</b><br>
-    <%= airport_codes(deal.destinations) %>
+    <%= sanitize airport_codes(deal.destinations) %>
   </p>
   <p>
     <b>Fly Dates:</b><br>
