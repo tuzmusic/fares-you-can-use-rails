@@ -59,15 +59,10 @@ RSpec.describe "Deals Views", type: :feature do
       expect(page).to have_field "deal[destinations]"
     end
 
-    xit "has pickers for the date selectors" do
-      expect(page).to have_select('deal[start_date]')
-    end
+    it "creates a deal and redirects to the show page for the newly created deal" do
+      AirportSpecHelper.create_ny_and_dc_airports
 
-    # it "allows the user to enter comma-separated airport codes" do
-    # end
-
-    it "creates a deal" do
-      d = Deal.new(headline: "Great deals to NYC!",
+      d = Deal.create(headline: "Great deals to NYC!",
         description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
         start_date: Date.new(2019,2,1),
         end_date: Date.new(2019,2,8),
@@ -92,18 +87,15 @@ RSpec.describe "Deals Views", type: :feature do
       expect{ click_on 'Create Deal' }.to change{ Deal.count }.by(1)
       
       nd = Deal.last
-
       expect(nd.headline).to eq d.headline
       expect(nd.description).to eq d.description
       expect(nd.start_date).to eq d.start_date
       expect(nd.end_date).to eq d.end_date
       expect(nd.instructions).to eq d.instructions
-      expect(nd.origins).to match d.origins
-      expect(nd.destinations).to match d.destinations
-    end
-
-    it "redirects to the show page for the newly created deal" do
-      expect(false).to eq(true)
+      expect(nd.origins.pluck(:name).sort).to match d.origins.pluck(:name).sort
+      expect(nd.destinations.pluck(:name).sort).to match d.destinations.pluck(:name).sort
+      
+      expect(current_path).to eq deal_path(nd)
     end
   end
 
@@ -145,14 +137,14 @@ RSpec.describe "Deals Views", type: :feature do
       expect(page.all("div#deals-2018-12-25 p").count).to eq(2)      
     end
   end
-
   describe "edit" do
     before :each do
       # create a deal
       # visit that deal's edit page
     end
-
+    
     it "has the edit form" do
+      exit
       # check for fields
     end
 

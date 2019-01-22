@@ -1,5 +1,4 @@
 <h1>All Deals</h1>
-<%= binding.pry %>
   <div id="all-deals">
     <% @deals.each do |(date, deals)| %>
       <div id="deals-<%= date.to_s %>">
@@ -8,5 +7,3 @@
       </div>
     <% end %>
   </div>
-
-  <%= sanitize print_grouped_deals @deals %>
