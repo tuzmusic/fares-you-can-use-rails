@@ -116,7 +116,7 @@ RSpec.describe "Deals Views", type: :feature do
       visit deals_path
     end
     
-    it "lists all the deals, with their descriptions" do
+    it "lists all the deals, with their headlines" do
       expect(page).to have_content("Deal for January")
       expect(page).to have_content("Another deal for January")
       expect(page).to have_content("Deal for February")
@@ -130,8 +130,8 @@ RSpec.describe "Deals Views", type: :feature do
       expect(current_path).to eq("/deals/#{Deal.last.id}")
     end
     
-    xit "marks a deal as possibly expired if it's more than a week old" do
-      expect(true).to eq(false)      
+    it "marks a deal as possibly expired if it's more than a week old" do
+      expect(page).to have_content("POSSIBLY EXPIRED! - Another deal for last Christmas")      
     end
     
     it "sorts deals by date" do

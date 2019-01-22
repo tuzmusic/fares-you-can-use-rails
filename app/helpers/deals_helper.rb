@@ -17,17 +17,15 @@ module DealsHelper
 
   def print_grouped_deals(grouped_deals_by_date)
     grouped_deals_by_date.map do |(date, deals)|
-      %(<li>#{brief_time date}</li>
-        <ul>
-          #{deal_lis_for_group(deals)}
-        </ul>)
+      %(<h3>#{brief_time date}</h3>
+          #{deal_paragraphs_for_group(deals)})
     end.join
   end
 
-  def deal_lis_for_group(deals)
+  def deal_paragraphs_for_group(deals)
     deals.map do |deal|
-      %(<li>#{"<span class='warning'>POSSIBLY EXPIRED! -</span>" if deal.probably_expired?}
-      #{link_to deal.headline, deal}</li>)
+      %(<p>#{"<span class='warning'>POSSIBLY EXPIRED! -</span>" if deal.probably_expired?}
+      #{link_to deal.headline, deal}</p>)
     end.join
   end
 end
