@@ -12,7 +12,19 @@ class Airport < ApplicationRecord
   def self.iata(code)
     self.find_by(iata:code.upcase)
   end
-  
+
+  def region
+    continent = Ravibhim::Continents::get_continent(self.country)
+    binding.pry
+    if country_region = Region.find_by(name: self.country) 
+      country_region
+    elsif continent_region = Region.find_by(name: continent)
+      continent_region
+    else
+      Region.usa_region_for_airport(self)
+    end
+  end
+
   def self.import_from_gem(gem_airport)
     a = gem_airport # shorter code
 
