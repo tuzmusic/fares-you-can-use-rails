@@ -57,5 +57,9 @@ class Deal < ApplicationRecord
     end
   end
 
+  def self.regionless
+    Deal.select {|d| d.posted_date && !d.region}
+  end
+
 end
 

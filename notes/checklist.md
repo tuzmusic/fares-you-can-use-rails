@@ -14,7 +14,8 @@ X Delete deal option on index/edit/show pages
   X Add continent to countries model (from DB)
   - Separate US regions by longitude/latitude
 X Airport#region
-- Deal#region
+X Deal#region
+- Fix airports without states/regions
 - Navigable deals index actions/views by location (nested resources; regions inside deals)
 
 ## Users

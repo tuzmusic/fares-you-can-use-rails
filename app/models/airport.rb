@@ -1,4 +1,4 @@
-require_relative 'airport/importing_utilities'
+# require_relative 'airport/utilities'
 
 class Airport < ApplicationRecord
   has_many :origin_airports
@@ -20,6 +20,11 @@ class Airport < ApplicationRecord
   end
 
   def region
+
+    # NOTE:
+    # "Countries" with "no continent" (i.e., Russia, Puerto Rico) will return a non-persisting Region with the name of that country.
+    # Only major commercial US airports have states, other airports will return nil.
+
     continent = Ravibhim::Continents::get_continent(self.country)
     if country_region = Region.find_by(name: self.country) 
       country_region
@@ -31,6 +36,8 @@ class Airport < ApplicationRecord
       rescue => exception
         nil
       end
+    else 
+      Region.new(name: self.country)
     end
   end
 

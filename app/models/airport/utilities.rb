@@ -33,9 +33,10 @@ class Airport < ApplicationRecord
   end
   
   def self.regionless
-    where(region: nil)
-    # Airport.all.select{ |d| d.region == nil}.
-    # map(&:iata)
+    puts "This makes a lot of SQL queries, are you sure you want to proceed? (Enter 'Y' to proceed)."
+    if $stdin.gets.trim.downcase == "y"
+      Airport.all.select{ |d| d.region == nil}
+    end
   end
 end
 
