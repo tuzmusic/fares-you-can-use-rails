@@ -29,7 +29,7 @@ class Airport < ApplicationRecord
       begin
         self.state&.region
       rescue => exception
-        binding.pry
+        nil
       end
     end
   end

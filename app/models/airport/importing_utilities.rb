@@ -31,10 +31,11 @@ class Airport < ApplicationRecord
     puts "Airport.update_gem_data_and_import not yet implemented"
     # TO DO
   end
-
-  def self.airports_with_no_region
-    Airport.all.select{ |d| d.region == nil}.
-    map(&:iata)
+  
+  def self.regionless
+    where(region: nil)
+    # Airport.all.select{ |d| d.region == nil}.
+    # map(&:iata)
   end
 end
 
