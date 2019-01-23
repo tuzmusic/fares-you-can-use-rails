@@ -262,32 +262,32 @@ class Seeds
     end
   end
 
-  
+  def self.run_cli(args)
+    puts "Choose what to seed:"
+    puts "[R]egions"
+    puts "[A]irports"
+    puts "[D]eals"
+    puts "[C] create states (if needed) and assign to airports"
+    puts "[S]tates in Regions"
 
+    input = args[1] || $stdin.gets.strip.downcase
+
+    case input
+    when 'r'
+      Seeds.regions
+    when 'a'
+      Seeds.airports
+    when 'd'
+      Seeds.deals
+    when 'c'
+      Seeds.airport_states
+    when 's'
+      Seeds.states_in_regions
+    else
+      puts 'Invalid input.'
+      run_cli([])
+    end
+  end
 end 
 
-
-#   ----------- SEEDS INTERFACE -------------
-puts "Choose what to seed:"
-puts "[R]egions"
-puts "[A]irports"
-puts "[D]eals"
-puts "[C] create states (if needed) and assign to airports"
-puts "[S]tates in Regions"
-
-input = ARGV[1] || $stdin.gets.strip.downcase
-
-case input
-when 'r'
-  Seeds.regions
-when 'a'
-  Seeds.airports
-when 'd'
-  Seeds.deals
-when 'c'
-  Seeds.airport_states
-when 's'
-  Seeds.states_in_regions
-else
-  abort 'Invalid input. Aborting.'
-end
+Seeds.run_cli(ARGV)
