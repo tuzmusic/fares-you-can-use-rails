@@ -15,7 +15,7 @@ X Delete deal option on index/edit/show pages
   - Separate US regions by longitude/latitude
 X Airport#region
 X Deal#region
-- Fix airports without states/regions
+X Fix airports without states/regions
 - Navigable deals index actions/views by location (nested resources; regions inside deals)
 
 ## Users
@@ -38,6 +38,7 @@ X Deal#region
 - Create Layout
   - nav bar
   - login/hello in navbar
+- Slugify deals
 
 ## Pre-Your deals
 - User edit action
