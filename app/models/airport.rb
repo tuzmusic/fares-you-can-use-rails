@@ -17,7 +17,6 @@ class Airport < ApplicationRecord
 
   def region
     continent = Ravibhim::Continents::get_continent(self.country)
-    binding.pry
     if country_region = Region.find_by(name: self.country) 
       country_region
     elsif continent_region = Region.find_by(name: continent)
