@@ -222,23 +222,47 @@ class Seeds
     state = nil
     rows.each do |row|
       if row[:airport].nil?
-        state = row[:city].titleize
-      elsif iata = row[:iata] && airport = Airport.iata(row[:iata])
-        airports[row[:iata].to_sym] = state
-        airport.state = state
-        airport.save          
+        state_name = row[:city].titleize
+        state = State.find_or_create_by(name: state_name)
+      elsif row[:iata] && airport = Airport.iata(row[:iata])
+        airports[row[:iata].to_sym] = state.name
+        airport.state = state if state
+        airport.save   
+        puts "Assigned #{airport.iata} to #{state.name}" if airport.state 
       end  
     end
   end
   
-  def self.states_for_regions
-    "Northeastern USA",
- "Southeastern USA",
- "Midwestern USA",
- "Southern USA",
- "Northwestern USA",
- "Southwestern USA"
+  def self.states_in_regions
+#     "Northeastern USA",
+#  "Southeastern USA",
+#  "Midwestern USA",
+#  "Southern USA",
+#  "Northwestern USA",
+#  "Southwestern USA"
   end
+
+  def self.all_states
+    require 'csv'
+    require 'json'
+
+    csv = CSV.new(File.read('notes/airports-by-state.csv'), :headers => true, :header_converters => :symbol, :converters => :all)
+    rows = csv.to_a.map {|row| row.to_hash }
+    state_rows = rows.select {|r| !r[:airport]}
+    states = state_rows.map {|r| r[:city].titleize}
+    
+    states.each do |state| 
+      s = State.create(name: state)
+      binding.pry
+      if s.valid?
+        puts "Created #{s.name}"
+      else 
+        puts "#{s.name} not valid"
+      end
+    end
+  end
+
+  
 
 end 
 
@@ -248,16 +272,22 @@ puts "Choose what to seed:"
 puts "[R]egions"
 puts "[A]irports"
 puts "[D]eals"
-puts "[S]tates for airports"
-case $stdin.gets.strip.downcase
+puts "[C] create states (if needed) and assign to airports"
+puts "[S]tates in Regions"
+
+input = ARGV[1] || $stdin.gets.strip.downcase
+
+case input
 when 'r'
   Seeds.regions
 when 'a'
   Seeds.airports
 when 'd'
   Seeds.deals
-when 's'
+when 'c'
   Seeds.airport_states
+when 's'
+  Seeds.states_in_regions
 else
   abort 'Invalid input. Aborting.'
 end
