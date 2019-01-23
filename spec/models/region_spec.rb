@@ -1,17 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe 'Region', type: :model do
-  it "includes all continents outside north america" do
-    expect(Region.find_by(name:"Africa")).to exist
-    expect(Region.find_by(name:"Australia")).to exist
-    expect(Region.find_by(name:"Europe")).to exist
-    expect(Region.find_by(name:"South America")).to exist
-    expect(Region.find_by(name:"Asia")).to exist
-  end
+RSpec.describe 'Airport#region', type: :model do
+  it "returns the continent for an airport outside of North America" do
+    aus = Airport.find_by(country:"Australia")
+    expect(aus.region.name).to eq("Australia")
 
-  it "includes mexico and canada as their own regions" do
-    expect(Region.find_by(name:"Mexico")).to exist
-    expect(Region.find_by(name:"Canada")).to exist
+    afr = Airport.find_by(country:"South Africa")
+    expect(aus.region.name).to eq("Africa")
+
+    eur = Airport.find_by(country:"Germany")
+    expect(aus.region.name).to eq("Europe")
+
+    asia = Airport.find_by(country:"Thailand")
+    expect(aus.region.name).to eq("Asia")
+
+    southam = Airport.find_by(country:"Brazil")
+    expect(aus.region.name).to eq("South America")
   end
 end
 

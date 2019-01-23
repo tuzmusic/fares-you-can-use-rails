@@ -1,2 +1,4 @@
-require 'rails_helper'
-binding.pry
+RSpec.describe "pry" do
+  binding.pry
+  exit
+end
