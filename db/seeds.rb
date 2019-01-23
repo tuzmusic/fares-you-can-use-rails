@@ -234,12 +234,24 @@ class Seeds
   end
   
   def self.states_in_regions
-#     "Northeastern USA",
-#  "Southeastern USA",
-#  "Midwestern USA",
-#  "Southern USA",
-#  "Northwestern USA",
-#  "Southwestern USA"
+    ne = Region.find_by(name:"Northeastern USA")
+    se = Region.find_by(name:"Southeastern USA")
+    mw = Region.find_by(name:"Midwestern USA")
+    s = Region.find_by(name:"Southern USA")
+    nw = Region.find_by(name:"Northwestern USA")
+    sw = Region.find_by(name:"Southwestern USA")
+
+    # from https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States
+    # Region 1: Northeast
+    ne.state_names = "Connecticut, Maine, Massachusetts, New Hampshire, Rhode Island, Vermont, New Jersey, New York, Pennsylvania, Delaware, Maryland"
+    # Region 2: Midwest
+    mw.state_names = "Illinois, Indiana, Michigan, Ohio, Wisconsin, Iowa, Kansas, Minnesota, Missouri, Nebraska, North Dakota, South Dakota"
+    # Region 3: South
+    se.state_names = "Florida, Georgia, North Carolina, South Carolina, Virginia, West Virginia"
+    s.state_names = "Alabama, Kentucky, Mississippi, Tennessee, Arkansas, Louisiana, Oklahoma, Texas"
+    # Region 4: West
+    sw.state_names = "Arizona, Colorado, Idaho, Montana, Nevada, New Mexico, Utah, Wyoming"
+    nw.state_names = "Alaska, California, Hawaii, Oregon, Washington"
   end
 
   def self.all_states
@@ -263,11 +275,12 @@ class Seeds
   end
 
   def self.run_cli(args)
+    puts ""
     puts "Choose what to seed:"
     puts "[R]egions"
     puts "[A]irports"
     puts "[D]eals"
-    puts "[C] create states (if needed) and assign to airports"
+    puts "[C]reate states (if needed) and assign to airports"
     puts "[S]tates in Regions"
 
     input = args[1] || $stdin.gets.strip.downcase
@@ -284,6 +297,7 @@ class Seeds
     when 's'
       Seeds.states_in_regions
     else
+      puts ''
       puts 'Invalid input.'
       run_cli([])
     end
