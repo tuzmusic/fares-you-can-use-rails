@@ -21,7 +21,7 @@ class Airport < ApplicationRecord
 
   def region
 
-    # NOTE:
+    # -- NOTE: --
     # "Countries" with "no continent" (i.e., Russia, Puerto Rico) will return a non-persisting Region with the name of that country.
     # Only major commercial US airports have states, other airports will return nil.
 
