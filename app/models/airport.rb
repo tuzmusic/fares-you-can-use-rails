@@ -5,6 +5,8 @@ class Airport < ApplicationRecord
   has_many :destination_airports
   has_many :destination_deals, through: :destination_airports, source: :deal
 
+  belongs_to :state
+
   validates :iata, uniqueness: true
 
   def all_deals

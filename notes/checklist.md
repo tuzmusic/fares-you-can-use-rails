@@ -11,7 +11,7 @@ X Delete deal option on index/edit/show pages
 ## Regions
 - Regions database
   X Define regions outside US by continent/country
-  - Add continent to countries model (from DB)
+  X Add continent to countries model (from DB)
   - Separate US regions by longitude/latitude
 - Airport#region
 - Deal#region

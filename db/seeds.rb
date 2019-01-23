@@ -231,6 +231,15 @@ class Seeds
     end
   end
   
+  def self.states_for_regions
+    "Northeastern USA",
+ "Southeastern USA",
+ "Midwestern USA",
+ "Southern USA",
+ "Northwestern USA",
+ "Southwestern USA"
+  end
+
 end 
 
 
