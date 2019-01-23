@@ -43,6 +43,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'pry-coolline'
+  gem 'pry-rescue'
   gem 'rspec-rails'
 end
 

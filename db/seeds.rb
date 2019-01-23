@@ -215,14 +215,18 @@ class Seeds
 
     csv = CSV.new(File.read('notes/airports-by-state.csv'), :headers => true, :header_converters => :symbol, :converters => :all)
     rows = csv.to_a.map {|row| row.to_hash }
-    binding.pry
+    rows.delete_at(-1)
+    rows.find{|r| r[:faa]=="LHD"}[:iata] = "LHD" # fix missing iata for Anchorage LHD
 
+    airports = {}
     state = nil
-    rows.each do |each|
-      if row[:faa].nil?
+    rows.each do |row|
+      if row[:airport].nil?
         state = row[:city].titleize
-      elsif iata = row[:iata]
-        airport = Airport.iata(iata)
+      elsif iata = row[:iata] && airport = Airport.iata(row[:iata])
+        airports[row[:iata].to_sym] = state
+        airport.state = state
+        airport.save          
       end  
     end
   end
