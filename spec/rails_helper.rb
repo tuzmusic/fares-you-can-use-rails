@@ -42,7 +42,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation, {except: %w[airports regions]})
+    DatabaseCleaner.clean_with(:truncation, {except: %w[airports regions states]})
   end
 
   config.before(:each) do
@@ -50,7 +50,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation, {except: %w[airports regions]}
+    DatabaseCleaner.strategy = :truncation, {except: %w[airports regions states]}
   end
 
   config.before(:each) do

@@ -24,7 +24,7 @@ class Airport < ApplicationRecord
     elsif continent_region = Region.find_by(name: continent)
       continent_region
     elsif self.country = "United States"
-      Region.usa_region_for_airport(self)
+      self.state.region
     end
   end
 

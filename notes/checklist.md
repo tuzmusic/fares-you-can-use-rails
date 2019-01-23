@@ -13,7 +13,7 @@ X Delete deal option on index/edit/show pages
   X Define regions outside US by continent/country
   X Add continent to countries model (from DB)
   - Separate US regions by longitude/latitude
-- Airport#region
+X Airport#region
 - Deal#region
 - Navigable deals index actions/views by location (nested resources; regions inside deals)
 
