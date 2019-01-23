@@ -3,13 +3,14 @@ example_id                                         | status  | run_time        |
 ./spec/controllers/deals_controller_spec.rb[1:1:1] | passed  | 0.24961 seconds |
 ./spec/controllers/deals_controller_spec.rb[1:2:1] | passed  | 0.11232 seconds |
 ./spec/controllers/deals_controller_spec.rb[1:3:1] | passed  | 0.09066 seconds |
+./spec/features/region_spec.rb[1:1:1]              | passed  | 0.10534 seconds |
+./spec/features/region_spec.rb[1:1:2]              | passed  | 0.00632 seconds |
+./spec/features/region_spec.rb[1:1:3]              | passed  | 0.07366 seconds |
+./spec/features/region_spec.rb[1:2:1]              | passed  | 0.08352 seconds |
 ./spec/models/deal_spec.rb[1:1:1]                  | passed  | 0.01386 seconds |
 ./spec/models/deal_spec.rb[1:2:1]                  | passed  | 0.00903 seconds |
 ./spec/models/deal_spec.rb[1:2:2]                  | passed  | 0.00912 seconds |
 ./spec/models/origin_airport_spec.rb[1:1]          | passed  | 0.05945 seconds |
-./spec/models/region_spec.rb[1:1]                  | passed  | 0.12552 seconds |
-./spec/models/region_spec.rb[1:2]                  | passed  | 0.00578 seconds |
-./spec/models/region_spec.rb[1:3]                  | passed  | 0.11732 seconds |
 ./spec/views/deals_views_spec.rb[1:1:1]            | passed  | 0.55095 seconds |
 ./spec/views/deals_views_spec.rb[1:1:2]            | passed  | 0.1751 seconds  |
 ./spec/views/deals_views_spec.rb[1:1:3]            | pending | 0.00005 seconds |
