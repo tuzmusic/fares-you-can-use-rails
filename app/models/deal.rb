@@ -32,6 +32,10 @@ class Deal < ApplicationRecord
     self.destinations.map(&:iata).join(', ')
   end
 
+  def region
+    destinations&.first&.region
+  end
+
   def probably_expired?
     posted_date < Date.today - 7 if posted_date
   end
@@ -45,6 +49,12 @@ class Deal < ApplicationRecord
     self.blog_head = deal_with_blog_wrapper.blog_head
     self.blog_foot = deal_with_blog_wrapper.blog_foot
     self.save
+  end
+
+  def self.list_deals_by_region
+    Deal.all.select { |d| d.destinations.present?}.map do |deal|
+      {headline: deal.headline, region: deal.region&.name}
+    end
   end
 
 end
