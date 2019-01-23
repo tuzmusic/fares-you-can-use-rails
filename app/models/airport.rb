@@ -22,7 +22,7 @@ class Airport < ApplicationRecord
   def region
 
     # -- NOTE: --
-    # "Countries" with "no continent" (i.e., Russia, Puerto Rico) will return a non-persisting Region with the name of that country.
+    # "Countries" with "no continent" (i.e., Russia, Puerto Rico) will create a new Region with the name of that country.
     # Only major commercial US airports have states, other airports will return nil.
 
     continent = Ravibhim::Continents::get_continent(self.country)
@@ -37,7 +37,7 @@ class Airport < ApplicationRecord
         nil
       end
     else 
-      Region.new(name: self.country)
+      Region.find_or_create(name: self.country)
     end
   end
 
