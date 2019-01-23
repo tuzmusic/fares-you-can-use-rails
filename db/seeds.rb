@@ -3,7 +3,6 @@ continents = ['Africa', 'Europe', 'Asia', 'Australia', 'South America']
 countries = ['Canada', 'Mexico']
 us_regions = ['Northeastern USA', 'Southeastern USA', 'Midwestern USA', 'Southern USA', 'Northwestern USA', 'Southwestern USA']
 (continents + countries + us_regions).each {|name| Region.create(name: name)}
-
 #   ----------- DEAL SEEDS -------------
 # Deal.create(posted_date:Date.new(2019,1,15)).tap do |d|
 #   d.headline = "DCA to Des Moines, IA for $193 non-stop round trip - American Airlines"
