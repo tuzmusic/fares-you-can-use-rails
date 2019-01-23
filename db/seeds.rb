@@ -208,6 +208,25 @@ class Seeds
       d.save
     end
   end
+
+  def self.airport_states
+    require 'csv'
+    require 'json'
+
+    csv = CSV.new(File.read('notes/airports-by-state.csv'), :headers => true, :header_converters => :symbol, :converters => :all)
+    rows = csv.to_a.map {|row| row.to_hash }
+    binding.pry
+
+    state = nil
+    rows.each do |each|
+      if row[:faa].nil?
+        state = row[:city].titleize
+      elsif iata = row[:iata]
+        airport = Airport.iata(iata)
+      end  
+    end
+  end
+  
 end 
 
 
@@ -216,6 +235,7 @@ puts "Choose what to seed:"
 puts "[R]egions"
 puts "[A]irports"
 puts "[D]eals"
+puts "[S]tates for airports"
 case $stdin.gets.strip.downcase
 when 'r'
   Seeds.regions
@@ -223,6 +243,8 @@ when 'a'
   Seeds.airports
 when 'd'
   Seeds.deals
+when 's'
+  Seeds.airport_states
 else
   abort 'Invalid input. Aborting.'
 end
