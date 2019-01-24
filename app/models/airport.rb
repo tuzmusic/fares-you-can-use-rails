@@ -4,8 +4,8 @@ class Airport < ApplicationRecord
   has_many :deal_origins
   has_many :origin_deals, through: :deal_origins, source: :deal
 
-  has_many :destination_airports
-  has_many :destination_deals, through: :destination_airports, source: :deal
+  has_many :deal_destinations
+  has_many :destination_deals, through: :deal_destinations, source: :deal
 
   belongs_to :state, optional: true
 

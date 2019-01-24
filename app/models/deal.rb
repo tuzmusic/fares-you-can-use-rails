@@ -2,8 +2,8 @@ class Deal < ApplicationRecord
   has_many :deal_origins, dependent: :destroy
   has_many :origins, through: :deal_origins, source: :airport
 
-  has_many :destination_airports, dependent: :destroy
-  has_many :destinations, through: :destination_airports, source: :airport
+  has_many :deal_destinations, dependent: :destroy
+  has_many :destinations, through: :deal_destinations, source: :airport
   
   belongs_to :region, optional: true
 
