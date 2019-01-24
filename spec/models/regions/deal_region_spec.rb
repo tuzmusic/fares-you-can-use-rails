@@ -47,7 +47,6 @@ describe "Region as real relationship" do
         expect(a.region.name).to eq("Northeastern USA")
       end
     end
-  
   end
   
   describe "Airport#region=" do
@@ -60,6 +59,13 @@ describe "Region as real relationship" do
       expect(a.region).to eq(eur)
       a.region = afr
       expect(a.region).to eq(afr)
+    end
+
+    it "doesn't call Airport#region" do
+      a = Airport.create(country: "France")
+      expect(a.region).to eq(eur)
+      expect(a).to_not receive(:region)
+      a.region = afr
     end
   end
 

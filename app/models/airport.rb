@@ -21,13 +21,15 @@ class Airport < ApplicationRecord
   end
 
   def region
-    region = set_region
+    if region_id
+      Region.find(region_id)
+    else
+      region = set_region
+    end
   end
 
   def region=(reg)
-    region = reg
-    save
-    # update(region: reg)
+    update(region_id: reg.id)
   end
 
   def set_region
