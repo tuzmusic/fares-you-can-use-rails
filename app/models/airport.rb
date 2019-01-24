@@ -24,6 +24,12 @@ class Airport < ApplicationRecord
     region = set_region
   end
 
+  def region=(reg)
+    region = reg
+    save
+    # update(region: reg)
+  end
+
   def set_region
 
     # -- NOTE: --
