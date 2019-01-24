@@ -11,9 +11,17 @@ class Deal < ApplicationRecord
   
   belongs_to :region, optional: true
 
-  # def region
-  #   destinations&.first&.region
-  # end
+
+  def destinations=(airports)
+    airports.each do |airport|
+      destinations << airport
+      update(region:airport.region)
+    end
+  end
+  
+  def set_region_by_destination
+    destinations&.first&.region
+  end
 
   def probably_expired?
     posted_date < Date.today - 7 if posted_date
