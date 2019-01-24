@@ -2,6 +2,6 @@
 
 <% @regions.each do |region| %>
   <p class="region">
-    <%= region.name %>
+    <%= region_with_deals_count(region) %>
   </p>
 <% end %>

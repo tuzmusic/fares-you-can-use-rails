@@ -2,6 +2,7 @@ class Region < ApplicationRecord
   validates :name, uniqueness: true
 
   has_many :states
+  has_one :region
 
   def state_names=(comma_separated_string)
     states = comma_separated_string.split(", ")
