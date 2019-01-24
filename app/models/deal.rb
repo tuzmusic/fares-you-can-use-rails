@@ -12,10 +12,11 @@ class Deal < ApplicationRecord
   belongs_to :region, optional: true
 
   def destinations=(airports)
-    airports.each do |airport|
+    destinations.clear
+    airports.map do |airport|
       destinations << airport
-      update(region:airport.region)
     end
+    update(region:airports.first.region)
   end
   
   def set_region_by_destination
