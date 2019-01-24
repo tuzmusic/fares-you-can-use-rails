@@ -18,9 +18,14 @@ class Deal < ApplicationRecord
     end
     update(region:airports.first.region)
   end
-  
-  def get_region_by_destination
-    destinations&.first&.region
+
+  def region
+    if region_id
+      Region.find(region_id) 
+    else 
+      update(region:destinations.first.region)
+      self.region
+    end
   end
 
   def probably_expired?
