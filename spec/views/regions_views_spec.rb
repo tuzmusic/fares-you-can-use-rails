@@ -1,17 +1,27 @@
-require 'rails-helper'
+require 'rails_helper'
 
 RSpec.describe "Regions views" do
   describe "index" do
+    before :each do
+      visit regions_path 
+    end 
+
     it "shows all the regions" do
-      expect(page.css('div#region').count).to eq Region.count
+      # binding.pry
+      expect(page.all('#region').count).to eq Region.count
+      expect(page).to have_content("Europe")
     end
 
     it "shows the number of deals for each region" do
+      d = Deal.create
+      d.destination_codes = "CDG"
+      expect(d.region.name).to eq("Europe") # just to make sure
+
       expect(page).to have_content('Europe (1 deal)')
-      expect(page).to have_content('Midwestern USA (0 deals)')
+      expect(page).to have_content('(0 deals)', count: Region.count-1)
     end
 
-    it "links to each region's show page" do
+    it "links to each region's show page, using a SLUG" do
       click_link 'Africa'
       expect(current_path).to eq('regions/africa')
     end
