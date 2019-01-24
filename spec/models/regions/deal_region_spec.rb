@@ -12,16 +12,16 @@ describe "Region as real relationship" do
     end
   
     context "airport already has a region" do
-        it "returns the airport's region" do
-          a = Airport.create(country: "France", region: Region.find_by(name:"Europe"))
-          expect(a.region.name).to eq "Europe"
-        end
-  
-        it "doesn't call set_region" do
-          a = Airport.create(country: "France", region: Region.find_by(name:"Europe"))
-          expect(a).to_not receive(:set_region)
-          a.region
-        end
+      it "returns the airport's region" do
+        a = Airport.create(country: "France", region: Region.find_by(name:"Europe"))
+        expect(a.region.name).to eq "Europe"
+      end
+
+      it "doesn't call set_region" do
+        a = Airport.create(country: "France", region: Region.find_by(name:"Europe"))
+        expect(a).to_not receive(:set_region)
+        a.region
+      end
     end
   
     context "creating an airport" do
@@ -63,7 +63,7 @@ describe "Region as real relationship" do
     end
   end
 
-  describe "Deal#destinations=", type: :model do
+  describe "Deal#destinations=" do
     context "creating a deal with a destination" do
       it "saves the deal with the region for that destination, and correctly sets the destinations" do
         d = Deal.create(destinations: [cdg, mad])
@@ -128,3 +128,5 @@ describe "Region as real relationship" do
     end
   end
 end
+
+end # TOTALLY UNCLEAR WHY THIS LAST AND IS REQUIRED!!!! (BUT IT IS!)

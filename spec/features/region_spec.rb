@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Region', type: :feature do
+describe 'Region', type: :feature do
   describe "Airport#region" do    
     it "returns the continent for an airport outside of North America" do
       aus = Airport.find_by(country:"Australia")
@@ -19,13 +19,13 @@ RSpec.describe 'Region', type: :feature do
       expect(southam.region.name).to eq("South America")
     end
   
-    it "returns the country for canada and mexico" do
-      can = Airport.find_by(country:"Canada")
-      expect(can.region.name).to eq("Canada")
+    # it "returns the country for canada and mexico" do
+    #   can = Airport.find_by(country:"Canada")
+    #   expect(can.region.name).to eq("Canada")
   
-      mex = Airport.find_by(country:"Mexico")
-      expect(mex.region.name).to eq("Mexico")
-    end
+    #   mex = Airport.find_by(country:"Mexico")
+    #   expect(mex.region.name).to eq("Mexico")
+    # end
   
     it "returns the region of the US for airports in the US" do
       expect(Airport.iata("EWR").region.name).to eq "Northeastern USA"
@@ -34,6 +34,13 @@ RSpec.describe 'Region', type: :feature do
       expect(Airport.iata("DFW").region.name).to eq "Southern USA"
       expect(Airport.iata("SEA").region.name).to eq "Northwestern USA"
       expect(Airport.iata("SAF").region.name).to eq "Southwestern USA"
+    end
+
+    it "creates and assigns a region for the country if it can't find another region" do
+      expect(Airport.iata("LSV").region.name).to eq("United States") # Military US airport, no state assigned
+      expect(Airport.iata("FAJ").region.name).to eq("United States") # Puerto Rico
+      expect(Airport.find_by(country:"Mexico").region.name).to eq("Mexico")
+      expect(Airport.find_by(country:"Canada").region.name).to eq("Canada")
     end
   end
 
