@@ -12,11 +12,7 @@ class Deal < ApplicationRecord
   belongs_to :region, optional: true
 
   def region
-    if region_id
-      Region.find(region_id) 
-    else
-      set_region
-    end
+    Region.find_by(id: region_id) || set_region
   end
 
   def set_region
