@@ -1,5 +1,6 @@
 module RegionsHelper
   def region_with_deals_count(region)
-    "#{region.name} (#{region.deals.count} deals)"
+    # binding.pry if region.name == "Europe"
+    "#{region.name} (#{pluralize region.deals.count, 'deal'})"
   end
 end

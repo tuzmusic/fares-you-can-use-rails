@@ -7,7 +7,6 @@ RSpec.describe "Regions views" do
     end 
 
     it "shows all the regions" do
-      # binding.pry
       expect(page.all('.region').count).to eq Region.count
       expect(page).to have_content("Europe")
     end
@@ -15,8 +14,8 @@ RSpec.describe "Regions views" do
     it "shows the number of deals for each region" do
       d = Deal.create
       d.destination_codes = "CDG"
-      expect(d.region.name).to eq("Europe") # just to make sure
-
+      page.refresh
+      
       expect(page).to have_content('Europe (1 deal)')
       expect(page).to have_content('(0 deals)', count: Region.count-1)
     end
