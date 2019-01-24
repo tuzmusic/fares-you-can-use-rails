@@ -20,6 +20,10 @@ class Airport < ApplicationRecord
     self.find_by(iata:code.upcase)
   end
 
+  def region
+    region = set_region
+  end
+
   def set_region
 
     # -- NOTE: --
