@@ -5,7 +5,7 @@ class Deal < ApplicationRecord
   has_many :destination_airports, dependent: :destroy
   has_many :destinations, through: :destination_airports, source: :airport
   
-  belongs_to :region
+  belongs_to :region, optional: true
 
   def self.airports_from_string(comma_separated_string)
     airports = []
