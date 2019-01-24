@@ -11,7 +11,6 @@ class Deal < ApplicationRecord
   
   belongs_to :region, optional: true
 
-
   def destinations=(airports)
     airports.each do |airport|
       destinations << airport

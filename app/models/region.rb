@@ -3,6 +3,7 @@ class Region < ApplicationRecord
 
   has_many :states
   has_many :deals
+  has_many :airports
 
   def state_names=(comma_separated_string)
     states = comma_separated_string.split(", ")

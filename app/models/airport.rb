@@ -8,6 +8,7 @@ class Airport < ApplicationRecord
   has_many :destination_deals, through: :deal_destinations, source: :deal
 
   belongs_to :state, optional: true
+  belongs_to :region, optional: true
 
   validates :iata, uniqueness: true
 
