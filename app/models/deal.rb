@@ -11,19 +11,11 @@ class Deal < ApplicationRecord
   
   belongs_to :region, optional: true
 
-  def destinations=(airports)
-    destinations.clear
-    airports.map do |airport|
-      destinations << airport
-    end
-    update(region:airports.first.region)
-  end
-
   def region
     if region_id
       Region.find(region_id) 
-    else 
-      update(region:destinations.first.region)
+    elsif f = destinations.first 
+      update(region: f.region)
       self.region
     end
   end
