@@ -76,3 +76,26 @@ RSpec.describe "Setting an airport's region" do
     end
   end
 end
+
+RSpec.describe "GETTING a deal's region with Deal#region" do
+  context "deal already has a region assigned" do
+    it "returns the region" do
+      d = Deal.create(region: Region.first)
+      expect(d.region).to eq(Region.first)
+    end
+
+    xit "doesn't assign anything or make any transaction" do
+      # how to test this?
+    end
+  end
+
+  let(:cdg) { Airport.iata("CDG") }
+  let(:mad) { Airport.iata("MAD") }
+
+  context "deal doesn't have a region yet" do
+    it "sets the deal's region to its destination's region" do
+      d = Deal.create(destinations:[cdg, mad])
+      expect(d.region).to eq(cdg.region)
+    end
+  end
+end
