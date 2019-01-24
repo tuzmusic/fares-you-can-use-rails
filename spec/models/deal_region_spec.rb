@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe "Region as real relationship" do
+  let(:cdg) { Airport.iata("CDG") }
+  let(:mad) { Airport.iata("MAD") }
+  let(:eur) { Region.find_by(name:"Europe") }
+  let(:afr) { Region.find_by(name:"Africa") }
 
   describe "Airport#region" do
     after :each do
@@ -53,19 +57,15 @@ describe "Region as real relationship" do
   
     it "can set an airport's region manually" do
       a = Airport.create(country: "France")
-      expect(a.region.name).to eq("Europe")
-      a.region = Region.find_by(name:"Africa")
-      expect(a.region.name).to eq("Africa")
+      expect(a.region).to eq(eur)
+      a.region = afr
+      expect(a.region).to eq(afr)
     end
   end
 
   describe "Deal#destinations=", type: :model do
-    let(:cdg) { Airport.iata("CDG") }
-    let(:mad) { Airport.iata("MAD") }
-    let(:eur) { Region.find_by(name:"Europe") }
-  
     context "creating a deal with a destination" do
-      it "correctly sets the destinations and saves the deal with the region for that destination" do
+      it "saves the deal with the region for that destination, and correctly sets the destinations" do
         d = Deal.create(destinations: [cdg, mad])
         expect(d.destinations).to eq([cdg, mad])
         expect(d.region).to eq(eur)
@@ -73,7 +73,7 @@ describe "Region as real relationship" do
     end
   
     context "assigning a destination via #destination_codes to an existing deal" do
-      it "correctly sets the destinations and sets the deal's region to the desination's region" do
+      it "sets the deal's region to the desination's region, and correctly sets the destinations" do
         d = Deal.create
         d.destination_codes = "CDG, MAD"
         expect(d.destinations).to eq([cdg, mad])
@@ -82,7 +82,7 @@ describe "Region as real relationship" do
     end
   
     context "assigning a destination via array assignment to an existing deal" do
-      it "correctly sets the destinations and sets the deal's region to the desination's region" do
+      it "sets the deal's region to the desination's region, and correctly sets the destinations" do
         d = Deal.create
         d.destinations = [cdg, mad]
         expect(d.destinations).to eq([cdg, mad])
@@ -99,26 +99,32 @@ describe "Region as real relationship" do
   end
     
   describe "Deal#region" do
-    let(:cdg) { Airport.iata("CDG") }
-    let(:mad) { Airport.iata("MAD") }
-    let(:eur) { Region.find_by(name:"Europe") }
-  
     context "deal already has a region assigned" do
       it "returns the region" do
         d = Deal.create(region: eur)
         expect(d.region).to eq(eur)
       end
   
-      xit "doesn't assign anything or make any transaction" do
-        # how to test this?
-      end
-    end
-  
     context "deal doesn't have a region yet" do
       it "sets the deal's region to its destination's region" do
         d = Deal.create(destinations:[cdg, mad])
         expect(d.region).to eq(eur)
       end
+    end
+  end
+
+  describe "Deal#region=" do
+    it "sets the region for a regionless deal" do
+      d = Deal.create
+      d.region = eur
+      expect(d.region).to eq(eur)
+    end
+
+    it "manually overrides a deal that already has a region" do
+      d = Deal.create(destinations: [cdg, mad])
+      expect(d.region).to eq(eur)
+      d.region = afr
+      expect(d.region).to eq(afr)
     end
   end
 end
