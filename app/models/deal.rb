@@ -5,6 +5,8 @@ class Deal < ApplicationRecord
   has_many :destination_airports, dependent: :destroy
   has_many :destinations, through: :destination_airports, source: :airport
   
+  has_one :region
+
   def self.airports_from_string(comma_separated_string)
     airports = []
     iata_codes = comma_separated_string.split(', ') 
