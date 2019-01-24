@@ -8,11 +8,11 @@ example_id                                         | status  | run_time        |
 ./spec/features/region_spec.rb[1:1:3]              | failed  | 0.01058 seconds |
 ./spec/features/region_spec.rb[1:2:1]              | passed  | 0.01396 seconds |
 ./spec/helpers/regions_helper_spec.rb[1:1]         | pending | 0.00002 seconds |
-./spec/models/deal_region_spec.rb[1:1:1]           | passed  | 0.18635 seconds |
-./spec/models/deal_region_spec.rb[1:2:1]           | passed  | 0.03864 seconds |
-./spec/models/deal_region_spec.rb[1:3:1]           | passed  | 0.0244 seconds  |
-./spec/models/deal_region_spec.rb[1:4:1]           | passed  | 0.0047 seconds  |
-./spec/models/deal_region_spec.rb[2:1:1:1]         | passed  | 0.01622 seconds |
+./spec/models/deal_region_spec.rb[1:1:1]           | failed  | 0.20402 seconds |
+./spec/models/deal_region_spec.rb[1:2:1]           | passed  | 0.03016 seconds |
+./spec/models/deal_region_spec.rb[1:3:1]           | passed  | 0.01919 seconds |
+./spec/models/deal_region_spec.rb[1:4:1]           | passed  | 0.00542 seconds |
+./spec/models/deal_region_spec.rb[2:1:1:1]         | failed  | 0.01171 seconds |
 ./spec/models/deal_region_spec.rb[2:1:2:1]         | passed  | 0.04403 seconds |
 ./spec/models/deal_region_spec.rb[2:2:1]           | passed  | 0.02258 seconds |
 ./spec/models/deal_region_spec.rb[2:3:1]           | failed  | 0.01297 seconds |

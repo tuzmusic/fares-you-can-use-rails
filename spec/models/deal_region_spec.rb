@@ -3,12 +3,13 @@ require 'rails_helper'
 RSpec.describe "Setting a Deal's region with Deal#destinations=", type: :model do
   let(:cdg) { Airport.iata("CDG") }
   let(:mad) { Airport.iata("MAD") }
+  let(:eur) { Region.find_by(name:"Europe") }
 
   context "creating a deal with a destination" do
     it "correctly sets the destinations and saves the deal with the region for that destination" do
       d = Deal.create(destinations: [cdg, mad])
       expect(d.destinations).to eq([cdg, mad])
-      expect(d.region).to eq(cdg.region)
+      expect(d.region).to eq(eur)
     end
   end
 
@@ -17,7 +18,7 @@ RSpec.describe "Setting a Deal's region with Deal#destinations=", type: :model d
       d = Deal.create
       d.destination_codes = "CDG, MAD"
       expect(d.destinations).to eq([cdg, mad])
-      expect(d.region).to eq(cdg.region)
+      expect(d.region).to eq(eur)
     end
   end
 
@@ -26,7 +27,7 @@ RSpec.describe "Setting a Deal's region with Deal#destinations=", type: :model d
       d = Deal.create
       d.destinations = [cdg, mad]
       expect(d.destinations).to eq([cdg, mad])
-      expect(d.region).to eq(cdg.region)
+      expect(d.region).to eq(eur)
     end
   end
 
@@ -95,7 +96,7 @@ RSpec.describe "GETTING a deal's region with Deal#region" do
   context "deal doesn't have a region yet" do
     it "sets the deal's region to its destination's region" do
       d = Deal.create(destinations:[cdg, mad])
-      expect(d.region).to eq(cdg.region)
+      expect(d.region).to eq(eur)
     end
   end
 end

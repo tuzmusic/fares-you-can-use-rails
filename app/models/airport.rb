@@ -20,7 +20,7 @@ class Airport < ApplicationRecord
     self.find_by(iata:code.upcase)
   end
 
-  def region
+  def set_region
 
     # -- NOTE: --
     # "Countries" with "no continent" (i.e., Russia, Puerto Rico) will create a new Region with the name of that country.
