@@ -14,7 +14,13 @@ class Deal < ApplicationRecord
   def region
     if region_id
       Region.find(region_id) 
-    elsif f = destinations.first 
+    else
+      set_region
+    end
+  end
+
+  def set_region
+    if f = destinations.first 
       update(region: f.region)
       self.region
     end
