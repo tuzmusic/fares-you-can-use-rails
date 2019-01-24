@@ -37,22 +37,13 @@ class Airport < ApplicationRecord
     # Only major commercial US airports have states, other airports will return nil.
 
     continent = Ravibhim::Continents::get_continent(self.country)
-    if country_region = Region.find_by(name: self.country) 
-      country_region
-    elsif continent_region = Region.find_by(name: continent)
+
+    if continent_region = Region.find_by(name: continent)
       continent_region
-    elsif self.country == "United States"
-      begin
-        self.state&.region
-      rescue => exception
-        Region.find_or_create(name: "Unknown")
-      end
-    else 
-      begin
-        Region.find_or_create(name: self.country)
-      rescue => exception
-        Region.find_or_create(name: "Unknown")
-      end
+    elsif self.country == "United States" && self.state
+      self.state&.region
+    else
+      Region.find_or_create_by(name: self.country)
     end
   end
 

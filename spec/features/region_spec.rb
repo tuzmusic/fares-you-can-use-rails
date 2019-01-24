@@ -38,7 +38,7 @@ describe 'Region', type: :feature do
 
     it "creates and assigns a region for the country if it can't find another region" do
       expect(Airport.iata("LSV").region.name).to eq("United States") # Military US airport, no state assigned
-      expect(Airport.iata("FAJ").region.name).to eq("United States") # Puerto Rico
+      expect(Airport.iata("FAJ").region.name).to eq("Puerto Rico") # Puerto Rico
       expect(Airport.find_by(country:"Mexico").region.name).to eq("Mexico")
       expect(Airport.find_by(country:"Canada").region.name).to eq("Canada")
     end
