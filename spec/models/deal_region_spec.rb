@@ -41,7 +41,7 @@ end
 RSpec.describe "Setting an airport's region" do
 
   after :each do
-    Airport.where(name:nil).destroy
+    Airport.last.delete unless Airport.last.name
   end
 
   context "creating an airport" do
