@@ -39,15 +39,20 @@ RSpec.describe "Setting a Deal's region with Deal#destinations=", type: :model d
   end
 end
 
-RSpec.describe "Airport@region - fetches and assigns the airport" do
+RSpec.describe "Airport#region" do
 
   after :each do
     Airport.last.delete unless Airport.last.name
   end
 
   context "airport already has a region" do
-      it "doesn't call set_region " do
-        a = Airport.create(country: "Brazil", region: Region.first)
+      it "returns the airport's region" do
+        a = Airport.create(country: "France", region: Region.find_by(name:"Europe"))
+        expect(a.region.name).to eq "Europe"
+      end
+      
+      it "doesn't call set_region" do
+        a = Airport.create(country: "France", region: Region.find_by(name:"Europe"))
         expect(a).to_not receive(:set_region)
         a.region
       end
@@ -77,8 +82,8 @@ RSpec.describe "Airport@region - fetches and assigns the airport" do
     end
   end
 
-  context "setting an airport's region manually" do
-    it "can be done" do
+  context "Airport#region=" do
+    it "can set an airport's region manually" do
       a = Airport.create(country: "France")
       expect(a.region.name).to eq("Europe")
       a.region = Region.find_by(name:"Africa")
@@ -101,6 +106,8 @@ RSpec.describe "GETTING a deal's region with Deal#region" do
 
   let(:cdg) { Airport.iata("CDG") }
   let(:mad) { Airport.iata("MAD") }
+  let(:eur) { Region.find_by(name:"Europe") }
+  
 
   context "deal doesn't have a region yet" do
     it "sets the deal's region to its destination's region" do
