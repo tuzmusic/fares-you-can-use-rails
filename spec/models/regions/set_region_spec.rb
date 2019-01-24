@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Airport#set_region" do    
+describe "Airport#get_region" do    
   it "returns the continent for an airport outside of North America" do
     aus = Airport.find_by(country:"Australia")
     expect(aus.region.name).to eq("Australia")

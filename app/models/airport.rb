@@ -21,14 +21,19 @@ class Airport < ApplicationRecord
   end
 
   def region
-    Region.find_by(id: region_id) || set_region
+    if region_id
+      Region.find_by(id: region_id) 
+    else 
+      update(region_id: get_region.id)
+      get_region
+    end
   end
 
   def region=(reg)
     update(region_id: reg.id)
   end
 
-  def set_region
+  def get_region
     continent = Ravibhim::Continents::get_continent(self.country)
 
     state&.region ||                              # Only major commercial US airports have states

@@ -19,7 +19,7 @@ class Deal < ApplicationRecord
     update(region:airports.first.region)
   end
   
-  def set_region_by_destination
+  def get_region_by_destination
     destinations&.first&.region
   end
 

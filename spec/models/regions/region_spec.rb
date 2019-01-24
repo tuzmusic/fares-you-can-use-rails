@@ -14,12 +14,13 @@ describe "Region as real relationship" do
     context "airport already has a region" do
       it "returns the airport's region" do
         a = Airport.create(country: "France", region: Region.find_by(name:"Europe"))
-        expect(a.region.name).to eq "Europe"
+        expect(a.region).to eq eur
+        expect(a.region_id).to eq(eur.id)
       end
 
-      it "doesn't call set_region" do
+      it "doesn't call get_region" do
         a = Airport.create(country: "France", region: Region.find_by(name:"Europe"))
-        expect(a).to_not receive(:set_region)
+        expect(a).to_not receive(:get_region)
         a.region
       end
     end
@@ -29,6 +30,7 @@ describe "Region as real relationship" do
         it "sets the region based on the country" do
           a = Airport.create(country: "France")
           expect(a.region.name).to eq("Europe")
+          expect(a.region_id).to eq(eur.id)
         end
       end
   
@@ -36,15 +38,17 @@ describe "Region as real relationship" do
         it "sets the region based on the state" do
           a = Airport.create(country: "United States", state: State.find_by(name:"Maine"))
           expect(a.region.name).to eq("Northeastern USA")
+          expect(a.region_id).to eq(Region.find_by(name:"Northeastern USA").id)
         end
       end
     end
-  
+    
     context "setting a state for an existing airport with no region" do
       it "assigns that state's region to the airport's region" do
         a = Airport.create(country: "United States")
         a.update(state: State.find_by(name:"Maine"))
         expect(a.region.name).to eq("Northeastern USA")
+        expect(a.region_id).to eq(Region.find_by(name:"Northeastern USA").id)
       end
     end
   end
@@ -59,6 +63,7 @@ describe "Region as real relationship" do
       expect(a.region).to eq(eur)
       a.region = afr
       expect(a.region).to eq(afr)
+      expect(a.region_id).to eq(afr.id)
     end
 
     it "doesn't call Airport#region" do
@@ -75,6 +80,7 @@ describe "Region as real relationship" do
         d = Deal.create(destinations: [cdg, mad])
         expect(d.destinations).to eq([cdg, mad])
         expect(d.region).to eq(eur)
+        expect(d.region_id).to eq(eur.id)
       end
     end
   
@@ -84,6 +90,7 @@ describe "Region as real relationship" do
         d.destination_codes = "CDG, MAD"
         expect(d.destinations).to eq([cdg, mad])
         expect(d.region).to eq(eur)
+        expect(d.region_id).to eq(eur.id)
       end
     end
   
@@ -93,6 +100,7 @@ describe "Region as real relationship" do
         d.destinations = [cdg, mad]
         expect(d.destinations).to eq([cdg, mad])
         expect(d.region).to eq(eur)
+        expect(d.region_id).to eq(eur.id)
       end
     end
   
@@ -109,12 +117,14 @@ describe "Region as real relationship" do
       it "returns the region" do
         d = Deal.create(region: eur)
         expect(d.region).to eq(eur)
+        expect(d.region_id).to eq(eur.id)
       end
   
     context "deal doesn't have a region yet" do
       it "sets the deal's region to its destination's region" do
         d = Deal.create(destinations:[cdg, mad])
         expect(d.region).to eq(eur)
+        expect(d.region_id).to eq(eur.id)
       end
     end
   end
@@ -124,6 +134,7 @@ describe "Region as real relationship" do
       d = Deal.create
       d.region = eur
       expect(d.region).to eq(eur)
+      expect(d.region_id).to eq(eur.id)
     end
 
     it "manually overrides a deal that already has a region" do
@@ -131,6 +142,7 @@ describe "Region as real relationship" do
       expect(d.region).to eq(eur)
       d.region = afr
       expect(d.region).to eq(afr)
+      expect(d.region_id).to eq(afr.id)
     end
   end
 end
