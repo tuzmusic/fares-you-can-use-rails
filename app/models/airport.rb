@@ -21,11 +21,7 @@ class Airport < ApplicationRecord
   end
 
   def region
-    if region_id
-      Region.find(region_id)
-    else
-      region = set_region
-    end
+    Region.find_by(id: region_id) || set_region
   end
 
   def region=(reg)
