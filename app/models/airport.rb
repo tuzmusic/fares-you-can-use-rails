@@ -1,13 +1,13 @@
-# require_relative 'airport/utilities'
+require_relative 'airport/utilities'
 
 class Airport < ApplicationRecord
-  has_many :origin_airports
-  has_many :origin_deals, through: :origin_airports, source: :deal
+  has_many :deal_origins
+  has_many :origin_deals, through: :deal_origins, source: :deal
 
   has_many :destination_airports
   has_many :destination_deals, through: :destination_airports, source: :deal
 
-  belongs_to :state
+  belongs_to :state, optional: true
 
   validates :iata, uniqueness: true
 

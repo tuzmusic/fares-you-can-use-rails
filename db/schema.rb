@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_24_161303) do
+ActiveRecord::Schema.define(version: 2019_01_24_161916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2019_01_24_161303) do
     t.datetime "updated_at", null: false
     t.string "state_name"
     t.integer "state_id"
+  end
+
+  create_table "deal_origins", force: :cascade do |t|
+    t.bigint "airport_id"
+    t.bigint "deal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["airport_id"], name: "index_deal_origins_on_airport_id"
+    t.index ["deal_id"], name: "index_deal_origins_on_deal_id"
   end
 
   create_table "deals", force: :cascade do |t|
@@ -53,15 +62,6 @@ ActiveRecord::Schema.define(version: 2019_01_24_161303) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "origin_airports", force: :cascade do |t|
-    t.bigint "airport_id"
-    t.bigint "deal_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["airport_id"], name: "index_origin_airports_on_airport_id"
-    t.index ["deal_id"], name: "index_origin_airports_on_deal_id"
-  end
-
   create_table "regions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -75,6 +75,6 @@ ActiveRecord::Schema.define(version: 2019_01_24_161303) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "origin_airports", "airports"
-  add_foreign_key "origin_airports", "deals", on_delete: :cascade
+  add_foreign_key "deal_origins", "airports"
+  add_foreign_key "deal_origins", "deals", on_delete: :cascade
 end

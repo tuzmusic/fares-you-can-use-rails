@@ -1,11 +1,11 @@
 class Deal < ApplicationRecord
-  has_many :origin_airports, dependent: :destroy
-  has_many :origins, through: :origin_airports, source: :airport
+  has_many :deal_origins, dependent: :destroy
+  has_many :origins, through: :deal_origins, source: :airport
 
   has_many :destination_airports, dependent: :destroy
   has_many :destinations, through: :destination_airports, source: :airport
   
-  has_one :region
+  belongs_to :region
 
   def self.airports_from_string(comma_separated_string)
     airports = []
@@ -34,9 +34,9 @@ class Deal < ApplicationRecord
     self.destinations.map(&:iata).join(', ')
   end
 
-  def region
-    destinations&.first&.region
-  end
+  # def region
+  #   destinations&.first&.region
+  # end
 
   def probably_expired?
     posted_date < Date.today - 7 if posted_date
