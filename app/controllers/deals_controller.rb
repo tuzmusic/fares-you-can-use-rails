@@ -21,6 +21,7 @@ class DealsController < ApplicationController
     # binding.pry
     deal.origin_codes = params[:deal][:origins] if params[:deal][:origins]
     deal.destination_codes = params[:deal][:destinations] if params[:deal][:destinations]
+    deal.posted_date = Date.today
     redirect_to deal_path(deal)
     # TO DO: error handling (if Deal.create(deal_params)...)
   end
