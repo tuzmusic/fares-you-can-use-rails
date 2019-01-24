@@ -41,6 +41,7 @@ describe 'Region', type: :feature do
       expect(Airport.iata("FAJ").region.name).to eq("Puerto Rico") # Puerto Rico
       expect(Airport.find_by(country:"Mexico").region.name).to eq("Mexico")
       expect(Airport.find_by(country:"Canada").region.name).to eq("Canada")
+      expect(Airport.find_by(city:"Moscow").region.name).to eq("Russia")
     end
   end
 
