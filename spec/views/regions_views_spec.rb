@@ -15,14 +15,14 @@ RSpec.describe "Regions views" do
       d = Deal.create
       d.destination_codes = "CDG"
       page.refresh
-      
+
       expect(page).to have_content('Europe (1 deal)')
       expect(page).to have_content('(0 deals)', count: Region.count-1)
     end
 
     it "links to each region's show page, using a SLUG" do
       click_link 'Africa'
-      expect(current_path).to eq('regions/africa')
+      expect(current_path).to eq('/regions/africa')
     end
   end
 end
