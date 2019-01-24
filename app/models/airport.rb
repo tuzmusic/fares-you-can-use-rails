@@ -45,10 +45,14 @@ class Airport < ApplicationRecord
       begin
         self.state&.region
       rescue => exception
-        nil
+        Region.find_or_create(name: "Unknown")
       end
     else 
-      Region.find_or_create(name: self.country)
+      begin
+        Region.find_or_create(name: self.country)
+      rescue => exception
+        Region.find_or_create(name: "Unknown")
+      end
     end
   end
 
