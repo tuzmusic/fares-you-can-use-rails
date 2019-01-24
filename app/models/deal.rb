@@ -1,3 +1,6 @@
+require_relative 'deal/utilities'
+require_relative 'deal/diagnostics'
+
 class Deal < ApplicationRecord
   has_many :deal_origins, dependent: :destroy
   has_many :origins, through: :deal_origins, source: :airport
@@ -40,27 +43,6 @@ class Deal < ApplicationRecord
 
   def probably_expired?
     posted_date < Date.today - 7 if posted_date
-  end
-
-  def set_existing_blog_wrapper_for_date
-    deal_with_blog_wrapper = Deal.find do |deal|
-      deal.id != self.id && 
-      deal.posted_date == self.posted_date &&
-      deal.blog_head.present? || deal.blog_foot.present?
-    end
-    self.blog_head = deal_with_blog_wrapper.blog_head
-    self.blog_foot = deal_with_blog_wrapper.blog_foot
-    self.save
-  end
-
-  def self.list_deals_by_region
-    Deal.all.select { |d| d.destinations.present?}.map do |deal|
-      {headline: deal.headline, region: deal.region&.name}
-    end
-  end
-
-  def self.regionless
-    Deal.select {|d| d.posted_date && !d.region}
   end
 
 end
