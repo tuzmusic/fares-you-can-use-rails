@@ -1,6 +1,7 @@
 require_relative 'deal/convenience_methods'
 require_relative 'deal/utilities'
 require_relative 'deal/diagnostics'
+require_relative 'deal/seed'
 
 class Deal < ApplicationRecord
   has_many :deal_origins, dependent: :destroy
