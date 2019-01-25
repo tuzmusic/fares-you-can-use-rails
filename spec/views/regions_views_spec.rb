@@ -26,13 +26,25 @@ RSpec.describe "Regions views" do
     end
   end
 
-  describe "show" do
+  describe "show (deal#index with region_id, or something)" do
+
     let(:eur) { Region.find_by name: "Europe" }
+    let(:dca) { Airport.iata("DCA") }
+    let(:cdg) { Airport.iata("CDG") }
+    let(:d1) {  Deal.create.tap do |d|
+                d.headline = "A Deal for Europe in February"
+                d.description = "Some Info"
+                d.origins = [dca]
+                d.destinations = [cdg]
+                end
+              }
+
     before :each do
-      visit region_path(eur)
+      visit region_path(eur)  # probably wrong
     end
     
     it "lists all the deals for that region" do
+
       expect(true).to eq(false)
     end
 

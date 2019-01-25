@@ -45,4 +45,17 @@ describe Deal, type: :model do
       expect(d.slug).to eq("dca-to-des-moines-ia-for-193-non-stop-round-trip-american-airlines")
     end
   end
+
+  describe "Origin and Destination convenience methods" do
+    it "sets one origin with origin=" do
+      d = Deal.create
+      d.origin = cdg
+      expect(d.origins).to match([cdg])
+    end
+    it "sets one destination with origin=" do
+      d = Deal.create
+      d.destination = cdg
+      expect(d.destinations).to match([cdg])
+    end
+  end
 end

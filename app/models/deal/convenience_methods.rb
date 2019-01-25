@@ -1,5 +1,13 @@
 class Deal < ApplicationRecord
 
+  def origin=(airport)
+    origins << airport
+  end
+
+  def destination=(airport)
+    destinations << airport
+  end
+
   def self.airports_from_string(comma_separated_string)
     airports = []
     iata_codes = comma_separated_string.split(', ') 
