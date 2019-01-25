@@ -13,7 +13,7 @@ class Deal < ApplicationRecord
 
   after_create do |deal|
     deal.set_region
-    deal.posted_date = Date.today
+    deal.posted_date ||= Date.today
   end
 
   def region
