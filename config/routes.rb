@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'regions/index'
   get 'regions/show'
-  resources :deals
+  resources :deals, param: :slug
   
   # resources :regions, param: :slug, only: [:index, :show] do
   #   resources :deals
