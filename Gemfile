@@ -41,7 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   gem 'pry-rails'
-  gem 'pry-nav'
+  gem 'pry-byebug'
   gem 'pry-coolline'
   gem 'pry-rescue'
   gem 'rspec-rails'
