@@ -11,6 +11,11 @@ class Deal < ApplicationRecord
   
   belongs_to :region, optional: true
 
+  after_create do |deal|
+    deal.set_region
+    deal.posted_date = Date.today
+  end
+
   def region
     Region.find_by(id: region_id) || set_region
   end

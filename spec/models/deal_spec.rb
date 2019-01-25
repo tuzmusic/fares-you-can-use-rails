@@ -1,6 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Deal, type: :model do
+describe Deal, type: :model do
+
+  let(:cdg) { Airport.iata("CDG") }
+  let(:mad) { Airport.iata("MAD") }
+  let(:eur) { Region.find_by(name:"Europe") }
+  let(:afr) { Region.find_by(name:"Africa") }
+
   describe "set_existing_blog_wrapper_for_date" do
     # let(:deal_with_info) { 
     #   Deal.create(posted_date: Date.today, blog_head: "Header", blog_foot: "Footer") 
@@ -26,4 +32,11 @@ RSpec.describe Deal, type: :model do
     end
   end
 
+  describe "Deal creation" do
+    it "sets region for a new deal with destinations" do
+      d = Deal.create(destinations: [cdg, mad])
+      expect(d.region).to eq(eur)
+      expect(d.posted_date).to eq(Date.today)
+    end
+  end
 end

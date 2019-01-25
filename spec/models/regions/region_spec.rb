@@ -145,6 +145,8 @@ describe "Region as real relationship" do
       expect(d.region_id).to eq(afr.id)
     end
   end
+
 end
+
 
 end # TOTALLY UNCLEAR WHY THIS LAST AND IS REQUIRED!!!! (BUT IT IS!)
