@@ -31,5 +31,13 @@ class Deal < ApplicationRecord
     posted_date < Date.today - 7 if posted_date
   end
 
+  def destinations=(airports)
+    destinations.clear
+    airports.each do |airport|
+      destinations << airport
+    end
+    set_region
+  end
+
 end
 

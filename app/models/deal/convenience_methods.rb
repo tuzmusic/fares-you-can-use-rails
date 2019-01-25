@@ -21,6 +21,7 @@ class Deal < ApplicationRecord
 
   def destination_codes=(comma_separated_string)
     self.destinations = Deal.airports_from_string(comma_separated_string)
+    set_region
   end
 
   def destination_codes

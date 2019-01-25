@@ -14,6 +14,7 @@ RSpec.describe "Regions views" do
     it "shows the number of deals for each region" do
       d = Deal.create
       d.destination_codes = "CDG"
+      binding.pry
       page.refresh
 
       expect(page).to have_content('Europe (1 deal)')
