@@ -38,4 +38,11 @@ describe Deal, type: :model do
       expect(d.posted_date).to eq(Date.today)
     end
   end
+
+  describe "Deal#set_slug" do
+    it "sets the slug for the deal on creation, replacing slashes and em-dashes with spaces" do
+      d = Deal.create(headline:"DCA to Des Moines, IA for $193 non-stop round trip - American Airlines")
+      expect(d.slug).to eq("dca-to-des-moines-ia-for-193-non-stop-round-trip-american-airlines")
+    end
+  end
 end
