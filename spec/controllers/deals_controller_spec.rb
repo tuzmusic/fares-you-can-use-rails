@@ -55,12 +55,12 @@ RSpec.describe DealsController, type: :controller do
   describe "edit" do
     it "edits a deal with given params" do
       create_deal
-      original_id = Deal.last.id
+      original_slug = Deal.last.slug
 
-      patch :update, params: { use_route: 'deals/edit/', id: original_id, deal: editing_params[:deal] }
+      patch :update, params: { use_route: 'deals/edit/', slug: original_slug, deal: editing_params[:deal] }
 
       d = Deal.last
-      expect(d.id).to eq original_id
+      expect(d.slug).to eq original_slug
       expect(d.headline).to eq editing_params[:deal][:headline]
       expect(d.description).to eq editing_params[:deal][:description]
       expect(d.start_date).to eq editing_params[:deal][:start_date]
@@ -74,11 +74,11 @@ RSpec.describe DealsController, type: :controller do
   describe "destroy" do
     it "destroys a deal with a given id" do
       create_deal
-      original_id = Deal.last.id
+      original_slug = Deal.last.slug
 
-      delete :destroy, params: {id: original_id}
+      delete :destroy, params: {slug: original_slug}
 
-      expect(Deal.where(id: original_id)).not_to exist
+      expect(Deal.where(slug: original_slug)).not_to exist
     end
   end  
 end
