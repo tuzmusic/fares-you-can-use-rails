@@ -24,6 +24,10 @@ class Deal < ApplicationRecord
     update(slug: slug_for(headline.gsub(' - ',' ').gsub('/',' ')))
   end
 
+  def to_param
+    slug
+  end
+
   def region
     Region.find_by(id: region_id) || set_region
   end

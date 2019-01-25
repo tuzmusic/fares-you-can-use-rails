@@ -1,6 +1,11 @@
 class DealsController < ApplicationController
 
   before_action :require_admin, only: [:new, :create, :update, :destroy]
+  before_action :set_deal, only: [:show, :edit, :update, :destroy]
+
+  def set_deal
+    @deal = Deal.find_by slug: params[:slug]
+  end
 
   def index
     real_deals = Deal.where.not(posted_date: nil) # TODO - destroy some deals!
@@ -9,7 +14,6 @@ class DealsController < ApplicationController
   end  
 
   def show
-    @deal = Deal.find(params[:id])
   end
 
   def new
@@ -25,22 +29,19 @@ class DealsController < ApplicationController
   end
 
   def edit
-    @deal = Deal.find(params[:id])
   end
   
   def update
-    deal = Deal.find(params[:id])
-    deal.update(deal_params)
-    deal.origin_codes = params[:deal][:origins] if params[:deal][:origins]
-    deal.destination_codes = params[:deal][:destinations] if params[:deal][:destinations]
+    @deal.update(deal_params)
+    @deal.origin_codes = params[:deal][:origins] if params[:deal][:origins]
+    @deal.destination_codes = params[:deal][:destinations] if params[:deal][:destinations]
 
-    redirect_to deal_path(params[:id])
+    redirect_to deal_path(@deal)
     # TO DO: error handling (if Deal.update(deal_params)...)
   end
 
   def destroy
-    deal = Deal.find(params[:id])
-    deal.destroy
+    @deal.destroy
     redirect_to deals_path
   end
 
