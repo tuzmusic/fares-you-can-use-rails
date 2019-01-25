@@ -25,4 +25,15 @@ RSpec.describe "Regions views" do
       expect(current_path).to eq('/regions/africa')
     end
   end
+
+  describe "show" do
+    let(:eur) { Region.find_by name: "Europe" }
+    before :each do
+      visit region_path(region)
+    end
+    
+    it "lists all the deals for that region" do
+      
+    end
+  end
 end
