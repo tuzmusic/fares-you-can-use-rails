@@ -32,32 +32,28 @@ RSpec.describe "Regions views" do
     let(:dca) { Airport.iata("DCA") }
     let(:cdg) { Airport.iata("CDG") }
     let(:ord) { Airport.iata("ORD") }
-    let(:d1) {  Deal.create.tap do |d|
-                d.headline = "A Deal for Europe in February"
+    let(:d1) {  d = Deal.create(headline: = "A Deal for Europe in February")
+                d.posted_date = Date.today
                 d.description = "Some Info"
                 d.origin = dca
                 d.destination = cdg
                 d.start_date = Date.new(2019,2,1)
                 d.end_date = Date.new(2019,2,28)
-                end
               }
-    let(:d2) {  Deal.create.tap do |d|
-                d.headline = "A Deal for Europe in March"
+    let(:d2) {  d = Deal.create(headline: = "A Deal for Europe in March")
+                d.posted_date = Date.new(1,1,2018)
                 d.description = "Some Info"
                 d.origin = dca
                 d.destination = cdg
                 d.start_date = Date.new(2019,3,1)
                 d.end_date = Date.new(2019,3,28)
-                end
               }
-    let(:d3) {  Deal.create.tap do |d|
-                d.headline = "A Deal for O'Hare in March"
+    let(:d3) {  d = Deal.create(headline:"A Deal for O'Hare in March")
                 d.description = "Some Info"
                 d.origin = dca
                 d.destination = ord
                 d.start_date = Date.new(2019,3,1)
                 d.end_date = Date.new(2019,3,28)
-                end
               }
 
     before :each do
@@ -65,28 +61,42 @@ RSpec.describe "Regions views" do
     end
     
     it "lists all the deals for that region" do
-
-      expect(true).to eq(false)
+      expect(page).to have_content "A Deal for Europe in February"
+      expect(page).to have_content "A Deal for Europe in March"
+      expect(page.all('#deal').count).to eq 2
     end
 
-    it "shows the dates for the deal" do
-      exit
+    it "shows the dates for the deals" do
+      expect(page).to have_content "Feb. 1, 2019 to Feb. 28, 2019"
+      expect(page).to have_content "Mar. 1, 2019 to Mar. 28, 2019"
     end
     
-    it "sorts the deals by date" do
-      exit
+    it "sorts the deals from earliest to latest" do
+      all_text = page.all.map(:text)
+      expect(text.index("Europe in February")).to be < text.index("Europe in February")
     end
 
-    it "has a link to each deak" do
-      exit
+    xit "doesn't show deals for dates in the past" do
+      d = Deal.create(headline:"A Deal for Europe Last Year")
+      d.description = "Some Info"
+      d.origin = dca
+      d.destination = cdg
+      d.start_date = Date.new(2018,3,1)
+      d.end_date = Date.new(2018,3,28)
+      expect(page).to_not have_content "A Deal for Europe Last Year"
+    end
+    
+    it "has a link to each deal" do
+      expect(page).to have_link href: region_deal_path(d1)
+      expect(page).to have_link href: region_deal_path(d2)
     end
 
     it "doesn't show deals from other regions" do
-      exit
+      expect(page).to_not have_content "O'Hare"
     end
 
     it "marks deals as possibly expired" do
-      exit
+      expect(page).to have_content "POSSIBLY EXPIRED - A Deal for Europe in March"
     end
   end
 end
