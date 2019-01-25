@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   get 'regions/show'
   resources :deals
   
-  resources :regions, only: [:index, :show] do
-    resources :deals
-  end
+  # resources :regions, param: :slug, only: [:index, :show] do
+  #   resources :deals
+  # end
+
+  resources :regions, param: :slug
 
   get 'pry', to: 'application#pry'
 end
