@@ -1,11 +1,11 @@
 class Deal < ApplicationRecord
 
   def origin=(airport)
-    origins << airport
+    update(origins:[airport])
   end
-
+  
   def destination=(airport)
-    destinations << airport
+    update(destinations:[airport])
   end
 
   def self.airports_from_string(comma_separated_string)

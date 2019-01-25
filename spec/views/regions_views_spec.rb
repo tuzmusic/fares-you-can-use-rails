@@ -31,11 +31,32 @@ RSpec.describe "Regions views" do
     let(:eur) { Region.find_by name: "Europe" }
     let(:dca) { Airport.iata("DCA") }
     let(:cdg) { Airport.iata("CDG") }
+    let(:ord) { Airport.iata("ORD") }
     let(:d1) {  Deal.create.tap do |d|
                 d.headline = "A Deal for Europe in February"
                 d.description = "Some Info"
-                d.origins = [dca]
-                d.destinations = [cdg]
+                d.origin = dca
+                d.destination = cdg
+                d.start_date = Date.new(2019,2,1)
+                d.end_date = Date.new(2019,2,28)
+                end
+              }
+    let(:d2) {  Deal.create.tap do |d|
+                d.headline = "A Deal for Europe in March"
+                d.description = "Some Info"
+                d.origin = dca
+                d.destination = cdg
+                d.start_date = Date.new(2019,3,1)
+                d.end_date = Date.new(2019,3,28)
+                end
+              }
+    let(:d3) {  Deal.create.tap do |d|
+                d.headline = "A Deal for O'Hare in March"
+                d.description = "Some Info"
+                d.origin = dca
+                d.destination = ord
+                d.start_date = Date.new(2019,3,1)
+                d.end_date = Date.new(2019,3,28)
                 end
               }
 
