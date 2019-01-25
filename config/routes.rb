@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   #   resources :deals
   # end
 
-  resources :regions, param: :slug
+  resources :regions, param: :slug, only: [:index, :show]
 
   get 'pry', to: 'application#pry'
 end
