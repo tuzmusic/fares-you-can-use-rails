@@ -79,7 +79,6 @@ describe "Region as real relationship" do
       it "saves the deal with the region for that destination, and correctly sets the destinations" do
         d = Deal.create(destinations: [cdg, mad])
         expect(d.destinations).to eq([cdg, mad])
-        # expect(d.region).to eq(eur)
         expect(d.region_id).to eq(eur.id)
       end
     end
@@ -89,7 +88,6 @@ describe "Region as real relationship" do
         d = Deal.create
         d.destination_codes = "CDG, MAD"
         expect(d.destinations).to eq([cdg, mad])
-        # expect(d.region).to eq(eur)
         expect(d.region_id).to eq(eur.id)
       end
     end
@@ -99,7 +97,6 @@ describe "Region as real relationship" do
         d = Deal.create
         d.destinations = [cdg, mad]
         expect(d.destinations).to eq([cdg, mad])
-        # expect(d.region).to eq(eur)
         expect(d.region_id).to eq(eur.id)
       end
     end
@@ -107,7 +104,6 @@ describe "Region as real relationship" do
     context "deal without destinations" do
       it "has no region assigned" do
         d = Deal.create
-        expect(d.region).to eq(nil)
       end
     end
   end
@@ -116,14 +112,12 @@ describe "Region as real relationship" do
     context "deal already has a region assigned" do
       it "returns the region" do
         d = Deal.create(region: eur)
-        # expect(d.region).to eq(eur)
         expect(d.region_id).to eq(eur.id)
       end
   
     context "deal doesn't have a region yet" do
       it "sets the deal's region to its destination's region" do
         d = Deal.create(destinations:[cdg, mad])
-        # expect(d.region).to eq(eur)
         expect(d.region_id).to eq(eur.id)
       end
     end
@@ -133,7 +127,6 @@ describe "Region as real relationship" do
     it "sets the region for a regionless deal" do
       d = Deal.create
       d.region = eur
-      # expect(d.region).to eq(eur)
       expect(d.region_id).to eq(eur.id)
     end
 
@@ -141,7 +134,6 @@ describe "Region as real relationship" do
       d = Deal.create(destinations: [cdg, mad])
       expect(d.region_id).to eq(eur.id)
       d.region = afr
-      # expect(d.region).to eq(afr)
       expect(d.region_id).to eq(afr.id)
     end
   end
