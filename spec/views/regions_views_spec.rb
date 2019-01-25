@@ -60,6 +60,14 @@ RSpec.describe "Regions views" do
       visit region_path(eur)  # probably wrong
     end
     
+    it "should actually be a deals index page" do
+      expect(current_path).to eq '/regions/europe/deals'
+    end
+
+    it "has a heading for the region" do
+      expect(page).to have_css 'h1', text:"Europe Deals" 
+    end
+
     it "lists all the deals for that region" do
       expect(page).to have_content "A Deal for Europe in February"
       expect(page).to have_content "A Deal for Europe in March"
