@@ -17,7 +17,7 @@ class Deal < ApplicationRecord
   after_create do |deal|
     deal.set_region
     deal.posted_date ||= Date.today
-    deal.set_slug
+    deal.set_slug if deal.headline
   end
 
   def set_slug

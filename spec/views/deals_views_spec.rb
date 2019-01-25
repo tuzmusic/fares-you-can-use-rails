@@ -65,16 +65,16 @@ describe "Deals Views", type: :feature do
 
     it "creates a deal and redirects to the show page for the newly created deal" do
       AirportSpecHelper.create_ny_and_dc_airports
-
-      d = Deal.create(headline: "Great deals to NYC!",
-        description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
+      d = Deal.create(description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
         start_date: Date.new(2019,2,1),
         end_date: Date.new(2019,2,8),
         instructions: "Google it! It's everywhere!",
         origin_ids: [Airport.iata("DCA").id, Airport.iata("IAD").id, Airport.iata("BWI").id],  
         destination_ids: [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id])
-
-      fill_in 'Headline', with: d.headline
+      
+      headline = "Great deals to NYC!" # can't create both deals with same headline or slug will break validation
+      
+      fill_in 'Headline', with: headline
       fill_in 'Description', with: d.description
       fill_in 'Instructions', with: d.instructions
       
@@ -91,7 +91,7 @@ describe "Deals Views", type: :feature do
       expect{ click_on 'Create Deal' }.to change{ Deal.count }.by(1)
       
       nd = Deal.last
-      expect(nd.headline).to eq d.headline
+      expect(nd.headline).to eq headline
       expect(nd.description).to eq d.description
       expect(nd.start_date).to eq d.start_date
       expect(nd.end_date).to eq d.end_date
@@ -125,7 +125,7 @@ describe "Deals Views", type: :feature do
 
     it "links to each deal's show page" do
       click_link "Another deal for last Christmas"
-      expect(current_path).to eq("/deals/#{Deal.last.id}")
+      expect(current_path).to eq("/deals/#{Deal.last.slug}")
     end
     
     it "marks a deal as possibly expired if it's more than a week old" do
