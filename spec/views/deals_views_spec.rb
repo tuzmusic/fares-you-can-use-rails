@@ -1,7 +1,7 @@
 require 'rails_helper'
 require_relative '../spec_helpers/create_ny_and_dc_airports.rb'
 
-RSpec.describe "Deals Views", type: :feature do
+describe "Deals Views", type: :feature do
 
   describe "show" do
     let(:deal) { Deal.create(

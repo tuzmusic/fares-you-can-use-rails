@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_24_214456) do
+ActiveRecord::Schema.define(version: 2019_01_25_201656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_01_24_214456) do
     t.string "blog_head"
     t.string "blog_foot"
     t.integer "region_id"
+    t.string "slug"
+    t.index ["slug"], name: "index_deals_on_slug", unique: true
   end
 
   create_table "regions", force: :cascade do |t|

@@ -12,9 +12,16 @@ class Deal < ApplicationRecord
   
   belongs_to :region, optional: true
 
+  include Slugifiable::InstanceMethods
+  
   after_create do |deal|
     deal.set_region
     deal.posted_date ||= Date.today
+    deal.set_slug
+  end
+
+  def set_slug
+    update(slug: slug_for(headline.gsub(' - ',' ').gsub('/',' ')))
   end
 
   def region
