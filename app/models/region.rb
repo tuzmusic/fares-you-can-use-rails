@@ -10,6 +10,10 @@ class Region < ApplicationRecord
     r.update(slug: slug_for(r.name))
   end
 
+  def to_param
+    slug
+  end
+
   def state_names=(comma_separated_string)
     states = comma_separated_string.split(", ")
     states.each do |state|
