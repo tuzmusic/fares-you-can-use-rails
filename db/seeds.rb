@@ -15,6 +15,7 @@ class Seeds
   end
   
   def self.prompt 
+    puts ""
     puts "Choose what to seed:"
     puts "[R]egions (currently #{Region.count})"
     puts "[A]irports (currently #{Airport.count})"
@@ -24,4 +25,5 @@ class Seeds
     puts "[Q]uit" 
   end
 end 
+ARGV.clear if ARGV[1].include?("RAILS_ENV")
 Seeds.run_cli(ARGV)
