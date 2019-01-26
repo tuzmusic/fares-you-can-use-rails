@@ -26,13 +26,13 @@ RSpec.describe "Regions views" do
     end
   end
 
-  describe "show (deal#index with region_id, or something)" do
+  describe "region#show (deal#index with region_id, or something)" do
 
     let(:eur) { Region.find_by name: "Europe" }
     let(:dca) { Airport.iata("DCA") }
     let(:cdg) { Airport.iata("CDG") }
     let(:ord) { Airport.iata("ORD") }
-    let(:d1) {  d = Deal.create(headline: = "A Deal for Europe in February")
+    let(:d1) {  d = Deal.create(headline: "A Deal for Europe in February")
                 d.posted_date = Date.today
                 d.description = "Some Info"
                 d.origin = dca
@@ -40,7 +40,7 @@ RSpec.describe "Regions views" do
                 d.start_date = Date.new(2019,2,1)
                 d.end_date = Date.new(2019,2,28)
               }
-    let(:d2) {  d = Deal.create(headline: = "A Deal for Europe in March")
+    let(:d2) {  d = Deal.create(headline: "A Deal for Europe in March")
                 d.posted_date = Date.new(1,1,2018)
                 d.description = "Some Info"
                 d.origin = dca
@@ -56,8 +56,9 @@ RSpec.describe "Regions views" do
                 d.end_date = Date.new(2019,3,28)
               }
 
+
     before :each do
-      visit region_path(eur)  # probably wrong
+      visit region_deals_path(eur)  # probably wrong
     end
     
     it "should actually be a deals index page" do

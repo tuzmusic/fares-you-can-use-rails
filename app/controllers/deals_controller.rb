@@ -8,9 +8,14 @@ class DealsController < ApplicationController
   end
 
   def index
-    real_deals = Deal.where.not(posted_date: nil) # TODO - destroy some deals!
-    grouped = real_deals.group_by(&:posted_date) 
-    @deals = grouped
+    if region_slug = params[:region_slug]
+      @region = Region.find_by(slug: region_slug)
+      render :region_index
+    else
+      real_deals = Deal.where.not(posted_date: nil)
+      grouped = real_deals.group_by(&:posted_date) 
+      @deals = grouped
+    end
   end  
 
   def show
