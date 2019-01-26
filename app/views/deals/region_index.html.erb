@@ -1,1 +1,4 @@
 <h1><%= @region.name %> Deals</h1>
+<div class="deals">
+  <%= sanitize deal_paragraphs_for_group(@deals) %>
+</div>
