@@ -4,7 +4,8 @@ class DealsController < ApplicationController
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
 
   def set_deal
-    @deal = Deal.find_by slug: params[:slug]
+    param = params[:slug] || params[:id]  # deal_path gives deal in p[slug], region_deal_path gives deal in p[id]
+    @deal = Deal.find_by slug: param
   end
 
   def index
@@ -20,6 +21,7 @@ class DealsController < ApplicationController
   end  
 
   def show
+    # binding.pry
   end
 
   def new
