@@ -16,7 +16,7 @@ X Delete deal option on index/edit/show pages
 X Airport#region
 X Deal#region
 X Fix airports without states/regions
-- Navigable deals index actions/views by location (nested resources; regions inside deals)
+X Navigable deals index actions/views by location (nested resources; regions inside deals)
 - Resource should actually be deals:regions:deals but show path should be /deals/region-name/deal-name)
 
 ## Users
