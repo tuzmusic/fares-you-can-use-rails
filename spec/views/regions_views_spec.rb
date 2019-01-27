@@ -20,9 +20,9 @@ RSpec.describe "Regions views" do
       expect(page).to have_content('(0 deals)', count: Region.count-1)
     end
 
-    it "links to each region's show page, using a SLUG" do
+    it "links to each region's deal index page, using a SLUG" do
       click_link 'Africa'
-      expect(current_path).to eq('/regions/africa')
+      expect(current_path).to eq('/regions/africa/deals')
     end
   end
 
@@ -101,7 +101,6 @@ RSpec.describe "Regions views" do
     end
     
     it "has a link to each deal" do
-      # binding.pry
       expect(page).to have_link d1.headline, href: region_deal_path(eur, d1)
       expect(page).to have_link d2.headline, href: region_deal_path(eur, d2)
     end
@@ -111,7 +110,7 @@ RSpec.describe "Regions views" do
     end
 
     it "marks deals as possibly expired" do
-      expect(page).to have_content "POSSIBLY EXPIRED - A Deal for Europe in March"
+      expect(page).to have_content "POSSIBLY EXPIRED! - A Deal for Europe in March"
     end
   end
 end
