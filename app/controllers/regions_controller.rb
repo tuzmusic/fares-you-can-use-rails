@@ -3,10 +3,10 @@ class RegionsController < ApplicationController
 
   def index
     @regions = Region.all.by_most_deals
-    # binding.pry
   end
 
   def show
+    redirect_to region_deals_path(@region)
   end
 
   def set_region

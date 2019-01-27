@@ -46,7 +46,6 @@ describe "Regions views" do
     end 
 
     it "shows all the regions" do
-      # binding.pry
       expect(page.all('.region').count).to eq Region.count
       expect(page).to have_content("Europe")
     end
