@@ -1,9 +1,7 @@
 module DealsHelper
 
   # ---- INDEX/SHOW ---- 
-  def brief_time(date)
-    date&.strftime("%b. %e, %Y")
-  end
+  def brief_time(date) date&.strftime("%b. %e, %Y") end
 
   def date_range(deal)
     "#{brief_time(deal.start_date)} to #{brief_time(deal.end_date)}"

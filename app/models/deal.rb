@@ -12,6 +12,20 @@ class Deal < ApplicationRecord
   
   belongs_to :region, optional: true
 
+  # ------ METHODS --------
+  def probably_expired?
+    posted_date < Date.today - 7 if posted_date
+  end
+
+  def destinations=(airports)
+    destinations.clear
+    airports.each do |airport|
+      destinations << airport
+    end
+    set_region
+  end
+
+  # ------ SLUG --------
   include Slugifiable::InstanceMethods
   
   after_create do |deal|
@@ -24,10 +38,9 @@ class Deal < ApplicationRecord
     update(slug: slug_for(headline.gsub(' - ',' ').gsub('/',' ')))
   end
 
-  def to_param
-    slug
-  end
+  def to_param() slug end
 
+  # ------ REGION --------
   def region
     Region.find_by(id: region_id) || set_region
   end
@@ -39,17 +52,6 @@ class Deal < ApplicationRecord
     end
   end
 
-  def probably_expired?
-    posted_date < Date.today - 7 if posted_date
-  end
-
-  def destinations=(airports)
-    destinations.clear
-    airports.each do |airport|
-      destinations << airport
-    end
-    set_region
-  end
 
 end
 

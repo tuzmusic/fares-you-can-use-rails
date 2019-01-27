@@ -39,6 +39,7 @@ RSpec.describe "Regions views" do
                 d.destination = cdg
                 d.start_date = Date.new(2019,2,1)
                 d.end_date = Date.new(2019,2,28)
+                d.save
               }
     let(:d2) {  d = Deal.create(headline: "A Deal for Europe in March")
                 d.posted_date = Date.new(2018,1,1)
@@ -47,6 +48,7 @@ RSpec.describe "Regions views" do
                 d.destination = cdg
                 d.start_date = Date.new(2019,3,1)
                 d.end_date = Date.new(2019,3,28)
+                d.save
               }
     let(:d3) {  d = Deal.create(headline:"A Deal for O'Hare in March")
                 d.description = "Some Info"
@@ -54,6 +56,7 @@ RSpec.describe "Regions views" do
                 d.destination = ord
                 d.start_date = Date.new(2019,3,1)
                 d.end_date = Date.new(2019,3,28)
+                d.save
               }
 
 
@@ -73,8 +76,7 @@ RSpec.describe "Regions views" do
     it "lists all the deals for that region" do
       expect(page).to have_content "A Deal for Europe in February"
       expect(page).to have_content "A Deal for Europe in March"
-      binding.pry
-      expect(page.all('#deal').count).to eq 2
+      expect(page.all('.deal').count).to eq 2
     end
 
     it "shows the dates for the deals" do
@@ -83,17 +85,18 @@ RSpec.describe "Regions views" do
     end
     
     it "sorts the deals from earliest to latest" do
-      all_text = page.all.map(:text)
-      expect(text.index("Europe in February")).to be < text.index("Europe in February")
+      expect(page.body.index("Europe in February")).to be < page.body.index("Europe in March")
     end
 
-    xit "doesn't show deals for dates in the past" do
+    it "doesn't show deals for dates in the past" do
       d = Deal.create(headline:"A Deal for Europe Last Year")
       d.description = "Some Info"
       d.origin = dca
       d.destination = cdg
       d.start_date = Date.new(2018,3,1)
       d.end_date = Date.new(2018,3,28)
+      d.save
+      page.refresh
       expect(page).to_not have_content "A Deal for Europe Last Year"
     end
     
