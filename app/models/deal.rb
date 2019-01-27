@@ -12,6 +12,10 @@ class Deal < ApplicationRecord
   
   belongs_to :region, optional: true
 
+  # ------ SCOPE METHODS --------
+  # scope :current, -> { where {|d| d.end_date > Date.today} } # uses ActiveRecord but returns a WhereChain
+  scope :current, -> { all.select {|d| d.end_date > Date.today} } # works, outside of ActiveRecord
+
   # ------ METHODS --------
   def probably_expired?
     posted_date < Date.today - 7 if posted_date

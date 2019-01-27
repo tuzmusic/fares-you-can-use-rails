@@ -89,12 +89,12 @@ RSpec.describe "Regions views" do
     end
 
     it "doesn't show deals for dates in the past" do
-      d = Deal.create(headline:"A Deal for Europe Last Year")
+      d = Deal.create(headline:"A Deal for Europe Just Passed")
       d.description = "Some Info"
       d.origin = dca
       d.destination = cdg
       d.start_date = Date.new(2018,3,1)
-      d.end_date = Date.new(2018,3,28)
+      d.end_date = Date.yesterday
       d.save
       page.refresh
       expect(page).to_not have_content "A Deal for Europe Last Year"
