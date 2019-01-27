@@ -17,10 +17,10 @@ module DealsHelper
     end.join
   end
 
-  def deal_paragraph_for_deal(deal)
+  def deal_paragraph_for_deal(deal, region=nil)
     text = "<p class='deal'>"
     text += "<span class='warning'>POSSIBLY EXPIRED! - </span>" if deal.probably_expired?
-    text += link_to deal.headline, deal
+    text += region ? (link_to deal.headline, region_deal_path(region, deal)) : (link_to deal.headline, deal)
     text += "<br><span class='fly-dates'>Fly from " + date_range(deal)
     text += "</span></p>"
   end

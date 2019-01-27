@@ -39,7 +39,7 @@ RSpec.describe "Regions views" do
                 d.destination = cdg
                 d.start_date = Date.new(2019,2,1)
                 d.end_date = Date.new(2019,2,28)
-                d.save
+                d.save; d
               }
     let(:d2) {  d = Deal.create(headline: "A Deal for Europe in March")
                 d.posted_date = Date.new(2018,1,1)
@@ -48,7 +48,7 @@ RSpec.describe "Regions views" do
                 d.destination = cdg
                 d.start_date = Date.new(2019,3,1)
                 d.end_date = Date.new(2019,3,28)
-                d.save
+                d.save; d
               }
     let(:d3) {  d = Deal.create(headline:"A Deal for O'Hare in March")
                 d.description = "Some Info"
@@ -56,7 +56,7 @@ RSpec.describe "Regions views" do
                 d.destination = ord
                 d.start_date = Date.new(2019,3,1)
                 d.end_date = Date.new(2019,3,28)
-                d.save
+                d.save; d
               }
 
 
@@ -101,8 +101,9 @@ RSpec.describe "Regions views" do
     end
     
     it "has a link to each deal" do
-      expect(page).to have_link href: region_deal_path(d1)
-      expect(page).to have_link href: region_deal_path(d2)
+      # binding.pry
+      expect(page).to have_link d1.headline, href: region_deal_path(eur, d1)
+      expect(page).to have_link d2.headline, href: region_deal_path(eur, d2)
     end
 
     it "doesn't show deals from other regions" do
