@@ -1,33 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Regions views" do
-  describe "index" do
-    before :each do
-      visit regions_path 
-    end 
-
-    it "shows all the regions" do
-      expect(page.all('.region').count).to eq Region.count
-      expect(page).to have_content("Europe")
-    end
-
-    it "shows the number of deals for each region" do
-      d = Deal.create
-      d.destination_codes = "CDG"
-      page.refresh
-
-      expect(page).to have_content('Europe (1 deal)')
-      expect(page).to have_content('(0 deals)', count: Region.count-1)
-    end
-
-    it "links to each region's deal index page, using a SLUG" do
-      click_link 'Africa'
-      expect(current_path).to eq('/regions/africa/deals')
-    end
-  end
-
-  describe "region#show (deal#index with region_id, or something)" do
-
+describe "Regions views" do
     let(:eur) { Region.find_by name: "Europe" }
     let(:dca) { Airport.iata("DCA") }
     let(:cdg) { Airport.iata("CDG") }
@@ -57,8 +30,49 @@ RSpec.describe "Regions views" do
                 d.start_date = Date.new(2019,3,1)
                 d.end_date = Date.new(2019,3,28)
                 d.save; d
-              }
+              }    
+    let(:d4) {  d = Deal.create(headline:"Another Deal for O'Hare in March")
+                d.description = "Some Info"
+                d.origin = dca
+                d.destination = ord
+                d.start_date = Date.new(2019,3,1)
+                d.end_date = Date.new(2019,3,28)
+                d.save; d
+              }    
 
+  describe "index" do
+    before :each do
+      visit regions_path 
+    end 
+
+    it "shows all the regions" do
+      # binding.pry
+      expect(page.all('.region').count).to eq Region.count
+      expect(page).to have_content("Europe")
+    end
+
+    it "shows the number of deals for each region" do
+      d = Deal.create
+      d.destination = cdg
+      page.refresh
+
+      expect(page).to have_content('Europe (1 deal)')
+      expect(page).to have_content('(0 deals)', count: Region.count-1)
+    end
+
+    it "links to each region's deal index page, using a SLUG" do
+      click_link 'Africa'
+      expect(current_path).to eq('/regions/africa/deals')
+    end
+
+    it "sorts regions from most to least deals" do
+      [d1,d3,d4] # create 2 ORD deals and 1 CDG deal
+      page.refresh
+      expect(page.text.index("Midwestern USA")).to be < page.text.index("Europe")
+    end
+  end
+
+  describe "region#show (deal#index with region_id, or something)" do
 
     before :each do
       [d1, d2, d3] # let variables must be touched to be created
@@ -67,6 +81,11 @@ RSpec.describe "Regions views" do
     
     it "should actually be a deals index page" do
       expect(current_path).to eq '/regions/europe/deals'
+    end
+
+    it "should redirect to the region_deals page from the region_path" do
+      visit region_path Region.first
+      expect(current_path).to eq region_deals_path(Region.first)
     end
 
     it "has a heading for the region" do

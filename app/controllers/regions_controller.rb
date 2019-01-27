@@ -2,7 +2,8 @@ class RegionsController < ApplicationController
   before_action :set_region, only: [:show]
 
   def index
-    @regions = Region.all
+    @regions = Region.all.by_most_deals
+    # binding.pry
   end
 
   def show
