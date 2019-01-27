@@ -10,7 +10,7 @@ class DealsController < ApplicationController
   def index
     if region_slug = params[:region_slug]
       @region = Region.find_by(slug: region_slug)
-      @deals = @region.deals.order(:start_date).current # .current should go after .deals once scope method is fixed
+      @deals = @region.deals.current.order(:start_date)
       render :region_index
     else
       real_deals = Deal.where.not(posted_date: nil)
