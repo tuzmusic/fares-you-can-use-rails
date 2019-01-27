@@ -15,12 +15,16 @@ module DealsHelper
 
   def deal_paragraphs_for_group(deals)
     deals.map do |deal|
-      text = "<p>"
-      text += "<span class='warning'>POSSIBLY EXPIRED! - </span>" if deal.probably_expired?
-      text += link_to deal.headline, deal
-      text += "<br> Fly from " + date_range(deal) 
-      text += "</p>"
+      deal_paragraph_for_deal(deal)
     end.join
+  end
+
+  def deal_paragraph_for_deal(deal)
+    text = "<p class='deal'>"
+    text += "<span class='warning'>POSSIBLY EXPIRED! - </span>" if deal.probably_expired?
+    text += link_to deal.headline, deal
+    text += "<br><span class='fly-dates'>Fly from " + date_range(deal)
+    text += "</span></p>"
   end
 
   # ---- NEW/EDIT ---- 

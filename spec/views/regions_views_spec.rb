@@ -41,7 +41,7 @@ RSpec.describe "Regions views" do
                 d.end_date = Date.new(2019,2,28)
               }
     let(:d2) {  d = Deal.create(headline: "A Deal for Europe in March")
-                d.posted_date = Date.new(1,1,2018)
+                d.posted_date = Date.new(2018,1,1)
                 d.description = "Some Info"
                 d.origin = dca
                 d.destination = cdg
@@ -58,6 +58,7 @@ RSpec.describe "Regions views" do
 
 
     before :each do
+      [d1, d2, d3] # let variables must be touched to be created
       visit region_deals_path(eur)  # probably wrong
     end
     
@@ -72,6 +73,7 @@ RSpec.describe "Regions views" do
     it "lists all the deals for that region" do
       expect(page).to have_content "A Deal for Europe in February"
       expect(page).to have_content "A Deal for Europe in March"
+      binding.pry
       expect(page.all('#deal').count).to eq 2
     end
 

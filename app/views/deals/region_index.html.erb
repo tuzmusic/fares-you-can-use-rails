@@ -1,4 +1,6 @@
 <h1><%= @region.name %> Deals</h1>
 <div class="deals">
-  <%= sanitize deal_paragraphs_for_group(@deals) %>
+  <% @deals.each do |deal| %>
+   <%= sanitize deal_paragraph_for_deal(deal) %>
+  <% end %>
 </div>
