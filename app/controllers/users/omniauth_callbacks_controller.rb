@@ -1,6 +1,9 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
+
+    # TO-DO: Handle an existing user logging in via facebook.
+
     @user = User.from_omniauth(request.env["omniauth.auth"])
     binding.pry
     if @user.persisted?
