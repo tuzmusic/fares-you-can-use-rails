@@ -1,8 +1,11 @@
 <div class="deal-info">
-  <h3><%= deal.headline %></h3>
-  <p><%= sanitize deal.description %></p>
-
+  <h3><%= deal.headline %>  
+    <% if deal.probably_expired? %>
+      <br><span class='warning'>POSSIBLY EXPIRED!</span>
+    <% end %>
   <%= sanitize instructions_for(deal) %>
+  </h3>
+  <p><%= sanitize deal.description %></p>
 </div>
 
 <div class="deal-stats">
