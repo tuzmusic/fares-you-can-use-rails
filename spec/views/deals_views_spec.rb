@@ -2,7 +2,10 @@ require 'rails_helper'
 require_relative '../spec_helpers/create_ny_and_dc_airports.rb'
 
 describe "Deals Views", type: :feature do
-
+  before :each do
+    create_user_and_sign_in
+  end
+  
   describe "show" do
     let(:deal) { Deal.create(
         headline: "Great deals to NYC!",

@@ -86,4 +86,18 @@ RSpec.configure do |config|
   # Gem.loaded_specs.values.map do |g| 
   #   config.filter_gems_from_backtrace(g.name) 
   # end
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers, type: :feature
+  
+end
+
+def create_user
+  User.create(email:"test@test.com", password:"123456", password_confirmation:"123456") 
+end
+
+def create_user_and_sign_in
+  user = create_user
+  sign_in user
 end

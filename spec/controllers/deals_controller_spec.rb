@@ -1,7 +1,7 @@
 require 'rails_helper'
 require_relative '../spec_helpers/create_ny_and_dc_airports.rb'
 
-RSpec.describe DealsController, type: :controller do
+describe DealsController, type: :controller do
 
   def create_deal
     post :create, params: creation_params
@@ -32,6 +32,10 @@ RSpec.describe DealsController, type: :controller do
       }   
     }
   }
+
+  before :each do
+    create_user_and_sign_in
+  end
 
   describe "create" do
 
