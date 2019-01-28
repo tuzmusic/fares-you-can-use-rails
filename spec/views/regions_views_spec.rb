@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-# describe "Regions views" do
-describe "Regions views", type: :view do
+describe "Regions views", type: :feature do
 
   let(:eur) { Region.find_by name: "Europe" }
   let(:dca) { Airport.iata("DCA") }
@@ -43,18 +42,15 @@ describe "Regions views", type: :view do
             }    
 
   before :each do
-    binding.pry
     create_user_and_sign_in
   end              
 
   describe "index" do
     before :each do
-      binding.pry
       visit regions_path 
     end 
 
     it "shows all the regions" do
-      binding.pry
       expect(page.all('.region').count).to eq Region.count
       expect(page).to have_content("Europe")
     end
