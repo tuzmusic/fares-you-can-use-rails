@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'regions/index'
   get 'regions/show'
   resources :deals, param: :slug
