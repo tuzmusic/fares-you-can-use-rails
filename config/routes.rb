@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   end
 
   root to: "deals#index"
-
+  get 'sign_out', to: 'devise/sessions#destroy'
   get 'pry', to: 'application#pry'
 end

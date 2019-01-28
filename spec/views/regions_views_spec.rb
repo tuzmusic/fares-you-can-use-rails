@@ -1,11 +1,7 @@
 require 'rails_helper'
 
-describe "Regions views" do
-
-  before :each do
-    user = create_user
-    sign_in users(user)
-  end  
+# describe "Regions views" do
+describe "Regions views", type: :view do
 
   let(:eur) { Region.find_by name: "Europe" }
   let(:dca) { Airport.iata("DCA") }
@@ -46,12 +42,19 @@ describe "Regions views" do
               d.save; d
             }    
 
+  before :each do
+    binding.pry
+    create_user_and_sign_in
+  end              
+
   describe "index" do
     before :each do
+      binding.pry
       visit regions_path 
     end 
 
     it "shows all the regions" do
+      binding.pry
       expect(page.all('.region').count).to eq Region.count
       expect(page).to have_content("Europe")
     end
@@ -66,7 +69,6 @@ describe "Regions views" do
     end
 
     it "links to each region's deal index page, using a SLUG" do
-      # binding.pry
       click_link 'Africa'
       expect(current_path).to eq('/regions/africa/deals')
     end
