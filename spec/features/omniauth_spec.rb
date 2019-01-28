@@ -31,12 +31,17 @@ describe "Facebook login" do
       expect(User.count).to eq 1
     end
 
-    it "successfully logs in that user" do
+    it "successfully logs in the preexisting user" do
       expect(page).to have_content "test@example.com"
     end
 
     it "assigns their name from their FB info" do
       expect(page).to have_content "John Doe"
+    end
+
+    it "adds their FB auth info" do
+      expect(User.last.provider).to eq "facebook"  
+      expect(User.last.uid).to eq "123545"
     end
 
 
