@@ -20,19 +20,15 @@ X Navigable deals index actions/views by location (nested resources; regions ins
 - Resource should actually be deals:regions:deals but show path should be /deals/region-name/deal-name)
 
 ## Users
-- Create users resource
+X Create users resource
 
 ### Sign-up
-- UsersController - create action
-- New User view - welcome pages
-  - Includes deals preferences, so lots of nested attributes here
+X UsersController - create action
 - FB authorization
 
 ### Sign-in
-- Use Devise gem? (or other gem? see authentication-and-authorization readme)
-- Add login to welcome/splash page
-- SessionsController (create and destroy only)
-- Access policy (require login)
+X Use Devise gem? (or other gem? see authentication-and-authorization readme)
+X SessionsController (create and destroy only)
 
 ## UI Interlude
 - Bootstrap review
@@ -41,11 +37,18 @@ X Navigable deals index actions/views by location (nested resources; regions ins
   - login/hello in navbar
 - Slugify deals
 
+## Access Control
+- Create Admin resource?
+- Access control for Admin routes (deals#create, etc)
+
 ## Pre-Your deals
 - User edit action
 - User edit (prefs) view
 
 ## Your Deals
+- New User view - welcome pages (see "Configuring views" in Devise)
+  - Includes deals preferences, so lots of nested attributes here
+- Add login to welcome/splash page (for existing user instead of new visitor)
 - Deals.for_user class/scope method
   - Could also be User#deals, but (1) that would be calling scope methods on Deal anyway, and (2) the project requires scope methods
 - Deals index for users 
