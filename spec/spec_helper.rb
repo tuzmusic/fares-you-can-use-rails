@@ -100,4 +100,6 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 
+  require_relative './spec_helpers/omniauth_helper'
+  config.include OmniAuthTestHelper
 end

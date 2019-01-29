@@ -1,44 +1,49 @@
 require 'rails_helper'
 
-describe "Regions views" do
-    let(:eur) { Region.find_by name: "Europe" }
-    let(:dca) { Airport.iata("DCA") }
-    let(:cdg) { Airport.iata("CDG") }
-    let(:ord) { Airport.iata("ORD") }
-    let(:d1) {  d = Deal.create(headline: "A Deal for Europe in February")
-                d.posted_date = Date.today
-                d.description = "Some Info"
-                d.origin = dca
-                d.destination = cdg
-                d.start_date = Date.new(2019,2,1)
-                d.end_date = Date.new(2019,2,28)
-                d.save; d
-              }
-    let(:d2) {  d = Deal.create(headline: "A Deal for Europe in March")
-                d.posted_date = Date.new(2018,1,1)
-                d.description = "Some Info"
-                d.origin = dca
-                d.destination = cdg
-                d.start_date = Date.new(2019,3,1)
-                d.end_date = Date.new(2019,3,28)
-                d.save; d
-              }
-    let(:d3) {  d = Deal.create(headline:"A Deal for O'Hare in March")
-                d.description = "Some Info"
-                d.origin = dca
-                d.destination = ord
-                d.start_date = Date.new(2019,3,1)
-                d.end_date = Date.new(2019,3,28)
-                d.save; d
-              }    
-    let(:d4) {  d = Deal.create(headline:"Another Deal for O'Hare in March")
-                d.description = "Some Info"
-                d.origin = dca
-                d.destination = ord
-                d.start_date = Date.new(2019,3,1)
-                d.end_date = Date.new(2019,3,28)
-                d.save; d
-              }    
+describe "Regions views", type: :feature do
+
+  let(:eur) { Region.find_by name: "Europe" }
+  let(:dca) { Airport.iata("DCA") }
+  let(:cdg) { Airport.iata("CDG") }
+  let(:ord) { Airport.iata("ORD") }
+  let(:d1) {  d = Deal.create(headline: "A Deal for Europe in February")
+              d.posted_date = Date.today
+              d.description = "Some Info"
+              d.origin = dca
+              d.destination = cdg
+              d.start_date = Date.new(2019,2,1)
+              d.end_date = Date.new(2019,2,28)
+              d.save; d
+            }
+  let(:d2) {  d = Deal.create(headline: "A Deal for Europe in March")
+              d.posted_date = Date.new(2018,1,1)
+              d.description = "Some Info"
+              d.origin = dca
+              d.destination = cdg
+              d.start_date = Date.new(2019,3,1)
+              d.end_date = Date.new(2019,3,28)
+              d.save; d
+            }
+  let(:d3) {  d = Deal.create(headline:"A Deal for O'Hare in March")
+              d.description = "Some Info"
+              d.origin = dca
+              d.destination = ord
+              d.start_date = Date.new(2019,3,1)
+              d.end_date = Date.new(2019,3,28)
+              d.save; d
+            }    
+  let(:d4) {  d = Deal.create(headline:"Another Deal for O'Hare in March")
+              d.description = "Some Info"
+              d.origin = dca
+              d.destination = ord
+              d.start_date = Date.new(2019,3,1)
+              d.end_date = Date.new(2019,3,28)
+              d.save; d
+            }    
+
+  before :each do
+    create_user_and_sign_in
+  end              
 
   describe "index" do
     before :each do

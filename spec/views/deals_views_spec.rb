@@ -2,7 +2,10 @@ require 'rails_helper'
 require_relative '../spec_helpers/create_ny_and_dc_airports.rb'
 
 describe "Deals Views", type: :feature do
-
+  before :each do
+    create_user_and_sign_in
+  end
+  
   describe "show" do
     let(:deal) { Deal.create(
         headline: "Great deals to NYC!",
@@ -29,8 +32,10 @@ describe "Deals Views", type: :feature do
       expect(page).to have_content "Feb. 8, 2019"
     end
 
-    xit "marks a deal as possibly expired if it's more than a week old" do
-      
+    it "marks a deal as possibly expired if it's more than a week old" do
+      deal.update(posted_date: Date.new(2018,2,1))
+      page.refresh
+      expect(page).to have_content "POSSIBLY EXPIRED"
     end
 
     it "shows deal's origin airports" do
