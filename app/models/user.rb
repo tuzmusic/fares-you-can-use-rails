@@ -3,8 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         devise :omniauthable, omniauth_providers: %i[facebook]
+  devise :omniauthable, omniauth_providers: %i[facebook]
 
+  def full_name
+    [first_name, last_name].join(" ") if first_name && last_name
+  end
 
   def self.from_omniauth(auth)
     find_or_create_by(email: auth.info.email).tap do |user|
