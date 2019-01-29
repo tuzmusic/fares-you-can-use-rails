@@ -10,7 +10,6 @@ describe "Facebook login" do
     end
 
     it "successfully logs in using Facebook" do
-      binding.pry
       expect(page).to have_content "John Doe"
     end
 
@@ -33,7 +32,7 @@ describe "Facebook login" do
     end
 
     it "successfully logs in the preexisting user" do
-      expect(page).to have_content "test@example.com"
+      expect(page).to have_content "John Doe"
     end
 
     it "assigns their name from their FB info" do
@@ -52,12 +51,12 @@ describe "Facebook login" do
       click_button "Log in"
       expect(page).to have_content "John Doe"
     end
-
-
   end
   
   context "new email user for existing facebook user" do
-    
+    xit "confirms that they want to create and link accounts; sets a new password; can log in with FB or PW" do
+      
+    end
   end
 
 end
