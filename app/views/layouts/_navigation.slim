@@ -1,6 +1,6 @@
 ul.nav.navbar-nav#navigation
   - path = request.env['PATH_INFO']
-  li class=(path.start_with?("/deals") ? 'active' : 'inactive') 
+  li class=(path.start_with?("/deals") || path == "/" ? 'active' : 'inactive') 
     = link_to  "Deals", deals_path
   li class=(path.start_with?("/regions") ? 'active' : 'inactive') 
     = link_to  "Regions", regions_path
