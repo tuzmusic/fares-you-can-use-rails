@@ -9,6 +9,11 @@ class Seeds
       when 'd' then Deal.import
       when 'c' then State.import_all_and_assign_to_airports
       when 's' then Region.assign_us_states
+      when 't'
+        Airport.import_all_from_gem
+        State.import_all_and_assign_to_airports
+        Region.import_all
+        Region.assign_us_states
       when 'q' then abort "Quitting."
       end
     self.run_cli
@@ -22,8 +27,10 @@ class Seeds
     puts "[D]eals (currently #{Deal.count})"
     puts "[C]reate states (if needed) and assign to airports (currently #{State.count})"
     puts "Assign [S]tates to Regions (currently #{State.where.not(region:nil).count} states have regions)"
+    puts "Seed S[T]atic databases (everything except deals)"
     puts "[Q]uit" 
   end
 end 
+
 ARGV.clear if ARGV[1].include?("RAILS_ENV")
 Seeds.run_cli(ARGV)
