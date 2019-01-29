@@ -31,11 +31,11 @@ X Use Devise gem? (or other gem? see authentication-and-authorization readme)
 X SessionsController (create and destroy only)
 
 ## UI Interlude
-- Bootstrap review
-- Create Layout
-  - nav bar
-  - login/hello in navbar
-- Slugify deals
+X Bootstrap review
+X Create Layout
+  X nav bar
+  X login/hello in navbar
+X Slugify deals
 
 ## Access Control
 - Create Admin resource?
