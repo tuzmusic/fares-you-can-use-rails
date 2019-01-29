@@ -1,10 +1,11 @@
 ul.nav.navbar-nav#navigation
+  - binding.pry
   li.active
     a href="#"  Home
   li
-    a href="#about"  About
+    = link_to  "Deals", deals_path
   li
-    a href="#contact"  Contact
+    = link_to  "Region", regions_path
     
     / deleted li.dropdown from template
 
