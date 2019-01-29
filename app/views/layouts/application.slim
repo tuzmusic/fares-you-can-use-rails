@@ -1,24 +1,6 @@
-doctype html
-html lang="en" 
   = render 'layouts/head'
+
   body
   = render 'layouts/navbar'
-  .container
-    /! Main component for a primary marketing message or call to action
-    .jumbotron
-      h1 Navbar example
-      p This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.
-      p To see the difference between static and fixed top navbars, just scroll.
-      p
-        a.btn.btn-lg.btn-primary href="../../components/#navbar" role="button"  View navbar docs &raquo;
-  /! /container
-  /!
-    | Bootstrap core JavaScript
-    | \==================================================
-  /! Placed at the end of the document so the pages load faster
-  script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" 
-  javascript:
-    | window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
-  script src="../../dist/js/bootstrap.min.js" 
-  /! IE10 viewport hack for Surface/desktop Windows 8 bug
-  script src="../../assets/js/ie10-viewport-bug-workaround.js" 
+  = render 'layouts/jumbotron-example'
+  = render 'layouts/bootstrap-footer'

@@ -7,7 +7,7 @@
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand href="#"  Project name
+          a.navbar-brand href="#"  Fares You Can Use
         #navbar.navbar-collapse.collapse
           ul.nav.navbar-nav
             li.active
@@ -33,13 +33,17 @@
                   a href="#"  Separated link
                 li
                   a href="#"  One more separated link
-          ul.nav.navbar-nav.navbar-right
-            li
-              a href="../navbar/"  Default
+          ul.nav.navbar-nav.navbar-right#session-info
+            - if current_user
+              li 
+                = link_to current_user.email, destroy_user_session_path
+            -else
+              li
+                = link_to "Sign In", new_user_session_path
             li
               a href="../navbar-static-top/"  Static top
-            li.active
-              a href="./" 
-                | Fixed top
-                span.sr-only (current)
+              / li.active
+              /   a href="./" 
+              /     | Fixed top
+              /     span.sr-only (current)
         /! /.nav-collapse
