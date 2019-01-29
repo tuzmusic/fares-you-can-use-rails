@@ -8,12 +8,11 @@ Rails.application.routes.draw do
   end
 
   root to: "deals#index"
+  # get 'users/sign_out', to: 'devise/sessions#destroy'
 
   # Omniauth
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }  
-  # devise_scope :user do
-  #   delete 'sign_out', to:'devise/sessions#destroy', as: :destroy_user_session
-  # end
+  devise_scope :user do get "/users/sign_out" => 'devise/sessions#destroy' end
 
   get 'pry', to: 'application#pry'
 end
