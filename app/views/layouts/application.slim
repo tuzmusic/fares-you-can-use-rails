@@ -2,5 +2,8 @@
 
   body
   = render 'layouts/navbar'
-  = render 'layouts/jumbotron-example'
+  / = render 'layouts/jumbotron-example'
+
+  == yield
+
   = render 'layouts/bootstrap-footer'
