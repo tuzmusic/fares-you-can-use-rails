@@ -10,6 +10,7 @@ describe "Facebook login" do
     end
 
     it "successfully logs in using Facebook" do
+      binding.pry
       expect(page).to have_content "John Doe"
     end
 
