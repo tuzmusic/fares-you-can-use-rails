@@ -1,29 +1,6 @@
 doctype html
 html lang="en" 
-  head
-    meta charset="utf-8" /
-    meta content="IE=edge" http-equiv="X-UA-Compatible" /
-    meta content="width=device-width, initial-scale=1" name="viewport" /
-    /! The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
-    meta content="" name="description" /
-    meta content="" name="author" /
-    link href="../../favicon.ico" rel="icon" /
-    title Fares You Can Use
-
-    / From Rails default layout
-    = csrf_meta_tags
-    = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-
-    / Commented out from bootstrap template because they slow loading 
-    / IE10 viewport hack for Surface/desktop Windows 8 bug
-    / link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet" /
-    / script src="../../assets/js/ie-emulation-modes-warning.js" 
-    /! HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
-    /![if lt IE 9]
-      | <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script
-      | <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script
+  = render 'layouts/head'
   body
     /! Fixed navbar
     nav.navbar.navbar-default.navbar-fixed-top
@@ -73,9 +50,11 @@ html lang="en"
     .container
       /! Main component for a primary marketing message or call to action
       .jumbotron
-        h1 Deals You Can Use
-        h2 On Dates You Can Choose
-    ==yield
+        h1 Navbar example
+        p This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.
+        p To see the difference between static and fixed top navbars, just scroll.
+        p
+          a.btn.btn-lg.btn-primary href="../../components/#navbar" role="button"  View navbar docs &raquo;
     /! /container
     /!
       | Bootstrap core JavaScript
