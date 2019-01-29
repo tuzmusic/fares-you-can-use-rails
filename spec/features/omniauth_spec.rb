@@ -44,6 +44,14 @@ describe "Facebook login" do
       expect(User.last.uid).to eq "123545"
     end
 
+    it "doesn't set a new password" do
+      click_on "Sign Out"
+      fill_in "Email", with: "test@example.com"
+      fill_in "Password", with: "123456"
+      click_button "Log in"
+      expect(page).to have_content "John Doe"
+    end
+
 
   end
   
