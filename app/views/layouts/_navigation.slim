@@ -1,11 +1,9 @@
 ul.nav.navbar-nav#navigation
-  - binding.pry
-  li.active
-    a href="#"  Home
-  li
+  - path = request.env['PATH_INFO']
+  li class=(path.start_with?("/deals") ? 'active' : 'inactive') 
     = link_to  "Deals", deals_path
-  li
-    = link_to  "Region", regions_path
+  li class=(path.start_with?("/regions") ? 'active' : 'inactive') 
+    = link_to  "Regions", regions_path
     
     / deleted li.dropdown from template
 
