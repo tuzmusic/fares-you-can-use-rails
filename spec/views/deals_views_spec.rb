@@ -61,11 +61,11 @@ describe "Deals Views", type: :feature do
     end
 
     it "has fields for the text-based properties of a deal" do
-      expect(page).to have_field "deal[headline]"
-      expect(page).to have_field "deal[description]"
-      expect(page).to have_field "deal[instructions]"
-      expect(page).to have_field "deal[origins]"
-      expect(page).to have_field "deal[destinations]"
+      expect(page).to have_field "Headline"
+      expect(page).to have_field "Description"
+      expect(page).to have_field "Instructions"
+      expect(page).to have_field "Origin airports"
+      expect(page).to have_field "Destination airports"
     end
 
     it "creates a deal and redirects to the show page for the newly created deal" do
@@ -83,12 +83,12 @@ describe "Deals Views", type: :feature do
       fill_in 'Description', with: d.description
       fill_in 'Instructions', with: d.instructions
       
-      select d.start_date.year, from: 'deal_start_date_1i'
+      select '2019', from: 'deal_start_date_1i'
       select 'Feb', from: 'deal_start_date_2i'
-      select d.start_date.day, from: 'deal_start_date_3i'
-      select d.end_date.year, from: 'deal_end_date_1i'
+      select '1', from: 'deal_start_date_3i'
+      select '2019', from: 'deal_end_date_1i'
       select 'Feb', from: 'deal_end_date_2i'
-      select d.end_date.day, from: 'deal_end_date_3i'
+      select '8', from: 'deal_end_date_3i'
 
       fill_in 'Origin airports', with: 'DCA, IAD, BWI'
       fill_in 'Destination airports', with: 'EWR, LGA, JFK'
