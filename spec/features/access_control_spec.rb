@@ -148,3 +148,23 @@ describe "Basic Access Control" do
   end
 
 end
+
+describe "access control routes" do
+  it "uses '/sign_in' for login" do
+    visit user_sign_in_path
+    expect(current_path).to eq '/sign_in' 
+    expect(page).to have_content "Log in"
+  end
+
+  it "uses /sign_out' for logout" do
+    # visit user_sign_out_path
+    visit '/sign_out' 
+    expect(page).to have_content "Signed out successfully."
+  end
+
+  it "uses /sign_up' for registration" do
+    visit user_sign_up_path
+    expect(current_path).to eq '/sign_up' 
+    expect(page).to have_field "Password confirmation"
+  end
+end
