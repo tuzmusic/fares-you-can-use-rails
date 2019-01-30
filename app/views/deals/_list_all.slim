@@ -1,0 +1,8 @@
+#deals
+  - deals.each do |deal|
+    p.deal id="deals-#{deal.posted_date.to_s}" 
+      - admin_logged_in?
+        = deal.headline
+        br/
+        =< link_to "view", deal_path(deal) 
+        =< link_to "edit", edit_deal_path(deal) 
