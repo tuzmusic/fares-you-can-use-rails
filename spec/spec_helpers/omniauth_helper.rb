@@ -20,4 +20,5 @@ module OmniAuthTestHelper
       })
     end
   end
+
 end

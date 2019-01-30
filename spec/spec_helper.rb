@@ -102,4 +102,6 @@ RSpec.configure do |config|
 
   require_relative './spec_helpers/omniauth_helper'
   config.include OmniAuthTestHelper
+  require_relative './spec_helpers/user_helper'
+  config.include UserTestHelper
 end
