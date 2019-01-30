@@ -1,19 +1,22 @@
-.deal-info
-  h3 = deal.headline
-  - if deal.probably_expired?
-    h4.warning POSSIBLY EXPIRED!
-  p = sanitize instructions_for(deal)
-  p = sanitize deal.description
-.deal-stats
-  p
-    b Fly From:
-    br/
-    = sanitize airport_codes(deal.origins)
-  p
-    b Fly To:
-    br/
-    = sanitize airport_codes(deal.destinations)
-  p
-    b Fly Dates:
-    br/
-    = date_range deal, hyphen: true
+.row
+  .col-sm
+    .deal-info
+      h3 = deal.headline
+      - if deal.probably_expired?
+        h4.warning POSSIBLY EXPIRED!
+      p = sanitize instructions_for(deal)
+      p = sanitize deal.description
+  .col-sm      
+    .deal-stats
+      p
+        b Fly From:
+        br/
+        = sanitize airport_codes(deal.origins)
+      p
+        b Fly To:
+        br/
+        = sanitize airport_codes(deal.destinations)
+      p
+        b Fly Dates:
+        br/
+        = date_range deal, hyphen: true
