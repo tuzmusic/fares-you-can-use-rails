@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-describe "Access Control" do
+describe "Basic Access Control" do
   context "guests" do    
     it "cannot create a deal" do
       visit new_deal_path
-      expect(current_path).to include "sign_in"
+      expect(current_path).to eq root_path
     end
 
     it "cannot edit a deal" do
       Deal.create(headline:"Sample Deal")
       visit edit_deal_path Deal.first
-      expect(current_path).to include "sign_in"
+      expect(page).to have_content "Admin access is required for that action."
     end
 
     it "can access the deals index page" do
