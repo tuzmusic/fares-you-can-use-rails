@@ -5,8 +5,7 @@ ul.nav.navbar-nav.navbar-right#session-info
         - if user = current_user
           = user.full_name || user.first_name || user.email
         - elsif admin = current_admin
-          = admin.email + " (admin)"
-          / = (admin.full_name || admin.first_name || admin.email) + " (admin)"
+          = (admin.full_name || admin.first_name || admin.email) + " (admin)"
     li 
       = link_to "Log Out", user_sign_out_path
   - else
