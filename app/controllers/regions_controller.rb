@@ -1,5 +1,5 @@
 class RegionsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_region, only: [:show]
 
   def index

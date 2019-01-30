@@ -8,7 +8,7 @@ class State < ApplicationRecord
     require 'csv'
     require 'json'
 
-    csv = CSV.new(File.read('notes/airports-by-state.csv'), :headers => true, :header_converters => :symbol, :converters => :all)
+    csv = CSV.new(File.read('notes-and-fixtures/airports-by-state.csv'), :headers => true, :header_converters => :symbol, :converters => :all)
     rows = csv.to_a.map {|row| row.to_hash }
     rows.delete_at(-1)
     rows.find{|r| r[:faa]=="LHD"}[:iata] = "LHD" # fix missing iata for Anchorage LHD
