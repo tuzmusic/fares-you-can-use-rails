@@ -5,7 +5,12 @@ html lang="en"
   body
   = render 'layouts/navbar'
   / = render 'layouts/jumbotron-example'
-
+  
+  p.notice
+    = notice
+  p.alert
+    = alert
+  
   == yield
 
   = render 'layouts/bootstrap-footer'
