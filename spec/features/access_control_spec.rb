@@ -10,7 +10,7 @@ describe "Basic Access Control" do
     it "cannot edit a deal" do
       Deal.create(headline:"Sample Deal")
       visit edit_deal_path Deal.first
-      expect(page).to have_content "Admin access is required for that action."
+      expect(current_path).to eq root_path
     end
 
     it "can access the deals index page" do
@@ -49,6 +49,11 @@ describe "Basic Access Control" do
       afr = Region.find_by(name:"Africa")
       visit region_deals_path afr
       expect(page).to have_content "Flight from Johannesburg"
+    end
+
+    it "redirects presents admin login page when trying to visit an admin page" do
+      visit admin_root_path
+      expect(current_path).to eq new_admin_session_path 
     end
   end
 

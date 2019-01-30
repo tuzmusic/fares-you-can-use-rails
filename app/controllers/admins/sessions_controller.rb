@@ -2,6 +2,13 @@
 
 class Admins::SessionsController < Devise::SessionsController
 
+  def admin_auth
+    # NOTE - This method is needed because :authenticate_admin? doesn't work, which is (I think) BECAUSE all admin activity should be in Admin resource/controller/namespace/whatever, not here in Admin Sessions controller.
+    redirect_to new_admin_session_path unless admin_signed_in?
+  end
+  
+  before_action :admin_auth, except: [:new]
+
   def portal
     @deals = Deal.all.order(posted_date: :desc)
   end

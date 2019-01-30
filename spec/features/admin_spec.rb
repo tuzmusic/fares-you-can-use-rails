@@ -48,6 +48,11 @@ describe "Admin" do
       expect(page).to have_link 'Admin', href: admin_root_path
     end
 
+    it "doesn't show a link to the admin portal when a non-admin user is logged in" do
+      create_and_log_in_user
+      expect(page).to_not have_link 'Admin', href: admin_root_path
+    end
+
     xit "allows an existing admin to use facebook to log in" do
       create_admin
       visit new_admin_session_path
@@ -85,7 +90,8 @@ describe "Admin" do
     end
 
     it "cannot be accessed by guests" do
-      expect(true).to eq false  
+      visit admin_root_path
+      expect(current_path).to eq admin_sign_in_path   
     end
 
     it "cannot be accessed by non-admin users" do
