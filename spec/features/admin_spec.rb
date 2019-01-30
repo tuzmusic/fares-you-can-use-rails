@@ -43,6 +43,11 @@ describe "Admin" do
       expect(page).to have_content "John Doe (admin)"
     end
 
+    it "shows a link to the admin portal in the nav bar" do
+      create_and_log_in_admin
+      expect(page).to have_link 'Admin', href: admin_root_path
+    end
+
     xit "allows an existing admin to use facebook to log in" do
       create_admin
       visit new_admin_session_path
@@ -67,15 +72,15 @@ describe "Admin" do
       expect(page.all('.deal').count).to eq Deal.count
     end
 
-    it "can sort deals by posted date" do
+    xit "can sort deals by posted date" do
       expect(true).to eq false  
     end
 
-    it "can sort deals by start date" do
+    xit "can sort deals by start date" do
       expect(true).to eq false  
     end
 
-    it "can sort deals by region" do
+    xit "can sort deals by region" do
       expect(true).to eq false  
     end
 
