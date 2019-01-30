@@ -3,6 +3,6 @@ h1 Admin Portal
 h3 Deals
 
 p
-  = link_to  "New Deal", new_deal_path
+  = button_to  "New Deal", new_deal_path, method: 'get'
 
 = render  "deals/list_all", deals: @deals

@@ -90,7 +90,7 @@ describe "Admin" do
     end
 
     it "has a link to create a deal" do
-      expect(page).to have_link "New Deal", href: new_deal_path 
+      expect(page).to have_button "New Deal", href: new_deal_path 
     end
   end
 end
