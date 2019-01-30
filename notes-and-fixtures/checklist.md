@@ -24,7 +24,7 @@ X Create users resource
 
 ### Sign-up
 X UsersController - create action
-- FB authorization
+X FB authorization
 
 ### Sign-in
 X Use Devise gem? (or other gem? see authentication-and-authorization readme)
@@ -38,6 +38,8 @@ X Create Layout
 X Slugify deals
 
 ## Access Control
+- Check the project checklist
+- RECORD A CODING SESSION!
 - Create Admin resource?
 - Access control for Admin routes (deals#create, etc)
 
