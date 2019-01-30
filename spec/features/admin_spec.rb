@@ -39,8 +39,10 @@ describe "Admin" do
 
     it "redirects to the admin portal" do
       create_and_log_in_admin
-      expect(current_path).to eq "/admin" 
+        # visit admin_root_path
+        expect(current_path).to eq "/admin" 
       expect(page).to have_content "Admin Portal"
+      expect(page).to have_content "John Doe (admin)"
     end
 
     xit "allows an existing admin to use facebook to log in" do
