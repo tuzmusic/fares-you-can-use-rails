@@ -64,7 +64,7 @@ describe "Admin" do
     end
 
     it "lists all the deals" do
-      expect(true).to eq false  
+      expect(page.all('#deal').count).to eq Deal.count
     end
 
     it "can sort deals by posted date" do
