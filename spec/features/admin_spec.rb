@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../spec_helpers/omniauth_helper'
 
 describe "Admin" do
   describe "admin resource" do
@@ -39,8 +38,7 @@ describe "Admin" do
 
     it "redirects to the admin portal" do
       create_and_log_in_admin
-        # visit admin_root_path
-        expect(current_path).to eq "/admin" 
+      expect(current_path).to eq "/admin" 
       expect(page).to have_content "Admin Portal"
       expect(page).to have_content "John Doe (admin)"
     end
@@ -59,13 +57,10 @@ describe "Admin" do
     end
   end
 
-  describe "Admin Portal (/admins/deals, probably)" do
+  describe "Admin Portal" do
     before :each do
+      Deal.import
       create_and_log_in_admin
-    end
-
-    it "has a link to create a deal" do
-      expect(page).to have_link "Create Deal"  
     end
 
     it "lists all the deals" do
@@ -91,32 +86,9 @@ describe "Admin" do
     it "cannot be accessed by non-admin users" do
       expect(true).to eq false  
     end
+
+    it "has a link to create a deal" do
+      expect(page).to have_link "Create Deal"  
+    end
   end
-end
-
-def create_user
-  User.create(email:"test@example.com", password: "123456", first_name: "John", last_name: "Doe")
-end
-
-def log_in_user
-  visit new_user_session_path
-  fill_in "Email", with: "test@example.com"
-  fill_in "Password", with: "123456"
-  click_on "Log in"
-end
-
-def create_admin
-  Admin.create(email: "test@example.com", password:"123456")
-end
-
-def log_in_admin
-  visit new_admin_session_path
-  fill_in "Email", with: "test@example.com"
-  fill_in "Password", with: "123456"
-  click_on "Log in"
-end
-
-def create_and_log_in_admin
-  create_admin
-  log_in_admin
 end

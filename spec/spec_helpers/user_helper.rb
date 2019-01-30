@@ -17,7 +17,7 @@ module UserTestHelper
   
 
   def create_admin
-    Admin.create(email: "test@example.com", password:"123456")
+    Admin.create(email: "test@example.com", password:"123456", first_name: "John", last_name: "Doe")
   end
 
   def log_in_admin

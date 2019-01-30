@@ -1,9 +1,0 @@
-<h1>All Deals</h1>
-  <div id="deals">
-    <% @deals.each do |(date, deals)| %>
-      <div id="deals-<%= date.to_s %>">
-        <h3><%= brief_time date %></h3>
-        <%= sanitize deal_paragraphs_for_group(deals) %>
-      </div>
-    <% end %>
-  </div>
