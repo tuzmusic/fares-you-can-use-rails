@@ -14,10 +14,10 @@ describe "Access Control" do
       expect(page).to have_content "Log in"
     end
 
-    it "allows guests to access the deals page" do
+    it "allows guests to access the deals index page" do
       visit deals_path
       expect(page).to have_content "Deals"
-      expect(page).to have_content "Sign In"
+      expect(page).to have_content "Log In"
       expect(page).to have_content "Sign Up"
     end
   end
