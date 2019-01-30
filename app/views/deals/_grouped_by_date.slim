@@ -1,5 +1,5 @@
 #deals
   - deals.each do |(date, deals)|
     div id="deals-#{date.to_s}" 
-      h3= brief_time date
+      h3 = brief_time date
       = sanitize deal_paragraphs_for_group(deals)
