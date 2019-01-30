@@ -3,7 +3,7 @@
 class Admins::SessionsController < Devise::SessionsController
 
   def portal
-    
+    @deals = Deal.all
   end
   
   # before_action :configure_sign_in_params, only: [:create]

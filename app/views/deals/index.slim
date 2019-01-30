@@ -1,6 +1,3 @@
 h1 All Deals
-#deals
-  - @deals.each do |(date, deals)|
-    div id="deals-#{date.to_s}" 
-      h3= brief_time date
-      = sanitize deal_paragraphs_for_group(deals)
+
+= render  "deals/list" 
