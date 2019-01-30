@@ -10,12 +10,12 @@ describe "Admin" do
   end
 
   describe "advanced Devise implementation" do
-    xit "lives at /admin" do
-      visit '/admin'
+    it "lives at /admin/sign_in" do
+      visit '/admin/sign_in'
       expect(page).to have_field "Email"
     end
     
-    xit "has a custom login page" do
+    it "has a custom login page" do
       visit new_admin_session_path
       expect(page).to_not have_content "Sign up"
     end

@@ -16,11 +16,11 @@ example_id                                            | status  | run_time      
 ./spec/features/access_control_spec.rb[1:2:5]         | passed  | 0.10816 seconds |
 ./spec/features/access_control_spec.rb[1:2:6]         | passed  | 0.12336 seconds |
 ./spec/features/access_control_spec.rb[1:2:7]         | passed  | 0.10395 seconds |
-./spec/features/access_control_spec.rb[1:3:1]         | passed  | 0.81111 seconds |
-./spec/features/access_control_spec.rb[1:3:2]         | passed  | 0.21903 seconds |
-./spec/features/admin_spec.rb[1:1:1]                  | passed  | 0.70459 seconds |
-./spec/features/admin_spec.rb[1:2:1]                  | passed  | 0.02863 seconds |
-./spec/features/admin_spec.rb[1:2:2]                  | unknown |                 |
+./spec/features/access_control_spec.rb[1:3:1]         | passed  | 0.83433 seconds |
+./spec/features/access_control_spec.rb[1:3:2]         | passed  | 0.26928 seconds |
+./spec/features/admin_spec.rb[1:1:1]                  | passed  | 0.04296 seconds |
+./spec/features/admin_spec.rb[1:2:1]                  | passed  | 0.5938 seconds  |
+./spec/features/admin_spec.rb[1:2:2]                  | failed  | 0.02838 seconds |
 ./spec/features/admin_spec.rb[1:2:3]                  | unknown |                 |
 ./spec/features/admin_spec.rb[1:3:1]                  | pending | 0.00003 seconds |
 ./spec/features/admin_spec.rb[1:3:2]                  | pending | 0.00001 seconds |
