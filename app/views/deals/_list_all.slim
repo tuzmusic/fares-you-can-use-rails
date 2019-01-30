@@ -2,7 +2,7 @@
   - deals.each do |deal|
     p.deal id="deals-#{deal.posted_date.to_s}" 
       - if admin_signed_in?
-        = deal.headline
+        = deal.headline + " (posted #{brief_time(deal.posted_date)})"
         br/
         = link_to "view", deal
         =< link_to "edit", edit_deal_path(deal) 
