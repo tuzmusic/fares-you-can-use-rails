@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }  
-  devise_scope :user do get "/users/sign_out" => 'devise/sessions#destroy' end
+  devise_scope :user do 
+    get "/sign_out" => 'devise/sessions#destroy', as: 'user_sign_out'
+    get "/sign_in" => 'devise/sessions#new', as: 'user_sign_in'
+    get "/sign_up" => 'devise/registrations#new', as: 'user_sign_up'
+  end
 
   devise_for :admins, path: 'admin'
 
