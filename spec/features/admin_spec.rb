@@ -17,7 +17,7 @@ describe "Admin" do
     
     it "has a custom login page" do
       visit new_admin_session_path
-      expect(page).to_not have_content "Sign up"
+      expect(page).to have_content "Admin Log in"
     end
 
     it "doesn't replace the users path!!!" do
