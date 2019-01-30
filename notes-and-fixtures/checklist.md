@@ -39,11 +39,18 @@ X Slugify deals
 
 ## Access Control
 - Check the project checklist
-- RECORD A CODING SESSION!
-- Create Admin resource?
-- Access control for Admin routes (deals#create, etc)
+X RECORD A CODING SESSION!
+X Create Admin resource?
+X Access control for Admin routes (deals#create, etc)
+
+## Admin Portal
+- List and sort deals
+- Fix namespace
+  - portal method should be in AdminsController not Admins::SessionsController
+  - more complicated than it looks maybe
 
 ## Pre-Your deals
+- User attributes
 - User edit action
 - User edit (prefs) view
 
