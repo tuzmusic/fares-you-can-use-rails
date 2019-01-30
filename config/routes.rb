@@ -12,12 +12,16 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }  
   devise_scope :user do 
-    get "/sign_out" => 'devise/sessions#destroy', as: 'user_sign_out'
-    get "/sign_in" => 'devise/sessions#new', as: 'user_sign_in'
-    get "/sign_up" => 'devise/registrations#new', as: 'user_sign_up'
+    get "/sign_out", to: 'devise/sessions#destroy', as: 'user_sign_out'
+    get "/sign_in", to: 'devise/sessions#new', as: 'user_sign_in'
+    get "/sign_up", to: 'devise/registrations#new', as: 'user_sign_up'
   end
 
-  devise_for :admins, path: 'admin'
+  devise_for :admins, path: 'admin', controllers: { sessions: 'admins/sessions' }
+
+  devise_scope :admin do
+    get "/admin", to: 'admins/sessions#portal', as: 'admin_root_path'
+  end
 
   get 'pry', to: 'application#pry'
 end

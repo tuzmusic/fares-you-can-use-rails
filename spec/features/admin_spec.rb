@@ -39,18 +39,18 @@ describe "Admin" do
 
     it "redirects to the admin portal" do
       create_and_log_in_admin
-      expect(current_path).to eq "/deals" 
-      # expect(page).to have_content "Admin Portal"
+      expect(current_path).to eq "/admin" 
+      expect(page).to have_content "Admin Portal"
     end
 
-    it "allows an existing admin to use facebook to log in" do
+    xit "allows an existing admin to use facebook to log in" do
       create_admin
       visit new_admin_session_path
       click_link "Facebook"
       expect(page).to have_content "Admin Portal"
     end
 
-    it "does not allow facebook login for someone who isn't an admin" do
+    xit "does not allow facebook login for someone who isn't an admin" do
       visit new_admin_session_path
       click_link "Facebook" # don't need to create user because facebook login succeeds automatically in test mode
       expect(current_path).to eq new_user_session_path 
