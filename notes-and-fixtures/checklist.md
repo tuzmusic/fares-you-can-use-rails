@@ -44,7 +44,8 @@ X Create Admin resource?
 X Access control for Admin routes (deals#create, etc)
 
 ## Admin Portal
-- List and sort deals
+X List deals
+- Sort deals
 - Fix namespace
   - portal method should be in AdminsController not Admins::SessionsController
   - more complicated than it looks maybe

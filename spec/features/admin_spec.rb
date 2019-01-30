@@ -89,17 +89,8 @@ describe "Admin" do
       expect(true).to eq false  
     end
 
-    it "cannot be accessed by guests" do
-      visit admin_root_path
-      expect(current_path).to eq admin_sign_in_path   
-    end
-
-    it "cannot be accessed by non-admin users" do
-      expect(true).to eq false  
-    end
-
     it "has a link to create a deal" do
-      expect(page).to have_link "Create Deal"  
+      expect(page).to have_link "New Deal", href: new_deal_path 
     end
   end
 end

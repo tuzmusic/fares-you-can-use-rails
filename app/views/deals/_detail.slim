@@ -1,0 +1,22 @@
+.deal-info
+  h3
+    = deal.headline
+    - if deal.probably_expired?
+      br/
+      span.warning POSSIBLY EXPIRED!
+    = sanitize instructions_for(deal)
+  p= sanitize deal.description
+.deal-stats
+  p
+    b Fly From:
+    br/
+    = sanitize airport_codes(deal.origins)
+  p
+    b Fly To:
+    br/
+    = sanitize airport_codes(deal.destinations)
+  p
+    b Fly Dates:
+    br/
+    = brief_time(deal.start_date)
+    | \- #{brief_time(deal.end_date)}
