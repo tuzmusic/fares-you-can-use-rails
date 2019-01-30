@@ -1,6 +1,28 @@
 require 'rails_helper'
+require_relative '../spec_helpers/omniauth_helper'
 
 describe "Admin" do
+
+  context "guest" do    
+    it "prohibits guests from creating a deal" do
+      visit new_deal_path
+      expect(page).to have_content "Log in"
+    end
+
+    it "prohibits guests from editing a deal" do
+      Deal.create(headline:"Sample Deal")
+      visit edit_deal_path Deal.first
+      expect(page).to have_content "Log in"
+    end
+
+    it "allows guests to access the deals page" do
+      visit deals_path
+      expect(page).to have_content "Sign In"
+      expect(page).to have_content "Sign Up"
+    end
+  end
+
+
   describe "admin resource" do
     it "can be created" do
       create_admin
@@ -89,20 +111,31 @@ describe "Admin" do
       expect(true).to eq false  
     end
   end
-  
-  def create_admin
-    Admin.create(email: "test@example.com", password:"123456")
-  end
+end
 
-  def log_in_admin
-    visit new_admin_session_path
-    fill_in "Email", with: "test@example.com"
-    fill_in "Password", with: "123456"
-    click_on "Log in"
-  end
+def create_user
+  User.create(email:"test@example.com", password: "123456", first_name: "John", last_name: "Doe")
+end
 
-  def create_and_log_in_admin
-    create_admin
-    log_in_admin
-  end
+def log_in_user
+  visit new_user_session_path
+  fill_in "Email", with: "test@example.com"
+  fill_in "Password", with: "123456"
+  click_on "Log in"
+end
+
+def create_admin
+  Admin.create(email: "test@example.com", password:"123456")
+end
+
+def log_in_admin
+  visit new_admin_session_path
+  fill_in "Email", with: "test@example.com"
+  fill_in "Password", with: "123456"
+  click_on "Log in"
+end
+
+def create_and_log_in_admin
+  create_admin
+  log_in_admin
 end
