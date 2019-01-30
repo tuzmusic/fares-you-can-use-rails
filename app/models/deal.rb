@@ -31,10 +31,10 @@ class Deal < ApplicationRecord
   # ------ SLUG --------
   include Slugifiable::InstanceMethods
   
-  after_create do |deal|
-    deal.set_region
+  after_save do |deal|
+    deal.set_region if !region_id
     deal.posted_date ||= Date.today
-    deal.set_slug if deal.headline
+    deal.set_slug if !slug && deal.headline
   end
 
   def set_slug
@@ -54,7 +54,5 @@ class Deal < ApplicationRecord
       self.region
     end
   end
-
-
 end
 
