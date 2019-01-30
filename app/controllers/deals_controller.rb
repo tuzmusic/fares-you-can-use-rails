@@ -5,12 +5,6 @@ class DealsController < ApplicationController
   # before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
 
-  def require_admin
-    unless admin_signed_in?
-      flash[:notice] = "Admin access is required for that action."
-      redirect_to root_path
-    end    
-  end
 
   def set_deal
     param = params[:slug] || params[:id]  # deal_path gives deal in p[slug], region_deal_path gives deal in p[id]

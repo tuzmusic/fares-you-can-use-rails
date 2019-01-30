@@ -9,14 +9,12 @@ example_id                                            | status  | run_time      
 ./spec/features/access_control_spec.rb[1:1:4]         | passed  | 0.16725 seconds |
 ./spec/features/access_control_spec.rb[1:1:5]         | passed  | 0.06039 seconds |
 ./spec/features/access_control_spec.rb[1:1:6]         | passed  | 0.06991 seconds |
-./spec/features/access_control_spec.rb[1:2:1]         | passed  | 0.95786 seconds |
-./spec/features/access_control_spec.rb[1:2:2]         | passed  | 0.33486 seconds |
-./spec/features/access_control_spec.rb[1:2:3]         | passed  | 0.07284 seconds |
-./spec/features/access_control_spec.rb[1:2:4]         | passed  | 0.06897 seconds |
-./spec/features/access_control_spec.rb[1:2:5]         | passed  | 0.07977 seconds |
-./spec/features/access_control_spec.rb[1:2:6]         | passed  | 0.16841 seconds |
-./spec/features/access_control_spec.rb[1:2:7]         | passed  | 0.10325 seconds |
-./spec/features/access_control_spec.rb[1:2:8]         | passed  | 0.14148 seconds |
+./spec/features/access_control_spec.rb[1:2:1]         | passed  | 0.87883 seconds |
+./spec/features/access_control_spec.rb[1:2:2]         | passed  | 0.29938 seconds |
+./spec/features/access_control_spec.rb[1:2:3]         | passed  | 0.07186 seconds |
+./spec/features/access_control_spec.rb[1:2:4]         | passed  | 0.11332 seconds |
+./spec/features/access_control_spec.rb[1:2:5]         | passed  | 0.07887 seconds |
+./spec/features/access_control_spec.rb[1:2:6]         | passed  | 0.15555 seconds |
 ./spec/features/admin_spec.rb[1:1:1]                  | passed  | 0.70459 seconds |
 ./spec/features/admin_spec.rb[1:2:1]                  | passed  | 0.02863 seconds |
 ./spec/features/admin_spec.rb[1:2:2]                  | unknown |                 |

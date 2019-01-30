@@ -6,24 +6,10 @@ class ApplicationController < ActionController::Base
     binding.pry
   end
 
-  # def require_login
-  #   redirect_to signin_path unless current_user
-  # end
-
-  # def require_admin
-  #   begin
-  #     head 403 unless current_user&.admin?
-  #   rescue => exception
-  #     true
-  #     # head 403
-  #   end
-  # end
-
-  # def current_user
-  #   begin
-  #     User.find(session[:user_id])
-  #   rescue => exception
-  #     true
-  #   end
-  # end
+  def require_admin
+    unless admin_signed_in?
+      flash[:notice] = "Admin access is required for that action."
+      redirect_to root_path
+    end    
+  end
 end
