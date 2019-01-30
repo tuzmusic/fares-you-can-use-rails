@@ -28,8 +28,8 @@ describe "Admin" do
 
   describe "logging in" do
     
-    it "allows an admin to log in from /admins" do
-      visit new_admin_session_path
+    it "allows an admin to log in from /admin/sign_in" do
+      visit '/admin/sign_in'
       expect(page).to have_field "Email"
     end    
 
