@@ -2,7 +2,6 @@ class DealsController < ApplicationController
 
   # before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
   before_action :require_admin, except: [:index, :show]
-  # before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
 
 
