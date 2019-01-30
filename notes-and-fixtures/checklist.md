@@ -48,6 +48,7 @@ X Access control for Admin routes (deals#create, etc)
 - Fix namespace
   - portal method should be in AdminsController not Admins::SessionsController
   - more complicated than it looks maybe
+  - deal new and edit (and maybe create and update) should be under admin (admin/deals/new, or admin/create_deal) 
 
 ## Pre-Your deals
 - User attributes
