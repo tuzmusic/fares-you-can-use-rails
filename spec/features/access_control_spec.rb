@@ -54,18 +54,42 @@ describe "Access Control" do
 
   context "users" do
     before :each do
-      valid_facebook_login_setup
       create_and_log_in_user
     end
-    it "cannot create a deal" do
+
+    it "displays an error and redirects back when attempting to access new deal page" do
+      visit deals_path
       visit new_deal_path
-      expect(current_path).to include "sign_in"
+      expect(current_path).to eq deals_path
+      expect(page).to have_content "Non-admin users cannot create deals"
+    end
+
+    it "displays an error and redirects back when attempting to access edit deal page" do
+      Deal.create(headline:"Sample Deal 1", description:"Sample description").tap do |deal|
+        deal.origin = Airport.iata("DCA")
+        deal.destination = Airport.iata("CDG")
+        deal.start_date = Date.yesterday
+        deal.end_date = Date.tomorrow
+      end
+
+      visit deals_path
+      visit edit_deal_path Deal.first
+      expect(current_path).to eq deals_path
+      expect(page).to have_content "Non-admin users cannot edit deals"
+    end
+
+    it "cannot create a deal" do
+      visit deals_path
+      visit new_deal_path
+      expect(current_path).to_not eq new_deal_path
+      # expect(current_path).to include "sign_in"
     end
 
     it "cannot edit a deal" do
       Deal.create(headline:"Sample Deal")
       visit edit_deal_path Deal.first
-      expect(current_path).to include "sign_in"
+      expect(current_path).to_not eq new_deal_path
+      # expect(current_path).to include "sign_in"
     end
 
     it "can access the deals index page" do
