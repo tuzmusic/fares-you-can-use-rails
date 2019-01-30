@@ -7,9 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    unless admin_signed_in?
-      flash[:notice] = "Admin access is required for that action."
-      redirect_to root_path
-    end    
+    redirect_to new_admin_session_path unless admin_signed_in?
   end
 end

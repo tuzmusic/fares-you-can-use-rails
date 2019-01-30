@@ -4,13 +4,13 @@ describe "Basic Access Control" do
   context "guests" do    
     it "cannot create a deal" do
       visit new_deal_path
-      expect(current_path).to eq root_path
+      expect(current_path).to eq new_admin_session_path
     end
 
     it "cannot edit a deal" do
       Deal.create(headline:"Sample Deal")
       visit edit_deal_path Deal.first
-      expect(current_path).to eq root_path
+      expect(current_path).to eq new_admin_session_path
     end
 
     it "can access the deals index page" do
@@ -62,14 +62,13 @@ describe "Basic Access Control" do
       create_and_log_in_user
     end
 
-    it "displays an error and redirects back when attempting to access new deal page" do
+    it "displays admin login page when trying to access deals#new" do
       visit deals_path
       visit new_deal_path
-      expect(current_path).to eq root_path
-      expect(page).to have_content "Admin access is required for that action."
+      expect(current_path).to eq new_admin_session_path
     end
 
-    it "displays an error and redirects back when attempting to access edit deal page" do
+    it "displays admin login page when trying to access deals#edit" do
       Deal.create(headline:"Sample Deal 1", description:"Sample description").tap do |deal|
         deal.origin = Airport.iata("DCA")
         deal.destination = Airport.iata("CDG")
@@ -79,14 +78,13 @@ describe "Basic Access Control" do
 
       visit regions_path
       visit edit_deal_path Deal.first
-      expect(current_path).to eq root_path
-      expect(page).to have_content "Admin access is required for that action."
+      expect(current_path).to eq new_admin_session_path
     end
 
     it "doesn't log out if a forbidden action is attempted" do
       visit deals_path
       visit new_deal_path
-      expect(current_path).to eq root_path
+      expect(current_path).to eq new_admin_session_path
       expect(page).to have_content "John Doe"
     end
 

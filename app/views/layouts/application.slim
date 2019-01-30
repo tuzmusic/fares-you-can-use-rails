@@ -6,10 +6,12 @@ html lang="en"
   = render 'layouts/navbar'
   / = render 'layouts/jumbotron-example'
   
-  - notice
-    p.notice notice
-  - alert      
-    p.alert alert
+  - if notice
+    p.notice 
+      = notice
+  - if alert      
+    p.alert 
+      = alert
   
   == yield
 
