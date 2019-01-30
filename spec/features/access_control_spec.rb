@@ -60,8 +60,8 @@ describe "Access Control" do
     it "displays an error and redirects back when attempting to access new deal page" do
       visit deals_path
       visit new_deal_path
-      expect(current_path).to eq deals_path
-      expect(page).to have_content "Non-admin users cannot create deals"
+      expect(current_path).to eq root_path
+      expect(page).to have_content "Admin access is required for that action."
     end
 
     it "displays an error and redirects back when attempting to access edit deal page" do
@@ -72,24 +72,10 @@ describe "Access Control" do
         deal.end_date = Date.tomorrow
       end
 
-      visit deals_path
+      visit regions_path
       visit edit_deal_path Deal.first
-      expect(current_path).to eq deals_path
-      expect(page).to have_content "Non-admin users cannot edit deals"
-    end
-
-    it "cannot create a deal" do
-      visit deals_path
-      visit new_deal_path
-      expect(current_path).to_not eq new_deal_path
-      # expect(current_path).to include "sign_in"
-    end
-
-    it "cannot edit a deal" do
-      Deal.create(headline:"Sample Deal")
-      visit edit_deal_path Deal.first
-      expect(current_path).to_not eq new_deal_path
-      # expect(current_path).to include "sign_in"
+      expect(current_path).to eq root_path
+      expect(page).to have_content "Admin access is required for that action."
     end
 
     it "can access the deals index page" do
