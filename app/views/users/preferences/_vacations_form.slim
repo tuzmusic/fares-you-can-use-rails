@@ -1,0 +1,9 @@
+- user.vacations.each do |vacation|
+    p 
+      = form_tag(edit_user_preferences_path, method: :get) do 
+        b = vacation.name
+        br/
+        = date_range vacation, hyphen=true
+        br/
+        = hidden_field_tag(:vacation_id, vacation.id) 
+        = submit_tag "Edit"
