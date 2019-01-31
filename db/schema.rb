@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_151655) do
+ActiveRecord::Schema.define(version: 2019_01_31_202601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,12 @@ ActiveRecord::Schema.define(version: 2019_01_31_151655) do
     t.index ["slug"], name: "index_deals_on_slug", unique: true
   end
 
+  create_table "preferences", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "regions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -88,6 +94,20 @@ ActiveRecord::Schema.define(version: 2019_01_31_151655) do
 
   create_table "states", force: :cascade do |t|
     t.string "name"
+    t.integer "region_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_airports", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "airport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_regions", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -105,6 +125,7 @@ ActiveRecord::Schema.define(version: 2019_01_31_151655) do
     t.string "uid"
     t.string "first_name"
     t.string "last_name"
+    t.integer "preference_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

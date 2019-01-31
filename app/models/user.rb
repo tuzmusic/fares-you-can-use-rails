@@ -8,6 +8,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[facebook]
 
   has_many :vacations
+  has_one :preference
 
   def full_name
     [first_name, last_name].join(" ") if first_name && last_name
