@@ -3,6 +3,7 @@ class PreferencesController < ApplicationController
   before_action do
     set_prefs
   end
+
   def index
   end
 
