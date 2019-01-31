@@ -57,6 +57,7 @@ describe "Deals Views", type: :feature do
   
   describe "new" do
     before :each do 
+      create_and_log_in_admin
       visit new_deal_path 
     end
 
@@ -160,8 +161,7 @@ describe "Deals Views", type: :feature do
     }
     before :each do
       AirportSpecHelper.create_ny_and_dc_airports
-
-      
+      create_and_log_in_admin
       visit edit_deal_path(d)
     end
     
