@@ -7,7 +7,10 @@ class Users::PreferencesController < Devise::OmniauthCallbacksController
   def edit
     @user = current_user
     @selected_vacation = @user.vacations.find(params[:vacation_id])
-    # render :index
+  end
+
+  def update
+    raise params
   end
 
 end

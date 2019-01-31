@@ -36,8 +36,8 @@ module DealsHelper
     end.join("<br>")
   end
 
-  def deal_date_select(symbol)
-    date_select :deal, symbol, order: [:month, :day, :year], start_year: Date.today.year, use_short_month: true 
+  def date_select_for(object, attribute)
+    date_select object, attribute, order: [:month, :day, :year], start_year: Date.today.year, use_short_month: true 
   end
 
   def delete_deal_button

@@ -29,11 +29,11 @@ table
       td
         p
           = f.label :start_date, id: 'deal-start-date'
-          = deal_date_select :start_date
+          = date_select_for :deal, :start_date
       td
         p
           = f.label :end_date, id: 'deal-end-date'
-          = deal_date_select :end_date
+          = date_select_for :deal, :end_date
     tr
       td colspan="2" 
         = f.submit

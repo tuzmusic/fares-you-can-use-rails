@@ -1,12 +1,20 @@
+- vac = @selected_vacation
 h1 My Preferences
 br/
 
 h2 My Vacations
-- @user.vacations.each do |vacation|
+p
+  = form_tag( "/user/preferences/#{vac.id}/edit" , method: :patch) do
+    p = text_field_tag :name, vac.name
     p 
-      b = vacation.name
-      br/
-      = date_range vacation, hyphen=true
-      br/ 
-      => link_to  "edit", edit_user_preferences_path, params: {vacation_id: vacation.id}
+      = date_select_for vac, vac.start_date
+      | to
+      =< date_select_for vac, vac.end_date
+    p 
+      | those dates should be 
+      = date_range vac
+  
+
+  
+
 
