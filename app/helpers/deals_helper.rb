@@ -36,6 +36,10 @@ module DealsHelper
     end.join("<br>")
   end
 
+  def builder_date_select(builder, attribute)
+    builder.date_select attribute, order: [:month, :day, :year], start_year: Date.today.year, use_short_month: true 
+  end
+
   def date_select_for(object, attribute)
     date_select object, attribute, order: [:month, :day, :year], start_year: Date.today.year, use_short_month: true 
   end

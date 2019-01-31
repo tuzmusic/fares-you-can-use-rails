@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     preferences: 'users/preferences' 
   }
   resources :preferences
+  resources :vacations
 
   devise_scope :user do 
     get "/sign_out", to: 'devise/sessions#destroy', as: 'user_sign_out'

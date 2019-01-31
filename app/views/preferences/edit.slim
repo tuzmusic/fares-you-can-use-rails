@@ -1,11 +1,16 @@
-| hello from edit
+- vac = @selected_vacation
+h1 My Preferences
+br/
 
-/ - vac = @selected_vacation
-/ h1 My Preferences
-/ br/
+h2 My Vacations
 
-/ h2 My Vacations
-/ p
+= form_for(@selected_vacation) do |f| 
+  p
+    = f.text_field :name
+  p
+    => builder_date_select f, :start_date
+    | to
+    =< builder_date_select f, :end_date
 /   = form_tag( "/user/preferences/#{vac.id}/edit" , method: :patch) do
 /     p = text_field_tag :name, vac.name
 /     p 
