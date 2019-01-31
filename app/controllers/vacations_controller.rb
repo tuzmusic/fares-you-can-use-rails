@@ -1,6 +1,5 @@
 class VacationsController < ApplicationController
   def update
-    # raise params
     vacation = Vacation.find(params[:id])
     vacation.update(vacation_params)
     redirect_to '/preferences'

@@ -3,11 +3,9 @@ br/
 
 h2 My Vacations
 - @prefs.vacations.each do |vacation|
+  = form_tag(edit_preference_path(@prefs), method: :get) do 
     p 
-      = form_tag(edit_preference_path(@prefs), method: :get) do 
-        b = vacation.name
-        br/
-        = date_range vacation, hyphen=true
-        br/
-        = hidden_field_tag(:vacation_id, vacation.id) 
-        = submit_tag "Edit"
+      b = vacation.name
+    p= date_range vacation, hyphen=true
+    = hidden_field_tag(:vacation_id, vacation.id) 
+    p= submit_tag "Edit"
