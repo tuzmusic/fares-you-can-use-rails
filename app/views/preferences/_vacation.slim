@@ -1,6 +1,6 @@
   = form_tag(edit_preference_path(prefs), method: :get) do 
     p 
       b = vacation.name
-    p= date_range vacation, hyphen=true
+    p = date_range vacation, hyphen=true
     = hidden_field_tag(:vacation_id, vacation.id) 
-    p= submit_tag "Edit"
+    p = submit_tag "Edit" if edit

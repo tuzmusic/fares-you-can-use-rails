@@ -1,3 +1,4 @@
+/ THIS LOGIC SHOULDN'T BE IN THE VIEW!!!
 - vacations = @prefs.vacations.order(:start_date)
 
 h1 My Preferences
@@ -6,4 +7,4 @@ br/
 h2 My Vacations
 br/
 - vacations.each do |vacation|
-  = render  "vacation", prefs: @prefs, vacation: vacation 
+  = render  "vacation", prefs: @prefs, vacation: vacation, edit: true
