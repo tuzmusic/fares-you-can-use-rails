@@ -42,6 +42,21 @@ describe "Personalized Deals" do
       deal.update(start_date: Date.new(2018,12,25), end_date:(Date.new 2018,12,30))
       expect(v.deals).to_not include deal
     end
+
+    it "can handle multiple deals" do
+      good_deals = []
+      good_deals << Deal.create(start_date: Date.new(2019,12,25), end_date:(Date.new 2019,12,30))
+      good_deals << Deal.create(start_date: Date.new(2019,11,25), end_date:(Date.new 2019,12,30))
+      good_deals << Deal.create(start_date: Date.new(2019,12,25), end_date:(Date.new 2020,1,30))
+      good_deals << Deal.create(start_date: Date.new(2019,12,18), end_date:(Date.new 2019,12,30))
+      good_deals << Deal.create(start_date: Date.new(2019,12,25), end_date:(Date.new 2020,1,4))
+      good_deals << Deal.create(start_date: Date.new(2019,11,25), end_date:(Date.new 2020,1,30))
+      # Bad deal
+      bad_deal = Deal.create(start_date: Date.new(2018,12,25), end_date:(Date.new 2018,12,30))
+      
+      expect(v.deals).to match good_deals
+      expect(v.deals).to_not include bad_deal
+    end
   end
 
   # describe "User#deals" do
