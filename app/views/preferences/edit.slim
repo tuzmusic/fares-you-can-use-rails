@@ -11,17 +11,8 @@ h2 My Vacations
     => builder_date_select f, :start_date
     | to
     =< builder_date_select f, :end_date
-/   = form_tag( "/user/preferences/#{vac.id}/edit" , method: :patch) do
-/     p = text_field_tag :name, vac.name
-/     p 
-/       = date_select_for vac, vac.start_date
-/       | to
-/       =< date_select_for vac, vac.end_date
-/     p 
-/       | those dates should be 
-/       = date_range vac
-  
-
+  p
+    = f.submit "Save"
   
 
 
