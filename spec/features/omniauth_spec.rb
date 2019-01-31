@@ -5,7 +5,7 @@ describe "Facebook login" do
   context "brand new user" do
     before :each do
       valid_facebook_login_setup
-      visit root_path
+      visit new_user_session_path
       click_on "Sign in with Facebook"
     end
 
@@ -23,7 +23,7 @@ describe "Facebook login" do
       User.create(email: "test@example.com", password:"123456")
       expect(User.last.email).to eq "test@example.com"
       valid_facebook_login_setup
-      visit root_path
+      visit new_user_session_path
       click_on "Sign in with Facebook"
     end
 
@@ -45,7 +45,8 @@ describe "Facebook login" do
     end
 
     it "doesn't set a new password" do
-      click_on "Sign Out"
+      click_on "Log Out"
+      click_on "Log In"
       fill_in "Email", with: "test@example.com"
       fill_in "Password", with: "123456"
       click_button "Log in"
