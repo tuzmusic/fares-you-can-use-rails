@@ -1,3 +1,12 @@
 h1 My Preferences
+br/
 
 h2 My Vacations
+- @user.vacations.each do |vacation|
+  p 
+    b = vacation.name
+    br/
+    = date_range vacation, hyphen=true
+    br/
+    | edit (this link should reload the page with edit mode activated for this deal!)
+
