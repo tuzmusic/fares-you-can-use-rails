@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  resources :preferences
   # devise_for :admins
   get 'regions/index'
   get 'regions/show'
-
+  
   root to: "deals#index"
   
   resources :deals, param: :slug
   resources :regions, param: :slug, only: [:index, :show] do
     resources :deals, only: [:index, :show, :edit, :destroy]
   end
-
+  
   devise_for :users, controllers: { 
     omniauth_callbacks: 'users/omniauth_callbacks', 
     preferences: 'users/preferences' 
   }
+  resources :preferences
 
   devise_scope :user do 
     get "/sign_out", to: 'devise/sessions#destroy', as: 'user_sign_out'
