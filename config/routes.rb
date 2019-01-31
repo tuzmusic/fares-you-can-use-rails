@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :preferences
   # devise_for :admins
   get 'regions/index'
   get 'regions/show'
