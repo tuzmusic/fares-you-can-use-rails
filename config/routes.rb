@@ -10,11 +10,12 @@ Rails.application.routes.draw do
     resources :deals, only: [:index, :show, :edit, :destroy]
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }  
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', preferences: 'users/preferences' }  
   devise_scope :user do 
     get "/sign_out", to: 'devise/sessions#destroy', as: 'user_sign_out'
     get "/sign_in", to: 'devise/sessions#new', as: 'user_sign_in'
     get "/sign_up", to: 'devise/registrations#new', as: 'user_sign_up'
+    get "/user/preferences/edit", to: 'users/preferences#edit', as: 'edit_user_preferences'
   end
 
   devise_for :admins, path: 'admin', controllers: { sessions: 'admins/sessions' }
