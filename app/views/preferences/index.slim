@@ -2,10 +2,6 @@ h1 My Preferences
 br/
 
 h2 My Vacations
+br/
 - @prefs.vacations.each do |vacation|
-  = form_tag(edit_preference_path(@prefs), method: :get) do 
-    p 
-      b = vacation.name
-    p= date_range vacation, hyphen=true
-    = hidden_field_tag(:vacation_id, vacation.id) 
-    p= submit_tag "Edit"
+  = render  "vacation", prefs: @prefs, vacation: vacation 
