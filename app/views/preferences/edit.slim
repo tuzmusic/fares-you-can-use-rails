@@ -1,18 +1,8 @@
-- vac = @selected_vacation
 h1 My Preferences
 br/
 
 h2 My Vacations
-
-= form_for(@selected_vacation) do |f| 
-  p
-    = f.text_field :name
-  p
-    => builder_date_select f, :start_date
-    | to
-    =< builder_date_select f, :end_date
-  p
-    = f.submit "Save"
+= render  "vacations_form", selected_vacation: @selected_vacation 
   
 
 
