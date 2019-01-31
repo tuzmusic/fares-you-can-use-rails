@@ -53,6 +53,10 @@ X List deals
 
 ## Pre-Your deals
 - User attributes
+  - Vacations
+    - Vacation#deals
+  - Regions (or favorite_regions or whatever)
+    - User#deals
 - User edit action
 - User edit (prefs) view
 
