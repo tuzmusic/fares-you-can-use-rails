@@ -1,5 +1,5 @@
 class Deal < ApplicationRecord
-
+  # ------ WRITER METHODS --------
   def origin=(airport)
     update(origins:[airport])
   end
