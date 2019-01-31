@@ -3,10 +3,12 @@ br/
 
 h2 My Vacations
 - @user.vacations.each do |vacation|
-  p 
-    b = vacation.name
-    br/
-    = date_range vacation, hyphen=true
-    br/
-    | edit (this link should reload the page with edit mode activated for this deal!)
+    = form_for vacation |vacation|
+      p 
+        b = vacation.name
+        br/
+        = date_range vacation, hyphen=true
+        br/ 
+        => link_to  "edit", edit_user_preferences_path, params: {vacation_id: vacation.id}
+        | (this link should reload the page with edit mode activated for this deal!)
 
