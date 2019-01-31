@@ -2,9 +2,9 @@ h1 My Preferences
 br/
 
 h2 My Vacations
-- @user.vacations.each do |vacation|
+- @prefs.vacations.each do |vacation|
     p 
-      = form_tag(edit_user_preferences_path, method: :get) do 
+      = form_tag(edit_preference_path(@prefs), method: :get) do 
         b = vacation.name
         br/
         = date_range vacation, hyphen=true
