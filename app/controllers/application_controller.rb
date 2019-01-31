@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
+    # binding.pry
     redirect_to new_admin_session_path unless admin_signed_in?
   end
 end

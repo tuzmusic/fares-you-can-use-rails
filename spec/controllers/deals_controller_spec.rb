@@ -4,6 +4,8 @@ require_relative '../spec_helpers/create_ny_and_dc_airports.rb'
 describe DealsController, type: :controller do
 
   def create_deal
+    create_admin
+    log_in_admin_from_controller
     post :create, params: creation_params
   end
 
