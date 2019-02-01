@@ -10,10 +10,16 @@ br/
   = render  "vacation", prefs: @prefs, vacation: vacation, edit: true
 
 h2 My Regions
-br/
-- @prefs.regions.each do |region|
-  p
-    b = region.name
-  p = = button_to  "text", model 
+p Select the regions you'd like to receive deals for:
+p = @prefs.regions.pluck(:name)
+= form_for @prefs do |f| 
+  = collection_check_boxes @prefs, :region_ids, Region.all, :id, :name do |b|
+    = b.label(:'data-value' => b.value) { b.check_box }
+    =< b.text
+    br/
+/ - @prefs.regions.each do |region|
+/   p
+/     b = region.name
+/   p = = button_to  "text", model 
   / = render  "region", prefs: @prefs, region: region, edit: true
 
