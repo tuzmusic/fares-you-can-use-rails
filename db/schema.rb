@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_214722) do
+ActiveRecord::Schema.define(version: 2019_02_01_170934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(version: 2019_01_31_214722) do
     t.integer "region_id"
     t.string "slug"
     t.index ["slug"], name: "index_deals_on_slug", unique: true
+  end
+
+  create_table "preference_regions", force: :cascade do |t|
+    t.bigint "preference_id"
+    t.bigint "region_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["preference_id"], name: "index_preference_regions_on_preference_id"
+    t.index ["region_id"], name: "index_preference_regions_on_region_id"
   end
 
   create_table "preference_vacations", force: :cascade do |t|
@@ -150,6 +159,8 @@ ActiveRecord::Schema.define(version: 2019_01_31_214722) do
 
   add_foreign_key "deal_origins", "airports"
   add_foreign_key "deal_origins", "deals", on_delete: :cascade
+  add_foreign_key "preference_regions", "preferences"
+  add_foreign_key "preference_regions", "regions"
   add_foreign_key "preference_vacations", "preferences"
   add_foreign_key "preference_vacations", "vacations"
 end

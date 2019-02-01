@@ -7,6 +7,10 @@ class Region < ApplicationRecord
   has_many :deals
   has_many :airports
 
+  has_many :preference_regions
+  has_many :preferences, through: :preference_regions
+
+
   scope :by_most_deals, -> { left_joins(:deals).group(:id).order(Arel.sql('COUNT(deals.id) DESC')) }
   # scope :by_most_deals, -> { joins(:deals).group("regions.id").order("count(regions.id) DESC") }
 
