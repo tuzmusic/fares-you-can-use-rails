@@ -1,0 +1,7 @@
+.container
+  = form_tag(edit_preference_path(prefs), method: :get) do 
+    .row
+      = hidden_field_tag(:region_id, region.id) 
+      p.col-sm 
+        b = region.name
+        =< submit_tag "Edit" if edit

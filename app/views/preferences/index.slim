@@ -8,3 +8,12 @@ h2 My Vacations
 br/
 - vacations.each do |vacation|
   = render  "vacation", prefs: @prefs, vacation: vacation, edit: true
+
+h2 My Regions
+br/
+- @prefs.regions.each do |region|
+  p
+    b = region.name
+  p = = button_to  "text", model 
+  / = render  "region", prefs: @prefs, region: region, edit: true
+
