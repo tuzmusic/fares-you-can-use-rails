@@ -4,4 +4,8 @@ class Preference < ApplicationRecord
   has_many :vacations, through: :preference_vacations
   has_many :preference_regions
   has_many :regions, through: :preference_regions
+
+  accepts_nested_attributes_for :vacations
+  
 end
+

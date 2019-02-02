@@ -9,7 +9,7 @@ br/
 - vacations.each do |vacation|
   = render  "vacation", prefs: @prefs, vacation: vacation, edit: true
 
-h2 My Regions
+h2 My Destinations
 p Select the regions you'd like to receive deals for:
 p = @prefs.regions.pluck(:name)
 = form_for @prefs do |f| 

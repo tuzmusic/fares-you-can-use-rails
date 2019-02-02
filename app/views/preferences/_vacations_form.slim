@@ -1,9 +1,10 @@
 .container
-  = form_for(selected_vacation) do |f| 
-    .row
-      p.col-sm = f.text_field :name
-      p.col-sm
-        => builder_date_select f, :start_date
-        | to
-        =< builder_date_select f, :end_date
-      p.col-sm = f.submit "Save"
+  = form_for @prefs do |f| 
+    = fields_for selected_vacation do |v| 
+      .row
+        p.col-sm = v.text_field :name
+        p.col-sm
+          => builder_date_select v, :start_date
+          | to
+          =< builder_date_select v, :end_date
+        p.col-sm = f.submit "Save"
