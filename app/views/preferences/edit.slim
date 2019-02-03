@@ -5,12 +5,4 @@ h1 My Preferences
 br/
 
 h2 My Vacations
-
-= render  "vacations_form", vacations: vacations, prefs: @prefs
-/ - vacations.each do |vacation|
-  - if vacation.id == @selected_vacation.id
-    = render  "vacations_form", selected_vacation: @selected_vacation 
-  - else
-    = render  "vacation", prefs: @prefs, vacation: vacation, edit: false 
-
-
+br = render  "vacations_form", vacations: vacations, prefs: @prefs

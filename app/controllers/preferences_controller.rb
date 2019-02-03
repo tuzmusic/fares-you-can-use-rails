@@ -8,13 +8,10 @@ class PreferencesController < ApplicationController
   end
 
   def edit
-    # @selected_vacation = @prefs.vacations.find(params[:vacation_id])
   end
 
   def update
-    binding.pry
     @prefs.update(pref_params)
-    binding.pry
     redirect_to :index
   end
 
