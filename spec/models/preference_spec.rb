@@ -11,10 +11,8 @@ describe Preference, type: :model do
   end
 
   it "has many vacations" do
-    v1 = Vacation.create(name:"Summer", start_date:Date.new(2019,6,1), end_date:Date.new(2019,9,1))
     pref.vacations.create(name:"Summer", start_date:Date.new(2019,6,1), end_date:Date.new(2019,9,1))
     pref.vacations.create(name:"Christmas Break", start_date:Date.new(2019,12,18), end_date:Date.new(2020,1,4))
-    binding.pry
     pref.save
     expect(pref.vacations.pluck(:name)).to match ["Summer", "Christmas Break"]
   end

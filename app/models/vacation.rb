@@ -1,5 +1,4 @@
 class Vacation < ApplicationRecord
-  belongs_to :user
   has_many :preference_vacations
   has_many :preferences, through: :preference_vacations
 
