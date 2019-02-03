@@ -4,7 +4,7 @@ describe Preference, type: :model do
   let(:user) { create_user }
   let(:pref) { Preference.create(user: user) } 
 
-  xit "belongs to a user" do
+  it "belongs to a user" do
     user.preference = pref
     expect(user.preference).to eq pref
     expect(pref.user).to eq user
