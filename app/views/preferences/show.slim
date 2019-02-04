@@ -2,10 +2,10 @@
 h1 My Preferences
 br/
 
-/ = render  "home_airports_section", prefs: @prefs  
+= render  "home_airports_section", prefs: @prefs  
 br/
 
-/ = render  "vacations_section", vacations: @prefs.vacations.order(:start_date)
+= render  "vacations_section", vacations: @prefs.vacations.order(:start_date)
 br/
 
 = render  "regions_section", prefs: @prefs 

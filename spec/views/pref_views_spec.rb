@@ -98,9 +98,13 @@ describe "Preference views", type: :feature do
     end
 
     describe "regions section" do
+      let(:afr) { Region.find_by(name:"Africa") }
+      let(:eur) { Region.find_by(name:"Europe") }
+      let(:asia) { Region.find_by(name:"Asia") }
+
       before :each do
-        pref.regions << Region.find_by(name:"Africa")
-        pref.regions << Region.find_by(name:"Europe")
+        pref.regions << afr
+        pref.regions << eur
         visit preferences_path
       end
 
@@ -113,12 +117,21 @@ describe "Preference views", type: :feature do
       end
       
       it "has a save button for regions" do
-        expect(false).to eq true 
-        
+        expect(page).to have_button "Save"
       end
 
       it "saves updated regions when the button is clicked" do
-        expect(false).to eq true 
+        uncheck "preferences_region_ids_#{afr.id}"
+        check "preferences_region_ids_#{asia.id}"
+        click_button "Save"
+        expect(pref.regions).to_not include afr
+        expect(pref.regions).to include asia
+
+        afr_box = page.all("#preferences_region_ids_#{afr.id}").first 
+        expect(afr_box.checked?).to eq false
+        
+        asia_box = page.all("#preferences_region_ids_#{asia.id}").first 
+        expect(asia_box.checked?).to eq true
         # preference#update
       end
     end
