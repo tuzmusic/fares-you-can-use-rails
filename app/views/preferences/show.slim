@@ -5,9 +5,12 @@ h1 My Preferences
 br/
 
 h2 My Vacations
-p = button_to  "Edit Vacations", edit_preferences_path, method: :get 
+p 
+  = link_to  "New Vacation", new_preferences_path 
+  br/
+  = link_to  "Edit Vacations", edit_preferences_path 
 - vacations.each do |vacation|
-  = render  "vacation", vacation: vacation
+  = render "vacation", vacation: vacation
 
 h2 My Destinations
 p Select the regions you'd like to receive deals for:

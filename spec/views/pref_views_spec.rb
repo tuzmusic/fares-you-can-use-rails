@@ -21,14 +21,14 @@ describe "Preference views", type: :feature do
         expect(page).to have_content "Winter break"
       end
       
-      it "has a button to edit vacations" do
-        expect(page).to have_button "Edit Vacations" 
+      it "has a link to edit vacations" do
+        expect(page).to have_link "Edit Vacations" 
         # preference#edit
       end
 
-      it "has a button to create a new vacation" do
-        expect(false).to eq true 
-        # preference#edit
+      it "has a link to create a new vacation" do
+        expect(page).to have_link "New Vacation" 
+        # preference#new
       end
 
       it "has a button to delete vacation" do
