@@ -1,16 +1,8 @@
-/ THIS LOGIC SHOULDN'T BE IN THE VIEW!!!
-- vacations = @prefs.vacations.order(:start_date)
 
 h1 My Preferences
 br/
 
-h2 My Vacations
-p 
-  = link_to  "New Vacation", new_preferences_path 
-  br/
-  = link_to  "Edit Vacations", edit_preferences_path 
-- vacations.each do |vacation|
-  = render "vacation", vacation: vacation
+= render  "vacation_section", vacations: @prefs.vacations.order(:start_date)
 
 h2 My Destinations
 p Select the regions you'd like to receive deals for:

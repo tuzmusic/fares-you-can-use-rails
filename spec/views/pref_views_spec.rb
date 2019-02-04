@@ -31,19 +31,14 @@ describe "Preference views", type: :feature do
         # preference#new
       end
 
-      it "has a button to delete vacation" do
-        expect(false).to eq true 
-        # preference#edit
-      end
-
-      it "doesn't show vacations that have passed" do
-        expect(false).to eq true 
-        
+      xit "doesn't show vacations that have passed (OR marks vacations that have passed)" do
       end
 
       it "displays a message if a user has defined no vacations" do
-        expect(false).to eq true 
-        
+        Vacation.destroy_all
+        page.refresh
+        expect(pref.vacations.count).to eq 0
+        expect(page).to have_content "You haven't added any vacations" 
       end
     end
 
@@ -91,6 +86,11 @@ describe "Preference views", type: :feature do
     it "shows an edit form for vacations when the vacations edit button was clicked" do
       expect(false).to eq true 
         # preference#edit
+    end
+
+    it "has a button to delete vacation" do
+      expect(false).to eq true 
+      # preference#edit
     end
   end
 
