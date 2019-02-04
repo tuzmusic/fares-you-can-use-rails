@@ -99,17 +99,17 @@ describe "Preference views", type: :feature do
 
     describe "regions section" do
       before :each do
+        pref.regions << Region.find_by(name:"Africa")
+        pref.regions << Region.find_by(name:"Europe")
         visit preferences_path
       end
 
       it "shows all the regions with checkboxes" do
-        expect(page).to have_content 
-        # preference#show
+        expect(page.all('input[type=checkbox]').count).to eq Region.count
       end
 
       it "shows the user's currently selected regions ('destinations')" do
-        expect(false).to eq true 
-
+        expect(page.all('input[type=checkbox][checked=checked]').count).to eq 2
       end
       
       it "has a save button for regions" do

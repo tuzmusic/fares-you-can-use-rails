@@ -1,16 +1,9 @@
 h2 My Destinations
 p Select the regions you'd like to receive deals for:
+/ # for test, to see what checkboxes should be checked
 p = prefs.regions.pluck(:name)
-/ = render  "region", prefs: @prefs 
 
-/ = form_for @prefs do |f| 
-  = collection_check_boxes @prefs, :region_ids, Region.all, :id, :name do |b|
-    = b.label(:'data-value' => b.value) { b.check_box }
-    =< b.text
+= form_for prefs do |f| 
+  = collection_check_boxes :region, :region_ids, Region.all, :id, :name do |box|
+    = box.check_box(checked: ("checked" if prefs.regions.include?(box.object)) ) + " " + box.text 
     br/
-/ - @prefs.regions.each do |region|
-/   p
-/     b = region.name
-/   p = = button_to  "text", model 
-  / = render  "region", prefs: @prefs, region: region, edit: true
-
