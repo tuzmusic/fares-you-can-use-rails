@@ -4,6 +4,8 @@ h2 Edit My Vacations
     p 
       = f.label :name, "Name:"
       =< f.text_field :name
+      =< f.submit "Save"
+      =< f.submit "Delete"
     p 
       => builder_date_select f, :start_date
       | to

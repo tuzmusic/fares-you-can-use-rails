@@ -141,19 +141,20 @@ describe "Preference views", type: :feature do
 
   describe "edit vacations view" do
       before :each do
-        pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31))
         pref.vacations.create(name: "Winter break", start_date: Date.new(2019,12,21), end_date: Date.new(2019,12,31))
+        pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31))
         visit edit_preferences_path
       end
 
-    it "shows an edit form for vacations when the vacations edit button was clicked" do
-      binding.pry
-      expect(page.all('input[type=textinput]').count).to eq 2
+    it "shows an edit form for vacations when the vacations edit button was clicked, with the vacations in chronological order" do
+      inputs = page.all('#edit_vacations_form input')
+      expect(inputs.count).to eq 2
+      expect(inputs.first.value).to eq "Summer vacation"  
         # preference#edit
     end
 
     it "has a button to delete vacation" do
-      expect(false).to eq true 
+      expect(page.all('button[value="Delete"]').count).to eq 2
       # preference#edit
     end
 

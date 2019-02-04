@@ -11,7 +11,8 @@ class PreferencesController < ApplicationController
   end
 
   def update
-    add_home_airport(params)
+    edit_vacation(params) if params[:preference][:vacations_attributes]
+    add_home_airport(params) if params[:preference][:home_airport]
     @prefs.update(pref_params)
     redirect_to preferences_path
   end
@@ -21,13 +22,20 @@ class PreferencesController < ApplicationController
     redirect_to preferences_path
   end
 
+  def edit_vacation(params)
+    case params[:commit]
+    when "Save"
+    when "Delete"
+    end
+  end
+
   def add_home_airport(params)
-    if airport = params[:preferences][:home_airport]
-      if airport[3] == " " && valid_airport = Airport.iata(airport[0..2])
-        @prefs.home_airports << valid_airport 
-      else
-        flash[:notice] = "#{airport} is not a valid airport."
-      end
+    raise params
+    airport = params[:preferences][:home_airport]
+    if airport[3] == " " && valid_airport = Airport.iata(airport[0..2])
+      @prefs.home_airports << valid_airport 
+    else
+      flash[:notice] = "#{airport} is not a valid airport."
     end
   end
 
