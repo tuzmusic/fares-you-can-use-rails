@@ -12,8 +12,13 @@ class PreferencesController < ApplicationController
   end
 
   def update
+    if airport = params[:preferences][:home_airport]
+      if iata = airport[0..2]
+        @prefs.home_airports << Airport.iata(iata) if Airport.iata(iata)
+      end
+    end
     @prefs.update(pref_params)
-    redirect_to :index
+    redirect_to preferences_path
   end
 
   def set_prefs
@@ -21,7 +26,8 @@ class PreferencesController < ApplicationController
   end
 
   def pref_params
-    params.require(:preference).permit vacation_ids:[], vacation_attributes: [:name, :start_date, :end_date]
+    # params.require(:preferences).permit vacation_ids:[], vacation_attributes: [:name, :start_date, :end_date]
+    params.require(:preferences).permit vacation_ids:[], vacation_attributes: [:name, :start_date, :end_date]
   end
 
 end

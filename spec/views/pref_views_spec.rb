@@ -59,13 +59,19 @@ describe "Preference views", type: :feature do
       end
       
       it "has a form to add one home airport, with an auto-fill text field" do
-        expect(false).to eq true 
-
+        expect(page).to have_field "home_airport_selector" 
+        expect(page.body).to include "datalist"
       end
 
-      it "adds a home airport" do
-        expect(false).to eq true 
+      it "adds a home airport if a valid airport is selected" do
+        page.select "BWI (Baltimore/Washington International Thurgood Marshall Airport)", from: 'home_airport_selector'
+        click_button "Add"
+        expect(page).to have_content "Baltimore/Washington International Thurgood Marshall Airport (BWI)"
         # preference#update
+      end
+      
+      it "does not add an airport if an invalid airport is entered" do
+        expect(false).to eq true 
       end
     end
 
