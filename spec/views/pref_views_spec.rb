@@ -36,7 +36,7 @@ describe "Preference views", type: :feature do
       end
 
       it "displays a message if a user has defined no vacations" do
-        Vacation.destroy_all
+        pref.vacations.delete_all
         page.refresh
         expect(pref.vacations.count).to eq 0
         expect(page).to have_content "You haven't added any vacations" 
