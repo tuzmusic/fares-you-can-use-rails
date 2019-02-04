@@ -3,9 +3,19 @@ require 'rails_helper'
 describe "Preference views", type: :feature do
   
   describe "show page" do
+    let(:user) { create_user }
+    let(:pref) { Preference.create(user: user) }
+    let(:v1)  { pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31) }
+    let(:v2)  { pref.vacations.create(name: "Winter break", start_date: Date.new(2019,12,21), end_date: Date.new(2019,12,31) }
+
+    
     describe "vacations section" do
+      before :each do
+        v1; v2    
+      end
+
       it "show's the user's vacations" do
-        # preference#show
+        
       end
       
       it "has a button to edit vacations" do
@@ -14,6 +24,18 @@ describe "Preference views", type: :feature do
 
       it "has a button to create a new vacation" do
         # preference#edit
+      end
+
+      it "has a button to delete vacation" do
+        # preference#edit
+      end
+
+      it "doesn't show vacations that have passed" do
+        
+      end
+
+      it "displays a message if a user has defined no vacations" do
+        
       end
     end
 
