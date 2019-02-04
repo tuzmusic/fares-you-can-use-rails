@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end
 
   resource :preferences
-  ActiveSupport::Inflector.inflections {|inflect| inflect.irregular 'preferences', 'preferences'}
+  ActiveSupport::Inflector.inflections {|inflect| inflect.irregular 'preferences', 'preferences'} # fix route helper paths so that form_for works
+  get '/preferences/delete_airport/:airport_id', to: 'preferences#destroy', as: 'delete_home_airport'
+
   resources :vacations
   
   get 'pry', to: 'application#pry'

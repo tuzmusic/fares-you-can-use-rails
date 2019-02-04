@@ -23,12 +23,16 @@ class PreferencesController < ApplicationController
     redirect_to preferences_path
   end
 
+  def destroy
+    @prefs.home_airports.delete(params[:airport_id])
+    redirect_to preferences_path
+  end
+
   def set_prefs
     @prefs = Preference.find_by(user_id: current_user.id)
   end
 
   def pref_params
-    # params.require(:preferences).permit vacation_ids:[], vacation_attributes: [:name, :start_date, :end_date]
     params.require(:preferences).permit vacation_ids:[], vacation_attributes: [:name, :start_date, :end_date]
   end
 

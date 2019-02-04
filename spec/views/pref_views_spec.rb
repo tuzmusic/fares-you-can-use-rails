@@ -51,7 +51,6 @@ describe "Preference views", type: :feature do
         visit preferences_path
       end
 
-
       it "shows the user's home airports" do
         expect(page).to have_content "Ronald Reagan Washington National Airport"
         expect(page).to have_content "Washington Dulles International Airport"
@@ -83,11 +82,20 @@ describe "Preference views", type: :feature do
         expect(page.all('#home_airports_list')).to_not have_content "XXX"
         expect(page).to have_content "XXX is not a valid airport."
       end
+
+      it "allows deletion of home airports" do
+        page.all('#home-airports-list a').first.click
+        expect(page).to_not have_content "DCA"
+      end
     end
 
     describe "regions section" do
+      before :each do
+        visit preferences_path
+      end
+
       it "shows all the regions with checkboxes" do
-        expect(false).to eq true 
+        expect(page).to have_content 
         # preference#show
       end
 
