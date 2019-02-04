@@ -13,8 +13,10 @@ class PreferencesController < ApplicationController
 
   def update
     if airport = params[:preferences][:home_airport]
-      if iata = airport[0..2]
-        @prefs.home_airports << Airport.iata(iata) if Airport.iata(iata)
+      if airport[3] == " " && valid_airport = Airport.iata(airport[0..2])
+        @prefs.home_airports << valid_airport 
+      else
+        flash[:notice] = "#{airport} is not a valid airport."
       end
     end
     @prefs.update(pref_params)

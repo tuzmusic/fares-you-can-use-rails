@@ -71,7 +71,10 @@ describe "Preference views", type: :feature do
       end
       
       it "does not add an airport if an invalid airport is entered" do
-        expect(false).to eq true 
+        fill_in 'home_airport_selector', with: "poop"
+        click_button "Add"
+        expect(page.all('#home_airports_list')).to_not have_content "poop"
+        expect(page).to have_content "poop is not a valid airport."
       end
     end
 
