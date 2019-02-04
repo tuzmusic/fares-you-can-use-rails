@@ -76,6 +76,13 @@ describe "Preference views", type: :feature do
         expect(page.all('#home_airports_list')).to_not have_content "poop"
         expect(page).to have_content "poop is not a valid airport."
       end
+
+      it "does not add an airport if an invalid 3-letter airport is entered" do
+        fill_in 'home_airport_selector', with: "XXX"
+        click_button "Add"
+        expect(page.all('#home_airports_list')).to_not have_content "XXX"
+        expect(page).to have_content "XXX is not a valid airport."
+      end
     end
 
     describe "regions section" do
