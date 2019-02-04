@@ -158,19 +158,20 @@ describe "Preference views", type: :feature do
 
     it "has a button to delete each vacation" do
       expect(page.all('input[type=submit][value=Delete]').count).to eq 2
-      # preference#edit
     end
 
     it "has a button to save each vacation" do
       expect(page.all('input[type=submit][value=Save]').count).to eq 2
-      # preference#edit
-    end
-
-    it "can delete a vacation" do
-      expect(false).to eq true 
     end
 
     it "can edit a vacation" do
+      fill_in 'vacation_0_name', with: "Spring Break"
+      page.all('input[type=submit][value=Save]').first.click
+      expect(page).to have_content "Spring Break"
+      expect(page).to_not have_content "Summer vacation"
+    end
+
+    it "can delete a vacation" do
       expect(false).to eq true 
     end
 

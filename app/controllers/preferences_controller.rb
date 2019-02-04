@@ -11,7 +11,6 @@ class PreferencesController < ApplicationController
   end
 
   def update
-    edit_vacation(params) if params[:preference][:vacations_attributes]
     add_home_airport(params) if params[:preference][:home_airport]
     @prefs.update(pref_params)
     redirect_to preferences_path
@@ -20,13 +19,6 @@ class PreferencesController < ApplicationController
   def destroy
     @prefs.home_airports.delete(params[:airport_id])
     redirect_to preferences_path
-  end
-
-  def edit_vacation(params)
-    case params[:commit]
-    when "Save"
-    when "Delete"
-    end
   end
 
   def add_home_airport(params)
@@ -43,7 +35,6 @@ class PreferencesController < ApplicationController
   end
 
   def pref_params
-    params.require(:preference).permit region_ids: [], vacation_ids:[], vacation_attributes: [:name, :start_date, :end_date]
+    params.require(:preference).permit region_ids: [], vacations_ids:[], vacations_attributes: [:name, :start_date, :end_date]
   end
-
 end

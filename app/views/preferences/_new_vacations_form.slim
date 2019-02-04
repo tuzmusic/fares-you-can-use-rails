@@ -1,0 +1,17 @@
+h2 Edit My Vacations
+#edit_vacations_form
+  - vacations.each.with_index do |vacation,i| 
+    = form_for vacation, html: {id: "vacation_#{i}"} do |f| 
+      p 
+        = f.label :name, "Name:"
+        =< f.text_field :name, id: "vacation_#{i}_name"
+        =< f.submit "Save"
+        =< f.submit "Delete"
+      p 
+        => builder_date_select f, :start_date, "vacation_#{i}_start_date"
+        | to
+        =< builder_date_select f, :end_date, "vacatio#{i}_n_end_date"
+      br/
+
+
+
