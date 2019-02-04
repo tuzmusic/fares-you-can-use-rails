@@ -1,5 +1,5 @@
 .container
-  = form_tag(edit_preference_path(prefs), method: :get) do 
+  = form_tag(edit_preferences_path(prefs), method: :get) do 
     .row
       = hidden_field_tag(:region_id, region.id) 
       p.col-sm 

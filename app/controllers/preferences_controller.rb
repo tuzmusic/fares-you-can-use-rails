@@ -4,13 +4,11 @@ class PreferencesController < ApplicationController
     set_prefs
   end
 
-  def index
-  end
-
   def show
   end
 
   def edit
+    raise params
   end
 
   def update

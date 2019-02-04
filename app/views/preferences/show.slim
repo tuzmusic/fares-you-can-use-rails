@@ -5,14 +5,16 @@ h1 My Preferences
 br/
 
 h2 My Vacations
-br/
+p = button_to  "Edit Vacations", edit_preferences_path, method: :get 
 - vacations.each do |vacation|
-  = render  "vacation", prefs: @prefs, vacation: vacation, edit: true
+  = render  "vacation", vacation: vacation
 
 h2 My Destinations
 p Select the regions you'd like to receive deals for:
 p = @prefs.regions.pluck(:name)
-= form_for @prefs do |f| 
+/ = render  "region", prefs: @prefs 
+
+/ = form_for @prefs do |f| 
   = collection_check_boxes @prefs, :region_ids, Region.all, :id, :name do |b|
     = b.label(:'data-value' => b.value) { b.check_box }
     =< b.text

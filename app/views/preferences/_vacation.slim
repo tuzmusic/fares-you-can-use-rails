@@ -1,8 +1,4 @@
-.container
-  = form_tag(edit_preference_path(prefs), method: :get) do 
-    .row
-      p.col-sm 
-        b = vacation.name
-      p.col-sm = date_range vacation, hyphen=true
-      = hidden_field_tag(:vacation_id, vacation.id) 
-      p.col-sm = submit_tag "Edit" if edit
+  p
+    b = vacation.name
+    br/
+    = date_range vacation, hyphen=true
