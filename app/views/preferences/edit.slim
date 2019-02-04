@@ -1,8 +1,11 @@
-/ THIS LOGIC SHOULDN'T BE IN THE VIEW!!!
-- vacations = @prefs.vacations.order(:start_date)
 
 h1 My Preferences
 br/
 
-h2 My Vacations
-br = render  "vacations_form", vacations: vacations, prefs: @prefs
+= render  "home_airports_section", prefs: @prefs  
+br/
+
+= render  "vacations_form", vacations: @prefs.vacations.order(:start_date), prefs: @prefs
+br/
+
+= render  "regions_section", prefs: @prefs 

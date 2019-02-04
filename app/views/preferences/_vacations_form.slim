@@ -1,10 +1,13 @@
-= form_for prefs do |p|
+h2 Edit My Vacations
+= form_for prefs, html: {id: "edit_vacations_form"} do |p|
   = p.fields_for :vacations do |f|  
     p 
-      = f.label :name
+      = f.label :name, "Name:"
       =< f.text_field :name
     p 
       => builder_date_select f, :start_date
       | to
       =< builder_date_select f, :end_date
+
+
 

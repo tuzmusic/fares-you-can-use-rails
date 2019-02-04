@@ -8,7 +8,6 @@ class PreferencesController < ApplicationController
   end
 
   def edit
-    raise params
   end
 
   def update
@@ -31,7 +30,7 @@ class PreferencesController < ApplicationController
       end
     end
   end
-  
+
   def set_prefs
     @prefs = Preference.find_by(user_id: current_user.id)
   end
