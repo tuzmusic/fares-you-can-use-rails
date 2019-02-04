@@ -30,8 +30,7 @@ class PreferencesController < ApplicationController
   end
 
   def add_home_airport(params)
-    raise params
-    airport = params[:preferences][:home_airport]
+    airport = params[:preference][:home_airport]
     if airport[3] == " " && valid_airport = Airport.iata(airport[0..2])
       @prefs.home_airports << valid_airport 
     else
@@ -44,7 +43,7 @@ class PreferencesController < ApplicationController
   end
 
   def pref_params
-    params.require(:preferences).permit region_ids: [], vacation_ids:[], vacation_attributes: [:name, :start_date, :end_date]
+    params.require(:preference).permit region_ids: [], vacation_ids:[], vacation_attributes: [:name, :start_date, :end_date]
   end
 
 end

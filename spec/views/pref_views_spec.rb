@@ -153,17 +153,35 @@ describe "Preference views", type: :feature do
         # preference#edit
     end
 
-    it "has a button to delete vacation" do
+    it "has a button to delete each vacation" do
       expect(page.all('button[value="Delete"]').count).to eq 2
       # preference#edit
+    end
+
+    it "has a button to save each vacation" do
+      expect(page.all('button[value="Save"]').count).to eq 2
+      # preference#edit
+    end
+
+    it "can delete a vacation" do
+      
+    end
+
+    it "can edit a vacation" do
+      
     end
 
     it "shows the rest of the show page" do
       expect(false).to eq true 
     end
 
-    it "functions just like the show page" do
-      expect(false).to eq true 
+    context "it functions just like the show page" do
+      it "can add a new home airport" do
+        
+      end
+      it "can change the regions" do
+        
+      end
     end
   end
 
