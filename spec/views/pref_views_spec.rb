@@ -87,6 +87,14 @@ describe "Preference views", type: :feature do
         page.all('#home-airports-list a').first.click
         expect(page).to_not have_content "DCA"
       end
+
+      it "displays a message if a user has defined no home airports" do
+        pref.home_airports.delete_all
+        page.refresh
+        expect(pref.home_airports.count).to eq 0
+        expect(page).to have_content "You haven't added any airports" 
+      end
+
     end
 
     describe "regions section" do
