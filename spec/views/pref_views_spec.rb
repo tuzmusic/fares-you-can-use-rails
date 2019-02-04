@@ -3,16 +3,17 @@ require 'rails_helper'
 describe "Preference views", type: :feature do
   
   describe "show page" do
-    let(:user) { ; User.first }
+    let(:user) { User.first }
     let(:pref) { Preference.create(user: User.first) }
-    let(:v1)  { pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31)) }
-    let(:v2)  { pref.vacations.create(name: "Winter break", start_date: Date.new(2019,12,21), end_date: Date.new(2019,12,31)) }
-
+    
+    before :each do
+      create_and_log_in_user
+    end
     
     describe "vacations section" do
       before :each do
-        create_and_log_in_user
-        v1; v2    
+        pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31))
+        pref.vacations.create(name: "Winter break", start_date: Date.new(2019,12,21), end_date: Date.new(2019,12,31))
         visit preferences_path
       end
 
@@ -43,8 +44,17 @@ describe "Preference views", type: :feature do
     end
 
     describe "home airports section" do
+
+      before :each do
+        pref.home_airports << Airport.iata("DCA")
+        pref.home_airports << Airport.iata("IAD")
+        visit preferences_path
+      end
+
+
       it "shows the user's home airports" do
-        expect(false).to eq true 
+        expect(page).to have_content "Ronald Reagan Washington National Airport"
+        expect(page).to have_content "Washington Dulles International Airport"
         # preference#show
       end
       

@@ -2,21 +2,8 @@
 h1 My Preferences
 br/
 
-= render  "vacation_section", vacations: @prefs.vacations.order(:start_date)
+= render  "vacations_section", vacations: @prefs.vacations.order(:start_date)
 
-h2 My Destinations
-p Select the regions you'd like to receive deals for:
-p = @prefs.regions.pluck(:name)
-/ = render  "region", prefs: @prefs 
+= render  "home_airports_section", home_airports: @prefs.home_airports, prefs: @prefs  
 
-/ = form_for @prefs do |f| 
-  = collection_check_boxes @prefs, :region_ids, Region.all, :id, :name do |b|
-    = b.label(:'data-value' => b.value) { b.check_box }
-    =< b.text
-    br/
-/ - @prefs.regions.each do |region|
-/   p
-/     b = region.name
-/   p = = button_to  "text", model 
-  / = render  "region", prefs: @prefs, region: region, edit: true
-
+/ = render  "regions_section", prefs: @prefs 

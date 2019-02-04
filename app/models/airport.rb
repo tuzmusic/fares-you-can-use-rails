@@ -1,6 +1,12 @@
 require_relative 'airport/utilities'
 
 class Airport < ApplicationRecord
+
+  scope :by_name, -> { order(:name) }
+  scope :by_iata, -> { order(:iata) }
+  scope :domestic, -> { where(country:"United States") }
+  scope :international, -> { where.not(country: "United States") }
+
   has_many :deal_origins
   has_many :origin_deals, through: :deal_origins, source: :deal
 

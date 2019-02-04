@@ -1,0 +1,15 @@
+h2 My Home Airports
+
+/ add airport form
+= form_for prefs do |f|
+  = text_field_tag :home_airport, list: 'iata'
+  datalist#iata
+    - Airport.all.each do |airport|
+      option value="#{airport.iata} (#{airport.name})" 
+  =< f.submit "Add"
+
+/ list airports
+- home_airports.each do |airport| 
+  p 
+    = airport.name
+    =< "(#{airport.iata})"

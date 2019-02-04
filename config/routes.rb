@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   end
 
   resource :preferences
+  ActiveSupport::Inflector.inflections {|inflect| inflect.irregular 'preferences', 'preferences'}
   resources :vacations
-
   
   get 'pry', to: 'application#pry'
 
