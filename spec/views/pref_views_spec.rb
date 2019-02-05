@@ -303,7 +303,7 @@ describe "Preference views", type: :feature do
       select '2020', from: 'preference_vacation_end_date_1i'
       select 'Feb', from: 'preference_vacation_end_date_2i'
       select '15', from: 'preference_vacation_end_date_3i'      
-      click_button "Save"
+      click_button "save_vacation_button"
 
       expect(page).to have_content "President's day"
       expect(page).to have_content "Feb. 12, 2020 - Feb. 15, 2020"
