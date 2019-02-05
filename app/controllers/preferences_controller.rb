@@ -11,12 +11,14 @@ class PreferencesController < ApplicationController
   end
 
   def update
-    add_home_airport(params) if params[:preference][:home_airport]
+    if params[:preference][:home_airport]
+      add_home_airport(params) 
+    end
+
     @prefs.update(pref_params)
     pref_params[:vacations_attributes].each do |array|  
       vacation = array.last
-      binding.pry
-      if vacation[:_destroy] == 1
+      if vacation[:_destroy] == "1"
         Vacation.find(vacation[:id]).destroy
       end
     end
