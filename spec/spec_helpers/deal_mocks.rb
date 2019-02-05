@@ -14,4 +14,8 @@ module DealMocks
   def dummy_deal_from(airport)
     dummy_deal.tap {|d| d.origin = airport}
   end
+  
+  def dummy_deal_to(airport)
+    dummy_deal.tap {|d| d.destination = airport}
+  end
 end
