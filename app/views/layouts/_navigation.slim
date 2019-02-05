@@ -7,6 +7,9 @@ ul.nav.navbar-nav#navigation
     = link_to  "Deals", deals_path
   li class=(path.start_with?("/regions") ? 'active' : 'inactive') 
     = link_to  "Regions", regions_path
+  - if user_signed_in?
+    li# class=(path == ("/preferences") ? 'active' : 'inactive') 
+      = link_to  "Preferences", preferences_path
     
     / deleted li.dropdown from template
 
