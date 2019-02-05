@@ -16,6 +16,9 @@ class PreferencesController < ApplicationController
     delete_vacations(pref_params) if pref_params[:vacations_attributes]
     redirect_to preferences_path
   end
+
+  def new
+  end
   
   def destroy
     @prefs.home_airports.delete(params[:airport_id])
