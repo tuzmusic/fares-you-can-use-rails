@@ -1,6 +1,7 @@
 class PreferencesController < ApplicationController
 
   before_action do
+    authenticate_user!
     set_prefs
   end
 
