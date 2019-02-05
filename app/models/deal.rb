@@ -1,6 +1,7 @@
 require_relative 'deal/convenience_methods'
 require_relative 'deal/utilities'
 require_relative 'deal/diagnostics'
+require_relative 'deal/filters'
 require_relative 'deal/seed'
 
 class Deal < ApplicationRecord

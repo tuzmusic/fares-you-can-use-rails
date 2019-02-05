@@ -104,4 +104,6 @@ RSpec.configure do |config|
   config.include OmniAuthTestHelper
   require_relative './spec_helpers/user_helper'
   config.include UserTestHelper
+  require_relative './spec_helpers/deal_mocks'
+  config.include DealMocks
 end
