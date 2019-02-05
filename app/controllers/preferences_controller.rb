@@ -19,6 +19,10 @@ class PreferencesController < ApplicationController
 
   def new
   end
+
+  def create
+    binding.pry
+  end
   
   def destroy
     @prefs.home_airports.delete(params[:airport_id])

@@ -297,12 +297,12 @@ describe "Preference views", type: :feature do
 
     it "saves the new vacation" do
       fill_in 'Name:', with: "President's day"
-      select '2020', from: 'vacation_start_date_1i'
-      select 'Feb', from: 'vacation_start_date_2i'
-      select '12', from: 'vacation_start_date_3i'
-      select '2020', from: 'vacation_end_date_1i'
-      select 'Feb', from: 'vacation_end_date_2i'
-      select '15', from: 'vacation_end_date_3i'      
+      select '2020', from: 'preference_vacation_start_date_1i'
+      select 'Feb', from: 'preference_vacation_start_date_2i'
+      select '12', from: 'preference_vacation_start_date_3i'
+      select '2020', from: 'preference_vacation_end_date_1i'
+      select 'Feb', from: 'preference_vacation_end_date_2i'
+      select '15', from: 'preference_vacation_end_date_3i'      
       click_button "Save"
 
       expect(page).to have_content "President's day"
