@@ -302,8 +302,21 @@ describe "Preference views", type: :feature do
     end
 
     it "can only access the preferences for the current user" do
-      expect(false).to eq true 
-      
+      click_on "Log Out"
+      u1 = User.first # created in before :each block
+      u2 = User.create(email:"test2@example.com", password: "123456", first_name: "Jane", last_name: "Doe")
+
+      u1.preferences.vacations.create(name:"John's Vacation", start_date: Date.yesterday, end_date: Date.tomorrow)
+      u2.preferences.vacations.create(name:"Jane's Vacation", start_date: Date.yesterday, end_date: Date.tomorrow)
+
+
+      visit new_user_session_path
+      fill_in "Email", with: "test2@example.com"
+      fill_in "Password", with: "123456"
+      click_on "Log in"
+      visit preferences_path
+      expect(page).to have_content "Jane's Vacation"
+      expect(page).to_not have_content "John's Vacation"
     end
   end
 end

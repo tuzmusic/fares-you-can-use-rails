@@ -5,8 +5,8 @@ describe Preference, type: :model do
   let(:pref) { Preference.create(user: user) } 
 
   it "belongs to a user" do
-    user.preference = pref
-    expect(user.preference).to eq pref
+    user.preferences = pref
+    expect(user.preferences).to eq pref
     expect(pref.user).to eq user
   end
 
