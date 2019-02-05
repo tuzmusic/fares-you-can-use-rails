@@ -12,7 +12,14 @@ class PreferencesController < ApplicationController
 
   def update
     add_home_airport(params) if params[:preference][:home_airport]
-    @prefs.update(pref_params)
+    # @prefs.update(pref_params)
+    pref_params[:vacations_attributes].each do |array|  
+      vacation = array.last
+      binding.pry
+      if vacation[:_destroy] == 1
+        Vacation.find(vacation[:id]).destroy
+      end
+    end
     redirect_to preferences_path
   end
   
@@ -35,6 +42,6 @@ class PreferencesController < ApplicationController
   end
 
   def pref_params
-    params.require(:preference).permit region_ids: [], vacations_ids:[], vacations_attributes: [:name, :start_date, :end_date]
+    params.require(:preference).permit region_ids: [], vacations_ids:[], vacations_attributes: [:name, :start_date, :end_date, :id, :_destroy]
   end
 end
