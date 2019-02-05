@@ -11,8 +11,10 @@ class PreferencesController < ApplicationController
   end
 
   def update
+    binding.pry
     @prefs.update(pref_params)
     add_home_airport(params) if params[:preference][:home_airport]
+    create_new_vacation(params) if params[:preference][:vacation]
     delete_vacations(pref_params) if pref_params[:vacations_attributes]
     redirect_to preferences_path
   end
@@ -24,7 +26,7 @@ class PreferencesController < ApplicationController
     binding.pry
   end
   
-  def destroy
+  def destroy # for removing home airports
     @prefs.home_airports.delete(params[:airport_id])
     redirect_to preferences_path
   end

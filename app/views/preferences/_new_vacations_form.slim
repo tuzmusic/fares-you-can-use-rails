@@ -1,15 +1,15 @@
 h2 My Vacations
 #new_vacations_form
-  = form_for Vacation.new do |v|
-    p
-      = v.label :name, "Name:"
-      =< v.text_field :name
-    p
-      = builder_date_select v, :start_date
-      |to 
-      = builder_date_select v, :end_date
-    p = v.submit
-    / p = f.submit "Save", id: "save_vacation_button"
+  = form_for prefs do |f| 
+    = f.fields_for Vacation.new do |v|
+      p
+        = v.label :name, "Name:"
+        =< v.text_field :name
+      p
+        = builder_date_select v, :start_date
+        |to 
+        = builder_date_select v, :end_date
+      p = button_to "Save", '/preferences', id: "save_vacation_button", method: :post
   - vacations.each do |vacation|
     = render "vacation_p", vacation: vacation
 
