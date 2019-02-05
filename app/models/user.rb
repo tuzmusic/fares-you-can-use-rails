@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :vacations
   has_one :preferences, class_name: "Preference"
 
+  after_create do |user|  
+    user.preferences = Preference.create
+  end
+
   def full_name
     [first_name, last_name].join(" ") if first_name && last_name
   end
