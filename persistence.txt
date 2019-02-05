@@ -38,6 +38,8 @@ example_id                                            | status  | run_time      
 ./spec/features/admin_spec.rb[1:4:3]                  | pending | 0.00001 seconds |
 ./spec/features/admin_spec.rb[1:4:4]                  | pending | 0.00001 seconds |
 ./spec/features/admin_spec.rb[1:4:5]                  | passed  | 0.90711 seconds |
+./spec/features/logout_spec.rb[1:1]                   | passed  | 1.02 seconds    |
+./spec/features/logout_spec.rb[1:2]                   | failed  | 0.00786 seconds |
 ./spec/features/omniauth_spec.rb[1:1:1]               | passed  | 0.83649 seconds |
 ./spec/features/omniauth_spec.rb[1:1:2]               | passed  | 0.05643 seconds |
 ./spec/features/omniauth_spec.rb[1:2:1]               | passed  | 0.0483 seconds  |
