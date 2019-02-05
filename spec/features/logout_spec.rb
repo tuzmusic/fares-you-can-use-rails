@@ -10,7 +10,6 @@ describe "Log Out" do
   end
 
   it "logs out an admin if an admin is logged in" do
-    click_on "Log Out"
     create_and_log_in_admin
     click_on "Log Out"
     expect(page).to have_content "Log In"

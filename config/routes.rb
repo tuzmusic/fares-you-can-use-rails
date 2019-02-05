@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   devise_scope :admin do
     get "/admin", to: 'admins/sessions#portal', as: 'admin_root'
-    get "/admin/sign_out", to: 'admin/sessions#destroy', as: 'admin_sign_out'
+    get "/admin/sign_out", to: 'devise/sessions#destroy', as: 'admin_sign_out'
   end
 
 end

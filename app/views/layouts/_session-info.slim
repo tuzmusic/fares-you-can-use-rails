@@ -7,9 +7,9 @@ ul.nav.navbar-nav.navbar-right#session-info
         - elsif admin = current_admin
           = (admin.full_name || admin.first_name || admin.email) + " (admin)"
     - if current_admin
-      li = link_to "Log Out", user_sign_out_path
-    - elsif current_user
       li = link_to "Log Out", admin_sign_out_path
+    - elsif current_user
+      li = link_to "Log Out", user_sign_out_path
   - else
     li.active
       = link_to "Log In", user_sign_in_path
