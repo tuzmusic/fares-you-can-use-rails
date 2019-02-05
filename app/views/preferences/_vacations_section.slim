@@ -2,12 +2,12 @@ h2 My Vacations
 / add or edit vacations
 p 
   => link_to  "New Vacation", new_preferences_path 
-  || 
-  =< link_to  "Edit Vacations", edit_preferences_path
 
-/ vacations list
-- if vacations.present?
-  - vacations.each do |vacation|
-    = render "vacation_p", vacation: vacation
-- else  
-  p = "You haven't added any vacations"   
+  - if vacations.present?
+    || 
+    =< link_to  "Edit Vacations", edit_preferences_path
+
+    - vacations.each do |vacation|
+      = render "vacation_p", vacation: vacation
+  - else  
+    p = "You haven't added any vacations"   

@@ -128,19 +128,18 @@ describe "Preference views", type: :feature do
         expect(page).to have_button "Save"
       end
 
-      xit "saves updated regions when the button is clicked" do
-        uncheck "preferences_region_ids_#{afr.id}"
-        check "preferences_region_ids_#{asia.id}"
+      xit "saves updated regions when the button is clicked - WORKS IN THE BROWSER BUT NOT IN THE SPEC" do
+        uncheck "preference_region_ids_#{afr.id}"
+        check "preference_region_ids_#{asia.id}"
         click_button "Save"
         expect(pref.regions).to_not include afr
         expect(pref.regions).to include asia
 
-        afr_box = page.all("#preferences_region_ids_#{afr.id}").first 
+        afr_box = page.all("#preference_region_ids_#{afr.id}").first 
         expect(afr_box.checked?).to eq false
         
-        asia_box = page.all("#preferences_region_ids_#{asia.id}").first 
+        asia_box = page.all("#preference_region_ids_#{asia.id}").first 
         expect(asia_box.checked?).to eq true
-        # preference#update
       end
     end
   end
@@ -197,7 +196,6 @@ describe "Preference views", type: :feature do
       it "shows the user's home airports" do
         expect(page).to have_content "Ronald Reagan Washington National Airport"
         expect(page).to have_content "Washington Dulles International Airport"
-        # preference#show
       end
       
       it "has a form to add one home airport, with an auto-fill text field" do
@@ -209,7 +207,6 @@ describe "Preference views", type: :feature do
         page.select "BWI (Baltimore/Washington International Thurgood Marshall Airport)", from: 'home_airport_selector'
         click_button "Add"
         expect(page).to have_content "Baltimore/Washington International Thurgood Marshall Airport (BWI)"
-        # preference#update
       end
       
       it "does not add an airport if an invalid airport is entered" do
@@ -240,7 +237,6 @@ describe "Preference views", type: :feature do
 
     end
 
-
     context "it includes the rest of the show page (regions)" do
       let(:afr) { Region.find_by(name:"Africa") }
       let(:eur) { Region.find_by(name:"Europe") }
@@ -264,19 +260,18 @@ describe "Preference views", type: :feature do
         expect(page).to have_button "Save"
       end
 
-      xit "saves updated regions when the button is clicked" do
-        uncheck "preferences_region_ids_#{afr.id}"
-        check "preferences_region_ids_#{asia.id}"
+      xit "saves updated regions when the button is clicked - WORKS IN THE BROWSER BUT NOT IN THE SPEC" do
+        uncheck "preference_region_ids_#{afr.id}"
+        check "preference_region_ids_#{asia.id}"
         click_button "Save"
         expect(pref.regions).to_not include afr
         expect(pref.regions).to include asia
 
-        afr_box = page.all("#preferences_region_ids_#{afr.id}").first 
+        afr_box = page.all("#preference_region_ids_#{afr.id}").first 
         expect(afr_box.checked?).to eq false
         
-        asia_box = page.all("#preferences_region_ids_#{asia.id}").first 
+        asia_box = page.all("#preference_region_ids_#{asia.id}").first 
         expect(asia_box.checked?).to eq true
-        # preference#update
       end
     end
   end
