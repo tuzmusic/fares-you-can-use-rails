@@ -7,8 +7,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: %i[facebook]
 
-  has_many :vacations
   has_one :preferences, class_name: "Preference"
+  has_many :vacations, through: :preferences
+  has_many :regions, through: :preferences
+  has_many :home_airports, through: :preferences
 
   after_create do |user|  
     user.preferences = Preference.create
