@@ -22,4 +22,20 @@ describe "Deal scope methods" do
       expect(Deal.to_region Region.find_by(name: "Europe")).to_not include to_asia
     end
   end
+
+  describe ".for_vacation" do
+    it "returns deals to the given region" do
+      deal = dummy_deal
+      bad_deal = dummy_deal.tap {|d| 
+        d.start_date = Date.new(2008,1,1)
+        d.end_date = Date.new(2008,2,1)
+        d.save
+      }
+      vacation = Vacation.new(name:"Whatever", start_date: deal.start_date, end_date: deal.end_date)
+
+      expect(Deal.for_vacation vacation).to include deal
+      expect(Deal.for_vacation vacation).to_not include bad_deal
+      
+    end
+  end
 end
