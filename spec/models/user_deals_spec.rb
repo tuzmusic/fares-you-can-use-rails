@@ -68,13 +68,12 @@ describe "User deals/preferences" do
     it "can access its vacations" do
       expect(user.vacations.first.name).to eq "All of June"
     end
-    
+
     it "can access its home airports" do
       expect(user.home_airports).to match [dca, bwi]
     end
     
     it "can access its regions" do
-      binding.pry
       expect(user.regions.first.name).to eq "Asia"
     end
 

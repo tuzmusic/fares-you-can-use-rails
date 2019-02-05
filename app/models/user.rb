@@ -9,8 +9,12 @@ class User < ApplicationRecord
 
   has_one :preferences, class_name: "Preference"
   has_many :vacations, through: :preferences
-  has_many :regions, through: :preferences
   has_many :home_airports, through: :preferences
+
+  # has_many :regions, through: :preferences
+  def regions
+    self.preferences.regions  
+  end
 
   after_create do |user|  
     user.preferences = Preference.create
