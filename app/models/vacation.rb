@@ -1,6 +1,5 @@
 class Vacation < ApplicationRecord
-  has_many :preference_vacations, dependent: :destroy
-  has_many :preferences, through: :preference_vacations
+  belongs_to :preference # must be singular here
 
   def deals
     Deal.where.not('start_date >= ?', end_date).where.not('end_date <= ?', start_date)

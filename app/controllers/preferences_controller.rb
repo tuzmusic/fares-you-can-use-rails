@@ -12,7 +12,7 @@ class PreferencesController < ApplicationController
 
   def update
     add_home_airport(params) if params[:preference][:home_airport]
-    # @prefs.update(pref_params)
+    @prefs.update(pref_params)
     pref_params[:vacations_attributes].each do |array|  
       vacation = array.last
       binding.pry

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_205915) do
+ActiveRecord::Schema.define(version: 2019_02_05_181942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,15 +97,6 @@ ActiveRecord::Schema.define(version: 2019_02_03_205915) do
     t.index ["region_id"], name: "index_preference_regions_on_region_id"
   end
 
-  create_table "preference_vacations", force: :cascade do |t|
-    t.bigint "preference_id"
-    t.bigint "vacation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["preference_id"], name: "index_preference_vacations_on_preference_id"
-    t.index ["vacation_id"], name: "index_preference_vacations_on_vacation_id"
-  end
-
   create_table "preferences", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -162,14 +153,13 @@ ActiveRecord::Schema.define(version: 2019_02_03_205915) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "preference_id"
   end
 
   add_foreign_key "deal_origins", "airports"
   add_foreign_key "deal_origins", "deals", on_delete: :cascade
   add_foreign_key "preference_home_airports", "airports"
-  add_foreign_key "preference_home_airports", "preferences"
-  add_foreign_key "preference_regions", "preferences"
+  add_foreign_key "preference_home_airports", "preferences", column: "preference_id"
+  add_foreign_key "preference_regions", "preferences", column: "preference_id"
   add_foreign_key "preference_regions", "regions"
-  add_foreign_key "preference_vacations", "preferences"
-  add_foreign_key "preference_vacations", "vacations"
 end

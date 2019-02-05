@@ -156,23 +156,27 @@ describe "Preference views", type: :feature do
     xit "lists the vacations in order" do
     end
 
-    it "has a button to delete each vacation" do
-      expect(page.all('input[type=submit][value=Delete]').count).to eq 2
+    it "has a checkbox to delete each vacation" do
+      expect(page.all('input[type=checkbox]').count).to eq 2
     end
 
-    it "has a button to save each vacation" do
-      expect(page.all('input[type=submit][value=Save]').count).to eq 2
+    it "has a button to save all vacations" do
+      expect(page.all('input[type=submit][value=Save All]').count).to eq 1
     end
 
     it "can edit a vacation" do
       fill_in 'vacation_0_name', with: "Spring Break"
-      page.all('input[type=submit][value=Save]').first.click
+      click_on 'Save All'
       expect(page).to have_content "Spring Break"
       expect(page).to_not have_content "Summer vacation"
     end
 
     it "can delete a vacation" do
-      expect(false).to eq true 
+      page.all('#preference_vacations_attributes_0__destroy').click
+      click_on 'Save All'
+      expect(page).to_not have_content "Summer vacation"
+      expect(page).to have_content "Winter break"
+      expect(page.all('p.vacation').count).to eq 1 
     end
 
     it "shows the rest of the show page" do
