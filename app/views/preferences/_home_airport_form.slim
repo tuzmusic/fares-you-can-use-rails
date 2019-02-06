@@ -4,4 +4,4 @@ p = form_for prefs, html: { id: 'home_airports_form' } do |f|
   datalist#iata
     - Airport.by_iata.all.each do |airport|
       option value="#{airport.iata} (#{airport.name})" 
-  =< f.submit "Add"
+  =< f.submit "Add", id: "add_airport_button"
