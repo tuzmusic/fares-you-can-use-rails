@@ -56,4 +56,16 @@ describe "Deal scope methods" do
       expect(Deal.from_airports airports).to_not include from_ny  
     end
   end
+
+  describe ".from_regions (plural)" do
+    it "returns deals from an array of regions" do
+      asia_deal = dummy_deal_to Airport.iata("BKK")
+      africa_deal = dummy_deal_to Airport.iata("JHB")
+      eur_deal = dummy_deal_to Airport.iata("CDG")
+  
+      regions = [Region.find_by(name:"Asia"), Region.find_by(name:"Africa")]
+      expect(Deal.for_regions regions).to match [asia_deal, africa_deal]
+      expect(Deal.for_regions regions).to_not include [eur_deal]
+    end
+  end
 end

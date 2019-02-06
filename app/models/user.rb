@@ -21,7 +21,7 @@ class User < ApplicationRecord
   end
 
   def deals
-    Deals.wheres
+    Deal.where
   end
 
   def full_name

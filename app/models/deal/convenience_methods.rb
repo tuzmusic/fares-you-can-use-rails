@@ -6,6 +6,7 @@ class Deal < ApplicationRecord
   
   def destination=(airport)
     update(destinations:[airport])
+    set_region
   end
 
   def self.airports_from_string(comma_separated_string)
