@@ -60,6 +60,6 @@ class DealsController < ApplicationController
   private
 
   def deal_params
-    params.require(:deal).permit :headline, :description, :start_date, :end_date, :instructions, origin_ids:[], destination_ids:[], links_attributes: [:text, :url, :id]
+    params.require(:deal).permit :headline, :description, :start_date, :end_date, :instructions, origin_ids:[], destination_ids:[], links_attributes: [:text, :url, :id, :_destroy]
   end
 end
