@@ -266,7 +266,14 @@ describe "Deals Views", type: :feature do
     end
 
     it "has a checkbox to delete a link" do
-      expect(false).to eq true 
+      d.links.create(text: "sample link text 1", url: "www.google1.com")
+      d.links.create(text: "sample link text 2", url: "www.google1.com")
+      d.reload
+      page.refresh
+      check 'deal_links_attributes_0__destroy'
+      click_on "Update Deal"
+      expect(page).to_not have_content "sample link text 1"
+      expect(page).to have_content "sample link text 2"
     end
   end
 
