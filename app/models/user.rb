@@ -16,12 +16,15 @@ class User < ApplicationRecord
     self.preferences.regions  
   end
 
-  after_create do |user|  
-    user.preferences = Preference.create
+  def deals
+    binding.pry
+    d = Deal.from_airports(home_airports)
+    e = d.to_regions(regions)
+    f = e.for_vacations(vacations)
   end
 
-  def deals
-    Deal.where
+  after_create do |user|  
+    user.preferences = Preference.create
   end
 
   def full_name

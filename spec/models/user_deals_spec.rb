@@ -9,7 +9,7 @@ describe "User deals/preferences" do
   let(:asia) { Region.find_by(name: "Asia") }
 
   let(:good_asia_deal) { Deal.create(
-      headline: "Deal to Asia in June",
+      headline: "Good Deal to Asia in June ",
       description: "Blah blah blah",
       start_date: Date.new(2019,6,1),
       end_date: Date.new(2019,7,8),
@@ -19,7 +19,7 @@ describe "User deals/preferences" do
   }
 
   let(:good_single_origin_deal) { Deal.create(
-      headline: "Deal to Asia in June",
+      headline: "Good Deal to Asia in June from DCA only",
       description: "Blah blah blah",
       start_date: Date.new(2019,6,1),
       end_date: Date.new(2019,7,8),
@@ -29,7 +29,7 @@ describe "User deals/preferences" do
   }
 
   let(:bad_dest_deal) { Deal.create(
-      headline: "Deal to Asia in June",
+      headline: "Deal to Europe",
       description: "Blah blah blah",
       start_date: Date.new(2019,6,1),
       end_date: Date.new(2019,7,8),
@@ -49,7 +49,7 @@ describe "User deals/preferences" do
   }
 
   let(:bad_origin_deal) { Deal.create(
-      headline: "Deal to Asia in June",
+      headline: "Deal to Asia from NY in June",
       description: "Blah blah blah",
       start_date: Date.new(2019,6,1),
       end_date: Date.new(2019,7,8),
@@ -80,6 +80,14 @@ describe "User deals/preferences" do
   end
 
   describe "User#deals" do
+    before :each do
+      good_asia_deal
+      good_single_origin_deal
+      bad_date_deal
+      bad_dest_deal
+      bad_origin_deal
+    end
+
     it "returns deals that match user's vacations, regions, and home airports" do
       expect(user.deals).to include good_asia_deal  
     end

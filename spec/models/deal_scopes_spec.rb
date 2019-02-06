@@ -80,7 +80,8 @@ describe "Deal scope methods" do
       march_deal = dummy_deal_for(month_no:3)
       oct_deal = dummy_deal_for(month_no:10)
 
-      expect(Deal.for_vacations vacations).to match [march_deal, oct_deal]
+      expect(Deal.for_vacations vacations).to include march_deal
+      expect(Deal.for_vacations vacations).to include oct_deal
       expect(Deal.for_vacations vacations).to_not include jan_deal
     end
   end
