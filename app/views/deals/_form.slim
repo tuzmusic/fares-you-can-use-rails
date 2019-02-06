@@ -2,18 +2,22 @@ table
   = form_for @deal do |f|
     tr
       td colspan="2" 
-        p
+        p#headline
           = f.label :headline
           br/
           = f.text_field :headline
-        p
+        p#description
           = f.label :description
           br/
           = f.text_area :description
-        p
-          = f.label :instructions
-          br/
-          = f.text_area :instructions
+        div#links
+          p = f.label "Links:"
+          - 2.times do |i|
+            p = f.fields_for :links, @deal.links.build do |l|
+              = l.label :text, "Text:"
+              =< l.text_field :text
+              =< l.label :url, "URL:"
+              =< l.text_field :url
     tr
       td
         p

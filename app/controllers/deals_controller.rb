@@ -28,6 +28,7 @@ class DealsController < ApplicationController
 
   def new
     @deal = Deal.new
+    2.times { @deal.links.build }
   end
 
   def create

@@ -12,6 +12,7 @@ class Deal < ApplicationRecord
   
   belongs_to :region, optional: true
   has_many :links
+  accepts_nested_attributes_for :links
 
   # ------ SCOPE METHODS --------
   scope :current, -> { where('end_date > ?', Date.today) }
