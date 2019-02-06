@@ -1,6 +1,15 @@
-- 2.times do |i|
-  p = f.fields_for :links, deal.links.build do |l|
-    = l.label :text, "Text:"
-    =< l.text_field :text
-    =< l.label :url, "URL:"
-    =< l.text_field :url
+- if deal.links.empty?
+  - 2.times do |i|
+    = f.fields_for :links, deal.links.build do |l|
+      p
+        = l.label :text, "Text:"
+        =< l.text_field :text
+        =< l.label :url, "URL:"
+        =< l.text_field :url
+- else
+    = f.fields_for :links do |l|
+     p 
+      = l.label :text, "Text:"
+      =< l.text_field :text
+      =< l.label :url, "URL:"
+      =< l.text_field :url

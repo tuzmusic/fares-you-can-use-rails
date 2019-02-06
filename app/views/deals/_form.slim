@@ -12,7 +12,7 @@ table
           = f.text_area :description
         div#links
           p = f.label "Links:"
-          = render  "links_form", deal: @deal 
+          = render  "links_form", deal: @deal, f: f
     tr
       td
         p
