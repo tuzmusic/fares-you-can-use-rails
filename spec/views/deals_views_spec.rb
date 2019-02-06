@@ -250,7 +250,7 @@ describe "Deals Views", type: :feature do
 
       expect(page.find('#deal_links_attributes_0_text').value).to eq "sample link text 1"
       expect(page.find('#deal_links_attributes_0_url').value).to eq "www.google1.com"
-      binding.pry
+
       fill_in 'deal_links_attributes_0_text', with: "new text"
       fill_in 'deal_links_attributes_0_url', with: "newurl.com"
       fill_in 'deal_links_attributes_1_text', with: "new link"
@@ -259,7 +259,7 @@ describe "Deals Views", type: :feature do
       click_on "Update Deal"
       d.reload
 
-      expect(d.link.count).to eq 2
+      expect(d.links.count).to eq 2
       expect(page).to have_link "new text", href: "newurl.com"
       expect(page).to have_link "new link", href: "newurl2.com"
       expect(page).to_not have_content "sample link text 1" 
