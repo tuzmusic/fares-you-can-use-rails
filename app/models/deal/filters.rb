@@ -5,4 +5,8 @@ class Deal < ApplicationRecord
   scope :from_airport, -> (airport) { select {|d| d.origins.include? airport} }
   scope :to_region, -> (region) { region.deals }
   scope :for_vacation, -> (vacation) { vacation.deals }
+  
+  scope :from_airports, -> (airports) do
+    
+  end
 end

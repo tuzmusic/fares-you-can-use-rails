@@ -38,4 +38,22 @@ describe "Deal scope methods" do
       
     end
   end
+
+  describe ".from_airports (plural)" do
+    it "returns deals from an array of airports" do
+      dca = Airport.iata("DCA")
+      iad = Airport.iata("IAD")
+      bwi = Airport.iata("BWI")
+      lax = Airport.iata("LAX")
+      
+      airports = [dca, iad, bwi]
+
+      from_dca_and_lax = dummy_deal.tap{|d| d.origins = [dca, lax]}
+      from_iad_and_lax = dummy_deal.tap{|d| d.origins = [iad, lax]}
+      from_ny = dummy_deal.tap{|d| d.origins = d.destinations} # dummy destinations are ny airports
+
+      expect(Deal.from_airports airports).to match [from_dca_and_lax, from_iad_and_lax]  
+      expect(Deal.from_airports airports).to_not include from_ny  
+    end
+  end
 end
