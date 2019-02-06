@@ -1,5 +1,5 @@
 .container
   = render 'detail', deal: @deal
   - if admin_signed_in?
-    = edit_deal_button
-    =< delete_deal_button
+    p = edit_deal_button
+    p = delete_deal_button
