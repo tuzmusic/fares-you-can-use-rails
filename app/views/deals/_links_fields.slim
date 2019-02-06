@@ -1,5 +1,8 @@
 p
   = l.label :text, "Text:"
-  =< l.text_field :text
+  =< l.text_field :text, placeholder: "Or leave blank"
   =< l.label :url, "URL:"
-  =< l.text_field :url
+  =< l.text_field :url, placeholder: "to leave out this link"
+  - if destroy
+    =<> l.check_box :_destroy
+    | Delete?

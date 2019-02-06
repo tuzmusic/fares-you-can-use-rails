@@ -1,6 +1,7 @@
 = f.fields_for :links do |l|
   p 
-    = render  "links_fields", l: l 
+    = render  "links_fields", l: l, destroy: true
+    
     
 = f.fields_for :links, deal.links.build do |l|
-  p = render  "links_fields", l: l 
+  p = render  "links_fields", l: l, destroy: true
