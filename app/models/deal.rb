@@ -11,6 +11,7 @@ class Deal < ApplicationRecord
   has_many :destinations, through: :deal_destinations, source: :airport
   
   belongs_to :region, optional: true
+  has_many :links
 
   # ------ SCOPE METHODS --------
   scope :current, -> { where('end_date > ?', Date.today) }
