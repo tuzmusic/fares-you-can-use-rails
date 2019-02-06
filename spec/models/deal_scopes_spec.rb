@@ -8,8 +8,10 @@ describe "Deal scope methods" do
       from_nrt = dummy_deal_from Airport.iata("NRT")
       expect(from_nrt.origins.first.iata).to eq "NRT" 
       dca = Airport.iata("DCA")
-      expect(Deal.from_airport dca).to include from_dca
-      expect(Deal.from_airport dca).to_not include from_nrt
+      deals = Deal.from_airport dca
+      expect(deals).to include from_dca
+      expect(deals).to_not include from_nrt
+      expect(deals.class.name).to eq "ActiveRecord::Relation"
     end
   end
 
@@ -19,7 +21,9 @@ describe "Deal scope methods" do
       expect(Deal.to_region Region.find_by(name: "Europe")).to include to_europe  
 
       to_asia = dummy_deal_to Airport.iata("BKK")
-      expect(Deal.to_region Region.find_by(name: "Europe")).to_not include to_asia
+      deals = Deal.to_region Region.find_by(name: "Europe")
+      expect(deals).to_not include to_asia
+      expect(deals.class.name).to eq "ActiveRecord::Relation"
     end
   end
 
@@ -32,10 +36,10 @@ describe "Deal scope methods" do
         d.save
       }
       vacation = Vacation.new(name:"Whatever", start_date: deal.start_date, end_date: deal.end_date)
-
-      expect(Deal.for_vacation vacation).to include deal
-      expect(Deal.for_vacation vacation).to_not include bad_deal
-      
+      deals = Deal.for_vacation vacation
+      expect(deals).to include deal
+      expect(deals).to_not include bad_deal
+      expect(deals.class.name).to eq "ActiveRecord::Relation"
     end
   end
 
@@ -51,9 +55,10 @@ describe "Deal scope methods" do
       from_dca_and_lax = dummy_deal.tap{|d| d.origins = [dca, lax]}
       from_iad_and_lax = dummy_deal.tap{|d| d.origins = [iad, lax]}
       from_ny = dummy_deal.tap{|d| d.origins = d.destinations} # dummy destinations are ny airports
-
-      expect(Deal.from_airports airports).to match [from_dca_and_lax, from_iad_and_lax]  
-      expect(Deal.from_airports airports).to_not include from_ny  
+      deals = Deal.from_airports airports
+      expect(deals).to match [from_dca_and_lax, from_iad_and_lax]  
+      expect(deals).to_not include from_ny  
+      expect(deals.class.name).to eq "ActiveRecord::Relation"
     end
   end
 
@@ -64,8 +69,10 @@ describe "Deal scope methods" do
       eur_deal = dummy_deal_to Airport.iata("CDG")
   
       regions = [Region.find_by(name:"Asia"), Region.find_by(name:"Africa")]
-      expect(Deal.to_regions regions).to match [asia_deal, africa_deal]
-      expect(Deal.to_regions regions).to_not include [eur_deal]
+      deals = Deal.to_regions regions
+      expect(deals).to match [asia_deal, africa_deal]
+      expect(deals).to_not include [eur_deal]
+      expect(deals.class.name).to eq "ActiveRecord::Relation"
     end
   end
 
@@ -79,10 +86,11 @@ describe "Deal scope methods" do
       jan_deal = dummy_deal_for(month_no:1)
       march_deal = dummy_deal_for(month_no:3)
       oct_deal = dummy_deal_for(month_no:10)
-
-      expect(Deal.for_vacations vacations).to include march_deal
-      expect(Deal.for_vacations vacations).to include oct_deal
-      expect(Deal.for_vacations vacations).to_not include jan_deal
+      deals = Deal.for_vacations vacations
+      expect(deals).to include march_deal
+      expect(deals).to include oct_deal
+      expect(deals).to_not include jan_deal
+      expect(deals.class.name).to eq "ActiveRecord::Relation"
     end
   end
 end
