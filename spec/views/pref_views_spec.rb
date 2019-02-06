@@ -2,19 +2,20 @@ require 'rails_helper'
 
 describe "Preference views", type: :feature do
   
-  let(:user) { User.first }
-  let(:pref) { Preference.create(user: User.first) }
+  let(:user) { create_and_log_in_user; User.last }
+  let(:pref) { user.preferences }
   
   before :each do
-    create_and_log_in_user
+    # create_and_log_in_user
   end
 
   describe "show page" do
     describe "vacations section" do
       before :each do
-        pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31))
-        pref.vacations.create(name: "Winter break", start_date: Date.new(2019,12,21), end_date: Date.new(2019,12,31))
+        p1 = pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31))
+        p2 = pref.vacations.create(name: "Winter break", start_date: Date.new(2019,12,21), end_date: Date.new(2019,12,31))
         visit preferences_path
+        # binding.pry
       end
 
       it "show's the user's vacations" do
