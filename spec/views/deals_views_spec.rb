@@ -12,7 +12,6 @@ describe "Deals Views", type: :feature do
         description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
         start_date: Date.new(2019,2,1),
         end_date: Date.new(2019,2,8),
-        instructions: "Google it! It's everywhere!",
         origin_ids: [Airport.iata("DCA").id, Airport.iata("BWI").id, Airport.iata("IAD").id],  
         destination_ids: [Airport.iata("EWR").id, Airport.iata("JFK").id, Airport.iata("LGA").id]) }
 
@@ -21,10 +20,9 @@ describe "Deals Views", type: :feature do
       visit deal_path(deal)
     end
 
-    it "shows a deal's title, description, and instructions" do
+    it "shows a deal's title, and description" do
       expect(page).to have_content(deal.headline)
       expect(page).to have_content(deal.description)
-      expect(page).to have_content(deal.instructions)
     end
     
     it "shows the start and end dates of a deal" do
@@ -64,17 +62,14 @@ describe "Deals Views", type: :feature do
     it "has fields for the text-based properties of a deal" do
       expect(page).to have_field "Headline"
       expect(page).to have_field "Description"
-      expect(page).to have_field "Instructions"
       expect(page).to have_field "Origin airports"
       expect(page).to have_field "Destination airports"
     end
 
-    it "creates a deal and redirects to the show page for the newly created deal" do
-      AirportSpecHelper.create_ny_and_dc_airports
+    it "has fields to add links" do
       d = Deal.create(description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
         start_date: Date.new(2019,2,1),
         end_date: Date.new(2019,2,8),
-        instructions: "Google it! It's everywhere!",
         origin_ids: [Airport.iata("DCA").id, Airport.iata("IAD").id, Airport.iata("BWI").id],  
         destination_ids: [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id])
       
@@ -82,7 +77,44 @@ describe "Deals Views", type: :feature do
       
       fill_in 'Headline', with: headline
       fill_in 'Description', with: d.description
-      fill_in 'Instructions', with: d.instructions
+
+      fill_in 'deal_links_attributes_0_text', with: "sample link text 1"
+      fill_in 'deal_links_attributes_0_url', with: "www.google1.com"
+      fill_in 'deal_links_attributes_1_text', with: "sample link text 2"
+      fill_in 'deal_links_attributes_1_url', with: "www.google2.com"
+
+      select '2019', from: 'deal_start_date_1i'
+      select 'Feb', from: 'deal_start_date_2i'
+      select '1', from: 'deal_start_date_3i'
+      select '2019', from: 'deal_end_date_1i'
+      select 'Feb', from: 'deal_end_date_2i'
+      select '8', from: 'deal_end_date_3i'
+
+      fill_in 'Origin airports', with: 'DCA, IAD, BWI'
+      fill_in 'Destination airports', with: 'EWR, LGA, JFK'
+
+      expect{ click_on 'Create Deal' }.to change{ Deal.count }.by(1)
+      
+      nd = Deal.last
+      expect(nd.links.count).to eq 2
+      expect(nd.links[0].text).to eq  "sample link text 1"
+      expect(nd.links[0].url).to eq  "www.google1.com"
+      expect(nd.links[1].text).to eq  "sample link text 2"
+      expect(nd.links[1].url).to eq  "www.google2.com"
+    end
+    
+    it "creates a deal and redirects to the show page for the newly created deal" do
+      AirportSpecHelper.create_ny_and_dc_airports
+      d = Deal.create(description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
+        start_date: Date.new(2019,2,1),
+        end_date: Date.new(2019,2,8),
+        origin_ids: [Airport.iata("DCA").id, Airport.iata("IAD").id, Airport.iata("BWI").id],  
+        destination_ids: [Airport.iata("EWR").id, Airport.iata("LGA").id, Airport.iata("JFK").id])
+      
+      headline = "Great deals to NYC!" # can't create both deals with same headline or slug will break validation
+      
+      fill_in 'Headline', with: headline
+      fill_in 'Description', with: d.description
       
       select '2019', from: 'deal_start_date_1i'
       select 'Feb', from: 'deal_start_date_2i'
@@ -101,12 +133,13 @@ describe "Deals Views", type: :feature do
       expect(nd.description).to eq d.description
       expect(nd.start_date).to eq d.start_date
       expect(nd.end_date).to eq d.end_date
-      expect(nd.instructions).to eq d.instructions
       expect(nd.origins.pluck(:name).sort).to match d.origins.pluck(:name).sort
       expect(nd.destinations.pluck(:name).sort).to match d.destinations.pluck(:name).sort
       
       expect(current_path).to eq deal_path(nd)
     end
+
+
   end
 
   describe "index" do
@@ -153,8 +186,7 @@ describe "Deals Views", type: :feature do
       Deal.create(headline: "Great deals to NYC!",
       description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
       start_date: Date.new(2019,2,1),
-      end_date: Date.new(2019,2,8),
-      instructions: "Google it! It's everywhere!").tap do |d|
+      end_date: Date.new(2019,2,8)).tap do |d|
         d.origin_codes = "DCA, BWI, IAD"
         d.destination_codes = "EWR, JFK, LGA"
       end
@@ -168,7 +200,6 @@ describe "Deals Views", type: :feature do
     it "has the edit form" do
       expect(page).to have_field "deal[headline]"
       expect(page).to have_field "deal[description]"
-      expect(page).to have_field "deal[instructions]"
       expect(page).to have_field "deal[origins]"
       expect(page).to have_field "deal[destinations]"
     end

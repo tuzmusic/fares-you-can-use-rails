@@ -96,8 +96,9 @@ example_id                                            | status  | run_time      
 ./spec/views/deals_views_spec.rb[1:1:4]               | passed  | 0.1671 seconds  |
 ./spec/views/deals_views_spec.rb[1:1:5]               | passed  | 0.12621 seconds |
 ./spec/views/deals_views_spec.rb[1:1:6]               | pending | 0.00002 seconds |
-./spec/views/deals_views_spec.rb[1:2:1]               | passed  | 0.33004 seconds |
-./spec/views/deals_views_spec.rb[1:2:2]               | passed  | 0.40262 seconds |
+./spec/views/deals_views_spec.rb[1:2:1]               | passed  | 1.07 seconds    |
+./spec/views/deals_views_spec.rb[1:2:2]               | failed  | 0.12306 seconds |
+./spec/views/deals_views_spec.rb[1:2:3]               | failed  | 0.45598 seconds |
 ./spec/views/deals_views_spec.rb[1:3:1]               | passed  | 0.11072 seconds |
 ./spec/views/deals_views_spec.rb[1:3:2]               | passed  | 0.12106 seconds |
 ./spec/views/deals_views_spec.rb[1:3:3]               | passed  | 0.08551 seconds |
