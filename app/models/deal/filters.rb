@@ -11,6 +11,13 @@ class Deal < ApplicationRecord
       deal.origins.any? { |origin| airports.include? origin }
     end
   end
+  
+  scope :to_regions, -> (regions) { select {|d| regions.include? d.region } }
 
-  scope :for_regions, -> (regions) { select {|d| regions.include? d.region } }
+  scope :for_vacations, -> (vacations) do
+    select do |deal|
+      vacations.any? { |v| v.deals.include? deal }
+    end
+  end
+
 end

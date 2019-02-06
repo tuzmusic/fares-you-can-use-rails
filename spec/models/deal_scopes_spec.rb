@@ -64,8 +64,24 @@ describe "Deal scope methods" do
       eur_deal = dummy_deal_to Airport.iata("CDG")
   
       regions = [Region.find_by(name:"Asia"), Region.find_by(name:"Africa")]
-      expect(Deal.for_regions regions).to match [asia_deal, africa_deal]
-      expect(Deal.for_regions regions).to_not include [eur_deal]
+      expect(Deal.to_regions regions).to match [asia_deal, africa_deal]
+      expect(Deal.to_regions regions).to_not include [eur_deal]
+    end
+  end
+
+  describe ".for_vacations" do
+    it "returns deals that match an array of vacations" do
+      dec_vac = Vacation.create(name:"December 2019", start_date:Date.new(2019,12,1), end_date:Date.new(2020,12,31))
+      oct_vac = Vacation.create(name:"October 2019", start_date:Date.new(2019,10,1), end_date:Date.new(2020,10,31))
+      march_vac = Vacation.create(name:"March 2019", start_date:Date.new(2019,3,1), end_date:Date.new(2020,3,31))
+      vacations = [dec_vac, oct_vac, march_vac]
+
+      jan_deal = dummy_deal_for(month_no:1)
+      march_deal = dummy_deal_for(month_no:3)
+      oct_deal = dummy_deal_for(month_no:10)
+
+      expect(Deal.for_vacations vacations).to match [march_deal, oct_deal]
+      expect(Deal.for_vacations vacations).to_not include jan_deal
     end
   end
 end

@@ -14,12 +14,16 @@ module DealMocks
   def dummy_deal_from(airport)
     dummy_deal.tap {|d| d.origin = airport}
   end
-
-  def dummy_deal_to(airport)
-    dummy_deal.tap {|d| d.destination = airport}
-  end
   
   def dummy_deal_to(airport)
     dummy_deal.tap {|d| d.destination = airport}
+  end
+
+  def dummy_deal_for(month_no:)
+    dummy_deal.tap {|d| 
+      d.start_date = Date.new(2019,month_no,1)
+      d.end_date = Date.new(2019,month_no,30)
+      d.save
+    }
   end
 end
