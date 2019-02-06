@@ -278,19 +278,37 @@ describe "Preference views", type: :feature do
   end
 
   describe "new view" do
+
+    before :each do
+      pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31))
+      pref.vacations.create(name: "Winter break", start_date: Date.new(2019,12,21), end_date: Date.new(2019,12,31))
+      visit new_preferences_path
+    end
+
     it "has a form to create a new vacation" do
-      expect(false).to eq true 
+      expect(page).to have_field 'Name:'
+      expect(page).to have_button 'Save'
       # preference#new  (IS THIS CORRECTLY RESTFUL?)
     end
 
     it "shows all the user's current vacations" do
-      expect(false).to eq true 
-      
+      expect(page).to have_content "Summer vacation"
+      expect(page).to have_content "Winter break"
     end
 
     it "saves the new vacation" do
-      expect(false).to eq true 
-      # using to preference#update
+      fill_in 'Name:', with: "President's day"
+      select '2020', from: 'vacation_start_date_1i'
+      select 'Feb', from: 'vacation_start_date_2i'
+      select '12', from: 'vacation_start_date_3i'
+      select '2020', from: 'vacation_end_date_1i'
+      select 'Feb', from: 'vacation_end_date_2i'
+      select '15', from: 'vacation_end_date_3i'      
+      click_button "save_vacation_button"
+
+      expect(page).to have_content "President's day"
+      expect(page).to have_content "Feb. 12, 2020 - Feb. 15, 2020"
+      expect(page.all('p.vacation').count).to eq 3
     end
   end
   

@@ -6,7 +6,6 @@ p
   - if vacations.present?
     || 
     =< link_to  "Edit Vacations", edit_preferences_path
-
     - vacations.each do |vacation|
       = render "vacation_p", vacation: vacation
   - else  

@@ -1,15 +1,16 @@
 h2 Edit My Vacations
-= form_for prefs, html: {id: "edit_vacations_form"} do |p|
-  = p.fields_for :vacations do |f|  
-    p 
-      = f.label :name, "Name:"
-      =< f.text_field :name
-      =< f.submit "Save"
-      =< f.submit "Delete"
-    p 
-      => builder_date_select f, :start_date
-      | to
-      =< builder_date_select f, :end_date
-
+#edit_vacations_form
+  = form_for prefs do |f| 
+    = f.fields_for :vacations do |v|
+      p
+        = v.label :name, "Name:"
+        =< v.text_field :name
+        =<> v.check_box :_destroy
+        | Delete?
+      p
+        = builder_date_select v, :start_date
+        |to 
+        = builder_date_select v, :end_date
+    = f.submit "Save All"
 
 
