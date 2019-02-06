@@ -67,6 +67,8 @@ describe "Deals Views", type: :feature do
     end
 
     it "has fields to add links" do
+      AirportSpecHelper.create_ny_and_dc_airports
+
       d = Deal.create(description: "Direct round-trips from DC to New York for under $100! Good for the first week of February.",
         start_date: Date.new(2019,2,1),
         end_date: Date.new(2019,2,8),
@@ -101,6 +103,9 @@ describe "Deals Views", type: :feature do
       expect(nd.links[0].url).to eq  "www.google1.com"
       expect(nd.links[1].text).to eq  "sample link text 2"
       expect(nd.links[1].url).to eq  "www.google2.com"
+
+      expect(page).to have_link "sample link text 1", href: "www.google1.com"
+      expect(page).to have_link "sample link text 2", href: "www.google2.com"
     end
     
     it "creates a deal and redirects to the show page for the newly created deal" do

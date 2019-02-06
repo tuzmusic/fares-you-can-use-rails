@@ -12,12 +12,7 @@ table
           = f.text_area :description
         div#links
           p = f.label "Links:"
-          - 2.times do |i|
-            p = f.fields_for :links, @deal.links.build do |l|
-              = l.label :text, "Text:"
-              =< l.text_field :text
-              =< l.label :url, "URL:"
-              =< l.text_field :url
+          = render  "links_form", deal: @deal 
     tr
       td
         p

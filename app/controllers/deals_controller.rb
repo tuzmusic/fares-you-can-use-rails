@@ -28,7 +28,6 @@ class DealsController < ApplicationController
 
   def new
     @deal = Deal.new
-    2.times { @deal.links.build }
   end
 
   def create
@@ -60,6 +59,6 @@ class DealsController < ApplicationController
   private
 
   def deal_params
-    params.require(:deal).permit :headline, :description, :start_date, :end_date, :instructions, origin_ids:[], destination_ids:[]
+    params.require(:deal).permit :headline, :description, :start_date, :end_date, :instructions, origin_ids:[], destination_ids:[], links_attributes: [:text, :url]
   end
 end
