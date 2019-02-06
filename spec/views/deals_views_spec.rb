@@ -243,6 +243,10 @@ describe "Deals Views", type: :feature do
       expect(d.start_date).to eq(Date.new(2020,7,1))
       expect(d.end_date).to eq(Date.new(2021,8,3))
     end
+    
+    it "edits the links" do
+      
+    end
   end
 
 end
