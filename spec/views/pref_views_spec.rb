@@ -315,16 +315,17 @@ describe "Preference views", type: :feature do
   describe "access control" do
 
     it "cannot be accessed by guests" do
-      click_on "Log Out"
+      # click_on "Log Out"
       visit preferences_path
       expect(current_path).to eq new_user_session_path 
     end
 
     it "can only access the preferences for the current user" do
-      click_on "Log Out"
-      u1 = User.first # created in before :each block
+      u1 = user # created in before :each block
       u2 = User.create(email:"test2@example.com", password: "123456", first_name: "Jane", last_name: "Doe")
-
+      
+      click_on "Log Out"
+      
       u1.preferences.vacations.create(name:"John's Vacation", start_date: Date.yesterday, end_date: Date.tomorrow)
       u2.preferences.vacations.create(name:"Jane's Vacation", start_date: Date.yesterday, end_date: Date.tomorrow)
 
