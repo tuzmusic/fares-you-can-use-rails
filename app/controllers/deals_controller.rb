@@ -43,6 +43,7 @@ class DealsController < ApplicationController
   end
   
   def update
+    # binding.pry
     @deal.update(deal_params)
     @deal.origin_codes = params[:deal][:origins] if params[:deal][:origins]
     @deal.destination_codes = params[:deal][:destinations] if params[:deal][:destinations]
@@ -59,6 +60,6 @@ class DealsController < ApplicationController
   private
 
   def deal_params
-    params.require(:deal).permit :headline, :description, :start_date, :end_date, :instructions, origin_ids:[], destination_ids:[], links_attributes: [:text, :url]
+    params.require(:deal).permit :headline, :description, :start_date, :end_date, :instructions, origin_ids:[], destination_ids:[], links_attributes: [:text, :url, :id]
   end
 end

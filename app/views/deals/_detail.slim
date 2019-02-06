@@ -10,7 +10,7 @@
        p 
         - @deal.links.each do |link|
           = link_to link.text, link.url
-          - if link != @deal.links.last 
+          - if link && link != @deal.links.last 
             br/
   .col-sm      
     #deal-stats
