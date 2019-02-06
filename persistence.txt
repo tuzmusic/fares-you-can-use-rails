@@ -106,29 +106,6 @@ example_id                                            | status  | run_time      
 ./spec/views/deals_views_spec.rb[1:4:1]               | passed  | 0.24993 seconds |
 ./spec/views/deals_views_spec.rb[1:4:2]               | passed  | 0.20134 seconds |
 ./spec/views/deals_views_spec.rb[1:4:3]               | passed  | 0.1807 seconds  |
-<<<<<<< HEAD
-./spec/views/deals_views_spec.rb[1:4:4]               | passed  | 10.16 seconds   |
-./spec/views/deals_views_spec.rb[1:4:5]               | passed  | 2.04 seconds    |
-./spec/views/deals_views_spec.rb[1:4:6]               | unknown |                 |
-./spec/views/pref_views_spec.rb[1:1:1:1]              | passed  | 1.74 seconds    |
-./spec/views/pref_views_spec.rb[1:1:1:2]              | passed  | 0.38171 seconds |
-./spec/views/pref_views_spec.rb[1:1:1:3]              | passed  | 0.43433 seconds |
-./spec/views/pref_views_spec.rb[1:1:1:4]              | pending | 0.00002 seconds |
-./spec/views/pref_views_spec.rb[1:1:1:5]              | passed  | 0.99476 seconds |
-./spec/views/pref_views_spec.rb[1:1:1:6]              | passed  | 1.09 seconds    |
-./spec/views/pref_views_spec.rb[1:1:2:1]              | passed  | 0.70132 seconds |
-./spec/views/pref_views_spec.rb[1:1:2:2]              | passed  | 0.53895 seconds |
-./spec/views/pref_views_spec.rb[1:1:2:3]              | passed  | 1.36 seconds    |
-./spec/views/pref_views_spec.rb[1:1:2:4]              | passed  | 1.65 seconds    |
-./spec/views/pref_views_spec.rb[1:1:2:5]              | passed  | 1.35 seconds    |
-./spec/views/pref_views_spec.rb[1:1:2:6]              | passed  | 1.22 seconds    |
-./spec/views/pref_views_spec.rb[1:1:2:7]              | passed  | 1.09 seconds    |
-./spec/views/pref_views_spec.rb[1:1:3:1]              | passed  | 0.55686 seconds |
-./spec/views/pref_views_spec.rb[1:1:3:2]              | passed  | 0.55787 seconds |
-./spec/views/pref_views_spec.rb[1:1:3:3]              | passed  | 0.56361 seconds |
-./spec/views/pref_views_spec.rb[1:1:3:4]              | pending | 0.00001 seconds |
-./spec/views/pref_views_spec.rb[1:2:1:1]              | passed  | 1.05 seconds    |
-=======
 ./spec/views/deals_views_spec.rb[1:4:4]               | passed  | 0.35897 seconds |
 ./spec/views/pref_views_spec.rb[1:1:1:1]              | passed  | 2.17 seconds    |
 ./spec/views/pref_views_spec.rb[1:1:1:2]              | passed  | 0.56716 seconds |
@@ -148,7 +125,6 @@ example_id                                            | status  | run_time      
 ./spec/views/pref_views_spec.rb[1:1:3:3]              | passed  | 0.58604 seconds |
 ./spec/views/pref_views_spec.rb[1:1:3:4]              | pending | 0.00005 seconds |
 ./spec/views/pref_views_spec.rb[1:2:1:1]              | passed  | 0.62369 seconds |
->>>>>>> master
 ./spec/views/pref_views_spec.rb[1:2:1:2]              | pending | 0.00001 seconds |
 ./spec/views/pref_views_spec.rb[1:2:1:3]              | passed  | 0.58618 seconds |
 ./spec/views/pref_views_spec.rb[1:2:1:4]              | passed  | 0.60892 seconds |

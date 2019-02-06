@@ -1,0 +1,14 @@
+= f.fields_for :links do |l|
+  p 
+    = l.label :text, "Text:"
+    =< l.text_field :text
+    =< l.label :url, "URL:"
+    =< l.text_field :url
+    
+= f.fields_for :links, deal.links.build do |l|
+  p
+    = l.label :text, "Text:"
+    =< l.text_field :text
+    =< l.label :url, "URL:"
+    =< l.text_field :url
+

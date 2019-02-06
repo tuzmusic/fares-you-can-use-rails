@@ -11,8 +11,8 @@ table
           br/
           = f.text_area :description
         div#links
-          p = f.label "Links:"
-          = render  "links_form", deal: @deal, f: f
+          = f.label "Links:"
+          = render  ("links_form_" + (deal.persisted? ? "edit" : "new")), deal: @deal, f: f
     tr
       td
         p
