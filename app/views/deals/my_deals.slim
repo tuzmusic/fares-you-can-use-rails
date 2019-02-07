@@ -1,0 +1,7 @@
+h1 My Deals
+#deals
+  - current_user.vacations.each do |vacation|
+    h4 = label_tag vacation.name+":"
+    - vacation.deals.order(:start_date).each do |deal|
+      p = sanitize deal_paragraph_for_deal(deal)
+    br/

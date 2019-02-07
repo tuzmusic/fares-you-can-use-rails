@@ -1,13 +1,17 @@
 class DealsController < ApplicationController
 
   # before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
-  before_action :require_admin, except: [:index, :show]
+  before_action :require_admin, except: [:index, :show, :my_deals]
+  before_action :authenticate_user!, only: :my_deals
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
 
 
   def set_deal
     param = params[:slug] || params[:id]  # deal_path gives deal in p[slug], region_deal_path gives deal in p[id]
     @deal = Deal.find_by slug: param
+  end
+
+  def my_deals
   end
 
   def index
