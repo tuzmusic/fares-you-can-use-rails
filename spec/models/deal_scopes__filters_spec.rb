@@ -58,21 +58,24 @@ describe "Deal scope methods" do
   end
 
   describe ".from_airports (plural)" do
-    it "returns deals from an array of airports" do
-      dca = Airport.iata("DCA")
-      iad = Airport.iata("IAD")
-      bwi = Airport.iata("BWI")
-      lax = Airport.iata("LAX")
-      
-      airports = [dca, iad, bwi]
+    let (:dca) { Airport.iata("DCA")}
+    let (:iad) { Airport.iata("IAD")}
+    let (:bwi) { Airport.iata("BWI")}
+    let (:lax) { Airport.iata("LAX")}
+    let (:airports)  {[dca, iad, bwi]}
+    let (:from_dca_and_lax) { dummy_deal.tap{|d| d.origins = [dca, lax]}}
+    let (:from_iad_and_lax) { dummy_deal.tap{|d| d.origins = [iad, lax]}}
+    let (:from_ny) { dummy_deal.tap{|d| d.origins = d.destinations} }
+    let (:deals) { Deal.from_airports airports}
 
-      from_dca_and_lax = dummy_deal.tap{|d| d.origins = [dca, lax]}
-      from_iad_and_lax = dummy_deal.tap{|d| d.origins = [iad, lax]}
-      from_ny = dummy_deal.tap{|d| d.origins = d.destinations} # dummy destinations are ny airports
-      deals = Deal.from_airports airports
+    it "returns deals from an array of airports" do
       expect(deals).to match [from_dca_and_lax, from_iad_and_lax]  
       expect(deals).to_not include from_ny  
       expect(deals.class.name).to eq "ActiveRecord::Relation"
+    end
+
+    it "can be chained" do
+      
     end
   end
 

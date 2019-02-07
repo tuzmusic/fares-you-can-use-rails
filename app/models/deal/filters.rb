@@ -9,7 +9,7 @@ class Deal < ApplicationRecord
   scope :to_region, -> (region) { region.deals }
   scope :for_vacation, -> (vacation) { vacation.deals }
 
-  scope :from_airports, -> (airports) {joins(:origins).where(airports: {ids: airports.ids}) }
+  scope :from_airports, -> (airports) {joins(:origins).where(airports: {id: airports.map(&:id)}) } 
   
   scope :to_regions, -> (regions) { select {|d| regions.include? d.region } }
 
