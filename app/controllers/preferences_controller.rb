@@ -22,11 +22,7 @@ class PreferencesController < ApplicationController
   end
 
   def create # for adding vacations
-    # if params[:vacation][:name].present?
-    # end
-    # @vacation = @prefs.vacations.build(params.require(:vacation).permit :name, :start_date, :end_date) 
     @vacation = Vacation.new(params.require(:vacation).permit :name, :start_date, :end_date) 
-    binding.pry
     @vacation.preference = @prefs
     if @vacation.valid? && @vacation.name.present?
       @vacation.save
