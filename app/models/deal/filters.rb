@@ -1,6 +1,8 @@
 class Deal < ApplicationRecord  
   scope :current, -> { where('end_date > ?', Date.today) }
 
+  scope :group_by_posted, -> { group_by(&:posted_date) }
+
 
   # ------ SINGULAR ------
 

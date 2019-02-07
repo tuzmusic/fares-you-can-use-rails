@@ -21,13 +21,11 @@ class DealsController < ApplicationController
       @deals = @region.deals.current.order(:start_date)
       render :region_index
     else
-      grouped = Deal.all.group_by(&:posted_date) 
-      @deals = grouped
+      @deals = Deal.group_by_posted
     end
   end  
 
   def show
-    # binding.pry
   end
 
   def new
