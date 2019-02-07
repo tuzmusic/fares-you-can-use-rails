@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def deals
-    binding.pry
+    # binding.pry
     d = Deal.from_airports(home_airports)
     e = d.to_regions(regions)
     f = e.for_vacations(vacations)

@@ -53,12 +53,12 @@ X List deals
 
 ## Pre-Your deals
 - User attributes
-  - Vacations
-    - Vacation#deals
-  - Regions (or favorite_regions or whatever)
-    - User#deals
-- User edit action
-- User edit (prefs) view
+  X Vacations
+    X Vacation#deals
+  X Regions (or favorite_regions or whatever)
+    X User#deals
+X User edit action
+X User edit (prefs) view
 
 ## Your Deals
 - New User view - welcome pages (see "Configuring views" in Devise)

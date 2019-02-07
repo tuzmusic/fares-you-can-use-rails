@@ -16,14 +16,20 @@ describe "Deal scope methods" do
   end
 
   describe ".to_region" do
+      
+    let(:to_europe) { dummy_deal_to Airport.iata("CDG")}
+    let(:to_asia) { dummy_deal_to Airport.iata("BKK")}
+    let(:deals) { Deal.to_region Region.find_by(name: "Europe")}
+    
     it "returns deals to the given region" do
-      to_europe = dummy_deal_to Airport.iata("CDG")
-      expect(Deal.to_region Region.find_by(name: "Europe")).to include to_europe  
-
-      to_asia = dummy_deal_to Airport.iata("BKK")
-      deals = Deal.to_region Region.find_by(name: "Europe")
+      expect(deals).to include to_europe  
       expect(deals).to_not include to_asia
-      expect(deals.class.name).to eq "ActiveRecord::Relation"
+    end
+
+    it "can be chained" do
+      to_europe
+      to_asia
+      expect(deals.from_airport "DCA").to include to_europe
     end
   end
 
