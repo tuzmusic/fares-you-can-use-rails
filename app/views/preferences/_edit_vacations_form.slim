@@ -1,7 +1,7 @@
 h2 Edit My Vacations
 #edit_vacations_form
   = form_for prefs do |f| 
-    = f.fields_for :vacations do |v|
+    = f.fields_for :vacations, vacations do |v|
       p
         = v.label :name, "Name:"
         =< v.text_field :name
