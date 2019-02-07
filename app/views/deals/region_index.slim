@@ -1,8 +1,4 @@
-= render  "deals/region_my_deals_index" 
-
-/ h1
-  => @region.name
-  | Deals
-/ .deals
-  - @deals.each do |deal|
-    = sanitize deal_paragraph_for_deal(deal, deal.region)
+- if @vacations
+  = render  "deals/region_my_deals_index", vacations: @vacations
+- else
+  = render  "deals/all_region_deals" 

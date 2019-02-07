@@ -1,7 +1,7 @@
 h1 
   => "My #{@region.name} Deals"
   ||
-  =< link_to "All #{@region.name} Deals", regions_show_path(@region)
+  =< link_to "All #{@region.name} Deals", region_deals_path(@region)
 
 #deals
   - current_user.vacations.each do |vacation|

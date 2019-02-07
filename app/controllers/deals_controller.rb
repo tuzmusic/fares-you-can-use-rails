@@ -15,14 +15,12 @@ class DealsController < ApplicationController
   end
 
   def index
+    @vacations = current_user.vacations if params[:filter]
     if region_slug = params[:region_slug]
       @region = Region.find_by(slug: region_slug)
       @deals = @region.deals.current.order(:start_date)
       render :region_index
     else
-      if params[:filter]
-        @vacations = current_user.vacations
-      end
       grouped = Deal.all.group_by(&:posted_date) 
       @deals = grouped
     end
