@@ -3,12 +3,18 @@ table
     tr
       td colspan="2" 
         p#headline
-          = f.label :headline, "Headline" + " (#{@deal.errors[:headline].join(", ") if @deal.errors[:headline].any?})"
-          = br unless @deal.errors[:headline].any?
+          - if @deal.errors[:headline].any?
+            = f.label :headline, "Headline" + " (#{@deal.errors[:headline].join(", ")})"
+          - else  
+            = f.label :headline
+            br/
           = f.text_field :headline
         p#description
-          = f.label :description, "Description" + " (#{@deal.errors[:headline].join(", ") if @deal.errors[:headline].any?})"
-          = br unless @deal.errors[:description].any?
+          - if @deal.errors[:description].any?
+            = f.label :description, "Description" + " (#{@deal.errors[:description].join(", ")})"
+          - else  
+            = f.label :description
+            br/
           = f.text_area :description
         div#links
           = f.label "Links:"
