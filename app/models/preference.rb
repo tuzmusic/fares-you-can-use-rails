@@ -9,7 +9,7 @@ class Preference < ApplicationRecord
   has_many :home_airports, through: :preference_home_airports, source: :airport
   
   has_many :vacations
-  accepts_nested_attributes_for :vacations
+  accepts_nested_attributes_for :vacations, allow_destroy: true
   
 end
 

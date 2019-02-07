@@ -14,7 +14,6 @@ class PreferencesController < ApplicationController
   def update
     @prefs.update(pref_params)
     add_home_airport(params) if params[:preference][:home_airport]
-    delete_vacations(pref_params) if pref_params[:vacations_attributes]
     redirect_to preferences_path
   end
 
@@ -44,15 +43,6 @@ class PreferencesController < ApplicationController
     else
       flash[:notice] = "#{airport} is not a valid airport."
     end
-  end
-
-  def delete_vacations(params)
-    pref_params[:vacations_attributes].each do |array|  
-      vacation = array.last
-      if vacation[:_destroy] == "1"
-        Vacation.find(vacation[:id]).destroy
-      end
-    end    
   end
 
   def set_prefs
