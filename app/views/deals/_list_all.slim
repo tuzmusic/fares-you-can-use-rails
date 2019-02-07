@@ -4,7 +4,8 @@
       - if admin_signed_in?
         = deal.headline + " (posted #{brief_time(deal.posted_date)})"
         br/
-        = link_to "view", deal
+        => link_to "view", deal
+        ||
         =< link_to "edit", edit_deal_path(deal) 
       - user_signed_in?
         = link_to deal.headline, deal
