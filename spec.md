@@ -6,7 +6,7 @@ Specs:
   - Preference has_many :vacations
 - [x] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
   - Deal belongs_to :region
-- [ ] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
+- [x] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
   - User has_many :vacations, through: :preferences
   - User has_many :regions, through: :preferences
 - [x] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
@@ -14,7 +14,9 @@ Specs:
   - Deals/Destination Airports
 - [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
   - User.preferences.vacations.first.name
-- [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+- [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+  - Preference.name
+  - Deal.headline, description (TODO: links.count > 0, origins/destinations)
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
   - Deal.from_airports
 - [x] Include signup (how e.g. Devise)
@@ -29,10 +31,10 @@ Specs:
   - regions/region-name/deals/deal-name
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
   - See Preferences new/edit page(s) for lots of these! (preferences.vacations, preferences.home_airports)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
 - [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
