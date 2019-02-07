@@ -35,7 +35,7 @@ describe "User deals/preferences" do
       end_date: Date.new(2019,7,8),
       instructions: "Google it! It's everywhere!",
       origin_ids: [Airport.iata("DCA").id, Airport.iata("BWI").id, Airport.iata("IAD").id],  
-      destination_ids: [Airport.iata("CGD").id, Airport.iata("FCO").id])
+      destination_ids: [Airport.iata("CDG").id, Airport.iata("FCO").id])
   }
 
   let(:bad_date_deal) { Deal.create(

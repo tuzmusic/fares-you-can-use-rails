@@ -16,9 +16,7 @@ class Deal < ApplicationRecord
   # ------ PLURAL ------
   
   scope :from_airports, -> (airports) { 
-    x = joins(:origins).where(airports: {id: airports.map(&:id)}) 
-    puts x.to_sql
-    x
+    joins(:origins).where(airports: {id: airports.map(&:id)}) 
   } 
 
   scope :to_regions, -> (regions) { joins(:region).where(regions: {id: regions.map(&:id)}) } 
@@ -31,8 +29,8 @@ class Deal < ApplicationRecord
     end
   end
 
-  scope :for_vacations, -> (vacations) { 
-    where.not('start_date >= ?', vacations.map(&:end_date))
-    .where.not('end_date <= ?', vacations.map(&:start_date))
-  }
+  # scope :for_vacations, -> (vacations) { 
+  #   where.not('start_date >= ?', vacations.map(&:end_date))
+  #   .where.not('end_date <= ?', vacations.map(&:start_date))
+  # }
 end
