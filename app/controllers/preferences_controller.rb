@@ -24,7 +24,7 @@ class PreferencesController < ApplicationController
   def create # for adding vacations
     @vacation = Vacation.new(params.require(:vacation).permit :name, :start_date, :end_date) 
     @vacation.preference = @prefs
-    if @vacation.valid? && @vacation.name.present?
+    if @vacation.valid?
       @vacation.save
       redirect_to preferences_path
     else

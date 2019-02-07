@@ -5,8 +5,8 @@ require_relative 'deal/filters'
 require_relative 'deal/seed'
 
 class Deal < ApplicationRecord
-  validates: :headline, presence: true
-  validates: :description, presence: true
+  validates :headline, presence: :true
+  validates :description, presence: :true
 
   has_many :deal_origins, dependent: :destroy
   has_many :origins, through: :deal_origins, source: :airport

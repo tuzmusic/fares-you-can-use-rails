@@ -35,12 +35,16 @@ class DealsController < ApplicationController
   end
 
   def create
-    # binding.pry
-    deal = Deal.create(deal_params)
-    deal.origin_codes = params[:deal][:origins] if params[:deal][:origins]
-    deal.destination_codes = params[:deal][:destinations] if params[:deal][:destinations]
-    redirect_to deal_path(deal)
-    # TO DO: error handling (if Deal.create(deal_params)...)
+    @deal = Deal.create(deal_params)
+    @deal.origin_codes = params[:deal][:origins] if params[:deal][:origins]
+    @deal.destination_codes = params[:deal][:destinations] if params[:deal][:destinations]
+
+    if @deal.valid?
+      @deal.save
+      redirect_to deal_path(@deal)
+    else 
+      render :new
+    end
   end
 
   def edit
