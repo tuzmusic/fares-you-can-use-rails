@@ -13,6 +13,7 @@ class PreferencesController < ApplicationController
 
   def update
     @prefs.update(pref_params)
+    # TODO: check for blank vaction titles on update (probably with custom vacation_attributes method)
     add_home_airport(params) if params[:preference][:home_airport]
     redirect_to preferences_path
   end
