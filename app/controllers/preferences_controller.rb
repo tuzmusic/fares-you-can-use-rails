@@ -17,8 +17,18 @@ class PreferencesController < ApplicationController
     delete_vacations(pref_params) if pref_params[:vacations_attributes]
     redirect_to preferences_path
   end
+
+  def new
+  end
+
+  def create # for adding vacations
+    if params[:vacation][:name].present?
+      @prefs.vacations.create(params.require(:vacation).permit :name, :start_date, :end_date) 
+    end
+    redirect_to preferences_path
+  end
   
-  def destroy
+  def destroy # for removing home airports
     @prefs.home_airports.delete(params[:airport_id])
     redirect_to preferences_path
   end

@@ -2,18 +2,17 @@ table
   = form_for @deal do |f|
     tr
       td colspan="2" 
-        p
+        p#headline
           = f.label :headline
           br/
           = f.text_field :headline
-        p
+        p#description
           = f.label :description
           br/
           = f.text_area :description
-        p
-          = f.label :instructions
-          br/
-          = f.text_area :instructions
+        div#links
+          = f.label "Links:"
+          = render  ("links_form_" + (deal.persisted? ? "edit" : "new")), deal: @deal, f: f
     tr
       td
         p

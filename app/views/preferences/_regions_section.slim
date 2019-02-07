@@ -6,4 +6,4 @@ p Select the regions you'd like to receive deals for:
   p = collection_check_boxes :preference, :region_ids, Region.all, :id, :name do |box|
     = box.check_box(checked: ("checked" if prefs.regions.include? box.object)) + " " + box.text 
     br/
-  = f.submit 'Save'
+  = f.submit 'Save', id: "save_regions_button"

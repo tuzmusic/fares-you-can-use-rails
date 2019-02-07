@@ -2,19 +2,20 @@ require 'rails_helper'
 
 describe "Preference views", type: :feature do
   
-  let(:user) { User.first }
-  let(:pref) { Preference.create(user: User.first) }
+  let(:user) { create_and_log_in_user; User.last }
+  let(:pref) { user.preferences }
   
   before :each do
-    create_and_log_in_user
+    # create_and_log_in_user
   end
 
   describe "show page" do
     describe "vacations section" do
       before :each do
-        pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31))
-        pref.vacations.create(name: "Winter break", start_date: Date.new(2019,12,21), end_date: Date.new(2019,12,31))
+        p1 = pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31))
+        p2 = pref.vacations.create(name: "Winter break", start_date: Date.new(2019,12,21), end_date: Date.new(2019,12,31))
         visit preferences_path
+        # binding.pry
       end
 
       it "show's the user's vacations" do
@@ -277,35 +278,54 @@ describe "Preference views", type: :feature do
   end
 
   describe "new view" do
+
+    before :each do
+      pref.vacations.create(name: "Summer vacation", start_date: Date.new(2019,6,1), end_date: Date.new(2019,8,31))
+      pref.vacations.create(name: "Winter break", start_date: Date.new(2019,12,21), end_date: Date.new(2019,12,31))
+      visit new_preferences_path
+    end
+
     it "has a form to create a new vacation" do
-      expect(false).to eq true 
+      expect(page).to have_field 'Name:'
+      expect(page).to have_button 'Save'
       # preference#new  (IS THIS CORRECTLY RESTFUL?)
     end
 
     it "shows all the user's current vacations" do
-      expect(false).to eq true 
-      
+      expect(page).to have_content "Summer vacation"
+      expect(page).to have_content "Winter break"
     end
 
     it "saves the new vacation" do
-      expect(false).to eq true 
-      # using to preference#update
+      fill_in 'Name:', with: "President's day"
+      select '2020', from: 'vacation_start_date_1i'
+      select 'Feb', from: 'vacation_start_date_2i'
+      select '12', from: 'vacation_start_date_3i'
+      select '2020', from: 'vacation_end_date_1i'
+      select 'Feb', from: 'vacation_end_date_2i'
+      select '15', from: 'vacation_end_date_3i'      
+      click_button "save_vacation_button"
+
+      expect(page).to have_content "President's day"
+      expect(page).to have_content "Feb. 12, 2020 - Feb. 15, 2020"
+      expect(page.all('p.vacation').count).to eq 3
     end
   end
   
   describe "access control" do
 
     it "cannot be accessed by guests" do
-      click_on "Log Out"
+      # click_on "Log Out"
       visit preferences_path
       expect(current_path).to eq new_user_session_path 
     end
 
     it "can only access the preferences for the current user" do
-      click_on "Log Out"
-      u1 = User.first # created in before :each block
+      u1 = user # created in before :each block
       u2 = User.create(email:"test2@example.com", password: "123456", first_name: "Jane", last_name: "Doe")
-
+      
+      click_on "Log Out"
+      
       u1.preferences.vacations.create(name:"John's Vacation", start_date: Date.yesterday, end_date: Date.tomorrow)
       u2.preferences.vacations.create(name:"Jane's Vacation", start_date: Date.yesterday, end_date: Date.tomorrow)
 

@@ -1,13 +1,19 @@
 .row
   .col-sm
-    .deal-info
+    #deal-info
       h3 = deal.headline
       - if deal.probably_expired?
         h4.warning POSSIBLY EXPIRED!
       p = sanitize instructions_for(deal)
       p = sanitize deal.description
+    #deal-links
+       p 
+        - @deal.links.each do |link|
+          = link_to link.text, link.url
+          - if link && link != @deal.links.last 
+            br/
   .col-sm      
-    .deal-stats
+    #deal-stats
       p
         b Fly From:
         br/

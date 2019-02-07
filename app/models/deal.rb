@@ -12,6 +12,8 @@ class Deal < ApplicationRecord
   has_many :destinations, through: :deal_destinations, source: :airport
   
   belongs_to :region, optional: true
+  has_many :links
+  accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
   # ------ SCOPE METHODS --------
   scope :current, -> { where('end_date > ?', Date.today) }
