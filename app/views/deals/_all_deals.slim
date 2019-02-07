@@ -1,5 +1,7 @@
 h1 
-  => link_to  "My Deals", deals_path(params: {filter: true})
-  | | All Deals
+  - if user_signed_in?
+    => link_to  "My Deals", deals_path(params: {filter: true})
+    | | 
+  | All Deals
 
 = render  "deals/grouped_by_date", deals: @deals
