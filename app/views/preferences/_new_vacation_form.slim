@@ -1,11 +1,11 @@
 h2 New Vacation
 #new_vacation_form
   = form_tag '/preferences', method: :post do
-    div class="field#{" field_with_errors" if @vacation&.errors[:name].any?}"
+    div class="field#{" field_with_errors" if @vacation && @vacation&.errors[:name]&.any?}"
       p
         = label_tag :'vacation[name]', "Name:"
         =< text_field_tag :'vacation[name]'
-        =< @vacation&.errors.full_messages.first
+        =< @vacation&.errors.full_messages.first if @vacation && @vacation&.errors
     p
       = date_select_for :vacation, :start_date
       |to 

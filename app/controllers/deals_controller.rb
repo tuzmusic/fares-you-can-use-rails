@@ -7,8 +7,8 @@ class DealsController < ApplicationController
 
 
   def set_deal
-    param = params[:slug] || params[:id]  # deal_path gives deal in p[slug], region_deal_path gives deal in p[id]
-    @deal = Deal.find_by slug: param
+    @deal = Deal.find_by slug: params[:slug] if params[:slug]
+    @deal = Deal.find_by id: params[:id] if params[:id]
   end
 
   def my_deals
