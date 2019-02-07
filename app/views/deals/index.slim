@@ -1,5 +1,8 @@
-h1 
-  => link_to  "My Deals", my_deals_path 
+- if @vacations
+  = render  "my_deals", vacations: @vacations
+- else
+  = render  "all_deals" 
+/h1 
+  => link_to  "My Deals", my_deals_path(params: {filter: true})
   | | All Deals
-
-= render  "deals/grouped_by_date", deals: @deals
+/= render  "deals/grouped_by_date", deals: @deals

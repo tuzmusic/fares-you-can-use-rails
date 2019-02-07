@@ -1,9 +1,9 @@
 h1 
   | My Deals |
-  =< link_to "All Deals", deals_path
+  =< link_to "All Deals", deals_path 
 
 #deals
-  - current_user.vacations.each do |vacation|
+  - vacations.each do |vacation|
     h3 = vacation.name+":"
     - if vacation.deals.empty? 
       p = "No deals during #{vacation.name} ☹️☹️☹️"

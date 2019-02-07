@@ -20,8 +20,10 @@ class DealsController < ApplicationController
       @deals = @region.deals.current.order(:start_date)
       render :region_index
     else
-      real_deals = Deal.where.not(posted_date: nil)
-      grouped = real_deals.group_by(&:posted_date) 
+      if params[:filter]
+        @vacations = current_user.vacations
+      end
+      grouped = Deal.all.group_by(&:posted_date) 
       @deals = grouped
     end
   end  

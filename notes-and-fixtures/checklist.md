@@ -71,6 +71,7 @@ X Deals index for users
 
 ## "My Africa Deals"
 - FIX NAVIGATION/ROUTING/PATHS ON REGION DEALS INDEX
+- I think the region deals page isn't filtering enough (it doesn't filter for home airports?)
 
 ## Admin insights
 - Add stats to admin deals show/index pages (# of users who match each deal)

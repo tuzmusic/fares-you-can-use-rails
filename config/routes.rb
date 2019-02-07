@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root "deals#index"
   
   resources :deals, param: :slug
-  get 'my-deals', to: 'deals#my_deals', as: :my_deals
+  get 'my-deals', to: 'deals#my_deals', as: :my_deals_path
   resources :regions, param: :slug, only: [:index, :show] do
     resources :deals, only: [:index, :show, :edit, :destroy]
   end
