@@ -64,10 +64,13 @@ X User edit (prefs) view
 - New User view - welcome pages (see "Configuring views" in Devise)
   - Includes deals preferences, so lots of nested attributes here
 - Add login to welcome/splash page (for existing user instead of new visitor)
-- Deals.for_user class/scope method
+X Deals.for_user class/scope method
   - Could also be User#deals, but (1) that would be calling scope methods on Deal anyway, and (2) the project requires scope methods
-- Deals index for users 
+X Deals index for users 
 - Deals index for visitors
+
+## "My Africa Deals"
+- FIX NAVIGATION/ROUTING/PATHS ON REGION DEALS INDEX
 
 ## Admin insights
 - Add stats to admin deals show/index pages (# of users who match each deal)
