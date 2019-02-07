@@ -10,7 +10,7 @@ table
             br/
           = f.text_field :headline
         p#description
-          - if @deal.errors[:headline].any?
+          - if @deal.errors[:description].any?
             = f.label :description, "Description" + " (#{@deal.errors[:description].join(", ")})"
           - else  
             = f.label :description
