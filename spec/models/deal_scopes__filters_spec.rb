@@ -95,17 +95,18 @@ describe "Deal scope methods" do
     end
   end
 
-  describe ".for_vacations" do
-    it "returns deals that match an array of vacations" do
-      dec_vac = Vacation.create(name:"December 2019", start_date:Date.new(2019,12,1), end_date:Date.new(2020,12,31))
-      oct_vac = Vacation.create(name:"October 2019", start_date:Date.new(2019,10,1), end_date:Date.new(2020,10,31))
-      march_vac = Vacation.create(name:"March 2019", start_date:Date.new(2019,3,1), end_date:Date.new(2020,3,31))
-      vacations = [dec_vac, oct_vac, march_vac]
+  describe ".for_vacations (plural)" do
+    let(:dec_vac) { Vacation.create(name:"December 2019", start_date:Date.new(2019,12,1), end_date:Date.new(2020,12,31)) }
+    let(:oct_vac) { Vacation.create(name:"October 2019", start_date:Date.new(2019,10,1), end_date:Date.new(2020,10,31)) }
+    let(:march_vac) { Vacation.create(name:"March 2019", start_date:Date.new(2019,3,1), end_date:Date.new(2020,3,31)) }
+    let(:vacations) { [dec_vac, oct_vac, march_vac] }
+    let(:jan_deal) { dummy_deal_for(month_no:1) }
+    let(:march_deal) { dummy_deal_for(month_no:3) }
+    let(:oct_deal) { dummy_deal_for(month_no:10) }
+    let(:deals) { Deal.for_vacations vacations }
 
-      jan_deal = dummy_deal_for(month_no:1)
-      march_deal = dummy_deal_for(month_no:3)
-      oct_deal = dummy_deal_for(month_no:10)
-      deals = Deal.for_vacations vacations
+    it "returns deals that match an array of vacations" do
+      dec_vac; oct_vac; march_vac; vacations; jan_deal; march_deal; oct_deal
       expect(deals).to include march_deal
       expect(deals).to include oct_deal
       expect(deals).to_not include jan_deal

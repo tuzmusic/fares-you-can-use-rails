@@ -15,15 +15,24 @@ class Deal < ApplicationRecord
 
   # ------ PLURAL ------
   
-  scope :from_airports, -> (airports) {joins(:origins).where(airports: {id: airports.map(&:id)}) } 
+  scope :from_airports, -> (airports) { 
+    x = joins(:origins).where(airports: {id: airports.map(&:id)}) 
+    puts x.to_sql
+    x
+  } 
 
-  scope :to_regions, -> (regions) {joins(:region).where(regions: {id: regions.map(&:id)}) } 
+  scope :to_regions, -> (regions) { joins(:region).where(regions: {id: regions.map(&:id)}) } 
 
   scope :for_vacations, -> (vacations) do
     select do |deal|
-      vacations.any? { |v| v.deals.include? deal }
+      vacations.any? do |v| 
+        v.deals.include? deal 
+      end
     end
   end
 
-
+  scope :for_vacations, -> (vacations) { 
+    where.not('start_date >= ?', vacations.map(&:end_date))
+    .where.not('end_date <= ?', vacations.map(&:start_date))
+  }
 end
