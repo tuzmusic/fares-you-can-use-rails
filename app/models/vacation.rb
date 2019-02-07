@@ -1,4 +1,5 @@
 class Vacation < ApplicationRecord
+  validates :name, presence: :true
   belongs_to :preference # must be singular here
 
   def deals

@@ -1,4 +1,5 @@
 class Preference < ApplicationRecord
+  
   belongs_to :user
 
   has_many :preference_regions

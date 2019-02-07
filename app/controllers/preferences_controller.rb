@@ -22,10 +22,18 @@ class PreferencesController < ApplicationController
   end
 
   def create # for adding vacations
-    if params[:vacation][:name].present?
-      @prefs.vacations.create(params.require(:vacation).permit :name, :start_date, :end_date) 
+    # if params[:vacation][:name].present?
+    # end
+    # @vacation = @prefs.vacations.build(params.require(:vacation).permit :name, :start_date, :end_date) 
+    @vacation = Vacation.new(params.require(:vacation).permit :name, :start_date, :end_date) 
+    binding.pry
+    @vacation.preference = @prefs
+    if @vacation.valid? && @vacation.name.present?
+      @vacation.save
+      redirect_to preferences_path
+    else
+      render :new
     end
-    redirect_to preferences_path
   end
   
   def destroy # for removing home airports
