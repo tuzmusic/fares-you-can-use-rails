@@ -5,7 +5,8 @@ h1
 
 #deals
   - current_user.vacations.each do |vacation|
-    h3 = "#{vacation.name} - #{date_range(vacation)}"
+    / h3 = "#{vacation.name}: #{date_range(vacation)}"
+    h3 = vacation_header(vacation)
     - if @region.deals.for_vacation(vacation).empty?
       p = "No deals to #{@region.name} during #{vacation.name} ☹️☹️☹️"
     - @region.deals.for_vacation(vacation).order(:start_date).each do |deal|

@@ -4,7 +4,7 @@ h1
 
 #deals
   - vacations.each do |vacation|
-    h3 = vacation.name+":"
+    h3 = vacation_header(vacation)
     - if vacation.deals.empty? 
       p = "No deals during #{vacation.name} ☹️☹️☹️"
     - vacation.deals.order(:start_date).each do |deal|
