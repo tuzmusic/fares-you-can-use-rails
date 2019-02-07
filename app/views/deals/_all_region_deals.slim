@@ -1,6 +1,6 @@
 h1 
   => link_to  "My #{@region.name} Deals", region_deals_path(@region, params: {filter: true})
-  | | All Deals
+  | | All #{@region.name} Deals
 br/
 .deals
   - @deals.each do |deal|
