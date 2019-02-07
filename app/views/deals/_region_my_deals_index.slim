@@ -7,6 +7,6 @@ h1
   - current_user.vacations.each do |vacation|
     h3 = vacation.name+":"
     - if @region.deals.for_vacation(vacation).empty?
-      p = "No deals to #{@region.name} for this vacation ☹️☹️☹️"
+      p = "No deals to #{@region.name} for during #{vacation.name} ☹️☹️☹️"
     - @region.deals.for_vacation(vacation).order(:start_date).each do |deal|
       p = sanitize deal_paragraph_for_deal(deal)
