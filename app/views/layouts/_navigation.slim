@@ -3,7 +3,7 @@ ul.nav.navbar-nav#navigation
   - if admin_signed_in?
     li class=(path == ("/admin") ? 'active' : 'inactive') 
       = link_to  "Admin", admin_root_path
-  li class=(path.start_with?("/deals") || path == "/" ? 'active' : 'inactive') 
+  li class=(path.start_with?("/deals") || path.start_with?("/my-deals") || path == "/" ? 'active' : 'inactive') 
     = link_to  "Deals", deals_path
   li class=(path.start_with?("/regions") ? 'active' : 'inactive') 
     = link_to  "Regions", regions_path
