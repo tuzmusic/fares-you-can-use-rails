@@ -19,33 +19,41 @@ describe "Deal scope methods" do
       
     let(:to_europe) { dummy_deal_to Airport.iata("CDG")}
     let(:to_asia) { dummy_deal_to Airport.iata("BKK")}
-    let(:deals) { Deal.to_region Region.find_by(name: "Europe")}
+    let(:deals_to_europe) { Deal.to_region Region.find_by(name: "Europe")}
     
     it "returns deals to the given region" do
-      expect(deals).to include to_europe  
-      expect(deals).to_not include to_asia
+      expect(deals_to_europe).to include to_europe  
+      expect(deals_to_europe).to_not include to_asia
     end
 
     it "can be chained" do
       to_europe
       to_asia
-      expect(deals.from_airport "DCA").to include to_europe
+      expect(deals_to_europe.from_airport "DCA").to include to_europe
+      expect(Deal.from_airport("DCA").to_region(Region.find_by(name:"Europe"))).to include to_europe
     end
   end
 
   describe ".for_vacation" do
-    it "returns deals to the given region" do
-      deal = dummy_deal
-      bad_deal = dummy_deal.tap {|d| 
+    let (:good_deal) {dummy_deal}
+    let (:bad_deal) {dummy_deal.tap {|d| 
         d.start_date = Date.new(2008,1,1)
         d.end_date = Date.new(2008,2,1)
         d.save
       }
-      vacation = Vacation.new(name:"Whatever", start_date: deal.start_date, end_date: deal.end_date)
-      deals = Deal.for_vacation vacation
-      expect(deals).to include deal
+    }
+    let (:vacation) {Vacation.new(name:"Whatever", start_date: good_deal.start_date, end_date: good_deal.end_date)}
+    let (:deals) {Deal.for_vacation vacation}
+
+    it "returns deals to the given region" do
+      expect(deals).to include good_deal
       expect(deals).to_not include bad_deal
       expect(deals.class.name).to eq "ActiveRecord::Relation"
+    end
+
+    it "can be chained" do
+      expect(deals.to_region good_deal.region).to include good_deal
+      expect(Deal.to_region(good_deal.region).for_vacation(vacation)).to include good_deal
     end
   end
 
