@@ -75,18 +75,20 @@ describe "Deal scope methods" do
     end
 
     it "can be chained" do
-      
+      from_dca_and_lax; from_iad_and_lax; from_ny
+      expect(deals.to_region deals.first.region).to include deals.first
     end
   end
 
-  describe ".from_regions (plural)" do
+  describe ".to_regions (plural)" do
+    let(:asia_deal) { dummy_deal_to Airport.iata("BKK")}
+    let(:africa_deal) { dummy_deal_to Airport.iata("JHB")}
+    let(:eur_deal) { dummy_deal_to Airport.iata("CDG")}
+    let(:regions) { [Region.find_by(name:"Asia"), Region.find_by(name:"Africa")]}
+    let(:deals) { Deal.to_regions regions}
+
     it "returns deals from an array of regions" do
-      asia_deal = dummy_deal_to Airport.iata("BKK")
-      africa_deal = dummy_deal_to Airport.iata("JHB")
-      eur_deal = dummy_deal_to Airport.iata("CDG")
-  
-      regions = [Region.find_by(name:"Asia"), Region.find_by(name:"Africa")]
-      deals = Deal.to_regions regions
+      asia_deal; africa_deal; eur_deal; regions
       expect(deals).to match [asia_deal, africa_deal]
       expect(deals).to_not include [eur_deal]
       expect(deals.class.name).to eq "ActiveRecord::Relation"
