@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :home_airports, through: :preferences
 
   has_many :favorites
-  has_many :favorite_deals, through: :favorites, source: :deal
+  has_many :favorite_deals, through: :preferences, source: :deal
 
   # has_many :regions, through: :preferences
   def regions

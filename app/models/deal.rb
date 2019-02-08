@@ -15,7 +15,7 @@ class Deal < ApplicationRecord
   has_many :destinations, through: :deal_destinations, source: :airport
 
   has_many :favorites
-  has_many :favorited_users, through: :favorites, source: :user
+  has_many :favorited_users, through: :favorites, source: :preference
   
   belongs_to :region, optional: true
   has_many :links
