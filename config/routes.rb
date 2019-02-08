@@ -25,12 +25,12 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { 
     omniauth_callbacks: 'users/omniauth_callbacks', 
-    preferences: 'users/preferences' 
+    preferences: 'users/preferences',
   }
 
   devise_scope :user do 
     get "/sign_out", to: 'devise/sessions#destroy', as: 'user_sign_out'
-    get "/sign_in", to: 'devise/sessions#new', as: 'user_sign_in'
+    get "/sign_in", to: 'users/sessions#new', as: 'user_sign_in'
     get "/sign_up", to: 'devise/registrations#new', as: 'user_sign_up'
     get "/user/preferences", to: 'users/preferences#index', as: 'user_preferences'
     get "/user/preferences/edit", to: 'users/preferences#edit', as: 'edit_user_preferences'
