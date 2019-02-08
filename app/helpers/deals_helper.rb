@@ -22,7 +22,7 @@ module DealsHelper
   end
 
   def deal_paragraph_for_deal(deal, region=nil)
-    text = "<p class='deal'>"
+    text = "<p paraclass=deal>"
     text += expired_warning(deal)
     text += region ? (link_to deal.headline, region_deal_path(region, deal)) : (link_to deal.headline, deal)
     text += "<br><span class='fly-dates'>Fly from " + date_range(deal)

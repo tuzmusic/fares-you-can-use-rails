@@ -5,5 +5,5 @@ h1
   | All #{@region.name} Deals
 br/
 .deals
-  - @deals.each do |deal|
+  - @deals.each do |deal| 
     = sanitize deal_paragraph_for_deal(deal, @region)

@@ -82,7 +82,7 @@ describe "Deal scope methods" do
 
   describe ".to_regions (plural)" do
     let(:asia_deal) { dummy_deal_to Airport.iata("BKK")}
-    let(:africa_deal) { dummy_deal_to Airport.iata("JHB")}
+    let(:africa_deal) { dummy_deal_to Airport.iata("GCJ")}
     let(:eur_deal) { dummy_deal_to Airport.iata("CDG")}
     let(:regions) { [Region.find_by(name:"Asia"), Region.find_by(name:"Africa")]}
     let(:deals) { Deal.to_regions regions}

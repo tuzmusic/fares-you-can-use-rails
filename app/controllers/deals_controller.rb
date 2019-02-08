@@ -26,6 +26,9 @@ class DealsController < ApplicationController
   end  
 
   def show
+    if region_slug = params[:region_slug]
+      @region = Region.find_by(slug: region_slug)
+    end    
   end
 
   def new
