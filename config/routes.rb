@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :favorites
   # what are these??
   get 'regions/index'
   get 'regions/show'

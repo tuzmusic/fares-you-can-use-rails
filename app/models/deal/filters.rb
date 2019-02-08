@@ -31,8 +31,4 @@ class Deal < ApplicationRecord
     end
   end
 
-  # scope :for_vacations, -> (vacations) { 
-  #   where.not('start_date >= ?', vacations.map(&:end_date))
-  #   .where.not('end_date <= ?', vacations.map(&:start_date))
-  # }
 end
