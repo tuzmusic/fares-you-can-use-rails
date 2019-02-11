@@ -10,9 +10,10 @@ class Preference < ApplicationRecord
   
   has_many :vacations
   accepts_nested_attributes_for :vacations, allow_destroy: true
-
+  
   has_many :favorites
   has_many :favorite_deals, through: :favorites, source: :deal
+  accepts_nested_attributes_for :favorites, allow_destroy: true
 
 end
 
