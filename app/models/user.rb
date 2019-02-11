@@ -26,6 +26,10 @@ class User < ApplicationRecord
     f = e.for_vacations(vacations)
   end
 
+  def has_favorited?(deal)
+    self.preferences.favorite_deals.include? deal
+  end
+
   after_create do |user|  
     user.preferences = Preference.create
   end
