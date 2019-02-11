@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :deals, param: :slug do
     resources :favorites
   end
+  resources :favorites
+  
   get 'my-deals', to: 'deals#my_deals', as: :my_deals_path
   resources :regions, param: :slug, only: [:index, :show] do
     resources :deals, only: [:index, :show], param: :slug

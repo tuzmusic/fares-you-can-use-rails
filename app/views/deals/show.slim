@@ -3,3 +3,6 @@
   - if admin_signed_in?
     p = edit_deal_button
     p = delete_deal_button
+  - if user_signed_in?
+    p = link_to  "Add to Favorites", new_deal_favorite_path(deal)
+    
