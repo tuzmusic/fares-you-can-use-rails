@@ -1,4 +1,6 @@
 h2 Favorited Deals
+p
+  = link_to  "Edit", edit_preferences_path 
 - prefs.favorites.each do |f|
   p
     b = link_to f.deal.headline, f.deal
