@@ -26,3 +26,5 @@
         b Fly Dates:
         br/
         = date_range deal, hyphen: true
+      - if user_signed_in? 
+        p = link_to  "Add to Favorites", new_deal_favorite_path(@deal)
