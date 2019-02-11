@@ -51,6 +51,6 @@ class PreferencesController < ApplicationController
   end
 
   def pref_params
-    params.require(:preference).permit region_ids: [], vacations_ids:[], vacations_attributes: [:name, :start_date, :end_date, :id, :_destroy]
+    params.require(:preference).permit region_ids: [], vacations_ids:[], vacations_attributes: [:name, :start_date, :end_date, :id, :_destroy], favorites_ids:[], favorites_attributes: [:comment, :id, :_destroy, :deal_id, :preference_id]
   end
 end
