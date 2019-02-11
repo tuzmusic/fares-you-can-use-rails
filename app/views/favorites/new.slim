@@ -1,6 +1,9 @@
+/ - binding.pry
 = render  "deals/detail", deal: @favorite.deal 
 
 h4 Add to Favorites:
-= form_for @favorite do |f| 
+= fields_for @favorite do |f| 
+  = f.hidden_field (:preference_id) 
+  = f.hidden_field (:deal_id) 
   = f.text_field :comment, placeholder: "Add a comment/name"
   =< f.submit "Save"
