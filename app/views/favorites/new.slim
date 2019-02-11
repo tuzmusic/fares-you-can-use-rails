@@ -2,8 +2,8 @@
 = render  "deals/detail", deal: @favorite.deal 
 
 h4 Add to Favorites:
-= fields_for @favorite do |f| 
+= form_for @favorite do |f| 
   = f.hidden_field (:preference_id) 
   = f.hidden_field (:deal_id) 
   = f.text_field :comment, placeholder: "Add a comment/name"
-  =< f.submit "Save"
+  =< f.submit 
