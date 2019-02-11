@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :favorites
   # what are these??
   get 'regions/index'
   get 'regions/show'
   
   root "deals#index"
   
-  resources :deals, param: :slug
+  resources :deals, param: :slug do
+    resources :favorites
+  end
   get 'my-deals', to: 'deals#my_deals', as: :my_deals_path
   resources :regions, param: :slug, only: [:index, :show] do
     resources :deals, only: [:index, :show], param: :slug
