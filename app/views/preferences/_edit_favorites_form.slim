@@ -2,7 +2,6 @@ h2 Favorited Deals
 #edit_favorites_form
   = form_for prefs do |f| 
     = f.fields_for :favorites do |v|
-      / - binding.pry
       p 
         b = link_to v.object.deal.headline, v.object.deal
         br/

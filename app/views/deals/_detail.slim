@@ -32,4 +32,5 @@
           br/
           = fave.comment
         - else
-          p = link_to  "Add to Favorites", new_deal_favorite_path(deal)
+          - unless @favorite
+            p = link_to  "Add to Favorites", new_deal_favorite_path(deal)
