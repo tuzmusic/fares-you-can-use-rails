@@ -14,8 +14,11 @@
 <!-- [] Get deals to a given airport iata code
   + `api/deals/to/:iata` -->
 
-[] Get deals to a given region
+[X] Get deals to a given region
   + `api/deals/to/:region_slug`
+
+[X] Get deals during a certain vacation
+  + `api/deals/for-vacation/:id`
 
 [] Get deals during a certain date range
   + `api/deals/dates/:start_date/:end_date`
