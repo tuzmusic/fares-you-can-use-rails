@@ -1,4 +1,4 @@
-describe Api::DealsController, type: :controller do
+ describe Api::DealsController, type: :controller do
 
   let(:dca_to_ny) { dummy_deal } 
   let(:cdg_to_cai) { dummy_deal.tap do |d|

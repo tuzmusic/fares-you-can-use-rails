@@ -1,6 +1,9 @@
 class Api::DealsController < ApplicationController
   def index
-    raise params.inspect
     render "Hello"
+  end
+  
+  def show
+    render json: Deal.find(params[:id])
   end
 end

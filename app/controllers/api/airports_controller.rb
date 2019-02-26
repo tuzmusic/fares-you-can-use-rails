@@ -4,7 +4,7 @@ class Api::AirportsController < ApplicationController
   end
 
   def show
-    @airport = Airport.find(params[:id])
+    @airport = Airport.iata(params[:slug])
     render json: @airport
   end
 end
