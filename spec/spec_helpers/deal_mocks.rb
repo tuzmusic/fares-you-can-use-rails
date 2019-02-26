@@ -12,6 +12,7 @@ module DealMocks
   end
 
   def dummy_deal_from(airport)
+    airport = Airport.iata(airport) if airport.class == String && airport.length == 3
     dummy_deal.tap {|d| d.origin = airport}
   end
   

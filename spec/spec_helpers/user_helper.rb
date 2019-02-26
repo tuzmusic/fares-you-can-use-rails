@@ -6,7 +6,14 @@ module UserTestHelper
     @request.env["devise.mapping"] = Devise.mappings[:admin]
     post :create, params: {admin: {email: "test@example.com", password:"123456"}}
     @controller = old_con
+  end
 
+  def log_in_user_from_controller
+    old_con = @controller
+    @controller = Users::SessionsController.new
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    post :create, params: {user: {email: "test@example.com", password:"123456"}}
+    @controller = old_con
   end
 
   def create_user
@@ -25,7 +32,6 @@ module UserTestHelper
     log_in_user
   end  
   
-
   def create_admin
     Admin.create(email: "test@example.com", password:"123456", first_name: "John", last_name: "Doe")
   end
