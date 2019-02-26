@@ -1,3 +1,4 @@
+require_relative 'api_routes'
 Rails.application.routes.draw do
 
   # what are these??
