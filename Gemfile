@@ -45,6 +45,9 @@ group :development, :test do
   gem 'pry-coolline'
   gem 'pry-rescue'
   gem 'rspec-rails'
+  gem "better_errors"
+  gem "binding_of_caller"
+
 end
 
 group :development do
@@ -56,9 +59,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard'
   gem 'guard-livereload', '~> 2.5', require: false
-  gem "better_errors"
-  gem "binding_of_caller"
-
+  gem 'selenium-webdriver'
 end
 
 group :test do
