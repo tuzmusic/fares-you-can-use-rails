@@ -57,6 +57,10 @@ class Deal < ApplicationRecord
     Region.find_by(id: region_id) || set_region
   end
 
+  def region_name
+    region.name
+  end
+
   def set_region
     if f = destinations.first 
       update(region: f.region)
