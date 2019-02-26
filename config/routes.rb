@@ -1,4 +1,3 @@
-require_relative 'api_routes'
 Rails.application.routes.draw do
 
   # what are these??
@@ -25,6 +24,11 @@ Rails.application.routes.draw do
   resources :vacations
   
   get 'pry', to: 'application#pry'
+
+  # ------- API STUFF --------
+  namespace :api do
+    resources :deals, :users
+  end
 
   # ------- DEVISE STUFF --------
 
