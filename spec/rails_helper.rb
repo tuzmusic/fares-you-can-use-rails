@@ -9,7 +9,7 @@ require 'capybara/rails'
 
 Capybara.current_driver = :selenium
 Capybara.register_driver :selenium do |app|
-  Capybara: :Selenium: :Driver.new(app, :browser => :chrome)
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 # Add additional requires below this line. Rails is not loaded until this point!
 

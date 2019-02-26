@@ -27,7 +27,8 @@ Rails.application.routes.draw do
 
   # ------- API STUFF --------
   namespace :api do
-    resources :deals, :users
+    resources :deals, :users, 
+    :airports, only: [:index, :show]
   end
 
   # ------- DEVISE STUFF --------
