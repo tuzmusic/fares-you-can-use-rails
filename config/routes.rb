@@ -27,7 +27,10 @@ Rails.application.routes.draw do
 
   # ------- API STUFF --------
   namespace :api do
-    resources :deals, :users
+    resources :deals
+    get '/deals/from-airport/:iata', to: 'deals#from_airport'
+    get '/deals/to-region/:slug', to: 'deals#to_region'
+    resources :users
     resources :airports, param: :slug, only: [:index, :show]
   end
 
