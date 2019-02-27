@@ -38,11 +38,11 @@
   + `api/users/:id/deals`
 
 ## Current User
-[] Get the current logged in user
+[X] Get the current logged in user
   + `api/user/`
 
-[] Get the logged in user's favorite deals
+[X] Get the logged in user's favorite deals
   + `api/user/favorites`
 
-[] Get all the logged in user's matching deals
+[X] Get all the logged in user's matching deals
   + `api/user/deals`
