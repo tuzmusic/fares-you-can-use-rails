@@ -47,7 +47,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem "better_errors"
   gem "binding_of_caller"
-
+  gem 'teaspoon-mocha'
+  gem 'magic_lamp'
 end
 
 group :development do

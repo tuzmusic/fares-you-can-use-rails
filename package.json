@@ -1,5 +1,9 @@
 {
   "name": "fares-you-can-use-rails",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  }
 }
