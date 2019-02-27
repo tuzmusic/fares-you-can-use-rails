@@ -10,4 +10,8 @@ class Api::UsersController < ApplicationController
   def deals
     render json: User.find(params[:id]).deals
   end
+
+  def favorites
+    render json: User.find(params[:id]).preferences.favorites
+  end
 end

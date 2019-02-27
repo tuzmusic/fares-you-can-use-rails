@@ -31,10 +31,10 @@
 [X] Get a user by ID
   + `api/users/:id`
 
-[] Get a user's favorite deals
+[X] Get a user's favorite deals
   + `api/users/:id/favorites`
 
-[] Get all the user's matching deals
+[X] Get all the user's matching deals
   + `api/users/:id/deals`
 
 ## Current User

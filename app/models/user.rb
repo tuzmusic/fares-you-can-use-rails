@@ -11,7 +11,8 @@ class User < ApplicationRecord
   has_many :vacations, through: :preferences
   has_many :home_airports, through: :preferences
 
-  has_many :favorites
+  # neither of these work.
+  has_many :favorites, through: :preferences
   has_many :favorite_deals, through: :preferences, source: :deal
 
   # has_many :regions, through: :preferences
