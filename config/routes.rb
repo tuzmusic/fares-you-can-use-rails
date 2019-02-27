@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     # get 'deals/dates/:start_date/:end_date', to: 'deals#for_vacation'
     resources :users
     get '/users/:id', to: 'users#show'
+    get '/users/:id/deals', to: 'users#deals'
     resources :airports, param: :slug, only: [:index, :show]
   end
 
