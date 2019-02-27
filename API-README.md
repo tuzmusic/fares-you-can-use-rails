@@ -38,7 +38,6 @@
   + `api/users/:id/deals`
 
 ## Current User
-
 [] Get the current logged in user
   + `api/user/`
 

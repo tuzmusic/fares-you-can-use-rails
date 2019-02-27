@@ -36,6 +36,9 @@ Rails.application.routes.draw do
     get '/users/:id', to: 'users#show'
     get '/users/:id/deals', to: 'users#deals'
     get '/users/:id/favorites', to: 'users#favorites'
+    get '/user', to: 'users#show'
+    get '/user/deals', to: 'users#deals'
+    get '/user/favorites', to: 'users#favorites'
     resources :airports, param: :slug, only: [:index, :show]
   end
 

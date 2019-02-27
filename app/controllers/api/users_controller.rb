@@ -4,14 +4,26 @@ class Api::UsersController < ApplicationController
   end
   
   def show
-    render json: User.find(params[:id])
+    if id = params[:id]
+      render json: User.find(id)
+    elsif current_user
+      render json: current_user
+    end
   end
   
   def deals
-    render json: User.find(params[:id]).deals
+    if id = params[:id]
+      render json: User.find(id).deals
+    elsif current_user
+      render json: current_user.deals
+    end
   end
 
   def favorites
-    render json: User.find(params[:id]).preferences.favorites
+    if id = params[:id]
+      render json: User.find(id).preferences.favorites
+    elsif current_user
+      render json: current_user.preferences.favorites
+    end
   end
 end
