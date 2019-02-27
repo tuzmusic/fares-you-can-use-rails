@@ -25,10 +25,10 @@
 
 ## Users
 
-[] Get all users
+[X] Get all users
   + `api/users/`
 
-[] Get a user by ID
+[X] Get a user by ID
   + `api/users/:id`
 
 [] Get a user's favorite deals
