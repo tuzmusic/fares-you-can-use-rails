@@ -13,8 +13,10 @@ class Deal {
     this.id = Number(id);
     this.headline = headline;
     this.description = description;
-    this.start_date = Date.fromRailsStr(start_date);
-    this.end_date = Date.fromRailsStr(end_date);
+    // this.start_date = Date.fromRailsStr(start_date);
+    this.start_date = new Date(start_date);
+    this.end_date = new Date(end_date);
+    // this.end_date = Date.fromRailsStr(end_date);
     this.region_name = region_name;
     this.origins = links;
     this.origins = origins;

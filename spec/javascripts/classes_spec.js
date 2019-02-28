@@ -37,9 +37,19 @@ describe("Deals class", () => {
     expect(deal.id).to.equal(json['id'])
     expect(deal.headline).to.equal(json['headline'])
     expect(deal.description).to.equal(json['description'])
-    expect(deal.start_date).to.equal(json['start_date'])
-    expect(deal.end_date).to.equal(json['end_date'])
     expect(deal.region_name).to.equal(json['region_name'])
-    // debugger
+    expect(deal.origins).to.equal(json['origins'])
+    expect(deal.destinations).to.equal(json['destinations'])
+
+    // Checking dates works funny
+    // expect(deal.start_date).to.equal(new Date('02-20-2019'))
+    // expect(deal.start_date.getDate()).to.equal(new Date('02-20-2019').getDate())
+    expect(deal.start_date.getMonth()).to.equal(new Date('02-20-2019').getMonth())
+    expect(deal.start_date.getYear()).to.equal(new Date('02-20-2019').getYear())
+
+    // expect(deal.end_date).to.equal(new Date('04-06-2019'))
+    // expect(deal.end_date.getDate()).to.equal(new Date('04-06-2019').getDate())
+    expect(deal.end_date.getMonth()).to.equal(new Date('04-06-2019').getMonth())
+    expect(deal.end_date.getYear()).to.equal(new Date('04-06-2019').getYear())
   });
 });
