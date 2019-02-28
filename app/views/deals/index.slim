@@ -1,18 +1,20 @@
 / JS Containers
 header
-  - if current_user
-    h1#all-deals-active-my-deals-linked hidden="hidden=true"
-      a> href="#" onclick="myDeals(); return false;" My Deals
-      || All Deals
-    h1#my-deals-active-all-deals-linked 
-      | My Deals |
-      a< href="#" onclick="allDeals(); return false;" All Deals
-  - else 
-    h1#all-deals-only All Deals 
-    = render  "all_deals" 
-    
-#deals    
+  / - if current_user
+  h1#all-deals-active-my-deals-linked hidden="hidden=true"
+    a> href="#" onclick="myDeals(); return false;" My Deals
+    || All Deals
+  h1#my-deals-active-all-deals-linked 
+    | My Deals |
+    a< href="#" onclick="allDeals(); return false;" All Deals
+  / - else 
+  /   h1#all-deals-only All Deals 
+  /   = render  "all_deals" 
 
-/ - if @vacations
-/   = render  "my_deals", vacations: @vacations
+#deals    
+  - raise params.inspect
+
+- if @vacations
+  - raise params.inspect
+  = render  "my_deals", vacations: @vacations
 / - else
