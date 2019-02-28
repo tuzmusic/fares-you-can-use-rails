@@ -1,12 +1,15 @@
-console.log("hello from dealindex");
-
-
 function myDeals() {
-  console.log("hello from mydeals");
-  
-  $('#allDealsHeader').hidden = true
+  // debugger
+  $('#all-deals-active-my-deals-linked')[0].hidden = true
+  $('#my-deals-active-all-deals-linked')[0].hidden = false
+}
+
+function allDeals() {
+  // debugger
+  $('#my-deals-active-all-deals-linked')[0].hidden = true
+  $('#all-deals-active-my-deals-linked')[0].hidden = false
 }
 
 $(function(){
-  $('body').text("this page has been taken over from 'onReady' in dealsIndex.js!!!")
+  // debugger
 })
