@@ -1,3 +1,5 @@
+console.log("hello from deal.js");
+
 class Deal {
   constructor({
     id,

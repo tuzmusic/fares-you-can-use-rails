@@ -49,3 +49,7 @@ describe("Deals class", () => {
     expect(deal.end_date.getYear()).to.equal(new Date('04-06-2019').getYear())
   });
 });
+
+describe('Deals index', () => {
+  
+});

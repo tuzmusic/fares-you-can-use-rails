@@ -1,4 +1,14 @@
-- if @vacations
-  = render  "my_deals", vacations: @vacations
-- else
-  = render  "all_deals" 
+/ JS Containers
+header
+  h1#allDealsHeader
+    a> href="#" onclick="allDeals()" My Deals
+    || All Deals
+  h1#myDealsHeader
+    | My Deals |
+    a< href="#" onclick="myDeals()" All Deals
+#deals    
+
+/ - if @vacations
+/   = render  "my_deals", vacations: @vacations
+/ - else
+/   = render  "all_deals" 
