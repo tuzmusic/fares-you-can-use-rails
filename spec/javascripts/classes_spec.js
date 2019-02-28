@@ -34,12 +34,12 @@ describe("Deals class", () => {
       ]
     };
     let deal = new Deal(json);
+    expect(deal.id).to.equal(json['id'])
+    expect(deal.headline).to.equal(json['headline'])
+    expect(deal.description).to.equal(json['description'])
+    expect(deal.start_date).to.equal(json['start_date'])
+    expect(deal.end_date).to.equal(json['end_date'])
+    expect(deal.region_name).to.equal(json['region_name'])
     // debugger
-    expect(deal.id).to.equal(deal['id'])
-    expect(deal.headline).to.equal(deal['headline'])
-    expect(deal.description).to.equal(deal['description'])
-    expect(deal.start_date).to.equal(deal['start_date'])
-    expect(deal.end_date).to.equal(deal['end_date'])
-    expect(deal.region_name).to.equal(deal['region_name'])
   });
 });
