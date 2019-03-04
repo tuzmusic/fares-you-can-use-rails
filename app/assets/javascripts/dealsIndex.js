@@ -3,10 +3,13 @@ function myDeals() {
   $("#my-deals-active-all-deals-linked")[0].hidden = false;
 
   $.get("api/user", user => {
-    $('#deals').html("")
-    let vacations = user.vacations.map(v => new Vacation(v))
-    let html = vacations.map(v => v.indexParagraph()).join('')
-    $('#deals').html(html)
+    $("#deals").html("");
+    $("#deals").html(
+      user.vacations
+        .map(v => new Vacation(v))
+        .map(v => v.indexParagraph())
+        .join("")
+    );
   });
 }
 
