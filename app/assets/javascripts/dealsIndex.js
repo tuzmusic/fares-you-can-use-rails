@@ -3,12 +3,15 @@ function myDeals() {
   $("#my-deals-active-all-deals-linked")[0].hidden = false;
 
   // get user deals
-  $.get("api/user/deals", deals => {
-    deals.forEach(hash => {
-      deal = new Deal(hash);
-      debugger;
-      $('#deals').append(deal.indexParagraph())
+  $.get("api/user", user => {
+    // render each vacation
+    // debugger;
+    user.vacations.forEach(v => {
+      // debugger;
+      vacation = new Vacation(v)
+      $('#deals').append(vacation.indexParagraph())
     });
+    // render each deal
   });
 }
 
