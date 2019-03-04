@@ -26,14 +26,4 @@ class Api::UsersController < ApplicationController
       render json: current_user.preferences.favorites
     end
   end
-
-  def vacation_deals
-    if current_user
-
-
-      
-    else
-      render status: 500
-    end
-  end
 end

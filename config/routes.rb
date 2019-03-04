@@ -39,7 +39,6 @@ Rails.application.routes.draw do
     get '/user', to: 'users#show'
     get '/user/deals', to: 'users#deals'
     get '/user/favorites', to: 'users#favorites'
-    get '/user/vacation-deals', to: 'users#vacation_deals'
     resources :airports, param: :slug, only: [:index, :show]
   end
 
