@@ -1,4 +1,3 @@
-
 class Deal {
   constructor({
     id,
@@ -15,15 +14,25 @@ class Deal {
     this.id = Number(id);
     this.headline = headline;
     this.description = description;
-    // this.start_date = Date.fromRailsStr(start_date);
     this.start_date = new Date(start_date);
     this.end_date = new Date(end_date);
-    // this.end_date = Date.fromRailsStr(end_date);
     this.region_name = region_name;
     this.links = links;
-    this.slug = slug
+    this.slug = slug;
     this.origins = origins;
     this.destinations = destinations;
+  }
+
+  headlineLink() {
+    return `<a href="/deals/${this.slug}">${this.headline}</a>`;
+  }
+
+  dateRangeHTML() {
+    return `Fly from ${this.start_date.toDateString()} to ${this.end_date.toDateString()}`;
+  }
+
+  indexParagraph() {
+    return `<p>${this.headlineLink()}<br>${this.dateRangeHTML()}</p>`
   }
 }
 Date.fromRailsStr = function(str) {

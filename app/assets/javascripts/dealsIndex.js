@@ -1,18 +1,16 @@
 function myDeals() {
-  // debugger
   $("#all-deals-active-my-deals-linked")[0].hidden = true;
   $("#my-deals-active-all-deals-linked")[0].hidden = false;
 
   // get user deals
   $.get("api/user/deals", deals => {
     deals.forEach(hash => {
-      deal = new Deal(hash)
-      debugger 
-      // <p class="deal"><a href=
-    })
+      deal = new Deal(hash);
+      debugger;
+      $('#deals').append(deal.indexParagraph())
+    });
   });
 }
-
 
 function allDeals() {
   // debugger
@@ -22,7 +20,5 @@ function allDeals() {
 
 let user;
 $(function() {
-  $.get("api/user", data => {
-    user = data;
-  });
+  myDeals();
 });
