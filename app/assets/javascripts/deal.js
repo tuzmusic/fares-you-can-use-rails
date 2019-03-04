@@ -32,7 +32,7 @@ class Deal {
   }
 
   indexParagraph() {
-    return `<p>${this.headlineLink()}<br>${this.dateRangeHTML()}</p>`
+    return `<p class="deal">${this.headlineLink()}<br>${this.dateRangeHTML()}</p>`
   }
 }
 Date.fromRailsStr = function(str) {

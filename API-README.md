@@ -46,3 +46,10 @@
 
 [X] Get all the logged in user's matching deals
   + `api/user/deals`
+
+[ ] Get all the logged in user's vacations
+  + `api/user/vacations`
+
+[ ] Get all the logged in user's deals, grouped by vacation
+  + `api/user/vacation-deals/`
+    + For each vacation: `Deal.from_airports(user.home_airports).to_regions(user.regions).for_vacation vacation`
