@@ -2,16 +2,11 @@ function myDeals() {
   $("#all-deals-active-my-deals-linked")[0].hidden = true;
   $("#my-deals-active-all-deals-linked")[0].hidden = false;
 
-  // get user deals
   $.get("api/user", user => {
-    // render each vacation
-    // debugger;
-    user.vacations.forEach(v => {
-      // debugger;
-      vacation = new Vacation(v)
-      $('#deals').append(vacation.indexParagraph())
-    });
-    // render each deal
+    $('#deals').html("")
+    let vacations = user.vacations.map(v => new Vacation(v))
+    let html = vacations.map(v => v.indexParagraph()).join('')
+    $('#deals').html(html)
   });
 }
 

@@ -13,9 +13,7 @@ class Vacation {
   }
 
   dealsParagraphs() {
-    let str = this.deals.map(d => d.indexParagraph()).join('')
-    debugger;
-    return str;
+    return this.deals.map(d => d.indexParagraph()).join('')
   }
 
   indexTitle() {
