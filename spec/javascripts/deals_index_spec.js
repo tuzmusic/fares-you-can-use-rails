@@ -6,6 +6,7 @@ describe('Deals index', () => {
 
   describe('deals index', () => {
     it('shows the "My Deals" header on load when logged in', () => {
+      // debugger
       expect($("#my-deals-active-all-deals-linked")[0].hidden).to.equal(false)
       expect($("#all-deals-active-my-deals-linked")[0].hidden).to.equal(true)
     });

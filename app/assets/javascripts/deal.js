@@ -8,6 +8,7 @@ class Deal {
     end_date,
     region_name,
     links,
+    slug,
     origins,
     destinations
   }) {
@@ -19,7 +20,8 @@ class Deal {
     this.end_date = new Date(end_date);
     // this.end_date = Date.fromRailsStr(end_date);
     this.region_name = region_name;
-    this.origins = links;
+    this.links = links;
+    this.slug = slug
     this.origins = origins;
     this.destinations = destinations;
   }

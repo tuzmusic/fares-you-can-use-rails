@@ -12,9 +12,7 @@ header
   /   = render  "all_deals" 
 
 #deals    
-  - raise params.inspect
 
-- if @vacations
-  - raise params.inspect
+/ - if @vacations
   = render  "my_deals", vacations: @vacations
 / - else

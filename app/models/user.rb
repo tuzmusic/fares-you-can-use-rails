@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   # has_many :regions, through: :preferences
   def regions
-    self.preferences.regions  
+    self.preferences&.regions  
   end
 
   def deals
