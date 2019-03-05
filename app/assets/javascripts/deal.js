@@ -48,8 +48,8 @@ class Deal {
   airportCodes(airports) {
     // CONVERT TO USE AIRPORT OBJECT/CLASS
     // (although JS does accept dot notation for generic objects so /this/ code shouldn't have to change?)
-    airports.map((a) => {
-      `${a.name} (${a.iata})`
+    return airports.map((a) => {
+      return `${a.name} (${a.iata})`
     }).join('<br>')
   }
 
