@@ -26,7 +26,11 @@ class Deal {
   }
 
   showPageParagraph() {
-    return [this.showPageInfo(), this.showPageLinks(), this.showPageStats()].join('')
+    return [
+      this.showPageInfo(),
+      this.showPageLinks(),
+      this.showPageStats()
+    ].join("");
   }
 
   showPageInfo() {
@@ -34,23 +38,27 @@ class Deal {
   }
 
   showPageLinks() {
-    return this.links.map((link) => {
-      `<a href="${link.url}">${link.text || "Click here"}</a>`
-    }).join('<br>')
+    return this.links
+      .map(link => {
+        `<a href="${link.url}">${link.text || "Click here"}</a>`;
+      })
+      .join("<br>");
   }
-  
+
   showPageStats() {
-    return `<p><b>Fly From:</b><br>${this.airportCodes(this.origins)}</p>` +
-    `<p><b>Fly To:</b><br>${this.airportCodes(this.destinations)}</p>` +
-    `<p><b>Fly Dates:</b><br>${this.dateRangeHTML}</p>`
+    return (
+      `<p><b>Fly From:</b><br>${this.airportCodes(this.origins)}</p>` +
+      `<p><b>Fly To:</b><br>${this.airportCodes(this.destinations)}</p>` +
+      `<p><b>Fly Dates:</b><br>${this.dateRangeHTML()}</p>`
+    );
   }
 
   airportCodes(airports) {
     // CONVERT TO USE AIRPORT OBJECT/CLASS
     // (although JS does accept dot notation for generic objects so /this/ code shouldn't have to change?)
-    return airports.map((a) => {
-      return `${a.name} (${a.iata})`
-    }).join('<br>')
+    return airports
+      .map(a =>`${a.name} (${a.iata})`)
+      .join("<br>");
   }
 
   headlineLink() {
