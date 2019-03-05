@@ -38,6 +38,7 @@ class Deal {
   }
 
   showPageLinks() {
+    debugger
     return this.links
       .map(link => {
         `<a href="${link.url}">${link.text || "Click here"}</a>`;
