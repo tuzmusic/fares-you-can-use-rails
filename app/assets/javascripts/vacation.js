@@ -8,12 +8,18 @@ class Vacation {
   }
 
   indexParagraph() {
-    let str = `<div class="vacation">${this.indexTitle()}${this.dealsParagraphs()}</div>`;
+    let str = `<div class="vacation">${this.indexTitle()}`
+    if (this.deals.length > 0) {
+      str += `${this.dealsParagraphs()}`
+    } else {
+      str += `No deals during ${this.name} ☹️ ☹️ ☹️`
+    }
+    str += `</div>`;
     return str;
   }
 
   dealsParagraphs() {
-    return this.deals.map(d => d.indexParagraph()).join('')
+    return this.deals.map(d => d.indexParagraph()).join("");
   }
 
   indexTitle() {
