@@ -5,6 +5,7 @@ class Deal {
     description,
     start_date,
     end_date,
+    posted_date,
     region_name,
     links,
     slug,
@@ -16,6 +17,7 @@ class Deal {
     this.description = description;
     this.start_date = new Date(start_date);
     this.end_date = new Date(end_date);
+    this.posted_date = new Date(posted_date);
     this.region_name = region_name;
     this.links = links;
     this.slug = slug;
@@ -31,10 +33,15 @@ class Deal {
     return `Fly from ${this.start_date.toDateString()} to ${this.end_date.toDateString()}`;
   }
 
+  postedDateHTML() {
+    return `<i>Posted on ${this.posted_date.toDateString()}</i>`
+  }
+
   indexParagraph() {
-    return `<p class="deal">${this.headlineLink()}<br>${this.dateRangeHTML()}</p>`
+    return `<p class="deal">${this.headlineLink()}<br>${this.dateRangeHTML()}<br>${this.postedDateHTML()}</p>`
   }
 }
+
 Date.fromRailsStr = function(str) {
   let date = new Date(str);
   let day = date.getDate();
