@@ -38,12 +38,11 @@ class Deal {
   }
 
   showPageLinks() {
-    debugger
-    return this.links
+    return '<p>' + this.links
       .map(link => {
-        `<a href="${link.url}">${link.text || "Click here"}</a>`;
+       return `<a href="${link.url}" target="_blank">${link.text}</a>`;
       })
-      .join("<br>");
+      .join("<br>") + '</p>';
   }
 
   showPageStats() {
