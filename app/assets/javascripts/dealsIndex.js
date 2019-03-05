@@ -12,27 +12,33 @@ function myDeals() {
   });
 }
 
+let allDealsList;
 function allDeals() {
   $("#my-deals-active-all-deals-linked")[0].hidden = true;
   $("#all-deals-active-my-deals-linked")[0].hidden = false;
+  
+  if (!allDealsList) $.get("api/deals", deals => (allDealsList = deals));
 
-  $.get("api/deals", deals => {
-    // debugger
-    $("#deals").html(
-      deals
+  $("#deals").html(
+    "<br>" +
+      allDealsList
         .map(d => new Deal(d))
-        .sort((a, b) => { 
-          // debugger
-          b.posted_date > a.posted_date })
+        .sort((a, b) => {
+          b.posted_date > a.posted_date;
+        })
         .map(d => d.indexParagraph())
         .join("")
-    );
-  });
+  );
 }
 
 let user;
 $(function() {
-  // if (current_user)
-  myDeals();
-  // else allDeals()
+  if (true) {
+    myDeals();
+    fetch("api/deals")
+      .then(res => res.json())
+      .then(json => {
+        allDealsList = json;
+      });
+  }
 });
