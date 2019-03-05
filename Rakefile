@@ -16,3 +16,14 @@ end
 task :console do
   Pry.start
 end
+
+task :links do
+  Deal.all.each do |d|
+    links = d.description.scan(/href=['"](\S+)['"]>(\D+)</)
+    links.each do |l|
+      url = l[0]
+      text = l[1]
+      d.links.create(url: url, text: text)
+    end
+  end
+end
