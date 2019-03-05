@@ -46,10 +46,11 @@ class Deal {
   }
 
   showPageStats() {
+    let newDateRange = this.dateRangeHTML().replace('Fly from', '').replace('to', '-')
     return (
       `<p><b>Fly From:</b><br>${this.airportCodes(this.origins)}</p>` +
       `<p><b>Fly To:</b><br>${this.airportCodes(this.destinations)}</p>` +
-      `<p><b>Fly Dates:</b><br>${this.dateRangeHTML()}</p>`
+      `<p><b>Fly Dates:</b><br>${newDateRange}</p>`
     );
   }
 
