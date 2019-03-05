@@ -15,7 +15,6 @@ function myDeals() {
 
 let allDealsList;
 function allDeals(signedOut) {
-  // debugger
   if (allDealsList) {
     $("#all-deals-signed-out")[0].hidden = !signedOut;
     $("#all-deals-active-my-deals-linked")[0].hidden = signedOut;
@@ -41,10 +40,9 @@ function allDeals(signedOut) {
 
 let user;
 $(function() {
-  debugger
+  if (location.pathname !== "/" && location.pathname !== "deals/") return
   $.get("api/user", user => {
     if (user) {
-      debugger
       myDeals();
       fetch("api/deals")
         .then(res => res.json())
@@ -52,7 +50,6 @@ $(function() {
           allDealsList = json;
         });
     } else {
-      debugger
       allDeals(true);
     }
   });

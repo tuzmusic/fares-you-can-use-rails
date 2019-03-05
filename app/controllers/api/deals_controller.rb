@@ -4,7 +4,12 @@ class Api::DealsController < ApplicationController
   end
   
   def show
-    render json: Deal.find(params[:id])
+    # This is not the most proper way to do this!
+    if params[:id].to_i > 0
+      render json: Deal.find(params[:id]) 
+    else
+      render json: Deal.find_by(slug: params[:id])
+    end
   end
   
   def from_airport

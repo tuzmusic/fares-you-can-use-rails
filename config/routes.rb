@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   # ------- API STUFF --------
   namespace :api do
-    resources :deals
+    resources :deals # auto-includes :show, :index
     get '/deals/from-airport/:iata', to: 'deals#from_airport'
     get '/deals/to-region/:slug', to: 'deals#to_region'
     get 'deals/for-vacation/:id', to: 'deals#for_vacation'
