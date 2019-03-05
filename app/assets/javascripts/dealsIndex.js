@@ -13,21 +13,26 @@ function myDeals() {
 }
 
 function allDeals() {
-  // debugger
   $("#my-deals-active-all-deals-linked")[0].hidden = true;
   $("#all-deals-active-my-deals-linked")[0].hidden = false;
 
-  $.get('api/deals', deals => {
+  $.get("api/deals", deals => {
     // debugger
-    $('#deals').html(
-      deals.map(d => new Deal(d))
-      .map(d => d.indexParagraph())
-      .join('')
-    )
-  })
+    $("#deals").html(
+      deals
+        .map(d => new Deal(d))
+        .sort((a, b) => { 
+          // debugger
+          b.posted_date > a.posted_date })
+        .map(d => d.indexParagraph())
+        .join("")
+    );
+  });
 }
 
 let user;
 $(function() {
+  // if (current_user)
   myDeals();
+  // else allDeals()
 });

@@ -34,11 +34,15 @@ class Deal {
   }
 
   postedDateHTML() {
-    return `<i>Posted on ${this.posted_date.toDateString()}</i>`
+    return `<i>Posted on ${this.posted_date.toDateString()}</i>`;
   }
 
   indexParagraph() {
-    return `<p class="deal">${this.headlineLink()}<br>${this.dateRangeHTML()}<br>${this.postedDateHTML()}</p>`
+    return [
+      `<p class="deal">${this.headlineLink()}`,
+      `${this.dateRangeHTML()}`,
+      `${this.postedDateHTML()}</p>`
+    ].join("<br>");
   }
 }
 

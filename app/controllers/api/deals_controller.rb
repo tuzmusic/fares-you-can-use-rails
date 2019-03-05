@@ -1,6 +1,6 @@
 class Api::DealsController < ApplicationController
   def index
-    render json: Deal.all
+    render json: Deal.all.order(posted_date: :desc)
   end
   
   def show
