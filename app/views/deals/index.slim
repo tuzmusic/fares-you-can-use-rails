@@ -4,9 +4,10 @@ header
   h1#all-deals-active-my-deals-linked hidden="hidden=true"
     a> href="#" onclick="myDeals(); return false;" My Deals
     || All Deals
-  h1#my-deals-active-all-deals-linked 
+  h1#my-deals-active-all-deals-linked hidden="hidden=true" 
     | My Deals |
     a< href="#" onclick="allDeals(); return false;" All Deals
+  h1#all-deals-signed-out hidden="hidden=true" All Deals
   / - else 
   /   h1#all-deals-only All Deals 
   /   = render  "all_deals" 
