@@ -41,6 +41,7 @@ function allDeals(signedOut) {
 
 let user;
 $(function() {
+  debugger
   $.get("api/user", user => {
     if (user) {
       debugger
