@@ -16,7 +16,11 @@ br/
 = render "regions_section", prefs: @prefs 
 
 javascript:
-  $(function() {
+  $(() => {
+    $('#new_vacation_form').submit(function(event) {
+      event.preventDefault()
+      addVacation($(this).serialize())
+    })
     $.get("api/user", user => {
       showHomeAirports(user.home_airports)
       showVacations(user.vacations)
