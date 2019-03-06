@@ -8,9 +8,9 @@ function showVacations(vacations) {
 }
 
 function addVacation(form, userID) {
-  $.post(`/api/users/${userID}/vacations`, form).done((vacations) => {
+  $.post(`/api/users/${userID}/vacations`, form).done(vacations =>
     showVacations(vacations)
-  })
+  );
 }
 
 function deleteVacation(id) {
@@ -24,9 +24,9 @@ function deleteVacation(id) {
 }
 
 function addVacationFormListener(user) {
-  $('#new_vacation_form').submit(function (e) {
-    e.preventDefault()
-    addVacation($(this).serialize(), user.id)
-  })
-
+  $("#new_vacation_form").submit(function(e) {
+    e.preventDefault();
+    const formInfo = $(this).serialize();
+    addVacation(formInfo, user.id);
+  });
 }

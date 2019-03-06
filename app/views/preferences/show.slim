@@ -18,8 +18,9 @@ br/
 javascript:
   $(() => {
     $.get("api/user", user => {
-      addVacationFormListener(user)
       showHomeAirports(user.home_airports)
+      
+      addVacationFormListener(user)
       showVacations(user.vacations)
     })    
   })
