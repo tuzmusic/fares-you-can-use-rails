@@ -34,6 +34,13 @@ class Api::UsersController < ApplicationController
     render json: user.home_airports
   end
 
+  def delete_airport
+    user = User.find(params[:user_id])
+    airport = Airport.find(params[:airport_id])
+    user.preferences.home_airports.delete airport
+    render json: user.home_airports
+  end
+
   def add_vacation
     
   end
