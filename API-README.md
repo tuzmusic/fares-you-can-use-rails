@@ -50,10 +50,12 @@
 [ ] Get all the logged in user's vacations
   + `GET api/user/vacations`
 
-## Posting Preferences for Current User
-[ ] Add a home airport to the current user's prefs
+## Editing Preferences for Current User
+[X] Add a home airport to the current user's prefs
   + `POST api/user/airports` 
     + {iata: AIRPORT_IATA_CODE}
+[ ] Delete a home airport from the current user's prefs
+  + `DELETE /users/:user_id/airports/:airport_id` 
 [ ] Add a vacation to the current user's prefs
   + `POST api/user/vacations`
 [ ] Add a favorite to the current user's prefs
