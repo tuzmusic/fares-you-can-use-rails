@@ -1,8 +1,10 @@
 .container
-  = render 'detail', deal: @deal
-  - if admin_signed_in?
-    p = edit_deal_button
-    p = delete_deal_button
+  .row
+    p ---next deal link HERE---
+    #deal
+- if admin_signed_in?
+  p = edit_deal_button
+  p = delete_deal_button
     
 javascript:
   $(function () {
