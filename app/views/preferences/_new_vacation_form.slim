@@ -1,20 +1,10 @@
-
-
-
-
-/ #new_vacation_form
-  = form_tag '/preferences', method: :post do
-    div class="field#{" field_with_errors" if @vacation && @vacation&.errors[:name]&.any?}"
-      p
-        = label_tag :'vacation[name]', "Name:"
-        =< text_field_tag :'vacation[name]'
-        =< @vacation&.errors.full_messages.first if @vacation && @vacation&.errors
+= form_tag '/preferences', method: :post, id: 'new_vacation_form' do
+  div class="field#{" field_with_errors" if @vacation && @vacation&.errors[:name]&.any?}"
     p
-      = date_select_for :vacation, :start_date
-      |to 
-      = date_select_for :vacation, :end_date
-    p = submit_tag "Save", id: "save_vacation_button"
-  - vacations.each do |vacation|
-    = render "vacation_p", vacation: vacation
-
-
+      = label_tag :'vacation[name]', "Name:"
+      =< text_field_tag :'vacation[name]'
+  p
+    = date_select_for :vacation, :start_date
+    |to 
+    = date_select_for :vacation, :end_date
+  p = submit_tag "Save"
