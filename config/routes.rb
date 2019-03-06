@@ -44,6 +44,10 @@ Rails.application.routes.draw do
 
   # ------- DEVISE STUFF --------
 
+  # https://www.facebook.com/v2.10/dialog/oauth?client_id&redirect_uri=
+  # http%3A%2F%2Flocalhost%3A3000%2Fusers%2Fauth%2Ffacebook%2Fcallback&
+  # response_type=code&scope=email&state=63ff1ab00e0e133ee3ded976a067cee9b011a09c8bae0717
+  
   devise_for :users, controllers: { 
     omniauth_callbacks: 'users/omniauth_callbacks', 
     preferences: 'users/preferences',
