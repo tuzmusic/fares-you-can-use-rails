@@ -27,41 +27,41 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  before_action :get_user, only: [:add_airport, :delete_airport, :add_vacation, :delete_vacation]
+
+  def get_user
+    @user = User.find(params[:user_id])
+  end
+
   def add_airport
-    user = User.find(params[:user_id])
     airport = Airport.iata(params[:iata])
-    user.preferences.home_airports << airport unless user.home_airports.include? airport
-    render json: user.home_airports
+    @user.preferences.home_airports << airport unless @user.home_airports.include? airport
+    render json: @user.home_airports
   end
 
   def delete_airport
-    user = User.find(params[:user_id])
     airport = Airport.find(params[:airport_id])
-    user.preferences.home_airports.delete airport
-    render json: user.home_airports
+    @user.preferences.home_airports.delete airport
+    render json: @user.home_airports
   end
 
   def add_vacation
-    user = User.find(params[:user_id])
     vacation_params = params.require(:vacation).permit :name, :start_date, :end_date
-    user.preferences.vacations.create(vacation_params)
-    render json: user.vacations
+    @user.preferences.vacations.create(vacation_params)
+    render json: @user.vacations
   end
 
   def delete_vacation
-    user = User.find(params[:user_id])
     vacation = Vacation.find(params[:vacation_id])
-    user.preferences.vacations.delete vacation
-    render json: user.vacations
+    @user.preferences.vacations.delete vacation
+    render json: @user.vacations
   end
 
-
-
   def add_favorite
-    
+    # TO-DO!
   end
 
   def add_region
-    
+    # TO-DO!
   end
 end
