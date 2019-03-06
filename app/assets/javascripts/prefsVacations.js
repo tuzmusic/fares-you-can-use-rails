@@ -23,7 +23,7 @@ function deleteVacation(id) {
   });
 }
 
-function addFormListener(user) {
+function addVacationFormListener(user) {
   $('#new_vacation_form').submit(function (e) {
     e.preventDefault()
     addVacation($(this).serialize(), user.id)
