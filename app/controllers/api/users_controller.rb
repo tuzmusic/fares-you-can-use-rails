@@ -26,4 +26,20 @@ class Api::UsersController < ApplicationController
       render json: current_user.preferences.favorites
     end
   end
+
+  def add_airport
+    
+  end
+
+  def add_vacation
+    
+  end
+
+  def add_favorite
+    
+  end
+
+  def add_region
+    
+  end
 end
