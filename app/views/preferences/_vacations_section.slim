@@ -6,12 +6,11 @@ p#vacations-list
     p
       = label_tag :'vacation[name]', "Name:"
       =< text_field_tag :'vacation[name]'
-      =< @vacation&.errors.full_messages.first if @vacation && @vacation&.errors
   p
     = date_select_for :vacation, :start_date
     |to 
     = date_select_for :vacation, :end_date
-  p = submit_tag "Save", id: "save_vacation_button"
+  p = submit_tag "Save"
 
 
 

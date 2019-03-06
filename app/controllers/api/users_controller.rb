@@ -42,7 +42,10 @@ class Api::UsersController < ApplicationController
   end
 
   def add_vacation
-    
+    user = User.find(params[:user_id])
+    vacation_params = params.require(:vacation).permit :name, :start_date, :end_date
+    user.preferences.vacations.create(vacation_params)
+    render json: user.vacations
   end
 
   def add_favorite

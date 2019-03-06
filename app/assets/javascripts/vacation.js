@@ -31,6 +31,6 @@ class Vacation {
   }
 
   vacationsListParagraph() {
-    return `<b>${this.name}</b>`+`<br>`+ this.dateRangeHTML().replace('to', '-')
+    return `<p><b>${this.name}</b>`+`<br>`+ this.dateRangeHTML().replace('to', '-') + '</p>'
   }
 }
