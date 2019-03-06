@@ -8,9 +8,10 @@ function showHomeAirportsForUser(user) {
 }
 
 function addHomeAirport(form, user) {
-  $.post(`/api/users/${user.id}/airports`, form).done(user =>
-    showHomeAirportsForUser(user)
-  );
+  $.post(`/api/users/${user.id}/airports`, form).done(user => {
+    showHomeAirportsForUser(user);
+    $("#home_airport_selector")[0].value = "";
+  });
 }
 
 function deleteHomeAirport(airportID, userID) {
@@ -22,13 +23,12 @@ function deleteHomeAirport(airportID, userID) {
 }
 
 function addHomeAirportFormListener(user) {
-  $("#home_airport_form").submit(function (e) {
+  $("#home_airport_form").submit(function(e) {
     e.preventDefault();
     const formInfo = $(this).serialize();
     addHomeAirport(formInfo, user);
   });
 }
-
 
 class Airport {
   constructor({ id, name, iata, city, country }) {
