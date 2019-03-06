@@ -34,8 +34,7 @@ class Api::UsersController < ApplicationController
   end
 
   def add_airport
-    text = params[:preference][:home_airport]
-    airport = Airport.iata(text[0..2])
+    airport = Airport.iata(params[:airport][0..2])
     @user.preferences.home_airports << airport unless @user.home_airports.include? airport
     render json: @user
   end

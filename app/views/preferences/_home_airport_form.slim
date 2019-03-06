@@ -1,5 +1,5 @@
 = form_tag '/preferences', method: :post, id: 'home_airport_form' do
-  = text_field_tag :'preference[home_airport]', nil, id: 'home_airport_selector', list: 'iata', placeholder: "Add an airport"
+  = text_field_tag :'airport', nil, id: 'home_airport_selector', list: 'iata', placeholder: "Add an airport"
 
   datalist#iata
     - Airport.by_iata.all.each do |airport|
