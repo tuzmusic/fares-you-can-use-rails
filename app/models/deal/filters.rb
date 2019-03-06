@@ -13,7 +13,9 @@ class Deal < ApplicationRecord
 
   scope :to_region, -> (region) { region.deals }
   
-  scope :for_vacation, -> (vacation) { vacation.deals }
+  scope :for_vacation, -> (vacation) { 
+    vacation.deals 
+  }
 
   # ------ PLURAL ------
   
