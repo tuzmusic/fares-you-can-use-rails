@@ -1,25 +1,28 @@
 header
   h1#all-deals-active-my-deals-linked hidden="hidden=true"
-    a> href="#" onclick="myDeals(); return false;" My Deals
+    a> href="" onclick="myDeals(); return false;" My Deals
     || All Deals
   h1#my-deals-active-all-deals-linked hidden="hidden=true" 
     | My Deals |
-    a< href="#" onclick="allDeals(); return false;" All Deals
+    a< href="" onclick="allDeals(); return false;" All Deals
   h1#all-deals-signed-out hidden="hidden=true" All Deals
 
 #deals  
 
 javascript:
-  function myDeals(user) {
+  function myDeals() {
     $("#my-deals-active-all-deals-linked")[0].hidden = false;
     $("#all-deals-signed-out")[0].hidden = true;
     $("#all-deals-active-my-deals-linked")[0].hidden = true;
-    $("#deals").html(
-      user.vacations
-        .map(v => new Vacation(v))
-        .map(v => v.indexParagraph())
-        .join("")
-    );
+
+    $.get("api/user", user => {
+      $("#deals").html(
+        user.vacations
+          .map(v => new Vacation(v))
+          .map(v => v.indexParagraph())
+          .join("")
+      );
+    });
   } 
 
   let allDealsList;
@@ -28,6 +31,7 @@ javascript:
       $("#my-deals-active-all-deals-linked")[0].hidden = true;
       $("#all-deals-signed-out")[0].hidden = !signedOut;
       $("#all-deals-active-my-deals-linked")[0].hidden = signedOut;
+
       $("#deals").html(
         "<br>" +
           allDealsList
