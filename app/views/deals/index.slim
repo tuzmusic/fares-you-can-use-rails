@@ -50,9 +50,10 @@ javascript:
 
   let user;
   $(function() {
+    debugger
     $.get("api/user", user => {
       if (user) {
-        myDeals(user);
+        myDeals();
         fetch("api/deals")
           .then(res => res.json())
           .then(json => {
