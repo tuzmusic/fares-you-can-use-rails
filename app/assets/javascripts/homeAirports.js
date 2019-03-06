@@ -5,18 +5,33 @@ function addHomeAirport() {
   $.get("/api/user", res => {
     $.post("/api/user/airports", { iata: iata, user_id: res.id }).done(
       airports => {
-        let list = airports.map(
-          a =>
-            `<li>${a.name} (${a.iata})` +
-            `<a href="/preferences/delete_airport/${a.id}">(delete)</a>` +
-            `</li>`
-        );
-        $("#home-airports-list").html(
-          airports.length > 0 ? list : "You haven't added any airports."
-        );
-        // debugger
+        showHomeAirports(airports);
         input.value = "";
       }
     );
   });
+}
+
+function deleteHomeAirport(id) {
+  $.get("/api/user", res => {
+    $.ajax({
+      url: `/api/users/${res.id}/airports/${id}`,
+      type: "DELETE",
+      success: airports => showHomeAirports(airports)
+    });
+  });
+}
+
+function showHomeAirports(airports) {
+  let list = airports.map(
+    a =>
+      `<li>${a.name} (${a.iata}) ` +
+      `<a href="" onclick="deleteHomeAirport(${
+        a.id
+      }); return false;">(delete)</a>` +
+      `</li>`
+  );
+  $("#home-airports-list").html(
+    airports.length > 0 ? list : "You haven't added any airports."
+  );
 }
