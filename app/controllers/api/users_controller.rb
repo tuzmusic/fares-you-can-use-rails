@@ -31,7 +31,7 @@ class Api::UsersController < ApplicationController
     user = User.find(params[:user_id])
     airport = Airport.iata(params[:iata])
     user.preferences.home_airports << airport unless user.home_airports.include? airport
-    render json: user
+    render json: user.home_airports
   end
 
   def add_vacation
