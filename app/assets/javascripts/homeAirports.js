@@ -1,11 +1,15 @@
-function addHomeAirport(userID) {
-  const input = $("#home_airport_selector")[0];
-  const iata = input.value.slice(0, 3);
-  $.post("/api/user/airports", { iata: iata, user_id: userID }).done(
-    user => {
-      showHomeAirportsForUser(user);
-      input.value = "";
-    }
+function showHomeAirportsForUser(user) {
+  const list = user.home_airports
+    .map(a => new Airport(a))
+    .map(a => a.homeAirportListItem(user.id));
+  $("#home-airports-list").html(
+    user.home_airports.length > 0 ? list : "You haven't added any airports."
+  );
+}
+
+function addHomeAirport(form, user) {
+  $.post(`/api/users/${user.id}/airports`, form).done(user =>
+    showHomeAirportsForUser(user)
   );
 }
 
@@ -17,14 +21,14 @@ function deleteHomeAirport(airportID, userID) {
   });
 }
 
-function showHomeAirportsForUser(user) {
-  const list = user.home_airports
-    .map(a => new Airport(a))
-    .map(a => a.homeAirportListItem(user.id));
-  $("#home-airports-list").html(
-    user.home_airports.length > 0 ? list : "You haven't added any airports."
-  );
+function addHomeAirportFormListener(user) {
+  $("#home_airport_form").submit(function (e) {
+    e.preventDefault();
+    const formInfo = $(this).serialize();
+    addHomeAirport(formInfo, user);
+  });
 }
+
 
 class Airport {
   constructor({ id, name, iata, city, country }) {

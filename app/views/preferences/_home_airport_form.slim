@@ -1,7 +1,8 @@
-= text_field_tag :'preference[home_airport]', nil, id: 'home_airport_selector', list: 'iata', placeholder: "Add another airport"
+= form_tag '/preferences', method: :post, id: 'home_airport_form' do
+  = text_field_tag :'preference[home_airport]', nil, id: 'home_airport_selector', list: 'iata', placeholder: "Add an airport"
 
-datalist#iata
-  - Airport.by_iata.all.each do |airport|
-    option value="#{airport.iata} (#{airport.name})"
+  datalist#iata
+    - Airport.by_iata.all.each do |airport|
+      option value="#{airport.iata} (#{airport.name})"
 
-=< submit_tag "Add", onclick: "addHomeAirport(#{current_user.id}); return false;"
+  =< submit_tag "Add"

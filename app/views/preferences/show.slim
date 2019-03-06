@@ -18,8 +18,8 @@ br/
 javascript:
   $(() => {
     $.get("api/user", user => {
+      addHomeAirportFormListener(user)
       showHomeAirportsForUser(user)
-
       addVacationFormListener(user)
       showVacationsForUser(user)
     })    
