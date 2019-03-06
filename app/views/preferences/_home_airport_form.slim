@@ -4,4 +4,4 @@ datalist#iata
   - Airport.by_iata.all.each do |airport|
     option value="#{airport.iata} (#{airport.name})"
 
-=< submit_tag "Add", onclick: "addHomeAirport(); return false;"
+=< submit_tag "Add", onclick: "addHomeAirport(#{current_user.id}); return false;"

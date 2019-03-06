@@ -1,33 +1,28 @@
-function addHomeAirport() {
-  let input = $("#home_airport_selector")[0];
-  let iata = input.value.slice(0, 3);
-  // Get user, because for some reason current_user is nil in the post request?!
-  $.get("/api/user", res => {
-    $.post("/api/user/airports", { iata: iata, user_id: res.id }).done(
-      airports => {
-        showHomeAirports(airports);
-        input.value = "";
-      }
-    );
+function addHomeAirport(userID) {
+  const input = $("#home_airport_selector")[0];
+  const iata = input.value.slice(0, 3);
+  $.post("/api/user/airports", { iata: iata, user_id: userID }).done(
+    user => {
+      showHomeAirportsForUser(user);
+      input.value = "";
+    }
+  );
+}
+
+function deleteHomeAirport(airportID, userID) {
+  $.ajax({
+    url: `/api/users/${userID}/airports/${airportID}`,
+    type: "DELETE",
+    success: user => showHomeAirportsForUser(user)
   });
 }
 
-function deleteHomeAirport(id) {
-  $.get("/api/user", res => {
-    $.ajax({
-      url: `/api/users/${res.id}/airports/${id}`,
-      type: "DELETE",
-      success: airports => showHomeAirports(airports)
-    });
-  });
-}
-
-function showHomeAirports(airports) {
-  let list = airports
+function showHomeAirportsForUser(user) {
+  const list = user.home_airports
     .map(a => new Airport(a))
-    .map(a => a.homeAirportListItem());
+    .map(a => a.homeAirportListItem(user.id));
   $("#home-airports-list").html(
-    airports.length > 0 ? list : "You haven't added any airports."
+    user.home_airports.length > 0 ? list : "You haven't added any airports."
   );
 }
 
@@ -40,11 +35,13 @@ class Airport {
     this.country = country;
   }
 
-  homeAirportListItem() {
-    return `<li>${this.name} (${
-      this.iata
-    }) <a href="" onclick="deleteHomeAirport(${
-      this.id
-    }); return false;">(delete)</a></li>`;
+  homeAirportListItem(userID) {
+    return (
+      `<li>${this.name} (${this.iata}) ` +
+      `<a href="" onclick="deleteHomeAirport(${
+        this.id
+      },${userID}); return false;">(delete)</a>` +
+      `</li>`
+    );
   }
 }
