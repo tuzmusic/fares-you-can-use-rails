@@ -9,47 +9,53 @@
   + `/api/deals/:id`
 
 [X] Get deals from a given airport iata code
-  + `api/deals/from/:iata`
+  + `GET api/deals/from/:iata`
 
 <!-- [] Get deals to a given airport iata code
-  + `api/deals/to/:iata` -->
+  + `GET api/deals/to/:iata` -->
 
 [X] Get deals to a given region
-  + `api/deals/to/:region_slug`
+  + `GET api/deals/to/:region_slug`
 
 [X] Get deals during a certain vacation
-  + `api/deals/for-vacation/:id`
+  + `GET api/deals/for-vacation/:id`
 
 [] Get deals during a certain date range
-  + `api/deals/dates/:start_date/:end_date`
+  + `GET api/deals/dates/:start_date/:end_date`
 
 ## Users
 
 [X] Get all users
-  + `api/users/`
+  + `GET api/users/`
 
 [X] Get a user by ID
-  + `api/users/:id`
+  + `GET api/users/:id`
 
 [X] Get a user's favorite deals
-  + `api/users/:id/favorites`
+  + `GET api/users/:id/favorites`
 
 [X] Get all the user's matching deals
-  + `api/users/:id/deals`
+  + `GET api/users/:id/deals`
 
 ## Current User
-[X] Get the current logged in user
-  + `api/user/`
+[X] Get the current logged in user (includes deals grouped by vacation)
+  + `GET api/user/`
 
 [X] Get the logged in user's favorite deals
-  + `api/user/favorites`
+  + `GET api/user/favorites`
 
-[X] Get all the logged in user's matching deals
-  + `api/user/deals`
+[X] Get all the logged in user's matching deals, grouped by vacation
+  + `GET api/user/deals`
 
 [ ] Get all the logged in user's vacations
-  + `api/user/vacations`
+  + `GET api/user/vacations`
 
-[ ] Get all the logged in user's deals, grouped by vacation
-  + `api/user/vacation-deals/`
-    + For each vacation: `Deal.from_airports(user.home_airports).to_regions(user.regions).for_vacation vacation`
+## Posting Preferences for Current User
+[ ] Add a home airport to the current user's prefs
+  + `POST api/user/airports`
+[ ] Add a vacation to the current user's prefs
+  + `POST api/user/vacations`
+[ ] Add a favorite to the current user's prefs
+  + `POST api/user/favorites`
+[ ] Add a region ("destination") to the current user's prefs
+  + `POST api/user/regions`

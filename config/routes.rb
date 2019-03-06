@@ -39,6 +39,10 @@ Rails.application.routes.draw do
     get '/user', to: 'users#show'
     get '/user/deals', to: 'users#deals'
     get '/user/favorites', to: 'users#favorites'
+    post '/user/airports', to: 'users#add_airport'
+    post '/user/vacations', to: 'users#add_vacation'
+    post '/user/favorites', to: 'users#add_favorite'
+    post '/user/regions', to: 'users#add_region'
     resources :airports, param: :slug, only: [:index, :show]
   end
 
