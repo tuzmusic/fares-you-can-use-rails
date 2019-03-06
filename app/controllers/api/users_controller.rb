@@ -28,7 +28,9 @@ class Api::UsersController < ApplicationController
   end
 
   def add_airport
-    
+    user = User.find(params[:user_id])
+    user.preferences.home_airports << Airport.iata(params[:iata])
+    render json: user
   end
 
   def add_vacation
