@@ -34,7 +34,7 @@ class Deal {
   }
 
   showPageInfo() {
-    return `<h3>${this.headline}</h3>` + `<p>${this.description}</p>`;
+    return `<h3>${this.headline}</h3>` + `<p>${this.postedDateHTML()}</p><br>` + `<p>${this.description}</p><br>`;
   }
 
   showPageLinks() {
