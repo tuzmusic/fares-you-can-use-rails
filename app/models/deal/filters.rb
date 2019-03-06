@@ -18,7 +18,7 @@ class Deal < ApplicationRecord
   }
 
   scope :during_vacation, -> (vacation) { 
-    .where.not('start_date >= ?', end_date).where.not('end_date <= ?', start_date)
+    Deal.where.not('start_date >= ?', vacation.end_date).where.not('end_date <= ?', vacation.start_date)
   }
 
   # ------ PLURAL ------
