@@ -1,6 +1,5 @@
 function showVacationsForUser(user) {
-  // debugger;
-  let list = user.vacations
+  const list = user.vacations
     .map(v => new Vacation(v))
     .map(v => v.vacationsListParagraph(user.id));
   $("#vacations-list").html(
