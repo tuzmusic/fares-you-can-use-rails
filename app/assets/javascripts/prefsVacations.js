@@ -8,7 +8,17 @@ function showVacations(vacations) {
 }
 
 function addVacation(form, userID) {
-  $.post(`/api/users/${userID}/vacations`, form).done((res) => {
-    showVacations(res)
+  $.post(`/api/users/${userID}/vacations`, form).done((vacations) => {
+    showVacations(vacations)
   })
+}
+
+function deleteVacation(id) {
+  $.get("/api/user", user => {
+    $.ajax({
+      url: `/api/users/${user.id}/vacations/${id}`,
+      type: "DELETE",
+      success: vacations => showVacations(vacations)
+    });
+  });
 }

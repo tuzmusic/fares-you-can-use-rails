@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     post '/user/airports', to: 'users#add_airport'
     delete '/users/:user_id/airports/:airport_id', to: 'users#delete_airport'
     post '/users/:user_id/vacations', to: 'users#add_vacation'
+    delete '/users/:user_id/vacations/:vacation_id', to: 'users#delete_vacation'
     post '/user/favorites', to: 'users#add_favorite'
     post '/user/regions', to: 'users#add_region'
     resources :airports, param: :slug, only: [:index, :show]

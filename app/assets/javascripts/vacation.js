@@ -8,11 +8,11 @@ class Vacation {
   }
 
   indexParagraph() {
-    let str = `<div class="vacation">${this.indexTitle()}`
+    let str = `<div class="vacation">${this.indexTitle()}`;
     if (this.deals.length > 0) {
-      str += `${this.dealsParagraphs()}`
+      str += `${this.dealsParagraphs()}`;
     } else {
-      str += `No deals during ${this.name} ☹️ ☹️ ☹️`
+      str += `No deals during ${this.name} ☹️ ☹️ ☹️`;
     }
     str += `</div>`;
     return str;
@@ -31,6 +31,14 @@ class Vacation {
   }
 
   vacationsListParagraph() {
-    return `<p><b>${this.name}</b>`+`<br>`+ this.dateRangeHTML().replace('to', '-') + '</p>'
+    return (
+      `<p><b>${this.name}</b> ` +
+      `<a href="" onclick="deleteVacation(${
+        this.id
+    }); return false;">(delete)</a>` +
+      `<br>` +
+      this.dateRangeHTML().replace("to", "-") +
+      "</p>"
+    );
   }
 }

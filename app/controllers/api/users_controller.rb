@@ -48,6 +48,15 @@ class Api::UsersController < ApplicationController
     render json: user.vacations
   end
 
+  def delete_vacation
+    user = User.find(params[:user_id])
+    vacation = Vacation.find(params[:vacation_id])
+    user.preferences.vacations.delete vacation
+    render json: user.vacations
+  end
+
+
+
   def add_favorite
     
   end
