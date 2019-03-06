@@ -11,10 +11,11 @@ header
 
 javascript:
   function myDeals() {
+    $('#deals').html("Loading...")
     $("#my-deals-active-all-deals-linked")[0].hidden = false;
     $("#all-deals-signed-out")[0].hidden = true;
     $("#all-deals-active-my-deals-linked")[0].hidden = true;
-
+    
     $.get("api/user", user => {
       $("#deals").html(
         user.vacations
@@ -24,38 +25,30 @@ javascript:
       );
     });
   } 
-
+  
   function allDeals(signedOut) {
-    if (allDealsList) {
-      $("#my-deals-active-all-deals-linked")[0].hidden = true;
-      $("#all-deals-signed-out")[0].hidden = !signedOut;
-      $("#all-deals-active-my-deals-linked")[0].hidden = signedOut;
+    $('#deals').html("Loading...")
+    $("#my-deals-active-all-deals-linked")[0].hidden = true;
+    $("#all-deals-signed-out")[0].hidden = !signedOut;
+    $("#all-deals-active-my-deals-linked")[0].hidden = signedOut;
 
+    $.get("api/deals", deals => {
       $("#deals").html(
         "<br>" +
-          allDealsList
+          deals
             .map(d => new Deal(d))
             .sort((a, b) => b.posted_date > a.posted_date)
             .map(d => d.indexParagraph())
             .join("")
       );
-    } else {
-      $.get("api/deals", deals => {
-        allDealsList = deals;
-        allDeals(signedOut);
-      });
-    }
+    });
   }
 
   $(function() {
+    $('#deals').html("")
     $.get("api/user", user => {
       if (user) {
         myDeals();
-        fetch("api/deals")
-          .then(res => res.json())
-          .then(json => {
-            allDealsList = json;
-          });
       } else {
         allDeals(true);
       }
