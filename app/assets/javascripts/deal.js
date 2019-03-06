@@ -42,12 +42,15 @@ class Deal {
   }
 
   showPageLinks() {
-    return (
-      "<p>" +
-      this.links
+    let body;
+    if (this.links.length > 0) {
+      body = this.links
         .map(link => `<a href="${link.url}" target="_blank">${link.text}</a>`)
-        .join("<br>") +
-      "</p>"
+        .join("<br>")
+    } else {
+      body = "Hmm... this deal has no links."
+    }
+    return ( `<p>${body}</p>`
     );
   }
 
