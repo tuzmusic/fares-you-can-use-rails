@@ -1,9 +1,0 @@
-/ home airports list
-- if prefs.home_airports.present?
-  ol#home-airports-list
-    - prefs.home_airports.each do |airport| 
-      li 
-        = "#{airport.name} (#{airport.iata})"
-        =< link_to "(delete)", delete_home_airport_path(airport.id)
-- else
-  p = "You haven't added any airports."

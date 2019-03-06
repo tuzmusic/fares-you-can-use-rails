@@ -4,10 +4,19 @@ br/
 = render  "favorites_section", prefs: @prefs  
 br/
 
-= render  "home_airports_section", prefs: @prefs  
+h2 My Home Airports
+= render  "home_airport_form", prefs: @prefs
+ol#home-airports-list
 br/
 
 = render  "vacations_section", vacations: @prefs.vacations.order(:start_date)
 br/
 
 = render  "regions_section", prefs: @prefs 
+
+javascript:
+  $(function() {
+    $.get("api/user", user => {
+      showHomeAirports(user.home_airports)
+    })    
+  })
