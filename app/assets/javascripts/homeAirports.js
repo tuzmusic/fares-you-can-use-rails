@@ -23,15 +23,28 @@ function deleteHomeAirport(id) {
 }
 
 function showHomeAirports(airports) {
-  let list = airports.map(
-    a =>
-      `<li>${a.name} (${a.iata}) ` +
-      `<a href="" onclick="deleteHomeAirport(${
-        a.id
-      }); return false;">(delete)</a>` +
-      `</li>`
-  );
+  let list = airports
+    .map(a => new Airport(a))
+    .map(a => a.homeAirportListItem());
   $("#home-airports-list").html(
     airports.length > 0 ? list : "You haven't added any airports."
   );
+}
+
+class Airport {
+  constructor({ id, name, iata, city, country }) {
+    this.id = id;
+    this.name = name;
+    this.iata = iata;
+    this.city = city;
+    this.country = country;
+  }
+
+  homeAirportListItem() {
+    return `<li>${this.name} (${
+      this.iata
+    }) <a href="" onclick="deleteHomeAirport(${
+      this.id
+    }); return false;">(delete)</a></li>`;
+  }
 }
