@@ -30,12 +30,10 @@ class Vacation {
     return `${this.start_date.toDateString()} to ${this.end_date.toDateString()}`;
   }
 
-  vacationsListParagraph() {
+  vacationsListParagraph(userID) {
     return (
       `<p><b>${this.name}</b> ` +
-      `<a href="" onclick="deleteVacation(${
-        this.id
-    }); return false;">(delete)</a>` +
+      `<a href="" onclick="deleteVacation(${this.id}, ${userID}); return false;">(delete)</a>` +
       `<br>` +
       this.dateRangeHTML().replace("to", "-") +
       "</p>"

@@ -1,25 +1,24 @@
-function showVacations(vacations) {
-  let list = vacations
+function showVacationsForUser(user) {
+  // debugger;
+  let list = user.vacations
     .map(v => new Vacation(v))
-    .map(v => v.vacationsListParagraph());
+    .map(v => v.vacationsListParagraph(user.id));
   $("#vacations-list").html(
-    vacations.length > 0 ? list : "You haven't added any vacations."
+    user.vacations.length > 0 ? list : "You haven't added any vacations."
   );
 }
 
-function addVacation(form, userID) {
-  $.post(`/api/users/${userID}/vacations`, form).done(vacations =>
-    showVacations(vacations)
+function addVacation(form, user) {
+  $.post(`/api/users/${user.id}/vacations`, form).done(user =>
+    showVacationsForUser(user)
   );
 }
 
-function deleteVacation(id) {
-  $.get("/api/user", user => {
-    $.ajax({
-      url: `/api/users/${user.id}/vacations/${id}`,
-      type: "DELETE",
-      success: vacations => showVacations(vacations)
-    });
+function deleteVacation(vacation_id, user_id) {
+  $.ajax({
+    url: `/api/users/${user_id}/vacations/${vacation_id}`,
+    type: "DELETE",
+    success: user => showVacationsForUser(user)
   });
 }
 
@@ -27,6 +26,6 @@ function addVacationFormListener(user) {
   $("#new_vacation_form").submit(function(e) {
     e.preventDefault();
     const formInfo = $(this).serialize();
-    addVacation(formInfo, user.id);
+    addVacation(formInfo, user);
   });
 }

@@ -48,13 +48,13 @@ class Api::UsersController < ApplicationController
   def add_vacation
     vacation_params = params.require(:vacation).permit :name, :start_date, :end_date
     @user.preferences.vacations.create(vacation_params)
-    render json: @user.vacations
+    render json: @user
   end
 
   def delete_vacation
     vacation = Vacation.find(params[:vacation_id])
     @user.preferences.vacations.delete vacation
-    render json: @user.vacations
+    render json: @user
   end
 
   def add_favorite
