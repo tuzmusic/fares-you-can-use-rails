@@ -29,4 +29,8 @@ class Vacation {
   dateRangeHTML() {
     return `${this.start_date.toDateString()} to ${this.end_date.toDateString()}`;
   }
+
+  vacationsListParagraph() {
+    return `<b>${this.name}</b>`+`<br>`+ this.dateRangeHTML().replace('to', '-')
+  }
 }
