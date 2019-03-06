@@ -34,19 +34,27 @@ class Deal {
   }
 
   showPageInfo() {
-    return `<h3>${this.headline}</h3>` + `<p>${this.postedDateHTML()}</p><br>` + `<p>${this.description}</p><br>`;
+    return [
+      `<h3>${this.headline}</h3>`,
+      `<p>${this.postedDateHTML()}</p>`,
+      `<p>${this.description}</p>`
+    ].join("");
   }
 
   showPageLinks() {
-    return '<p>' + this.links
-      .map(link => {
-       return `<a href="${link.url}" target="_blank">${link.text}</a>`;
-      })
-      .join("<br>") + '</p>';
+    return (
+      "<p>" +
+      this.links
+        .map(link => `<a href="${link.url}" target="_blank">${link.text}</a>`)
+        .join("<br>") +
+      "</p>"
+    );
   }
 
   showPageStats() {
-    let newDateRange = this.dateRangeHTML().replace('Fly from', '').replace('to', '-')
+    let newDateRange = this.dateRangeHTML()
+      .replace("Fly from", "")
+      .replace("to", "-");
     return (
       `<p><b>Fly From:</b><br>${this.airportCodes(this.origins)}</p>` +
       `<p><b>Fly To:</b><br>${this.airportCodes(this.destinations)}</p>` +
@@ -57,9 +65,7 @@ class Deal {
   airportCodes(airports) {
     // CONVERT TO USE AIRPORT OBJECT/CLASS
     // (although JS does accept dot notation for generic objects so /this/ code shouldn't have to change?)
-    return airports
-      .map(a =>`${a.name} (${a.iata})`)
-      .join("<br>");
+    return airports.map(a => `${a.name} (${a.iata})`).join("<br>");
   }
 
   headlineLink() {
@@ -82,10 +88,3 @@ class Deal {
     ].join("<br>");
   }
 }
-
-Date.fromRailsStr = function(str) {
-  let date = new Date(str);
-  let day = date.getDate();
-  date.setDate(day + 1);
-  return date;
-};
