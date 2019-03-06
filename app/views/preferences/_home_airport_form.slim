@@ -1,7 +1,7 @@
-/ add airport form
-p = form_for prefs, html: { onsubmit: "addHomeAirport(); return false;" } do |f|
-  = text_field_tag :'preference[home_airport]', nil, id: 'home_airport_selector', list: 'iata', placeholder: "Add another airport"
-  datalist#iata
-    - Airport.by_iata.all.each do |airport|
-      option value="#{airport.iata} (#{airport.name})"
-  =< f.submit "Add", id: "add_airport_button"
+= text_field_tag :'preference[home_airport]', nil, id: 'home_airport_selector', list: 'iata', placeholder: "Add another airport"
+
+datalist#iata
+  - Airport.by_iata.all.each do |airport|
+    option value="#{airport.iata} (#{airport.name})"
+
+=< submit_tag "Add", onclick: "addHomeAirport(); return false;"

@@ -6,7 +6,8 @@ br/
 
 h2 My Home Airports
 = render  "home_airport_form", prefs: @prefs
-ol#home-airports-list
+p 
+  ol#home-airports-list
 br/
 
 = render  "vacations_section", vacations: @prefs.vacations.order(:start_date)
