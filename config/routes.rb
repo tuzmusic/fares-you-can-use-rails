@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :deals # auto-includes :show, :index
     get '/deals/from-airport/:iata', to: 'deals#from_airport'
     get '/deals/to-region/:slug', to: 'deals#to_region'
-    get 'deals/for-vacation/:id', to: 'deals#for_vacation'
+    get '/deals/for-vacation/:id', to: 'deals#for_vacation'
     # get 'deals/dates/:start_date/:end_date', to: 'deals#for_vacation'
     resources :users
     get '/users/:id/deals', to: 'users#deals'
