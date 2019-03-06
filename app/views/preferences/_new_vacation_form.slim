@@ -1,10 +1,9 @@
 = form_tag '/preferences', method: :post, id: 'new_vacation_form' do
-  div class="field#{" field_with_errors" if @vacation && @vacation&.errors[:name]&.any?}"
-    p
-      = label_tag :'vacation[name]', "Name:"
-      =< text_field_tag :'vacation[name]'
+  p
+    = label_tag :'vacation[name]', "Name:"
+    =< text_field_tag :'vacation[name]'
+    =< submit_tag "Save"
   p
     = date_select_for :vacation, :start_edate
     |to 
     = date_select_for :vacation, :end_date
-  p = submit_tag "Save"

@@ -10,7 +10,7 @@ p
   ol#home-airports-list
 br/
 
-= render "vacations_section", vacations: @prefs.vacations.order(:start_date)
+= render "vacations_section"
 br/
 
 = render "regions_section", prefs: @prefs 
@@ -19,7 +19,7 @@ javascript:
   $(() => {
     $.get("api/user", user => {
       showHomeAirports(user.home_airports)
-      
+
       addVacationFormListener(user)
       showVacations(user.vacations)
     })    
