@@ -1,6 +1,6 @@
 # Rails App with JavaScript Frontend Spec
 ## Project Specs:
-[ ] Must have a Rails Backend and new requirements implemented through JavaScript.
+[X] Must have a Rails Backend and new requirements implemented through JavaScript.
 [X] Makes use of ES6 features as much as possible(e.g Arrow functions, Let & Const, Constructor Functions)
 [X] Must translate the JSON responses into Javascript Model Objects using either ES6 class or constructor syntax. 
 [X] Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON Backend.
