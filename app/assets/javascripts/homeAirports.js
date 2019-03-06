@@ -5,7 +5,9 @@ function addHomeAirport() {
   $.get('/api/user', res => {
     $.post('/api/user/airports', {iata: iata, user_id: res.id}).done((airports) => {
       let list = airports.map(a =>`<li>${a.name} (${a.iata})</li>`)
-      $('#home-airports-list').html(list)
+      $('#home-airports-list').html(airports.length > 0 ? list : "You haven't added any airports.")
+      // debugger
+      input.value = ""
     })
   })
 }
