@@ -52,7 +52,8 @@
 
 ## Posting Preferences for Current User
 [ ] Add a home airport to the current user's prefs
-  + `POST api/user/airports`
+  + `POST api/user/airports` 
+    + {iata: AIRPORT_IATA_CODE}
 [ ] Add a vacation to the current user's prefs
   + `POST api/user/vacations`
 [ ] Add a favorite to the current user's prefs
