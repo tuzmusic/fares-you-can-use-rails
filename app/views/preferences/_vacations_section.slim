@@ -1,14 +1,5 @@
 h2 My Vacations
-/ add or edit vacations
+p#vacations-list
 p 
-  / => link_to  "New Vacation", new_preferences_path 
   = render  "new_vacation_form", vacations: @prefs.vacations.order(:start_date), prefs: @prefs
   br/
-
-  /- if vacations.present?
-    || 
-    =< link_to  "Edit Vacations", edit_preferences_path
-    - vacations.each do |vacation|
-      = render "vacation_p", vacation: vacation
-  /- else  
-    p = "You haven't added any vacations"   

@@ -19,5 +19,6 @@ javascript:
   $(function() {
     $.get("api/user", user => {
       showHomeAirports(user.home_airports)
+      showVacations(user.vacations)
     })    
   })
