@@ -1,6 +1,7 @@
 .container
   .row
-    p ---next deal link HERE---
+    p style="color:red;"
+      b ---next deal link HERE---
     #deal
 - if admin_signed_in?
   p = edit_deal_button
@@ -8,6 +9,7 @@
     
 javascript:
   $(function () {
+    $('#deal').html("Loading...")
     let slug = location.pathname.split('/').slice(-1)[0]
     $.get(`/api/deals/${slug}`, res => {
       let deal = new Deal(res)
