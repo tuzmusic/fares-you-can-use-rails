@@ -18,10 +18,7 @@ br/
 javascript:
   $(() => {
     $.get("api/user", user => {
-      $('#new_vacation_form').submit(function(e) {
-        e.preventDefault()
-        addVacation($(this).serialize(), user.id)
-      })
+      addFormListener(user)
       showHomeAirports(user.home_airports)
       showVacations(user.vacations)
     })    

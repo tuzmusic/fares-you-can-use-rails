@@ -22,3 +22,11 @@ function deleteVacation(id) {
     });
   });
 }
+
+function addFormListener(user) {
+  $('#new_vacation_form').submit(function (e) {
+    e.preventDefault()
+    addVacation($(this).serialize(), user.id)
+  })
+
+}
